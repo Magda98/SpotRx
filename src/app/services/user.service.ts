@@ -1,9 +1,7 @@
-import { AuthInterceptor } from './../auth.interceptor';
+import { User } from './../interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { base64url, randomBytes, generateCodeChallenge } from 'src/utils';
-import { Token } from 'src/app/interfaces/token';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -11,12 +9,17 @@ import { Token } from 'src/app/interfaces/token';
 })
 export class UserService {
   baseUrl = 'https://api.spotify.com/v1/';
+  userData = new Subject<User>();
 
   constructor(private http: HttpClient) { }
 
-
+  getUserData() {
+    return this.userData.asObservable();
+  }
 
   retriveUserData() {
-    this.http.get(`${this.baseUrl}me`).subscribe(val => console.log(val))
+    this.http.get<User>(`${this.baseUrl}me`).subscribe(val => {
+      this.userData.next(val);
+    })
   }
 }
