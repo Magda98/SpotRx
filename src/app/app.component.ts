@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'spotifix';
+  title = 'spotrx';
+
+  constructor(private userService: UserService) {
+    
+  }
+
+  ngOnInit() {
+    if (location.search) {
+      this.userService.getToken();
+    }
+  }
+
+  login() {
+    this.userService.login()
+  }
 }

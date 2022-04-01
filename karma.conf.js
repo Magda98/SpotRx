@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/spotifix'),
+      dir: require('path').join(__dirname, './coverage/spotrx'),
       subdir: '.',
       reporters: [
         { type: 'html' },
