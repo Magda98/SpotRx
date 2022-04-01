@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { base64url, randomBytes, generateCodeChallenge } from 'src/utils';
-import { Token } from 'src/interfaces';
+import { base64url, generateCodeChallenge, randomBytes } from 'src/utils';
+import { Token } from '../interfaces/token';
+import {Router} from '@angular/router';
 
 const config = {
   headers: {
@@ -10,17 +11,19 @@ const config = {
   },
 };
 
-
-
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  token = new BehaviorSubject<string>("");
+export class AuthService {
+   token = new BehaviorSubject<string | undefined>(undefined);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  async login() {
+  retriveToekn() {
+    return this.token.asObservable();
+  }
+
+    async login() {
     const code_verifier = base64url(randomBytes(96));
     const code = await generateCodeChallenge(code_verifier);
 
@@ -52,7 +55,6 @@ export class UserService {
     
     const url = location.search;
     const code = new URLSearchParams(url).get("code") ?? "";
-    console.log(code);
 
     const urlParams = new URLSearchParams();
     urlParams.append('grant_type', 'authorization_code');
@@ -66,8 +68,7 @@ export class UserService {
 
     this.http.post<Token>("https://accounts.spotify.com/api/token", urlParams, config).subscribe(val => {
       this.token.next(val.access_token);
-      location.href = "";
-      console.log(this.token.getValue())
+      this.router.navigate([""]);
     })
   }
 }

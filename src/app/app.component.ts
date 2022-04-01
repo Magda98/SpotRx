@@ -1,4 +1,5 @@
-import { UserService } from './user.service';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,17 +10,20 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'spotrx';
 
-  constructor(private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService) {
     
   }
 
   ngOnInit() {
     if (location.search) {
-      this.userService.getToken();
+      this.authService.getToken();
     }
+
+    this.authService.retriveToekn().subscribe((val) => { if (val) { this.userService.retriveUserData() } });
   }
 
   login() {
-    this.userService.login()
+    this.authService.login();
   }
+
 }
