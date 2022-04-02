@@ -1,3 +1,4 @@
+import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -17,7 +18,19 @@ const config = {
 export class AuthService {
    token = new BehaviorSubject<string | undefined>(undefined);
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private storage: StorageService) { 
+    const data = this.storage.getData("token");
+    
+    if (data) {
+      this.token.next(data);
+    }
+
+    this.retriveToekn().subscribe(token => {
+      if (token) {
+        this.storage.setData("token", token)
+      }
+    })
+  }
 
   retriveToekn() {
     return this.token.asObservable();
