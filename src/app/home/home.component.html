@@ -1,1 +1,8 @@
-<p>home works!</p>
+<div class="home">
+    <ul class="track-list" *ngIf="savedTracks | async as tracks">
+        <li (click)="play(item.track.uri)" class="track" *ngFor="let item of tracks">
+            <img class="track-img" [src]="item.track.album.images[0].url">
+            <span class="track-artist">{{item.track.artists[0].name}}</span>
+        </li>
+    </ul>
+</div>

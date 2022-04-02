@@ -1,3 +1,4 @@
+import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { Component } from '@angular/core';
@@ -11,7 +12,7 @@ import { PlayerService } from './services/player.service';
 export class AppComponent {
   title = 'spotrx';
 
-  constructor(private authService: AuthService, private userService: UserService, private playerService: PlayerService) {
+  constructor(private authService: AuthService, private userService: UserService, private playerService: PlayerService,private trackService: TrackService) {
     
   }
 
@@ -24,6 +25,7 @@ export class AppComponent {
       if (val) {
         this.userService.retriveUserData();
         this.playerService.initializePlayer();
+        this.trackService.retriveSavedTracks();
       }
     });
   }

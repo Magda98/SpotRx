@@ -1,12 +1,14 @@
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
+  deviceId = "";
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private http: HttpClient) { }
 
   initializePlayer() {
     window.onSpotifyWebPlaybackSDKReady = () => {
@@ -39,6 +41,7 @@ export class PlayerService {
       // Ready
       player.addListener('ready', ({ device_id }) => {
         console.log("ready")
+        this.deviceId = device_id
       });
 
       // Not Ready
@@ -49,5 +52,15 @@ export class PlayerService {
       // Connect to the player!
       player.connect();
     }
+  }
+
+  playSong(uri: string) {
+    console.log(this.deviceId)
+    this.http.put(`me/player/play?device_id=${this.deviceId}`, {
+      uris: [uri],
+      offset: {
+        position: 0
+      },
+    }).subscribe((val) => console.log(val))
   }
 }

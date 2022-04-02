@@ -8,7 +8,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = 'https://api.spotify.com/v1/';
   userData = new Subject<User>();
 
   constructor(private http: HttpClient) { }
@@ -18,7 +17,7 @@ export class UserService {
   }
 
   retriveUserData() {
-    this.http.get<User>(`${this.baseUrl}me`).subscribe(val => {
+    this.http.get<User>(`me`).subscribe(val => {
       this.userData.next(val);
     })
   }

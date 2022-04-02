@@ -21,6 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (this.authService.token.getValue()) {
       const modifiedReq = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${this.authService.token.getValue()}`),
+        url: `https://api.spotify.com/v1/${request.url}` 
       });
       return next.handle(modifiedReq);
     }
