@@ -1,6 +1,6 @@
-<nav>
-    <div *ngIf="userData | async as user">
+<nav class="nav">
+    <div class="user-data" *ngIf="userData | async as user">
         {{user.display_name}}
-        <img [src]="user.images[0].url">
+        <img class="user-img" [src]="user.images[0].url">
     </div>
 </nav>

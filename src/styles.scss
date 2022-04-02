@@ -1,1 +1,86 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$spotrx-primary: mat.define-palette(mat.$indigo-palette);
+$spotrx-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$spotrx-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$spotrx-theme: mat.define-light-theme((
+  color: (
+    primary: $spotrx-primary,
+    accent: $spotrx-accent,
+    warn: $spotrx-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($spotrx-theme);
+
+
+
+$primary: #1ecd5d;
+$text: #fff;
+$text-dark: #363636;
+$bg-elevation: #363636;
+
+.mat-slider.mat-accent .mat-slider-track-fill, .mat-slider.mat-accent .mat-slider-thumb {
+    background-color: $primary;
+}
+
+body{
+    margin: 0;
+    font-family: 'Fredoka', sans-serif;
+    color: $text;
+
+    h1, h2, h3, h4, h5, h6, p, span, div{
+    font-family: 'Fredoka', sans-serif;
+    }
+
+    img {
+        filter: brightness(0.8) contrast(1.2);
+    }
+}
+
+@mixin btn($background-color, $border-color) {
+    color: $text-dark;
+    background-color: $background-color;
+    border: 2px solid $border-color;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    transition: background-color 0.3s, border-color 0.3s;
+
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    &:hover {
+        background-color: rgba($primary, 0.3);
+        border-color: rgba($primary, 0.3);
+    }
+}
+
+.btn{
+    @include btn($primary, $primary);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -7,6 +7,8 @@ import { AuthInterceptor } from './auth.interceptor';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { NavComponent } from './nav/nav.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSliderModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {
