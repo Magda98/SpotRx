@@ -18,8 +18,6 @@ export class HomeComponent implements OnInit {
     this.savedTracks = this.trackService.getSavedTracks();
   }
 
-  play(uri: string) {
-    this.playerService.playSong(uri);
-  }
+
 
 }

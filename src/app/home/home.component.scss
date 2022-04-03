@@ -1,25 +1,15 @@
 .home{
-
-}
-
-.track-list {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    width: 80%;
+    .track-list{
+        width: 100%;
+    }
 
-    .track {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-
-        .track-img{
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-        }
+    .title{
+        margin-bottom: 50px;
     }
 }
     

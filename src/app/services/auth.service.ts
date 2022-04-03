@@ -18,6 +18,7 @@ const config = {
 export class AuthService {
   token = new BehaviorSubject<string | undefined>(undefined);
   tokenObj = new Subject<Token>();
+  loggedIn = new BehaviorSubject(false);
 
   constructor(private http: HttpClient, private router: Router, private storage: StorageService) { 
 
@@ -84,6 +85,7 @@ export class AuthService {
     this.http.post<Token>("https://accounts.spotify.com/api/token", urlParams, config).subscribe(val => {
       this.token.next(val.access_token);
       this.tokenObj.next(val);
+      this.loggedIn.next(true);
       this.router.navigate([""]);
     })
   }
