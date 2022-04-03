@@ -10,6 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TrackListComponent } from './track-list/track-list.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TrackListComponent } from './track-list/track-list.component';
     HomeComponent,
     NavComponent,
     TrackListComponent,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,

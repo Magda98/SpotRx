@@ -3,6 +3,7 @@
     flex-direction: row;
     position: relative;
     height: 100vh;
+    overflow: hidden;
 
     .main{
         margin-left: 200px;
@@ -10,5 +11,6 @@
         overflow-y: scroll;
         background-color: #35393c;
         padding-top: 25px;
+        padding-bottom: 150px;
     }
 }
