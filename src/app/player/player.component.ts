@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+import { PlayerService } from './../services/player.service';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-player',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit {
+  playerState: Observable<Spotify.PlaybackState>;
+  // paused = false;
 
-  constructor() { }
+  constructor(private playerService: PlayerService, private cdr: ChangeDetectorRef) { 
+    this.playerState = this.playerService.getPlayerState().pipe(tap(() => {
+        cdr.detectChanges();
+      }
+    ));
+  }
 
   ngOnInit(): void {
+  }
+
+  togglePlay() {
+    this.playerService.tooglePlay();
   }
 
 }
