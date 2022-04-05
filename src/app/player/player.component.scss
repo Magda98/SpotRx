@@ -26,4 +26,21 @@
         max-width: 250px;
         width: 100%;
     }
+
+    .song-info{
+        display: flex;
+
+        .album-image{
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            display: block;
+        }
+
+        .album-artist{
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }

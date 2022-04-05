@@ -94,4 +94,10 @@ export class PlayerService {
   skipPrev() {
     this.player?.previousTrack().then(() => {});
   }
+
+  setVolume(val: number) {
+    this.player?.setVolume(val).then(() => {
+      console.log('Volume updated!');
+    });
+  }
 }

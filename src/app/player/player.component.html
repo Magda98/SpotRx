@@ -1,4 +1,16 @@
 <div *ngIf="playerState | async as player" class="player">
+    <div class="song-info">
+        <img class="album-image" [src]="player.track_window.current_track.album.images[0].url">
+        <div class="album-artist">
+            <h2 class="name">{{player.track_window.current_track.name}}</h2>
+            <span class="album-name">
+                {{player.track_window.current_track.album.name}}
+            </span>
+            <div *ngFor="let item of player.track_window.current_track.artists">
+                <span class="artist">{{item.name}}</span>
+            </div>
+        </div>
+    </div>
     <div class="action-buttons">
         <button class="btn" (click)="skipPrev()">
             <mat-icon>skip_previous</mat-icon>
@@ -11,5 +23,5 @@
             <mat-icon>skip_next</mat-icon>
         </button>
     </div>
-    <mat-slider min="0" max="1" step="0.1" value="0.5"></mat-slider>
+    <mat-slider (change)="setVolume($event)" min="0" max="1" step="0.1" value="0.5"></mat-slider>
 </div>
