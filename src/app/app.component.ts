@@ -26,6 +26,7 @@ export class AppComponent {
         this.userService.retriveUserData();
         this.playerService.initializePlayer();
         this.trackService.retriveSavedTracks();
+
       }
     });
   }

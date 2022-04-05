@@ -7,4 +7,9 @@
         <img class="user-img" [src]="user.images[0].url">
         <span class="user-name">{{user.display_name}}</span>
     </div>
+
+    <ul class="nav-links">
+        <li><a class="link" routerLink="/" routerLinkActive="active">Home</a></li>
+        <li><a class="link" routerLink="/saved" routerLinkActive="active">Saved</a></li>
+    </ul>
 </nav>

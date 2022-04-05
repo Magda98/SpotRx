@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { TrackListComponent } from './track-list/track-list.component';
 import { PlayerComponent } from './player/player.component';
+import { SavedComponent } from './saved/saved.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PlayerComponent } from './player/player.component';
     NavComponent,
     TrackListComponent,
     PlayerComponent,
+    SavedComponent,
   ],
   imports: [
     BrowserModule,

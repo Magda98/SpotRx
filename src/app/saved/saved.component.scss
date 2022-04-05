@@ -1,0 +1,14 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .track-list {
+        width: 100%;
+    }
+
+    .title {
+        margin-bottom: 50px;
+    }
+}

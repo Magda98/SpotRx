@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private trackService: TrackService, private playerService: PlayerService) { }
 
   ngOnInit(): void {
-    this.savedTracks = this.trackService.getSavedTracks();
+    
   }
 
 

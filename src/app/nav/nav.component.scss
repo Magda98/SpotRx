@@ -23,4 +23,27 @@
         border-radius: 5px;
         margin-top: 10px;
     }
+
+    .nav-links{
+        list-style-type: none;
+        padding-left: 0;
+
+        .link{
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+            
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+
+            &:hover{
+                background-color: rgba(#fff, 0.05);
+            }
+        }   
+    }
 }
