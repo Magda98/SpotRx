@@ -1,9 +1,10 @@
-import {Image} from "./user"
+import {Image} from "./image"
 
 export interface Track {
     uri: string,
     name: string,
     id: string,
+    duration_ms: number,
     album: {
         name: string,
         images: Image[],

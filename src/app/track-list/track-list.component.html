@@ -1,6 +1,18 @@
 <ul class="track-list" *ngIf="tracksList | async as tracks">
     <li (click)="play(i)" class="track" *ngFor="let item of tracks; let i = index">
-        <img class="track-img" [src]="item.track.album.images[0].url">
-        <span class="track-artist">{{item.track.artists[0].name}}</span>
+        <div class="song-info">
+            <img class="track-img" [src]="item.track.album.images[0].url">
+            <div class="album-artist">
+                <h2 class="name">{{item.track.name}}</h2>
+                <span class="album-name">
+                    {{item.track.album.name}}
+                </span>
+                <div class="time">
+                    <span *ngFor="let artist of item.track.artists" class="artist">{{artist.name}}</span>
+                </div>
+            </div>
+        </div>
+
+        <span class="track-artist">{{durationTime(item.track.duration_ms)}}</span>
     </li>
 </ul>

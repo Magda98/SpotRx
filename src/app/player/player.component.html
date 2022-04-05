@@ -6,8 +6,8 @@
             <span class="album-name">
                 {{player.track_window.current_track.album.name}}
             </span>
-            <div *ngFor="let item of player.track_window.current_track.artists">
-                <span class="artist">{{item.name}}</span>
+            <div class="artist-container">
+                <span *ngFor="let item of player.track_window.current_track.artists" class="artist">{{item.name}}</span>
             </div>
         </div>
     </div>
@@ -19,9 +19,12 @@
             <mat-icon *ngIf="player.paused">play_circle_outline</mat-icon>
             <mat-icon *ngIf="!player.paused">pause_circle_outline</mat-icon>
         </button>
-        <button class="btn" (click)="skipPrev()">
+        <button class="btn" (click)="skipNext()">
             <mat-icon>skip_next</mat-icon>
         </button>
     </div>
-    <mat-slider (change)="setVolume($event)" min="0" max="1" step="0.1" value="0.5"></mat-slider>
+    <div class="slider-container">
+        <mat-slider class="volume-slider" (change)="setVolume($event)" min="0" max="1" step="0.1" value="0.5">
+        </mat-slider>
+    </div>
 </div>

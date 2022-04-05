@@ -1,3 +1,4 @@
+import { Image } from "./image"
 export interface User {
     country: string,
     display_name: string,
@@ -14,8 +15,3 @@ export interface User {
 }
 
 
-export interface Image{
-    width: number,
-    height: number,
-    url: string
-}

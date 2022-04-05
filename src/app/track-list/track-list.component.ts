@@ -27,4 +27,12 @@ export class TrackListComponent implements OnInit {
     this.playerService.playSong(this.currentItems, index);
   }
 
+  durationTime(durationMs: number) {
+    let duration = durationMs / 1000;
+    duration = duration / 60;
+    const m = Math.floor(duration);
+    const s = Math.round((duration % m)*100);
+    return `${m}:${s}`;
+  }
+
 }
