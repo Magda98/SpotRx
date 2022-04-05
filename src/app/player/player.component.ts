@@ -9,13 +9,9 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
   playerState: Observable<Spotify.PlaybackState>;
-  // paused = false;
 
   constructor(private playerService: PlayerService, private cdr: ChangeDetectorRef) { 
-    this.playerState = this.playerService.getPlayerState().pipe(tap(() => {
-        cdr.detectChanges();
-      }
-    ));
+    this.playerState = this.playerService.getPlayerState();
   }
 
   ngOnInit(): void {
@@ -23,6 +19,14 @@ export class PlayerComponent implements OnInit {
 
   togglePlay() {
     this.playerService.tooglePlay();
+  }
+
+  skipNext() {
+    this.playerService.skipNext();
+  }
+
+  skipPrev() {
+    this.playerService.skipPrev();
   }
 
 }

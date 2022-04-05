@@ -1,6 +1,6 @@
 import { PlayerService } from './../services/player.service';
 import { Item } from './../interfaces/track';
-import { Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -10,14 +10,21 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TrackListComponent implements OnInit {
   @Input() tracksList = new Observable<Item[]>();
+  currentItems: string[] = [];
 
-  constructor(private playerService: PlayerService) { }
-
-  ngOnInit(): void {
+  constructor(private playerService: PlayerService) { 
+ 
   }
 
-  play(uri: string) {
-    this.playerService.playSong(uri);
+  ngOnInit(): void {
+    this.tracksList.subscribe(items => {
+      this.currentItems = items.map(val => val.track.uri)
+    })
+  }
+
+  play(index: number) {
+    console.log(this.currentItems)
+    this.playerService.playSong(this.currentItems, index);
   }
 
 }

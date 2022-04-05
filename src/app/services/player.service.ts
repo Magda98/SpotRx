@@ -11,7 +11,7 @@ export class PlayerService {
   playerState = new Subject<Spotify.PlaybackState>();
   deviceId = "";
 
-  constructor(private authService: AuthService, private http: HttpClient, private ngZone: NgZone) { 
+  constructor(private authService: AuthService, private http: HttpClient, private _zone: NgZone) { 
     this.initializePlayer();
 
   }
@@ -41,9 +41,10 @@ export class PlayerService {
         });
 
         // Playback status updates
-        player.addListener('player_state_changed', (playerState) => {
-          // console.log(playerState);
-          // this.playerState.next(playerState);
+        fromEvent<Spotify.PlaybackState>(player, 'player_state_changed').subscribe(newState => {
+          this._zone.run(() => {
+            this.playerState.next(newState);
+           });
         });
 
         // Ready
@@ -61,9 +62,8 @@ export class PlayerService {
         player.connect();
 
         this.player = player;
-        fromEvent<Spotify.PlaybackState>(player, 'player_state_changed').subscribe(newState => {
-          this.playerState.next(newState);
-        });
+
+       
       }
  
   }
@@ -72,12 +72,12 @@ export class PlayerService {
     return this.playerState.asObservable();
   }
 
-  playSong(uri: string) {
+  playSong(uris: string[], index: number) {
     console.log(this.deviceId)
     this.http.put(`me/player/play?device_id=${this.deviceId}`, {
-      uris: [uri],
+      uris: uris,
       offset: {
-        position: 0
+        position: index
       },
     }).subscribe((val) => console.log(val))
   }
@@ -85,5 +85,13 @@ export class PlayerService {
   tooglePlay() {
       this.player?.togglePlay().then(() => {
       });
+  }
+
+  skipNext() {
+    this.player?.nextTrack().then(() => {});
+  }
+
+  skipPrev() {
+    this.player?.previousTrack().then(() => {});
   }
 }
