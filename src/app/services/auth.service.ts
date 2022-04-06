@@ -1,7 +1,7 @@
 import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, switchMap } from 'rxjs';
 import { base64url, generateCodeChallenge, randomBytes } from 'src/utils';
 import { Token } from '../interfaces/token';
 import {Router} from '@angular/router';
@@ -17,7 +17,7 @@ const config = {
 })
 export class AuthService {
   token = new BehaviorSubject<string | undefined>(undefined);
-  tokenObj = new Subject<Token>();
+  tokenObj = new BehaviorSubject<Token | undefined>(undefined);
   loggedIn = new BehaviorSubject(false);
 
   constructor(private http: HttpClient, private router: Router, private storage: StorageService) { 
@@ -26,6 +26,7 @@ export class AuthService {
 
     if (data) {
       this.token.next(data?.access_token);
+      this.tokenObj.next(data)
     }
 
     this.tokenObj.asObservable().subscribe(token => {
@@ -88,5 +89,18 @@ export class AuthService {
       this.loggedIn.next(true);
       this.router.navigate([""]);
     })
+  }
+
+  getRefreshToken() {
+    return this.tokenObj.pipe(switchMap(token => {
+      const refreshToken = token?.refresh_token ?? ""
+      const urlParams = new URLSearchParams();
+      urlParams.append('grant_type', 'refresh_token');
+      urlParams.append('refresh_token', refreshToken);
+      urlParams.append('client_id', '57a795ef5d9a4ccca747877d47fbc61d');
+      return this.http.post<Token>("https://accounts.spotify.com/api/token", urlParams, config)
+    }));
+    
+    
   }
 }

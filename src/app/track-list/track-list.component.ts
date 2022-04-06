@@ -10,26 +10,22 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TrackListComponent implements OnInit {
   @Input() tracksList = new Observable<Item[]>();
-  currentItems: string[] = [];
 
   constructor(private playerService: PlayerService) { 
  
   }
 
   ngOnInit(): void {
-    this.tracksList.subscribe(items => {
-      this.currentItems = items.map(val => val.track.uri)
-    })
   }
 
   play(index: number) {
-    console.log(this.currentItems)
-    this.playerService.playSong(this.currentItems, index);
+    this.tracksList.pipe(map((items) => {
+      this.playerService.playSong(items.map((item) => item.track.uri), index)
+    }) ).subscribe()
   }
 
   durationTime(durationMs: number) {
-    let duration = durationMs / 1000;
-    duration = duration / 60;
+    let duration = durationMs / (1000 * 60);
     const m = Math.floor(duration);
     const s = Math.round((duration % m)*100);
     return `${m}:${s}`;
