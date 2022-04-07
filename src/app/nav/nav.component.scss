@@ -46,4 +46,33 @@
             }
         }   
     }
+
+    .playlist-img{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        margin-right: 10px;
+        border-radius: 10px;
+    }
+
+    .playlist{
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        transition: background-color 0.3s;
+        padding: 5px;
+        border-radius: 10px;
+
+        &:hover{
+            background-color: rgba(#fff, 0.05);
+        }
+    }
+
+    .playlist-list{
+        margin-top: 50px;
+    }
+
+    .playlist-name{
+        margin-bottom: 0;
+    }
 }

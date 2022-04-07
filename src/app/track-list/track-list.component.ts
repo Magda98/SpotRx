@@ -25,9 +25,9 @@ export class TrackListComponent implements OnInit {
   }
 
   durationTime(durationMs: number) {
-    let duration = durationMs / (1000 * 60);
-    const m = Math.floor(duration);
-    const s = Math.round((duration % m)*100);
+    let duration = durationMs / (1000);
+    const m = Math.floor(duration / 60);
+    const s = Math.floor((duration % 60));
     return `${m}:${s}`;
   }
 

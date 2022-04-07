@@ -12,4 +12,12 @@
         <li><a class="link" routerLink="/" routerLinkActive="active">Home</a></li>
         <li><a class="link" routerLink="/saved" routerLinkActive="active">Saved</a></li>
     </ul>
+
+
+    <div class="playlist-list" *ngIf="userPlaylists | async as items">
+        <div class="playlist" *ngFor="let item of items">
+            <img class="playlist-img" [src]="item.images[0].url">
+            <h3 class="playlist-name">{{item.name}}</h3>
+        </div>
+    </div>
 </nav>
