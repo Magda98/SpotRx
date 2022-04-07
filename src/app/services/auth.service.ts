@@ -95,12 +95,12 @@ export class AuthService {
     return this.tokenObj.pipe(switchMap(token => {
       const refreshToken = token?.refresh_token ?? ""
       const urlParams = new URLSearchParams();
+
       urlParams.append('grant_type', 'refresh_token');
       urlParams.append('refresh_token', refreshToken);
       urlParams.append('client_id', '57a795ef5d9a4ccca747877d47fbc61d');
+
       return this.http.post<Token>("https://accounts.spotify.com/api/token", urlParams, config)
     }));
-    
-    
   }
 }

@@ -16,33 +16,39 @@ export class AuthInterceptor implements HttpInterceptor {
     
   }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log(this.authService.token.getValue());
+  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     if (this.authService.token.getValue()) {
-      let modifiedReq = request;
+      let modifiedReq = req;
 
-      if (!request.url.includes('/token')) {
-        modifiedReq = request.clone({
-          headers: request.headers.set('Authorization', `Bearer ${this.authService.token.getValue()}`),
-          url: `https://api.spotify.com/v1/${request.url}`
+      if (!req.url.includes('/token')) {
+        modifiedReq = req.clone({
+          headers: req.headers.set('Authorization', `Bearer ${this.authService.token.getValue()}`),
+          url: `https://api.spotify.com/v1/${req.url}`
         });
       }
 
-      return next.handle(modifiedReq).pipe(catchError(error => {
-        if (modifiedReq.url.includes('/token')) return throwError(() => error);
+      return next.handle(modifiedReq).pipe(catchError(this.handle401Error(modifiedReq, next)));
+    }
+
+    return next.handle(req);
+  }
+
+  handle401Error(req: HttpRequest<unknown>, next: HttpHandler) {
+    return (error: any) => {
+        if (req.url.includes('/token')) return throwError(() => error);
         
         return this.authService.getRefreshToken().pipe(
           switchMap(token => {
-            console.log('udalo sie');
+            console.log(token);
             
             this.authService.token.next(token.access_token);
             this.authService.tokenObj.next(token);
             this.authService.loggedIn.next(true);
               
-            const modifiedReq = request.clone({
-              headers: request.headers.set('Authorization', `Bearer ${token.access_token}`),
-              url: `https://api.spotify.com/v1/${request.url}` 
+            const modifiedReq = req.clone({
+              headers: req.headers.set('Authorization', `Bearer ${token.access_token}`),
+              url: `https://api.spotify.com/v1/${req.url}` 
             });
               return next.handle(modifiedReq)
           }),
@@ -51,11 +57,6 @@ export class AuthInterceptor implements HttpInterceptor {
             return throwError(() => error);
           })
         );
-
-        
-      }));
     }
-
-    return next.handle(request);
   }
 }
