@@ -14,6 +14,7 @@ import { NavComponent } from './nav/nav.component';
 import { TrackListComponent } from './track-list/track-list.component';
 import { PlayerComponent } from './player/player.component';
 import { SavedComponent } from './saved/saved.component';
+import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SavedComponent } from './saved/saved.component';
     TrackListComponent,
     PlayerComponent,
     SavedComponent,
+    PlaylistTracksComponent,
   ],
   imports: [
     BrowserModule,

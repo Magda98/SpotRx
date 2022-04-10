@@ -32,4 +32,10 @@ export class TrackService {
       this.userPlaylists.next(val.items)
     })
   }
+
+  retrivePlaylistTracks(id: string) {
+    this.http.get<PlaylistResponse>(`playlists/${id}/tracks`).subscribe(val => {
+      console.log(val)
+    })
+  }
 }
