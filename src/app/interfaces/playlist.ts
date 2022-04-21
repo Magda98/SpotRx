@@ -1,3 +1,4 @@
+import { TracksResponse } from './track';
 import { Image } from "./image"
 
 export interface Playlist {
@@ -7,11 +8,12 @@ export interface Playlist {
     name: string,
     type: string,
     uri: string,
+    tracks: TracksResponse
 }
 
 
 export interface PlaylistResponse {
     items: Playlist[],
     total: number,
-    
+
 }

@@ -15,6 +15,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
+    .song-slider{
+        position: absolute;
+        top: -23px;
+        left: 212px;
+        right: 0;
+    }
+
     .btn{
         background-color: transparent;
         border: none;

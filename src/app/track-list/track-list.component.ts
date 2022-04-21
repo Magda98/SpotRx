@@ -23,12 +23,4 @@ export class TrackListComponent implements OnInit {
       this.playerService.playSong(items.map((item) => item.track.uri), index)
     }) ).subscribe()
   }
-
-  durationTime(durationMs: number) {
-    let duration = durationMs / (1000);
-    const m = Math.floor(duration / 60);
-    const s = Math.floor((duration % 60));
-    return `${m}:${s}`;
-  }
-
 }

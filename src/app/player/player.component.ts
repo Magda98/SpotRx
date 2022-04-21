@@ -1,6 +1,6 @@
 import { Observable, tap } from 'rxjs';
 import { PlayerService } from './../services/player.service';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 
 @Component({
@@ -11,9 +11,8 @@ import { MatSliderChange } from '@angular/material/slider';
 export class PlayerComponent implements OnInit {
   playerState: Observable<Spotify.PlaybackState>;
 
-  constructor(private playerService: PlayerService, private cdr: ChangeDetectorRef) { 
+  constructor(public playerService: PlayerService) { 
     this.playerState = this.playerService.getPlayerState();
-    this.playerState.subscribe(val => console.log(val))
   }
 
   ngOnInit(): void {
@@ -31,9 +30,15 @@ export class PlayerComponent implements OnInit {
     this.playerService.skipPrev();
   }
 
-  setVolume(slider: MatSliderChange) {
-    if (slider.value) {
-      this.playerService.setVolume(slider.value)
+  setVolume(volumeSlider: MatSliderChange) {
+    if (volumeSlider.value) {
+      this.playerService.setVolume(volumeSlider.value)
+    }
+  }
+
+  setPosition(positionSlider: MatSliderChange) { 
+    if (positionSlider.value) {
+      this.playerService.setPosition(positionSlider.value)
     }
   }
 
