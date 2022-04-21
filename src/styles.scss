@@ -83,6 +83,27 @@ body {
     }
 }
 
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: $primary  $bg-elevation;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: $text-dark;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $primary;
+    border-radius: 20px;
+    border: 3px solid $text-dark;
+}
+
 .btn{
     @include btn($primary, $primary);
 }

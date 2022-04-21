@@ -1,4 +1,7 @@
 <div *ngIf="playerState | async as player" class="player">
+    <mat-slider *ngIf="playerService.playbackState | async as position" class="song-slider"
+        (change)="setPosition($event)" min="1" [max]="player.duration" step="10" [value]="position">
+    </mat-slider>
     <div class="song-info">
         <img class="album-image" [src]="player.track_window.current_track.album.images[0].url">
         <div class="album-artist">

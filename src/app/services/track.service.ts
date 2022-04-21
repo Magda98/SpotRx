@@ -9,12 +9,18 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class TrackService {
   savedTracks = new BehaviorSubject<Item[]>([]);
+  playlistTracks = new BehaviorSubject<Item[]>([]);
+  playlisInfo = new Subject<Playlist>();
   userPlaylists = new BehaviorSubject<Playlist[]>([]);
 
   constructor(private http: HttpClient) { }
 
   getSavedTracks() {
     return this.savedTracks.asObservable();
+  }
+
+  getPlaylistTracks() {
+    return this.playlistTracks.asObservable();
   }
 
   getUserPlaylists() {
@@ -34,8 +40,9 @@ export class TrackService {
   }
 
   retrivePlaylistTracks(id: string) {
-    this.http.get<PlaylistResponse>(`playlists/${id}/tracks`).subscribe(val => {
-      console.log(val)
+    this.http.get<Playlist>(`playlists/${id}`).subscribe(val => {
+      this.playlistTracks.next(val.tracks.items)
+      this.playlisInfo.next(val)
     })
   }
 }

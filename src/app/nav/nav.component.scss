@@ -32,10 +32,11 @@
             color: #fff;
             text-decoration: none;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             width: 100%;
-            padding: 10px 0;
+            padding: 10px 20px;
+            box-sizing: border-box;
             
             border-radius: 10px;
             margin-bottom: 10px;
@@ -77,6 +78,7 @@
     .playlist-list{
         margin-top: 50px;
         overflow: auto;
+        margin-bottom: 130px;
     }
 
     .playlist-name{
