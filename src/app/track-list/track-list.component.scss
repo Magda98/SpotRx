@@ -1,11 +1,17 @@
+.track-list-container {
+    height: 72vh;
+    overflow-y: scroll;
+}
+
 .track-list {
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: auto;
     width: 80%;
+    height: 100%;
 
-    .song-info{
+    .song-info {
         display: flex;
     }
 
@@ -18,7 +24,7 @@
         border-radius: 10px;
         transition: background-color 0.3s;
 
-        &:hover{
+        &:hover {
             background-color: #2c2f31;
         }
 

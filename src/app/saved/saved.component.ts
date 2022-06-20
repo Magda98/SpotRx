@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { debounceTime, distinct, filter, fromEvent, map, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../interfaces/track';
 import { TrackService } from '../services/track.service';
@@ -11,12 +11,16 @@ import { TrackService } from '../services/track.service';
 export class SavedComponent implements OnInit {
   savedTracks = new Observable<Item[]>();
 
-  constructor(private trackService: TrackService) { 
+  constructor(private trackService: TrackService) {
   }
 
   ngOnInit(): void {
     this.savedTracks = this.trackService.getSavedTracks();
 
+  }
+
+  getItems(page: number) {
+    console.log(page)
   }
 
 }

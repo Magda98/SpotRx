@@ -1,6 +1,6 @@
 import { Playlist, PlaylistResponse } from './../interfaces/playlist';
 import { Item, TracksResponse } from './../interfaces/track';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -9,8 +9,11 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class TrackService {
   savedTracks = new BehaviorSubject<Item[]>([]);
+
   playlistTracks = new BehaviorSubject<Item[]>([]);
+
   playlisInfo = new Subject<Playlist>();
+
   userPlaylists = new BehaviorSubject<Playlist[]>([]);
 
   constructor(private http: HttpClient) { }
@@ -28,7 +31,10 @@ export class TrackService {
   }
 
   retriveSavedTracks() {
-    this.http.get<TracksResponse>(`me/tracks`).subscribe(val => {
+    let params = new HttpParams();
+    params = params.append('limit', 50);
+
+    this.http.get<TracksResponse>(`me/tracks`, { params }).subscribe(val => {
       this.savedTracks.next(val.items)
     })
   }
