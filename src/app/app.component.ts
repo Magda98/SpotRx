@@ -1,7 +1,8 @@
+import { Subscription } from 'rxjs';
 import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlayerService } from './services/player.service';
 
 @Component({
@@ -9,11 +10,15 @@ import { PlayerService } from './services/player.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'spotrx';
+export class AppComponent implements OnInit, OnDestroy {
+  subscriptions = new Subscription();
 
-  constructor(private authService: AuthService, private userService: UserService, private playerService: PlayerService,private trackService: TrackService) {
-    
+  constructor(private authService: AuthService, private userService: UserService, private playerService: PlayerService, private trackService: TrackService) {
+
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   ngOnInit() {
@@ -21,14 +26,13 @@ export class AppComponent {
       this.authService.getToken();
     }
 
-    this.authService.retriveToekn().subscribe((val) => {
+    this.subscriptions.add(this.authService.retriveToekn().subscribe((val) => {
       if (val) {
         this.userService.retriveUserData();
         this.playerService.initializePlayer();
-        this.trackService.retriveSavedTracks();
         this.trackService.retriveUserPlaylists();
       }
-    });
+    }))
   }
 
 

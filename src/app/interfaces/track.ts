@@ -1,4 +1,4 @@
-import {Image} from "./image"
+import { Image } from "./image"
 
 export interface Track {
     uri: string,
@@ -32,4 +32,9 @@ export interface TracksResponse {
     offset: number,
     previous: string,
     total: number,
+}
+
+export interface Queue {
+    queue: string[];
+    index: number;
 }

@@ -1,21 +1,35 @@
+import { Queue } from './../interfaces/track';
 import { AuthService } from './auth.service';
-import { Injectable, NgZone, Pipe } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { fromEvent, interval, distinctUntilKeyChanged, Subject, Subscription, distinctUntilChanged } from 'rxjs';
+import { interval, distinctUntilKeyChanged, Subject, Subscription, BehaviorSubject, fromEvent } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
   player?: Spotify.Player;
+
   playerState = new Subject<Spotify.PlaybackState>();
+
   playbackState = new Subject<number>();
+
   updateDestroy$!: Subscription;
+
+  queue = new Subject<Queue>();
+
   deviceId = "";
 
 
   constructor(private authService: AuthService, private http: HttpClient, private _zone: NgZone) {
     this.initializePlayer();
+
+    this.queue.subscribe(
+      ({ queue, index }) => {
+        this.playSong(queue, index);
+      }
+    )
   }
 
   initializePlayer() {
@@ -95,13 +109,13 @@ export class PlayerService {
   }
 
   playSong(uris: string[], index: number) {
-    console.log(this.deviceId)
     this.http.put(`me/player/play?device_id=${this.deviceId}`, {
       uris: uris,
       offset: {
         position: index
       },
-    }).subscribe((val) => console.log(val))
+    }).subscribe()
+
   }
 
   tooglePlay() {
