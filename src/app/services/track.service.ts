@@ -14,6 +14,8 @@ export class TrackService {
 
   totalTracks = new BehaviorSubject<number>(0);
 
+  currentPage = new BehaviorSubject<number>(0);
+
   playlisInfo = new Subject<Playlist>();
 
   userPlaylists = new BehaviorSubject<Playlist[]>([]);
@@ -21,7 +23,7 @@ export class TrackService {
   params = new HttpParams();
 
   constructor(private http: HttpClient) {
-    this.params = this.params.append('limit', 10);
+    this.params = this.params.append('limit', 4);
   }
 
   getSavedTracks() {
@@ -51,13 +53,20 @@ export class TrackService {
     })
   }
 
-  retrivePlaylistTracks(id: string, offset: number = 0) {
+  retrivePlaylist(id: string, offset: number = 0) {
     const params = this.params.append('offset', offset);
 
     this.http.get<Playlist>(`playlists/${id}`, { params }).subscribe(val => {
-      this.playlistTracks.next(val.tracks.items)
       this.playlisInfo.next(val)
-      this.totalTracks.next(val.tracks.total)
+    })
+  }
+
+  retrivePlaylistTracks(id: string, offset: number = 0) {
+    const params = this.params.append('offset', offset);
+
+    this.http.get<TracksResponse>(`playlists/${id}/tracks`, { params }).subscribe(val => {
+      this.playlistTracks.next(val.items)
+      this.totalTracks.next(val.total)
     })
   }
 }

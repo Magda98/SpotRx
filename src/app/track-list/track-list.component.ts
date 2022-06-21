@@ -19,24 +19,29 @@ export class TrackListComponent implements OnInit, OnDestroy {
 
   currentPage = 0;
 
-  pageSize = 10;
+  pageSize = 4;
 
   tracks: Item[] = [];
 
   subscriptions = new Subscription();
 
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService, private trackService: TrackService) {
   }
 
   ngOnInit(): void {
     this.subscriptions.add(this.tracksList.subscribe((val) => {
       this.tracks = val
     }))
+
+    this.trackService.currentPage.subscribe((val) => {
+      this.currentPage = val
+    })
   }
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
     this.tracks = []
+    this.currentPage = 0;
   }
 
   play(index: number) {
@@ -45,6 +50,7 @@ export class TrackListComponent implements OnInit, OnDestroy {
   }
 
   handlePageEvent(page: PageEvent) {
+    this.trackService.currentPage.next(page.pageIndex)
     this.getNextPage.emit(page);
   }
 }

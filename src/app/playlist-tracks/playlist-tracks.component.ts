@@ -26,7 +26,9 @@ export class PlaylistTracksComponent implements OnInit {
       const playlistId = paramMap.get('id');
       if (playlistId) {
         this.trackService.retrivePlaylistTracks(playlistId);
+        this.trackService.retrivePlaylist(playlistId);
         this.playlistId = playlistId;
+        this.trackService.currentPage.next(0);
       }
     })
 
