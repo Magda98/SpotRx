@@ -1,7 +1,9 @@
+import { TrackService } from './../services/track.service';
 import { PlayerService } from './../services/player.service';
 import { Item } from './../interfaces/track';
 import { debounceTime, fromEvent, map, Observable, Subscription } from 'rxjs';
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-track-list',
@@ -11,9 +13,13 @@ import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, 
 export class TrackListComponent implements OnInit, OnDestroy {
   @Input() tracksList = new Observable<Item[]>();
 
-  @Output() getItems = new EventEmitter<number>();
+  @Input() total = 0;
 
-  currentPage = 1;
+  @Output() getNextPage = new EventEmitter<PageEvent>();
+
+  currentPage = 0;
+
+  pageSize = 10;
 
   tracks: Item[] = [];
 
@@ -24,7 +30,7 @@ export class TrackListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.add(this.tracksList.subscribe((val) => {
-      this.tracks = [...this.tracks, ...val]
+      this.tracks = val
     }))
   }
 
@@ -38,4 +44,7 @@ export class TrackListComponent implements OnInit, OnDestroy {
     this.playerService.queue.next({ queue, index })
   }
 
+  handlePageEvent(page: PageEvent) {
+    this.getNextPage.emit(page);
+  }
 }

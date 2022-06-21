@@ -2,15 +2,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     max-height: 100%;
-
-
-    app-track-list {
-        width: 100%;
-    }
 
     .title {
         margin-bottom: 50px;
+        text-align: center;
     }
 }

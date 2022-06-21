@@ -1,4 +1,4 @@
-.player{
+.player {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -15,21 +15,21 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
-    .song-slider{
+    .song-slider {
         position: absolute;
         top: -23px;
         left: 212px;
         right: 0;
     }
 
-    .btn{
+    .btn {
         background-color: transparent;
         border: none;
         color: #fff;
         display: flex;
     }
 
-    .action-buttons{
+    .action-buttons {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -38,11 +38,11 @@
         margin-left: 25%;
     }
 
-    .song-info{
+    .song-info {
         display: flex;
         align-items: center;
 
-        .album-image{
+        .album-image {
             width: 80px;
             height: 80px;
             object-fit: cover;
@@ -51,37 +51,38 @@
             margin-right: 10px;
         }
 
-        .name{
+        .name {
             margin-bottom: 0;
         }
 
-        .artist-container{
+        .artist-container {
             display: flex;
             opacity: 0.6;
             margin-top: 5px;
         }
 
-        .artist{
+        .artist {
             margin-right: 5px;
         }
 
-        .album-artist{
+        .album-artist {
             display: flex;
             flex-direction: column;
         }
-        .album-name{
+
+        .album-name {
             opacity: 0.6;
             font-size: 16px;
         }
     }
 
-    .slider-container{
+    .slider-container {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .volume-slider{
+    .volume-slider {
         max-width: 150px;
         width: 100%;
     }

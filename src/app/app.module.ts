@@ -16,6 +16,7 @@ import { PlayerComponent } from './player/player.component';
 import { SavedComponent } from './saved/saved.component';
 import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks.component';
 import { DurationPipe } from './track-list/duration.pipe';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -35,15 +36,16 @@ import { DurationPipe } from './track-list/duration.pipe';
     MatSliderModule,
     MatIconModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
   ],
   providers: [
     {
-        provide: HTTP_INTERCEPTORS,
-        useFactory: (authService: AuthService) => {
-            return new AuthInterceptor(authService);
-        },
-        multi: true,
-        deps: [AuthService]
+      provide: HTTP_INTERCEPTORS,
+      useFactory: (authService: AuthService) => {
+        return new AuthInterceptor(authService);
+      },
+      multi: true,
+      deps: [AuthService]
     }
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 .track-list-container {
-    height: 72vh;
+    display: flex;
+    flex-direction: column;
+    max-height: 65vh;
     overflow-y: scroll;
 }
 
@@ -9,7 +11,6 @@
     flex-direction: column;
     margin: auto;
     width: 80%;
-    height: 100%;
 
     .song-info {
         display: flex;
@@ -36,4 +37,9 @@
             border-radius: 5px;
         }
     }
+}
+
+.mat-paginator {
+    background-color: #35393C;
+    color: #fff;
 }

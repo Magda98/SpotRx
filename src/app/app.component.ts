@@ -30,7 +30,6 @@ export class AppComponent implements OnInit, OnDestroy {
       if (val) {
         this.userService.retriveUserData();
         this.playerService.initializePlayer();
-        this.trackService.retriveSavedTracks();
         this.trackService.retriveUserPlaylists();
       }
     }))

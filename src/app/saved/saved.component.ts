@@ -1,7 +1,8 @@
-import { debounceTime, distinct, filter, fromEvent, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../interfaces/track';
 import { TrackService } from '../services/track.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-saved',
@@ -9,18 +10,22 @@ import { TrackService } from '../services/track.service';
   styleUrls: ['./saved.component.scss']
 })
 export class SavedComponent implements OnInit {
-  savedTracks = new Observable<Item[]>();
+  savedTracks!: Observable<Item[]>;
+
+  total!: number;
 
   constructor(private trackService: TrackService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.trackService.retriveSavedTracks();
     this.savedTracks = this.trackService.getSavedTracks();
-
+    this.trackService.totalTracks.subscribe((total) => {
+      this.total = total
+    })
   }
 
-  getItems(page: number) {
-    console.log(page)
+  getNextPage(page: PageEvent) {
+    this.trackService.retriveSavedTracks(page.pageSize * page.pageIndex);
   }
-
 }

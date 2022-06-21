@@ -17,4 +17,7 @@
             <span class="track-artist">{{item.track.duration_ms | duration}}</span>
         </li>
     </ul>
+    <mat-paginator (page)="handlePageEvent($event)" [length]="total" [pageSize]="pageSize" [pageIndex]="currentPage"
+        aria-label="Select page">
+    </mat-paginator>
 </div>
