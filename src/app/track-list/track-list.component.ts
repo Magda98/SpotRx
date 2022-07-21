@@ -8,7 +8,7 @@ import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-track-list',
   templateUrl: './track-list.component.html',
-  styleUrls: ['./track-list.component.scss']
+  styleUrls: ['./track-list.component.scss'],
 })
 export class TrackListComponent implements OnInit, OnDestroy {
   @Input() tracksList = new Observable<Item[]>();

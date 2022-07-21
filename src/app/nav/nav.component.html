@@ -15,12 +15,15 @@
         <li><a class="link" routerLink="/saved" routerLinkActive="active">
                 <mat-icon class="icon">favorite</mat-icon> Saved
             </a></li>
+        <li><a class="link" routerLink="/search" routerLinkActive="active">
+                <mat-icon class="icon">search</mat-icon> Search
+            </a></li>
     </ul>
 
 
     <div class="playlist-list" *ngIf="userPlaylists | async as items">
         <a class="link" [routerLink]="['/playlist', item.id]" class="playlist" *ngFor="let item of items">
-            <img class="playlist-img" [src]="item.images[0].url">
+            <img class="playlist-img" [src]="item.images[0]?.url">
             <h3 class="playlist-name">{{item.name}}</h3>
         </a>
     </div>

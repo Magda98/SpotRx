@@ -2,7 +2,7 @@ import { Queue } from './../interfaces/track';
 import { AuthService } from './auth.service';
 import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { interval, distinctUntilKeyChanged, Subject, Subscription, BehaviorSubject, fromEvent } from 'rxjs';
+import { interval, distinctUntilKeyChanged, Subject, Subscription, tap, fromEvent } from 'rxjs';
 
 
 @Injectable({
@@ -62,6 +62,7 @@ export class PlayerService {
           this.playerState.next(newState);
         });
       });
+
       playerChangedEvent.pipe(distinctUntilKeyChanged('paused')).subscribe((newState) => {
         this._zone.run(() => {
           if (!newState.paused) {
@@ -114,7 +115,9 @@ export class PlayerService {
       offset: {
         position: index
       },
-    }).subscribe()
+    }).pipe(tap(() => {
+      this.playbackState.next(1);
+    })).subscribe()
 
   }
 

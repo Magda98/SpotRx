@@ -1,5 +1,5 @@
+import { Playlist } from './../interfaces/playlist';
 import { PlayerService } from './../services/player.service';
-import { Item } from './../interfaces/track';
 import { Observable } from 'rxjs';
 import { TrackService } from './../services/track.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,15 +9,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  savedTracks = new Observable<Item[]>();
+export class HomeComponent {
 
-  constructor(private trackService: TrackService, private playerService: PlayerService) { }
-
-  ngOnInit(): void {
-    
-  }
-
-
-
+  constructor(public trackService: TrackService, private playerService: PlayerService) { }
 }

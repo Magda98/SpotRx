@@ -12,6 +12,7 @@ import { PlayerService } from './services/player.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
+  title = 'spotrx'
 
   constructor(private authService: AuthService, private userService: UserService, private playerService: PlayerService, private trackService: TrackService) {
 
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.userService.retriveUserData();
         this.playerService.initializePlayer();
         this.trackService.retriveUserPlaylists();
+        this.trackService.retriveFeaturedPlaylists()
       }
     }))
   }
