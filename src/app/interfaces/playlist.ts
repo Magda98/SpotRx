@@ -15,5 +15,10 @@ export interface Playlist {
 export interface PlaylistResponse {
     items: Playlist[],
     total: number,
+}
 
+
+export interface FeaturedPlaylistResponse {
+    playlists: PlaylistResponse,
+    message: string,
 }

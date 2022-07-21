@@ -1,16 +1,27 @@
-.home{
+.home {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    .track-list{
+    .track-list {
         width: 100%;
     }
 
-    .title{
+    .title {
         margin-bottom: 50px;
     }
+
+    .playlist img {
+        max-width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .playlist-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 50px;
+    }
 }
-    
-    

@@ -1,4 +1,4 @@
-import { Playlist, PlaylistResponse } from './../interfaces/playlist';
+import { FeaturedPlaylistResponse, Playlist, PlaylistResponse } from './../interfaces/playlist';
 import { Item, TracksResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,6 +20,8 @@ export class TrackService {
 
   userPlaylists = new BehaviorSubject<Playlist[]>([]);
 
+  featuredPlaylists = new BehaviorSubject<Playlist[]>([]);
+
   params = new HttpParams();
 
   constructor(private http: HttpClient) {
@@ -36,6 +38,10 @@ export class TrackService {
 
   getUserPlaylists() {
     return this.userPlaylists.asObservable();
+  }
+
+  getFeaturedPlaylists() {
+    return this.featuredPlaylists.asObservable();
   }
 
   retriveSavedTracks(offset: number = 0) {
@@ -67,6 +73,12 @@ export class TrackService {
     this.http.get<TracksResponse>(`playlists/${id}/tracks`, { params }).subscribe(val => {
       this.playlistTracks.next(val.items)
       this.totalTracks.next(val.total)
+    })
+  }
+
+  retriveFeaturedPlaylists() {
+    this.http.get<FeaturedPlaylistResponse>(`browse/featured-playlists`).subscribe(val => {
+      this.featuredPlaylists.next(val.playlists.items)
     })
   }
 }
