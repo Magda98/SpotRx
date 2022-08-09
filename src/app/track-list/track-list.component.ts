@@ -19,7 +19,7 @@ export class TrackListComponent implements OnInit, OnDestroy {
 
   currentPage = 0;
 
-  pageSize = 4;
+  pageSize = this.trackService.pageSize;
 
   tracks: Item[] = [];
 

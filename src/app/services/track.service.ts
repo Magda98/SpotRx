@@ -24,8 +24,10 @@ export class TrackService {
 
   params = new HttpParams();
 
+  pageSize = 6;
+
   constructor(private http: HttpClient) {
-    this.params = this.params.append('limit', 4);
+    this.params = this.params.append('limit', this.pageSize);
   }
 
   getSavedTracks() {
@@ -77,7 +79,10 @@ export class TrackService {
   }
 
   retriveFeaturedPlaylists() {
-    this.http.get<FeaturedPlaylistResponse>(`browse/featured-playlists`).subscribe(val => {
+    let params = new HttpParams();
+    params = params.append('limit', 12);
+
+    this.http.get<FeaturedPlaylistResponse>(`browse/featured-playlists`, { params }).subscribe(val => {
       this.featuredPlaylists.next(val.playlists.items)
     })
   }

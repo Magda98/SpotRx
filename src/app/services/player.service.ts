@@ -77,7 +77,7 @@ export class PlayerService {
 
       // Ready
       player.addListener('ready', ({ device_id }: { device_id: string }) => {
-        console.log("ready")
+        ("ready")
         this.deviceId = device_id
       });
 

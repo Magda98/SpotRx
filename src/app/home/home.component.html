@@ -2,9 +2,10 @@
     <h1 class="title">Home 😎</h1>
 
     <div class="playlist-list">
-        <div class="playlist" *ngFor="let item of trackService.getFeaturedPlaylists() | async">
-            <img [src]="item.images[0].url">
-            <h2>{{item.name}}</h2>
-        </div>
+        <a class="link" [routerLink]="['/playlist', item.id]" class="playlist"
+            *ngFor="let item of trackService.getFeaturedPlaylists() | async">
+            <img class="playlist-img" [src]="item.images[0].url">
+            <h2 class="playlist-title">{{item.name}}</h2>
+        </a>
     </div>
 </div>
