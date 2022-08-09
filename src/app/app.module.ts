@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatInputModule } from '@angular/material/input';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { AuthService } from './services/auth.service';
@@ -17,6 +17,8 @@ import { SavedComponent } from './saved/saved.component';
 import { PlaylistTracksComponent } from './playlist-tracks/playlist-tracks.component';
 import { DurationPipe } from './track-list/duration.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SearchComponent } from './search/search.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SavedComponent,
     PlaylistTracksComponent,
     DurationPipe,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
