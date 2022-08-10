@@ -34,6 +34,12 @@ export interface TracksResponse {
     total: number,
 }
 
+export interface SearchResponse {
+    tracks: {
+        items: Track[]
+    }
+}
+
 export interface Queue {
     queue: string[];
     index: number;

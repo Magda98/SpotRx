@@ -1,14 +1,16 @@
 import { FeaturedPlaylistResponse, Playlist, PlaylistResponse } from './../interfaces/playlist';
-import { Item, TracksResponse } from './../interfaces/track';
+import { Item, TracksResponse, Track, SearchResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, bufferToggle, Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrackService {
   savedTracks = new BehaviorSubject<Item[]>([]);
+
+  searchResultTracks = new BehaviorSubject<Track[]>([]);
 
   playlistTracks = new BehaviorSubject<Item[]>([]);
 
@@ -84,6 +86,12 @@ export class TrackService {
 
     this.http.get<FeaturedPlaylistResponse>(`browse/featured-playlists`, { params }).subscribe(val => {
       this.featuredPlaylists.next(val.playlists.items)
+    })
+  }
+
+  retriveSearchResults(query: string) {
+    this.http.get<SearchResponse>(`search`, { params: { q: query, type: ["track"], limit: 10 } }).subscribe(val => {
+      this.searchResultTracks.next(val.tracks.items)
     })
   }
 }

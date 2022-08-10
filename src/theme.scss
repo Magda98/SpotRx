@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary: #1ecd5d;
+$text: #fff;
+$text-dark: #363636;
+$bg-elevation: #363636;
+
+$spotrx-primary: mat-palette($primary);
+$spotrx-accent: mat-palette($text-dark, 500, 900, A100);
+$spotrx-warn: mat-palette($mat-deep-orange);
+$spotrx-theme: mat-light-theme($spotrx-primary, $spotrx-accent, $spotrx-warn);
+@include angular-material-theme($spotrx-theme);

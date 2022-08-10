@@ -4,4 +4,23 @@
         <input type="text" matInput [formControl]="searchFromControl" placeholder="Search...">
 
     </mat-form-field>
+
+    <ul class="track-list" *ngIf="trackService.searchResultTracks.asObservable() | async as tracks">
+        <li (click)="play(item.uri)" class="track" *ngFor="let item of tracks">
+            <div class="song-info">
+                <img class="track-img" [src]="item.album.images[0].url">
+                <div class="album-artist">
+                    <h2 class="name">{{item.name}}</h2>
+                    <span class="album-name">
+                        {{item.album.name}}
+                    </span>
+                    <div class="time">
+                        <span *ngFor="let artist of item.artists" class="artist">{{artist.name}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <span class="track-artist">{{item.duration_ms | duration}}</span>
+        </li>
+    </ul>
 </div>
