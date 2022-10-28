@@ -1,28 +1,22 @@
 # spotrx
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+Web player for spotify creatind in Agnaulr
 
-## Development server
+- App functionalities:
+- Authorization: OAuth 2 with PKCE
+- user profile info
+- saved track
+- search songs
+- user playlist
+- recomended playlist for user
 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source
+## deploy
 
-## Code scaffolding
+https://magda98.github.io/SpotRx/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Screenshots from app
 
-## Build
+![image](https://user-images.githubusercontent.com/33430525/198701372-233a8a56-3faf-436f-8f62-6c676d06a14d.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
