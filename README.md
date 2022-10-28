@@ -1,8 +1,8 @@
 # spotrx
 
-Web player for spotify creatind in Agnaulr
+Web player for spotify created in Angular
 
-- App functionalities:
+### App functionalities:
 - Authorization: OAuth 2 with PKCE
 - user profile info
 - saved track
