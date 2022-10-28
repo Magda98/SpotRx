@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, switchMap } from 'rxjs';
 import { base64url, generateCodeChallenge, randomBytes } from 'src/utils';
 import { Token } from '../interfaces/token';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 const config = {
   headers: {
@@ -20,7 +21,7 @@ export class AuthService {
   tokenObj = new BehaviorSubject<Token | undefined>(undefined);
   loggedIn = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient, private router: Router, private storage: StorageService) { 
+  constructor(private http: HttpClient, private router: Router, private storage: StorageService) {
 
     const data = this.storage.getData("token");
 
@@ -46,7 +47,7 @@ export class AuthService {
 
     const baseUrl = 'https://accounts.spotify.com/authorize';
     const clientId = '57a795ef5d9a4ccca747877d47fbc61d';
-    const redirectUri = "http://localhost:4200/";
+
 
     const scopes = new Array(
       'user-read-private',
@@ -64,12 +65,12 @@ export class AuthService {
     const responseType = 'code';
 
     window.sessionStorage.setItem('code_verifier', code_verifier);
-    window.location.href = `${baseUrl}?client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&response_type=${responseType}&code_challenge_method=S256&code_challenge=${code}`;
+    window.location.href = `${baseUrl}?client_id=${clientId}&scope=${scope}&redirect_uri=${environment.redirectUri}&response_type=${responseType}&code_challenge_method=S256&code_challenge=${code}`;
   }
 
   getToken() {
     const code_verifier = window.sessionStorage.getItem('code_verifier') ?? "";
-    
+
     const url = location.search;
     const code = new URLSearchParams(url).get("code") ?? "";
 
@@ -78,7 +79,7 @@ export class AuthService {
     urlParams.append('code', code);
     urlParams.append(
       'redirect_uri',
-      "http://localhost:4200/"
+      environment.redirectUri
     );
     urlParams.append('client_id', '57a795ef5d9a4ccca747877d47fbc61d');
     urlParams.append('code_verifier', code_verifier);
