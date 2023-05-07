@@ -1,7 +1,7 @@
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { PlayerService } from './../services/player.service';
 import { Component, OnInit } from '@angular/core';
-import { MatSliderChange } from '@angular/material/slider';
+import { MatSliderChange, MatSliderDragEvent } from '@angular/material/slider';
 
 @Component({
   selector: 'app-player',
@@ -30,13 +30,14 @@ export class PlayerComponent implements OnInit {
     this.playerService.skipPrev();
   }
 
-  setVolume(volumeSlider: MatSliderChange) {
+  setVolume(volumeSlider: MatSliderDragEvent) {
+    console.log(volumeSlider)
     if (volumeSlider.value) {
       this.playerService.setVolume(volumeSlider.value)
     }
   }
 
-  setPosition(positionSlider: MatSliderChange) { 
+  setPosition(positionSlider: MatSliderDragEvent) { 
     if (positionSlider.value) {
       this.playerService.setPosition(positionSlider.value)
     }
