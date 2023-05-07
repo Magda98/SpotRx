@@ -1,7 +1,8 @@
 <div class="player">
     <ng-container *ngIf="playerState | async as player">
-        <mat-slider *ngIf="playerService.playbackState | async as position" class="song-slider"
-            (change)="setPosition($event)" min="1" [max]="player.duration" step="10" [value]="position">
+        <mat-slider *ngIf="playerService.playbackState | async as position" class="song-slider" min="1"
+            [max]="player.duration" step="10">
+            <input (dragEnd)="setPosition($event)" [value]="position" matSliderThumb>
         </mat-slider>
         <div class="song-info">
             <img class="album-image" [src]="player.track_window.current_track.album.images[0].url">
@@ -29,7 +30,8 @@
             </button>
         </div>
         <div class="slider-container">
-            <mat-slider class="volume-slider" (change)="setVolume($event)" min="0" max="1" step="0.1" value="0.5">
+            <mat-slider class="volume-slider" min="0" max="1" step="0.1">
+                <input (dragEnd)="setVolume($event)" value="0.5" matSliderThumb>
             </mat-slider>
         </div>
     </ng-container>
