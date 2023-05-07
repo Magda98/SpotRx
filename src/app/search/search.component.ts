@@ -1,6 +1,6 @@
 import { debounceTime, Subject, takeUntil, distinctUntilChanged, filter } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 import { PlayerService } from '../services/player.service';
 
@@ -10,7 +10,7 @@ import { PlayerService } from '../services/player.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  public searchFromControl = new FormControl('');
+  public searchFromControl = new UntypedFormControl('');
 
   private destroy$: Subject<boolean> = new Subject();
 
