@@ -1,5 +1,5 @@
 <div class="playlist">
-    <h1 class="title">{{title}}</h1>
-    <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="total" [tracksList]="tracks">
+    <h1 class="title">{{title()}}</h1>
+    <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="total()" [tracksList]="tracks">
     </app-track-list>
 </div>
