@@ -9,23 +9,14 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class TrackService {
   savedTracks = new BehaviorSubject<Item[]>([]);
-
   searchResultTracks = new BehaviorSubject<Track[]>([]);
-
   playlistTracks = new BehaviorSubject<Item[]>([]);
-
   totalTracks = new BehaviorSubject<number>(0);
-
   currentPage = new BehaviorSubject<number>(0);
-
   playlisInfo = new Subject<Playlist>();
-
   userPlaylists = new BehaviorSubject<Playlist[]>([]);
-
   featuredPlaylists = new BehaviorSubject<Playlist[]>([]);
-
   params = new HttpParams();
-
   pageSize = 6;
 
   constructor(private http: HttpClient) {
