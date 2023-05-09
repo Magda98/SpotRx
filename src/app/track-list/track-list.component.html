@@ -1,6 +1,6 @@
 <div #trackList class="track-list-container">
-    <ul class="track-list" *ngIf="tracksList | async as tracks">
-        <li (click)="play(i)" class="track" *ngFor="let item of tracks; let i = index">
+    <ul class="track-list" *ngIf="tracksList()">
+        <li (click)="play(i)" class="track" *ngFor="let item of tracksList(); let i = index">
             <div class="song-info">
                 <img class="track-img" [src]="item.track.album.images[0].url">
                 <div class="album-artist">
@@ -17,7 +17,7 @@
             <span class="track-artist">{{item.track.duration_ms | duration}}</span>
         </li>
     </ul>
-    <mat-paginator (page)="handlePageEvent($event)" [length]="total" [pageSize]="pageSize" [pageIndex]="currentPage"
+    <mat-paginator (page)="handlePageEvent($event)" [length]="total" [pageSize]="pageSize" [pageIndex]="currentPage()"
         aria-label="Select page">
     </mat-paginator>
 </div>
