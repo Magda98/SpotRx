@@ -1,22 +1,31 @@
-import { FeaturedPlaylistResponse, Playlist, PlaylistResponse } from './../interfaces/playlist';
-import { Item, TracksResponse, Track, SearchResponse } from './../interfaces/track';
+import {
+  FeaturedPlaylistResponse,
+  Playlist,
+  PlaylistResponse,
+} from './../interfaces/playlist';
+import {
+  Item,
+  TracksResponse,
+  Track,
+  SearchResponse,
+} from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TrackService {
-  savedTracks = new BehaviorSubject<Item[]>([]);
-  searchResultTracks = new BehaviorSubject<Track[]>([]);
-  playlistTracks = new BehaviorSubject<Item[]>([]);
+  private savedTracks = new BehaviorSubject<Item[]>([]);
+  private searchResultTracks = new BehaviorSubject<Track[]>([]);
+  private userPlaylists = new BehaviorSubject<Playlist[]>([]);
+  private featuredPlaylists = new BehaviorSubject<Playlist[]>([]);
+  private playlisInfo = new Subject<Playlist>();
+  private playlistTracks = new BehaviorSubject<Item[]>([]);
   totalTracks = new BehaviorSubject<number>(0);
   currentPage = new BehaviorSubject<number>(0);
-  playlisInfo = new Subject<Playlist>();
-  userPlaylists = new BehaviorSubject<Playlist[]>([]);
-  featuredPlaylists = new BehaviorSubject<Playlist[]>([]);
-  params = new HttpParams();
+  private params = new HttpParams();
   pageSize = 6;
 
   constructor(private http: HttpClient) {
@@ -39,50 +48,78 @@ export class TrackService {
     return this.featuredPlaylists.asObservable();
   }
 
+  getPlaylistInfo() {
+    return this.playlisInfo.asObservable();
+  }
+
+  getSearchResultTracks() {
+    return this.searchResultTracks.asObservable();
+  }
+
   retriveSavedTracks(offset: number = 0) {
     const params = this.params.append('offset', offset);
 
-    this.http.get<TracksResponse>(`me/tracks`, { params }).subscribe(val => {
-      this.savedTracks.next(val.items)
-      this.totalTracks.next(val.total)
-    })
+    return this.http.get<TracksResponse>(`me/tracks`, { params }).pipe(
+      tap((val) => {
+        this.savedTracks.next(val.items);
+        this.totalTracks.next(val.total);
+      })
+    );
   }
 
   retriveUserPlaylists() {
-    this.http.get<PlaylistResponse>(`me/playlists`).subscribe(val => {
-      this.userPlaylists.next(val.items)
-    })
+    return this.http.get<PlaylistResponse>(`me/playlists`).pipe(
+      tap((val) => {
+        this.userPlaylists.next(val.items);
+      })
+    );
   }
 
   retrivePlaylist(id: string, offset: number = 0) {
     const params = this.params.append('offset', offset);
 
-    this.http.get<Playlist>(`playlists/${id}`, { params }).subscribe(val => {
-      this.playlisInfo.next(val)
-    })
+    return this.http.get<Playlist>(`playlists/${id}`, { params }).pipe(
+      tap((val) => {
+        this.playlisInfo.next(val);
+      })
+    );
   }
 
   retrivePlaylistTracks(id: string, offset: number = 0) {
     const params = this.params.append('offset', offset);
 
-    this.http.get<TracksResponse>(`playlists/${id}/tracks`, { params }).subscribe(val => {
-      this.playlistTracks.next(val.items)
-      this.totalTracks.next(val.total)
-    })
+    return this.http
+      .get<TracksResponse>(`playlists/${id}/tracks`, { params })
+      .pipe(
+        tap((val) => {
+          this.playlistTracks.next(val.items);
+          this.totalTracks.next(val.total);
+        })
+      );
   }
 
   retriveFeaturedPlaylists() {
     let params = new HttpParams();
     params = params.append('limit', 12);
 
-    this.http.get<FeaturedPlaylistResponse>(`browse/featured-playlists`, { params }).subscribe(val => {
-      this.featuredPlaylists.next(val.playlists.items)
-    })
+    return this.http
+      .get<FeaturedPlaylistResponse>(`browse/featured-playlists`, { params })
+      .pipe(
+        tap((val) => {
+          this.featuredPlaylists.next(val.playlists.items);
+        })
+      );
   }
 
   retriveSearchResults(query: string) {
-    this.http.get<SearchResponse>(`search`, { params: { q: query, type: ["track"], limit: 10 } }).subscribe(val => {
-      this.searchResultTracks.next(val.tracks.items)
-    })
+    return this.http
+      .get<SearchResponse>(`search`, {
+        params: { q: query, type: ['track'], limit: 10 },
+      })
+      .pipe(
+        tap((val) => {
+          this.searchResultTracks.next(val.tracks.items);
+        })
+      );
   }
 }

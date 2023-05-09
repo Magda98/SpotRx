@@ -5,7 +5,7 @@
 
     </mat-form-field>
 
-    <ul class="track-list" *ngIf="trackService.searchResultTracks.asObservable() | async as tracks">
+    <ul class="track-list" *ngIf="trackService.getSearchResultTracks() | async as tracks">
         <li (click)="play(item.uri)" class="track" *ngFor="let item of tracks">
             <div class="song-info">
                 <img class="track-img" [src]="item.album.images[0].url">
