@@ -1,31 +1,30 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal } from '@angular/core';
 import { Item } from '../interfaces/track';
 import { TrackService } from '../services/track.service';
 import { PageEvent } from '@angular/material/paginator';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-saved',
   templateUrl: './saved.component.html',
-  styleUrls: ['./saved.component.scss']
+  styleUrls: ['./saved.component.scss'],
 })
 export class SavedComponent implements OnInit {
-  savedTracks!: Observable<Item[]>;
+  savedTracks: Signal<Item[]> = toSignal(this.trackService.getSavedTracks(), {
+    initialValue: [],
+  });
+  total = toSignal(this.trackService.totalTracks, { initialValue: 0 });
 
-  total!: number;
-
-  constructor(private trackService: TrackService) {
-  }
+  constructor(private trackService: TrackService) {}
 
   ngOnInit() {
-    this.trackService.retriveSavedTracks();
-    this.savedTracks = this.trackService.getSavedTracks();
-    this.trackService.totalTracks.subscribe((total) => {
-      this.total = total
-    })
+    this.trackService.retriveSavedTracks().subscribe();
   }
 
   getNextPage(page: PageEvent) {
-    this.trackService.retriveSavedTracks(page.pageSize * page.pageIndex);
+    this.trackService
+      .retriveSavedTracks(page.pageSize * page.pageIndex)
+      .subscribe();
   }
 }
