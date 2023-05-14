@@ -3,12 +3,7 @@ import {
   Playlist,
   PlaylistResponse,
 } from './../interfaces/playlist';
-import {
-  Item,
-  TracksResponse,
-  Track,
-  SearchResponse,
-} from './../interfaces/track';
+import { Item, TracksResponse, SearchResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, tap } from 'rxjs';
@@ -18,7 +13,6 @@ import { BehaviorSubject, Subject, tap } from 'rxjs';
 })
 export class TrackService {
   private savedTracks = new BehaviorSubject<Item[]>([]);
-  private searchResultTracks = new BehaviorSubject<Track[]>([]);
   private userPlaylists = new BehaviorSubject<Playlist[]>([]);
   private featuredPlaylists = new BehaviorSubject<Playlist[]>([]);
   private playlisInfo = new Subject<Playlist>();
@@ -50,10 +44,6 @@ export class TrackService {
 
   getPlaylistInfo() {
     return this.playlisInfo.asObservable();
-  }
-
-  getSearchResultTracks() {
-    return this.searchResultTracks.asObservable();
   }
 
   retriveSavedTracks(offset: number = 0) {
@@ -112,14 +102,8 @@ export class TrackService {
   }
 
   retriveSearchResults(query: string) {
-    return this.http
-      .get<SearchResponse>(`search`, {
-        params: { q: query, type: ['track'], limit: 10 },
-      })
-      .pipe(
-        tap((val) => {
-          this.searchResultTracks.next(val.tracks.items);
-        })
-      );
+    return this.http.get<SearchResponse>(`search`, {
+      params: { q: query, type: ['track'], limit: 10 },
+    });
   }
 }

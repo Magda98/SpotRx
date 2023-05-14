@@ -1,22 +1,19 @@
 import { Observable } from 'rxjs';
 import { PlayerService } from './../services/player.service';
 import { Component, OnInit } from '@angular/core';
-import {  MatSliderDragEvent } from '@angular/material/slider';
+import { MatSliderDragEvent } from '@angular/material/slider';
 
 @Component({
-  selector: 'app-player', 
+  selector: 'app-player',
   templateUrl: './player.component.html',
-  styleUrls: ['./player.component.scss']
+  styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent implements OnInit {
-  playerState: Observable<Spotify.PlaybackState>;
+  playerState = this.playerService.getPlayerState();
 
-  constructor(public playerService: PlayerService) { 
-    this.playerState = this.playerService.getPlayerState();
-  }
+  constructor(public playerService: PlayerService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   togglePlay() {
     this.playerService.tooglePlay();
@@ -31,11 +28,10 @@ export class PlayerComponent implements OnInit {
   }
 
   setVolume(volumeSlider: MatSliderDragEvent) {
-      this.playerService.setVolume(volumeSlider.value)
+    this.playerService.setVolume(volumeSlider.value);
   }
 
-  setPosition(positionSlider: MatSliderDragEvent) { 
-      this.playerService.setPosition(positionSlider.value)
+  setPosition(positionSlider: MatSliderDragEvent) {
+    this.playerService.setPosition(positionSlider.value);
   }
-
 }

@@ -9,24 +9,22 @@ import { Playlist } from '../interfaces/playlist';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  userData: Observable<User>;
-  loggedIn: Observable<boolean>;
-  userPlaylists: Observable<Playlist[]>;
+  userData = this.userService.getUserData();
+  loggedIn = this.authService.loggedIn.asObservable();
+  userPlaylists = this.trackService.getUserPlaylists();
 
-  constructor(private userService: UserService, private authService: AuthService, private trackService: TrackService) { 
-    this.userData = userService.getUserData();
-    this.loggedIn = authService.loggedIn.asObservable();
-    this.userPlaylists = trackService.getUserPlaylists();
-  }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private trackService: TrackService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login() {
     this.authService.login();
   }
-
 }
