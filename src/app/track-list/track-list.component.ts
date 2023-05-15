@@ -17,6 +17,7 @@ export class TrackListComponent {
   @Output() getNextPage = new EventEmitter<PageEvent>();
   currentPage = toSignal(this.trackService.currentPage);
   pageSize = this.trackService.pageSize;
+  readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
 
   constructor(
     private playerService: PlayerService,

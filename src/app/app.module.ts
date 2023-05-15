@@ -19,6 +19,7 @@ import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [
     {
@@ -50,9 +52,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
         return new AuthInterceptor(authService);
       },
       multi: true,
-      deps: [AuthService]
-    }
+      deps: [AuthService],
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

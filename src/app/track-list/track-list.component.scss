@@ -22,6 +22,7 @@
         margin-bottom: 20px;
         padding: 8px 20px;
         border-radius: 10px;
+        cursor: pointer;
         transition: background-color 0.3s;
 
         &:hover {
@@ -34,6 +35,18 @@
             object-fit: cover;
             margin-right: 10px;
             border-radius: 5px;
+        }
+    }
+
+    &.track-list--skeleton {
+        .song-info {
+            gap: 16px;
+        }
+
+        .album-artist,
+        .artist-skeleton {
+            display: flex;
+            flex-direction: column;
         }
     }
 }
