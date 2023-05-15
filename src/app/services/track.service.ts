@@ -77,7 +77,7 @@ export class TrackService {
 
   retrivePlaylistTracks(id: string, offset: number = 0) {
     const params = this.params.append('offset', offset);
-
+    this.playlistTracks.next([]);
     return this.http
       .get<TracksResponse>(`playlists/${id}/tracks`, { params })
       .pipe(

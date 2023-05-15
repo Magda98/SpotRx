@@ -54,9 +54,8 @@ export class PlaylistTracksComponent implements OnInit {
   }
 
   getNextPage(page: PageEvent) {
-    this.trackService.retrivePlaylistTracks(
-      this.playlistId,
-      page.pageSize * page.pageIndex
-    );
+    this.trackService
+      .retrivePlaylistTracks(this.playlistId, page.pageSize * page.pageIndex)
+      .subscribe();
   }
 }

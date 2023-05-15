@@ -1,5 +1,5 @@
 <div #trackList class="track-list-container">
-    <ul class="track-list" *ngIf="tracksList()">
+    <ul class="track-list" *ngIf="tracksList().length; else skeletonLoading">
         <li (click)="play(i)" class="track" *ngFor="let item of tracksList(); let i = index">
             <div class="song-info">
                 <img class="track-img" [src]="item.track.album.images[0].url">
@@ -8,16 +8,38 @@
                     <span class="album-name">
                         {{item.track.album.name}}
                     </span>
-                    <div class="time">
+                    <div class="track-artist">
                         <span *ngFor="let artist of item.track.artists" class="artist">{{artist.name}}</span>
                     </div>
                 </div>
             </div>
-
-            <span class="track-artist">{{item.track.duration_ms | duration}}</span>
+            <span class="time">{{item.track.duration_ms | duration}}
+            </span>
         </li>
     </ul>
     <mat-paginator (page)="handlePageEvent($event)" [length]="total" [pageSize]="pageSize" [pageIndex]="currentPage()"
         aria-label="Select page">
     </mat-paginator>
 </div>
+
+<ng-template #skeletonLoading>
+    <ul class="track-list track-list--skeleton">
+        <li class="track" *ngFor="let item of skeletonLoadingArray; let i = index">
+            <div class="song-info">
+                <ngx-skeleton-loader animation="progress-dark" count="1"
+                    [theme]="{ height: '90px', width: '90px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+                <div class="album-artist">
+                    <ngx-skeleton-loader animation="progress-dark" count="1"
+                        [theme]="{ height: '32px', width: '300px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+                    <ngx-skeleton-loader class="artist-skeleton" animation="progress-dark" count="2"
+                        [theme]="{ height: '16px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+                </div>
+            </div>
+
+            <span class="time">
+                <ngx-skeleton-loader animation="progress-dark" count="1"
+                    [theme]="{ height: '16px', width: '40px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+            </span>
+        </li>
+    </ul>
+</ng-template>
