@@ -5,7 +5,7 @@
     <ul class="track-list" *ngIf="tracksList().length; else skeletonLoading">
         <li (click)="play(i)" class="track" *ngFor="let item of tracksList(); let i = index">
             <div class="song-info">
-                <img class="track-img" [src]="item.track.album.images[0].url">
+                <img class="track-img" width="90" height="90" [ngSrc]="item.track.album.images[1].url">
                 <div class="album-artist">
                     <h2 class="name">{{item.track.name}}</h2>
                     <span class="album-name">

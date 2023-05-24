@@ -4,6 +4,7 @@ import {
   filter,
   switchMap,
   EMPTY,
+  tap,
 } from 'rxjs';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -20,12 +21,14 @@ import { Track } from '../interfaces/track';
 export class SearchComponent implements OnInit {
   public searchFromControl = new FormControl('');
   public searchResults = signal<Track[]>([]);
+  public isLoading = signal(false);
   private search$ = this.searchFromControl.valueChanges.pipe(
     debounceTime(300),
     filter((searchValue) => (searchValue?.length ? true : false)),
     distinctUntilChanged(),
     takeUntilDestroyed()
   );
+  readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
 
   constructor(
     public trackService: TrackService,
@@ -35,6 +38,9 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.search$
       .pipe(
+        tap(() => {
+          this.isLoading.set(true);
+        }),
         switchMap((searchValue) => {
           if (searchValue)
             return this.trackService.retriveSearchResults(searchValue);
@@ -43,6 +49,7 @@ export class SearchComponent implements OnInit {
       )
       .subscribe((searchResults) => {
         this.searchResults.set(searchResults.tracks.items);
+        this.isLoading.set(false);
       });
   }
 
