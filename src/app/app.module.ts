@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     MatInputModule,
     ReactiveFormsModule,
     NgxSkeletonLoaderModule,
+    NgOptimizedImage,
   ],
   providers: [
     {

@@ -37,6 +37,18 @@
                 border-radius: 5px;
             }
         }
+
+        &.track-list--skeleton {
+            .song-info {
+                gap: 16px;
+            }
+
+            .album-artist,
+            .artist-skeleton {
+                display: flex;
+                flex-direction: column;
+            }
+        }
     }
 }
 

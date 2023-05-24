@@ -5,10 +5,10 @@
 
     </mat-form-field>
 
-    <ul class="track-list" *ngIf="searchResults()">
+    <ul class="track-list" *ngIf="!isLoading(); else skeletonLoading">
         <li (click)="play(item.uri)" class="track" *ngFor="let item of searchResults()">
             <div class="song-info">
-                <img class="track-img" [src]="item.album.images[0].url">
+                <img class="track-img" width="90" height="90" [ngSrc]="item.album.images[1].url">
                 <div class="album-artist">
                     <h2 class="name">{{item.name}}</h2>
                     <span class="album-name">
@@ -24,3 +24,25 @@
         </li>
     </ul>
 </div>
+
+<ng-template #skeletonLoading>
+    <ul class="track-list track-list--skeleton">
+        <li class="track" *ngFor="let item of skeletonLoadingArray; let i = index">
+            <div class="song-info">
+                <ngx-skeleton-loader animation="progress-dark" count="1"
+                    [theme]="{ height: '90px', width: '90px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+                <div class="album-artist">
+                    <ngx-skeleton-loader animation="progress-dark" count="1"
+                        [theme]="{ height: '32px', width: '300px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+                    <ngx-skeleton-loader class="artist-skeleton" animation="progress-dark" count="2"
+                        [theme]="{ height: '16px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+                </div>
+            </div>
+
+            <span class="time">
+                <ngx-skeleton-loader animation="progress-dark" count="1"
+                    [theme]="{ height: '16px', width: '40px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+            </span>
+        </li>
+    </ul>
+</ng-template>
