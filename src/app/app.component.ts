@@ -1,10 +1,15 @@
-import { EMPTY, combineLatest, filter, switchMap, tap, zip } from 'rxjs';
+import {
+  EMPTY,
+  interval,
+  of,
+  switchMap,
+  zip,
+} from 'rxjs';
 import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from './services/player.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-root',
@@ -37,5 +42,9 @@ export class AppComponent implements OnInit {
       this.authService.getToken();
     }
     this.auth.subscribe();
+
+    const x = of(1);
+
+    const y = x.pipe(switchMap(() => interval(500)));
   }
 }

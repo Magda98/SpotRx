@@ -1,4 +1,7 @@
 <div #trackList class="track-list-container">
+    <mat-paginator (page)="handlePageEvent($event)" [length]="total" [pageSize]="pageSize" [pageIndex]="currentPage()"
+        aria-label="Select page">
+    </mat-paginator>
     <ul class="track-list" *ngIf="tracksList().length; else skeletonLoading">
         <li (click)="play(i)" class="track" *ngFor="let item of tracksList(); let i = index">
             <div class="song-info">
@@ -17,9 +20,7 @@
             </span>
         </li>
     </ul>
-    <mat-paginator (page)="handlePageEvent($event)" [length]="total" [pageSize]="pageSize" [pageIndex]="currentPage()"
-        aria-label="Select page">
-    </mat-paginator>
+
 </div>
 
 <ng-template #skeletonLoading>
