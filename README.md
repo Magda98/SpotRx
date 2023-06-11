@@ -22,7 +22,7 @@ SpotRx is deployed and accessible online. You can try it out at [https://magda98
 
 ## Technologies Used
 
-- **Angular**: SpotRx is built using the Angular framework, which provides a powerful and scalable platform for developing single-page applications.
+- **Angular**: SpotRx is built using the Angular framework in version 16 and use Signals, which provides a powerful and scalable platform for developing single-page applications.
 
 - **OAuth 2 with PKCE**: The application uses OAuth 2 with PKCE for secure and authorized access to the Spotify API.
 
@@ -46,4 +46,6 @@ Feel free to contribute to the project by submitting bug reports, feature reques
 
 ![image](https://user-images.githubusercontent.com/33430525/198701372-233a8a56-3faf-436f-8f62-6c676d06a14d.png)
 
+![image](https://github.com/Magda98/SpotRx/assets/33430525/dbbab3dd-b16a-4856-8eaa-7929ad677bf1)
 
+![chrome_1yz0ydOGDR](https://github.com/Magda98/SpotRx/assets/33430525/f15be74d-4087-455c-8fe3-ad55cf30209f)
