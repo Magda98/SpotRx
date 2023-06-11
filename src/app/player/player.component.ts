@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { PlayerService } from './../services/player.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSliderDragEvent } from '@angular/material/slider';

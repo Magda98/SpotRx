@@ -1,16 +1,16 @@
 .app {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 
-    .main {
-        margin-left: 220px;
-        margin-bottom: 140px;
-        width: 100%;
-        overflow-y: scroll;
-        background-color: #35393c;
-        padding-top: 25px;
-    }
+  .main {
+    margin-left: 220px;
+    margin-bottom: 140px;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: #35393c;
+    padding: 24px 16px 16px;
+  }
 }

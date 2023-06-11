@@ -1,59 +1,63 @@
 .track-list-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  max-height: 65vh;
 }
 
 .track-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  width: 80%;
+
+  .song-info {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: auto;
-    width: 80%;
+  }
 
+  .track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #2c2f31;
+    }
+
+    .track-img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
+  }
+
+  &.track-list--skeleton {
     .song-info {
-        display: flex;
+      gap: 16px;
     }
 
-    .track {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        padding: 8px 20px;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-
-        &:hover {
-            background-color: #2c2f31;
-        }
-
-        .track-img {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            margin-right: 10px;
-            border-radius: 5px;
-        }
+    .album-artist,
+    .artist-skeleton {
+      display: flex;
+      flex-direction: column;
     }
+  }
+}
 
-    &.track-list--skeleton {
-        .song-info {
-            gap: 16px;
-        }
-
-        .album-artist,
-        .artist-skeleton {
-            display: flex;
-            flex-direction: column;
-        }
-    }
+.paginator {
+  margin-bottom: 16px;
 }
 
 .mat-paginator {
-    margin: auto;
-    width: 80%;
-    background-color: #35393C;
-    color: #fff;
+  margin: auto;
+  width: 80%;
+  background-color: #35393C;
+  color: #fff;
 }

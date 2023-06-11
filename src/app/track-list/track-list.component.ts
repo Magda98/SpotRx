@@ -1,7 +1,6 @@
 import { TrackService } from './../services/track.service';
 import { PlayerService } from './../services/player.service';
 import { Item } from './../interfaces/track';
-import { Observable } from 'rxjs';
 import { Component, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
