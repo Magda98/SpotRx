@@ -1,11 +1,10 @@
 .saved {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    .title {
-        margin-bottom: 50px;
-        text-align: center;
-    }
+  .title {
+    margin-bottom: 32px;
+    text-align: center;
+  }
 }

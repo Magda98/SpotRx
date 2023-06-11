@@ -1,15 +1,15 @@
-import { Playlist } from './../interfaces/playlist';
-import { PlayerService } from './../services/player.service';
-import { Observable } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TrackService } from './../services/track.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  public featuredPlaylists = toSignal(this.trackService.getFeaturedPlaylists());
+  readonly skeletonLoadingArray = Array.from({ length: 12 }, () => null);
 
-  constructor(public trackService: TrackService, private playerService: PlayerService) { }
+  constructor(private trackService: TrackService) {}
 }

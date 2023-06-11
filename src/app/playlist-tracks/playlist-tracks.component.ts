@@ -1,16 +1,7 @@
 import { TrackService } from './../services/track.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Signal } from '@angular/core';
-import {
-  EMPTY,
-  Observable,
-  filter,
-  forkJoin,
-  map,
-  switchMap,
-  tap,
-  zip,
-} from 'rxjs';
+import { EMPTY, map, switchMap, zip } from 'rxjs';
 import { Item } from '../interfaces/track';
 import { PageEvent } from '@angular/material/paginator';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
@@ -30,7 +21,6 @@ export class PlaylistTracksComponent implements OnInit {
   );
   total = toSignal(this.trackService.totalTracks, { requireSync: true });
   playlistData$ = this.route.paramMap.pipe(
-    takeUntilDestroyed(),
     map((paramMap) => paramMap.get('id')),
     switchMap((playlistId) => {
       if (!playlistId) return EMPTY;
@@ -41,7 +31,8 @@ export class PlaylistTracksComponent implements OnInit {
         this.trackService.retrivePlaylistTracks(playlistId),
         this.trackService.retrivePlaylist(playlistId)
       );
-    })
+    }),
+    takeUntilDestroyed()
   );
 
   constructor(

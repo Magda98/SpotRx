@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit, Signal } from '@angular/core';
 import { Item } from '../interfaces/track';
 import { TrackService } from '../services/track.service';

@@ -1,5 +1,12 @@
 <div class="playlist">
-    <h1 class="title">{{title()}}</h1>
-    <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="total()" [tracksList]="tracks">
-    </app-track-list>
+  <h1 *ngIf="title() else skeletonLoading" class="title">{{title()}}</h1>
+  <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="total()" [tracksList]="tracks">
+  </app-track-list>
 </div>
+
+<ng-template #skeletonLoading>
+  <div class="title">
+    <ngx-skeleton-loader class="artist-skeleton" animation="progress-dark" count="1"
+      [theme]="{ height: '32px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
+  </div>
+</ng-template>

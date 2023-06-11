@@ -1,10 +1,7 @@
 import { TrackService } from './../services/track.service';
 import { AuthService } from './../services/auth.service';
-import { Observable } from 'rxjs';
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../interfaces/user';
-import { Playlist } from '../interfaces/playlist';
 
 @Component({
   selector: 'app-nav',
