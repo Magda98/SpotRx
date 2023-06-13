@@ -1,11 +1,12 @@
 import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, switchMap } from 'rxjs';
+import { BehaviorSubject, Subject, switchMap, tap } from 'rxjs';
 import { base64url, generateCodeChallenge, randomBytes } from 'src/utils';
 import { Token } from '../interfaces/token';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { SPORIFY_SCOPES } from '../config';
 
 const config = {
   headers: {
@@ -18,7 +19,7 @@ const config = {
 })
 export class AuthService {
   token = new BehaviorSubject<string | undefined>(undefined);
-  tokenObj = new BehaviorSubject<Token | undefined>(undefined);
+  tokenObj = new Subject<Token>();
   loggedIn = new BehaviorSubject(false);
 
   constructor(
@@ -40,30 +41,16 @@ export class AuthService {
     });
   }
 
-  retriveToekn() {
+  retriveToken() {
     return this.token.asObservable();
   }
 
   async login() {
     const code_verifier = base64url(randomBytes(96));
     const code = await generateCodeChallenge(code_verifier);
-
     const baseUrl = 'https://accounts.spotify.com/authorize';
     const clientId = '57a795ef5d9a4ccca747877d47fbc61d';
-
-    const scopes = new Array(
-      'user-read-private',
-      'user-read-email',
-      'user-read-currently-playing',
-      'user-read-recently-played',
-      'user-modify-playback-state',
-      'streaming',
-      'user-library-modify',
-      'user-library-read',
-      'user-top-read'
-    );
-
-    const scope = scopes.join('%20');
+    const scope = SPORIFY_SCOPES.join('%20');
     const responseType = 'code';
 
     window.sessionStorage.setItem('code_verifier', code_verifier);
@@ -72,7 +59,10 @@ export class AuthService {
 
   getToken() {
     const code_verifier = window.sessionStorage.getItem('code_verifier') ?? '';
-
+    console.log(
+      '🚀 ~ file: auth.service.ts:62 ~ AuthService ~ getToken ~ code_verifier:',
+      code_verifier
+    );
     const url = location.search;
     const code = new URLSearchParams(url).get('code') ?? '';
 
@@ -82,15 +72,21 @@ export class AuthService {
     urlParams.append('redirect_uri', environment.redirectUri);
     urlParams.append('client_id', '57a795ef5d9a4ccca747877d47fbc61d');
     urlParams.append('code_verifier', code_verifier);
-
-    this.http
+    console.log(urlParams);
+    return this.http
       .post<Token>('https://accounts.spotify.com/api/token', urlParams, config)
-      .subscribe((val) => {
-        this.token.next(val.access_token);
-        this.tokenObj.next(val);
-        this.loggedIn.next(true);
-        this.router.navigate(['']);
-      });
+      .pipe(
+        tap((token) => {
+          console.log(
+            '🚀 ~ file: auth.service.ts:76 ~ AuthService ~ tap ~ token:',
+            token
+          );
+          this.token.next(token.access_token);
+          this.tokenObj.next(token);
+          this.loggedIn.next(true);
+          this.router.navigate(['']);
+        })
+      );
   }
 
   getRefreshToken() {
