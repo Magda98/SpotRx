@@ -1,10 +1,4 @@
-import {
-  EMPTY,
-  interval,
-  of,
-  switchMap,
-  zip,
-} from 'rxjs';
+import { EMPTY, switchMap, zip } from 'rxjs';
 import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -18,10 +12,10 @@ import { PlayerService } from './services/player.service';
 })
 export class AppComponent implements OnInit {
   title = 'spotrx';
-  private auth = this.authService.retriveToekn().pipe(
-    switchMap((value) => {
-      if (!value) return EMPTY;
-      this.playerService.initializePlayer();
+  private auth = this.authService.retriveToken().pipe(
+    switchMap((token) => {
+      if (!token) return EMPTY;
+      this.playerService.initializePlayer(token);
       return zip(
         this.userService.retriveUserData(),
         this.trackService.retriveUserPlaylists(),
@@ -39,12 +33,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (location.search) {
-      this.authService.getToken();
+      this.authService.getToken().subscribe();
     }
     this.auth.subscribe();
-
-    const x = of(1);
-
-    const y = x.pipe(switchMap(() => interval(500)));
   }
 }
