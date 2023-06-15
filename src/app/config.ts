@@ -9,3 +9,9 @@ export const SPORIFY_SCOPES = [
   'user-library-read',
   'user-top-read',
 ];
+
+export const HEADER_CONFIG = {
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+};

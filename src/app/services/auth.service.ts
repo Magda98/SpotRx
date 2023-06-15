@@ -6,13 +6,7 @@ import { base64url, generateCodeChallenge, randomBytes } from 'src/utils';
 import { Token } from '../interfaces/token';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { SPORIFY_SCOPES } from '../config';
-
-const config = {
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-  },
-};
+import { HEADER_CONFIG, SPORIFY_SCOPES } from '../config';
 
 @Injectable({
   providedIn: 'root',
@@ -59,28 +53,24 @@ export class AuthService {
 
   getToken() {
     const code_verifier = window.sessionStorage.getItem('code_verifier') ?? '';
-    console.log(
-      '🚀 ~ file: auth.service.ts:62 ~ AuthService ~ getToken ~ code_verifier:',
-      code_verifier
-    );
     const url = location.search;
     const code = new URLSearchParams(url).get('code') ?? '';
-
     const urlParams = new URLSearchParams();
+
     urlParams.append('grant_type', 'authorization_code');
     urlParams.append('code', code);
     urlParams.append('redirect_uri', environment.redirectUri);
     urlParams.append('client_id', '57a795ef5d9a4ccca747877d47fbc61d');
     urlParams.append('code_verifier', code_verifier);
-    console.log(urlParams);
+
     return this.http
-      .post<Token>('https://accounts.spotify.com/api/token', urlParams, config)
+      .post<Token>(
+        'https://accounts.spotify.com/api/token',
+        urlParams,
+        HEADER_CONFIG
+      )
       .pipe(
         tap((token) => {
-          console.log(
-            '🚀 ~ file: auth.service.ts:76 ~ AuthService ~ tap ~ token:',
-            token
-          );
           this.token.next(token.access_token);
           this.tokenObj.next(token);
           this.loggedIn.next(true);
@@ -102,7 +92,7 @@ export class AuthService {
         return this.http.post<Token>(
           'https://accounts.spotify.com/api/token',
           urlParams,
-          config
+          HEADER_CONFIG
         );
       })
     );
