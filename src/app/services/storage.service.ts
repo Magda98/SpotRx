@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
+  constructor() {}
 
-  constructor() { }
-
-  getData(key: string): any {
-    const data = localStorage.getItem(key) ?? "";
+  getData(key: string) {
+    const data = localStorage.getItem(key) ?? '';
     if (localStorage.getItem(key)) {
       return JSON.parse(data);
-    }
-    else {
-      return ""
+    } else {
+      return '';
     }
   }
 
