@@ -6,7 +6,7 @@ import {
 import { Item, TracksResponse, SearchResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, tap } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class TrackService {
   private savedTracks = new BehaviorSubject<Item[]>([]);
   private userPlaylists = new BehaviorSubject<Playlist[]>([]);
   private featuredPlaylists = new BehaviorSubject<Playlist[]>([]);
-  private playlisInfo = new Subject<Playlist>();
+  private playlisInfo = new ReplaySubject<Playlist>();
   private playlistTracks = new BehaviorSubject<Item[]>([]);
   totalTracks = new BehaviorSubject<number>(0);
   currentPage = new BehaviorSubject<number>(0);

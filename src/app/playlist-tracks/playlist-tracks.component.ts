@@ -1,6 +1,6 @@
 import { TrackService } from './../services/track.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Signal } from '@angular/core';
+import { Component, OnInit, Signal, signal } from '@angular/core';
 import { EMPTY, map, switchMap, zip } from 'rxjs';
 import { Item } from '../interfaces/track';
 import { PageEvent } from '@angular/material/paginator';
@@ -15,7 +15,7 @@ export class PlaylistTracksComponent implements OnInit {
   tracks: Signal<Item[]> = toSignal(this.trackService.getPlaylistTracks(), {
     initialValue: [],
   });
-  playlistId = '';
+  playlistId: string | undefined;
   title = toSignal(
     this.trackService.getPlaylistInfo().pipe(map((val) => val.name))
   );
@@ -45,6 +45,7 @@ export class PlaylistTracksComponent implements OnInit {
   }
 
   getNextPage(page: PageEvent) {
+    if (!this.playlistId) return;
     this.trackService
       .retrivePlaylistTracks(this.playlistId, page.pageSize * page.pageIndex)
       .subscribe();
