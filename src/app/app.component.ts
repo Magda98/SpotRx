@@ -2,8 +2,10 @@ import { EMPTY, switchMap, zip } from 'rxjs';
 import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PlayerService } from './services/player.service';
+import { icons } from './icons';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,7 @@ import { PlayerService } from './services/player.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'spotrx';
+  loggedIn = this.authService.loggedIn.asObservable();
   private auth = this.authService.retriveToken().pipe(
     switchMap((token) => {
       if (!token) return EMPTY;
@@ -36,5 +38,9 @@ export class AppComponent implements OnInit {
       this.authService.getToken().subscribe();
     }
     this.auth.subscribe();
+  }
+
+  login() {
+    this.authService.login();
   }
 }

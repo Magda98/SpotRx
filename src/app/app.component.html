@@ -1,7 +1,20 @@
 <div class="app">
+  <ng-container *ngIf="(loggedIn | async) === false; else main">
+    <div class="app-login">
+      <div class="app-login__title-wrapper">
+        <app-icon class="icon--large" type="logo"></app-icon>
+        <h1 class="app-login__title">Spotrx</h1>
+      </div>
+      <p class="app-login__text">To use app you must log in</p>
+      <button class="app-login__button btn" (click)="login()">login</button>
+    </div>
+  </ng-container>
+
+  <ng-template #main>
     <app-nav></app-nav>
     <div class="main">
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
     <app-player></app-player>
+  </ng-template>
 </div>

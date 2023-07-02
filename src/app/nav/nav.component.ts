@@ -8,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss'],
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
   userData = this.userService.getUserData();
-  loggedIn = this.authService.loggedIn.asObservable();
   userPlaylists = this.trackService.getUserPlaylists();
 
   constructor(
@@ -18,10 +17,4 @@ export class NavComponent implements OnInit {
     private authService: AuthService,
     private trackService: TrackService
   ) {}
-
-  ngOnInit(): void {}
-
-  login() {
-    this.authService.login();
-  }
 }

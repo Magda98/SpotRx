@@ -21,9 +21,10 @@ import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgOptimizedImage } from '@angular/common';
+import { IconComponent } from './icon/icon.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomeComponent,
     NavComponent,
@@ -33,7 +34,8 @@ import { NgOptimizedImage } from '@angular/common';
     PlaylistTracksComponent,
     DurationPipe,
     SearchComponent,
-  ],
+      IconComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,
