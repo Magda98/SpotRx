@@ -37,7 +37,7 @@ export class PlaylistTracksComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private trackService: TrackService
+    public trackService: TrackService
   ) {}
 
   ngOnInit(): void {

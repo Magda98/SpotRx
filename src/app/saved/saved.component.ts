@@ -3,6 +3,7 @@ import { Item } from '../interfaces/track';
 import { TrackService } from '../services/track.service';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-saved',
@@ -15,10 +16,11 @@ export class SavedComponent implements OnInit {
   });
   total = toSignal(this.trackService.totalTracks, { initialValue: 0 });
 
-  constructor(private trackService: TrackService) {}
+  constructor(public trackService: TrackService) {}
 
   ngOnInit() {
     this.trackService.retriveSavedTracks().subscribe();
+    this.trackService.isLoading.pipe(tap(console.log)).subscribe();
   }
 
   getNextPage(page: PageEvent) {
