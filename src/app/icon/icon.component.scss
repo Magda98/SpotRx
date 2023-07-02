@@ -1,0 +1,15 @@
+.app-icon {
+  display: flex;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.icon--large {
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

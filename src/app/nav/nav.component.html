@@ -1,7 +1,4 @@
 <nav class="nav">
-  <ng-container *ngIf="(loggedIn | async) === false">
-    <button class="btn" (click)="login()">zaloguj</button>
-  </ng-container>
 
   <div class="user-data" *ngIf="userData | async as user">
     <img class="user-img" [src]="user.images[0].url">
