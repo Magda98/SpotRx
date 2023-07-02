@@ -5,7 +5,16 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { catchError, Observable, switchMap, take, tap, throwError } from 'rxjs';
+import {
+  catchError,
+  last,
+  Observable,
+  switchMap,
+  take,
+  takeLast,
+  tap,
+  throwError,
+} from 'rxjs';
 import { AuthService } from './services/auth.service';
 
 @Injectable()
@@ -18,6 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return this.authService.retriveToken().pipe(
       take(1),
+      // tap(console.log),
       switchMap((token) => {
         if (token) {
           let modifiedReq = req;
@@ -44,6 +54,7 @@ export class AuthInterceptor implements HttpInterceptor {
       if (req.url.includes('/token')) return throwError(() => error);
 
       return this.authService.getRefreshToken().pipe(
+        take(1),
         switchMap((token) => {
           this.authService.token.next(token.access_token);
           this.authService.tokenObj.next(token);
@@ -59,6 +70,7 @@ export class AuthInterceptor implements HttpInterceptor {
           return next.handle(modifiedReq);
         }),
         catchError((error) => {
+          this.authService.loggedIn.next(false);
           return throwError(() => error);
         })
       );

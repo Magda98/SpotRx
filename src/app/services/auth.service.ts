@@ -72,7 +72,6 @@ export class AuthService {
       .pipe(
         tap((token) => {
           this.token.next(token.access_token);
-          this.token.complete();
           this.tokenObj.next(token);
           this.loggedIn.next(true);
           this.router.navigate(['']);
