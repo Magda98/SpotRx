@@ -2,11 +2,8 @@ import { EMPTY, switchMap, zip } from 'rxjs';
 import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlayerService } from './services/player.service';
-import { icons } from './icons';
-import { DomSanitizer } from '@angular/platform-browser';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,7 +14,8 @@ export class AppComponent implements OnInit {
   private auth = this.authService.retriveToken().pipe(
     switchMap((token) => {
       if (!token) return EMPTY;
-      this.playerService.initializePlayer(token);
+      // this.playerService.initializePlayer(token);
+      this.initSpotifyScript(token);
       return zip(
         this.userService.retriveUserData(),
         this.trackService.retriveUserPlaylists(),
@@ -32,6 +30,15 @@ export class AppComponent implements OnInit {
     private playerService: PlayerService,
     private trackService: TrackService
   ) {}
+
+  initSpotifyScript(token: string) {
+    this.playerService.initializePlayer(token);
+
+    const script = document.createElement('script');
+    script.src = 'https://sdk.scdn.co/spotify-player.js';
+    script.type = 'text/javascript';
+    document.head.appendChild(script);
+  }
 
   ngOnInit() {
     if (location.search) {

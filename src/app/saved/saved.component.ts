@@ -20,7 +20,6 @@ export class SavedComponent implements OnInit {
 
   ngOnInit() {
     this.trackService.retriveSavedTracks().subscribe();
-    this.trackService.isLoading.pipe(tap(console.log)).subscribe();
   }
 
   getNextPage(page: PageEvent) {
