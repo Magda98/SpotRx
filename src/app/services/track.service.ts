@@ -7,11 +7,12 @@ import { Item, TracksResponse, SearchResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, Subject, tap } from 'rxjs';
+import { LoaderBaseService } from './loader-base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TrackService {
+export class TrackService extends LoaderBaseService {
   private savedTracks = new BehaviorSubject<Item[]>([]);
   private userPlaylists = new BehaviorSubject<Playlist[]>([]);
   private featuredPlaylists = new BehaviorSubject<Playlist[]>([]);
@@ -23,6 +24,7 @@ export class TrackService {
   pageSize = 6;
 
   constructor(private http: HttpClient) {
+    super();
     this.params = this.params.append('limit', this.pageSize);
   }
 
@@ -48,13 +50,15 @@ export class TrackService {
 
   retriveSavedTracks(offset: number = 0) {
     const params = this.params.append('offset', offset);
-
-    return this.http.get<TracksResponse>(`me/tracks`, { params }).pipe(
-      tap((val) => {
-        this.savedTracks.next(val.items);
-        this.totalTracks.next(val.total);
-      })
-    );
+    const getData$ = this.http
+      .get<TracksResponse>(`me/tracks`, { params })
+      .pipe(
+        tap((val) => {
+          this.savedTracks.next(val.items);
+          this.totalTracks.next(val.total);
+        })
+      );
+    return this.getDataWithLoader(getData$);
   }
 
   retriveUserPlaylists() {
@@ -77,8 +81,7 @@ export class TrackService {
 
   retrivePlaylistTracks(id: string, offset: number = 0) {
     const params = this.params.append('offset', offset);
-    this.playlistTracks.next([]);
-    return this.http
+    const getData$ = this.http
       .get<TracksResponse>(`playlists/${id}/tracks`, { params })
       .pipe(
         tap((val) => {
@@ -86,6 +89,7 @@ export class TrackService {
           this.totalTracks.next(val.total);
         })
       );
+    return this.getDataWithLoader(getData$);
   }
 
   retriveFeaturedPlaylists() {

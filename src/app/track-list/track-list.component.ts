@@ -4,6 +4,7 @@ import { Item } from './../interfaces/track';
 import { Component, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-track-list',
@@ -12,6 +13,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class TrackListComponent {
   @Input() tracksList!: Signal<Item[]>;
+  @Input() isLoading!: Observable<boolean>;
   @Input() total = 0;
   @Output() getNextPage = new EventEmitter<PageEvent>();
   currentPage = toSignal(this.trackService.currentPage);

@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { catchError, Observable, switchMap, throwError } from 'rxjs';
+import { catchError, Observable, switchMap, take, tap, throwError } from 'rxjs';
 import { AuthService } from './services/auth.service';
 
 @Injectable()
@@ -17,6 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     return this.authService.retriveToken().pipe(
+      take(1),
       switchMap((token) => {
         if (token) {
           let modifiedReq = req;

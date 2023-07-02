@@ -1,5 +1,6 @@
 <div class="saved">
-    <h1 class="title">Saved tracks 😎</h1>
-    <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="total()" [tracksList]="savedTracks">
-    </app-track-list>
+  <h1 class="title">Saved tracks 😎</h1>
+  <app-track-list class="track-list" [isLoading]="trackService.isLoading" (getNextPage)="getNextPage($event)"
+    [total]="total()" [tracksList]="savedTracks">
+  </app-track-list>
 </div>
