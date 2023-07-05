@@ -44,8 +44,20 @@
 
   .playlist-list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
-    gap: 50px;
+    gap: 48px;
+
+    @media screen and (min-width: 640px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 980px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 1280px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
 }
