@@ -6,7 +6,7 @@ import {
 import { Item, TracksResponse, SearchResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, Subject, tap } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, tap } from 'rxjs';
 import { LoaderBaseService } from './loader-base.service';
 
 @Injectable({

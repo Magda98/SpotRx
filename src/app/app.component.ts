@@ -1,3 +1,4 @@
+import { toSignal } from '@angular/core/rxjs-interop';
 import { EMPTY, switchMap, zip } from 'rxjs';
 import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
@@ -10,11 +11,13 @@ import { PlayerService } from './services/player.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  loggedIn = this.authService.loggedIn.asObservable();
+  loggedIn = toSignal(this.authService.loggedIn);
   private auth = this.authService.retriveToken().pipe(
     switchMap((token) => {
-      if (!token) return EMPTY;
-      // this.playerService.initializePlayer(token);
+      if (!token) {
+        this.authService.loggedIn.next(false);
+        return EMPTY;
+      }
       this.initSpotifyScript(token);
       return zip(
         this.userService.retriveUserData(),

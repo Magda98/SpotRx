@@ -1,5 +1,5 @@
 <div class="app">
-  <ng-container *ngIf="(loggedIn | async) === false; else main">
+  <ng-container *ngIf="loggedIn() === false">
     <div class="app-login">
       <div class="app-login__title-wrapper">
         <app-icon class="icon--large" type="logo"></app-icon>
@@ -10,11 +10,11 @@
     </div>
   </ng-container>
 
-  <ng-template #main>
+  <ng-container *ngIf="loggedIn() === true">
     <app-nav></app-nav>
     <div class="main">
       <router-outlet></router-outlet>
     </div>
     <app-player></app-player>
-  </ng-template>
+  </ng-container>
 </div>
