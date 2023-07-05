@@ -3,7 +3,7 @@ import { EMPTY, switchMap, zip } from 'rxjs';
 import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { PlayerService } from './services/player.service';
 @Component({
   selector: 'app-root',
@@ -12,6 +12,7 @@ import { PlayerService } from './services/player.service';
 })
 export class AppComponent implements OnInit {
   loggedIn = toSignal(this.authService.loggedIn);
+  menuOpen = signal(false);
   private auth = this.authService.retriveToken().pipe(
     switchMap((token) => {
       if (!token) {
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit {
       );
     })
   );
+  playerState = this.playerService.getPlayerState();
 
   constructor(
     private authService: AuthService,
@@ -33,6 +35,10 @@ export class AppComponent implements OnInit {
     private playerService: PlayerService,
     private trackService: TrackService
   ) {}
+
+  toggleMenu() {
+    this.menuOpen.set(!this.menuOpen());
+  }
 
   initSpotifyScript(token: string) {
     this.playerService.initializePlayer(token);

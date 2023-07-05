@@ -1,4 +1,6 @@
-<nav class="nav">
+<nav class="nav" [ngClass]="{
+  'nav--open': open()
+}">
 
   <div class="user-data" *ngIf="userData | async as user">
     <img class="user-img" [src]="user.images[0].url">

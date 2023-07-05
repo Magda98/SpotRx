@@ -1,7 +1,7 @@
 import { TrackService } from './../services/track.service';
 import { AuthService } from './../services/auth.service';
 import { UserService } from './../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -11,10 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent {
   userData = this.userService.getUserData();
   userPlaylists = this.trackService.getUserPlaylists();
+  @Input() open = signal(false);
 
   constructor(
     private userService: UserService,
-    private authService: AuthService,
     private trackService: TrackService
   ) {}
 }

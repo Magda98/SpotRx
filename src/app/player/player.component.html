@@ -1,5 +1,5 @@
-<div class="player">
-  <ng-container *ngIf="playerState | async as player">
+<div class="player" *ngIf="playerState | async as player">
+  <ng-container>
     <mat-slider *ngIf="playerService.playbackState | async as position" class="song-slider" min="1"
       [max]="player.duration" step="10">
       <input (dragEnd)="setPosition($event)" [value]="position" matSliderThumb>

@@ -2,16 +2,39 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 
   .main {
-    margin-left: 220px;
-    margin-bottom: 140px;
+    margin-left: 0;
     width: 100%;
     overflow-y: scroll;
     background-color: #35393c;
     padding: 24px 16px 16px;
+
+    &--player {
+      margin-bottom: 140px;
+    }
+
+    @media screen and (min-width: 980px) {
+      margin-left: 220px;
+    }
+  }
+
+  .app-menu-button {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    display: block;
+    background-color: rgba(#1ecd5d, 0.5);
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: none;
+
+    @media screen and (min-width: 980px) {
+      display: none;
+    }
   }
 
   .app-login {

@@ -11,8 +11,12 @@
   </ng-container>
 
   <ng-container *ngIf="loggedIn() === true">
-    <app-nav></app-nav>
-    <div class="main">
+    <app-nav [open]="menuOpen"></app-nav>
+    <button class="app-menu-button btn" type="button" (click)="toggleMenu()">
+      <app-icon class="icon" type="menu"></app-icon>
+    </button>
+    <div class="main" [ngClass]="{
+  'main--player': playerState | async }">
       <router-outlet></router-outlet>
     </div>
     <app-player></app-player>
