@@ -9,7 +9,12 @@
   justify-content: center;
   flex-direction: column;
   margin: auto;
-  width: 80%;
+  width: 100%;
+  padding: 0;
+
+  @media screen and (min-width: 980px) {
+    width: 80%;
+  }
 
   .song-info {
     display: flex;
@@ -23,6 +28,7 @@
     padding: 8px 20px;
     border-radius: 10px;
     cursor: pointer;
+    gap: 8px;
     transition: background-color 0.3s;
 
     &:hover {

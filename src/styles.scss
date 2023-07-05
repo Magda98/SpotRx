@@ -16,7 +16,7 @@ body {
   margin: 0;
   font-family: 'Fredoka', sans-serif;
   color: $text;
-  background-color: $bg-elevation;
+  background-color: #35393c;
 
   .app {
 
@@ -38,7 +38,11 @@ body {
   div,
   a,
   span {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+
+    @media screen and (min-width: 980px) {
+      font-size: 1.4rem;
+    }
   }
 
   img {
@@ -90,4 +94,16 @@ body {
 
 .btn {
   @include btn($primary, $primary);
+}
+
+.mat-typography h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: .0125em;
+  margin: 0 0 8px;
+
+  @media screen and (min-width: 980px) {
+    font-size: 18px;
+  }
 }

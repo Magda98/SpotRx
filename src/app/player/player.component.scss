@@ -1,89 +1,115 @@
 .player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 140px;
+  background-color: #2c2f31;
+  padding-left: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-top: 16px;
+
+  @media screen and (min-width: 980px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 220px;
+  }
+
+  .song-slider {
     position: absolute;
-    bottom: 0;
+    top: -23px;
     left: 0;
     right: 0;
+
+    @media screen and (min-width: 980px) {
+      left: 212px;
+    }
+  }
+
+  .btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    display: flex;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    margin-left: 0;
+    padding: 0 8px;
 
-    height: 140px;
-    background-color: #2c2f31;
+    @media screen and (min-width: 980px) {
+      margin-left: 25%;
+      max-width: 250px;
+    }
+  }
 
+  .song-info {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
 
-    padding-left: 220px;
-    box-sizing: border-box;
+    .album-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+      display: block;
+      margin-right: 10px;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    .song-slider {
-        position: absolute;
-        top: -23px;
-        left: 212px;
-        right: 0;
+      @media screen and (min-width: 980px) {
+        width: 80px;
+        height: 80px;
+      }
     }
 
-    .btn {
-        background-color: transparent;
-        border: none;
-        color: #fff;
-        display: flex;
+    .name {
+      margin-bottom: 0;
     }
 
-    .action-buttons {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 250px;
-        width: 100%;
-        margin-left: 25%;
+    .artist-container {
+      display: flex;
+      opacity: 0.6;
+      margin-top: 5px;
     }
 
-    .song-info {
-        display: flex;
-        align-items: center;
-
-        .album-image {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 5px;
-            display: block;
-            margin-right: 10px;
-        }
-
-        .name {
-            margin-bottom: 0;
-        }
-
-        .artist-container {
-            display: flex;
-            opacity: 0.6;
-            margin-top: 5px;
-        }
-
-        .artist {
-            margin-right: 5px;
-        }
-
-        .album-artist {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .album-name {
-            opacity: 0.6;
-            font-size: 16px;
-        }
+    .artist {
+      margin-right: 5px;
     }
 
-    .slider-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .album-artist {
+      display: flex;
+      flex-direction: column;
     }
 
-    .volume-slider {
-        max-width: 150px;
-        width: 100%;
+    .album-name {
+      opacity: 0.6;
+      font-size: 12px;
+
+      @media screen and (min-width: 980px) {
+        font-size: 16px;
+      }
     }
+  }
+
+  .slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .volume-slider {
+    display: none;
+
+    @media screen and (min-width: 980px) {
+      display: block;
+      max-width: 150px;
+      width: 100%;
+    }
+  }
 }

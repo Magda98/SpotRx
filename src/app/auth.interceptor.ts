@@ -27,7 +27,6 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return this.authService.retriveToken().pipe(
       take(1),
-      // tap(console.log),
       switchMap((token) => {
         if (token) {
           let modifiedReq = req;
@@ -51,10 +50,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   handle401Error(req: HttpRequest<unknown>, next: HttpHandler) {
     return (error: any) => {
-      if (req.url.includes('/token')) return throwError(() => error);
+      if (req.url.includes('/token')) {
+        this.authService.loggedIn.next(false);
+        return throwError(() => error);
+      }
 
       return this.authService.getRefreshToken().pipe(
-        take(1),
         switchMap((token) => {
           this.authService.token.next(token.access_token);
           this.authService.tokenObj.next(token);

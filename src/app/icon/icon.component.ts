@@ -3,9 +3,9 @@ import { Icons, icons } from './../icons';
 import {
   Component,
   Input,
+  OnChanges,
   OnInit,
   ViewEncapsulation,
-  signal,
 } from '@angular/core';
 
 @Component({
@@ -15,12 +15,12 @@ import {
   host: { class: 'app-icon' },
   encapsulation: ViewEncapsulation.None,
 })
-export class IconComponent implements OnInit {
+export class IconComponent implements OnChanges {
   @Input() type!: Icons;
   icon!: SafeHtml;
   constructor(private sanitizer: DomSanitizer) {}
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.icon = this.sanitizer.bypassSecurityTrustHtml(icons[this.type]);
   }
 }
