@@ -8,20 +8,21 @@
   </div>
 
   <ul class="nav-links">
-    <li><a class="link" routerLink="/" routerLinkActive="active">
+    <li><a class="link" (click)="open.set(false)" routerLink="/" routerLinkActive="active">
         <mat-icon class="icon">home</mat-icon> Home
       </a></li>
-    <li><a class="link" routerLink="/saved" routerLinkActive="active">
+    <li><a class="link" (click)="open.set(false)" routerLink="/saved" routerLinkActive="active">
         <mat-icon class="icon">favorite</mat-icon> Saved
       </a></li>
-    <li><a class="link" routerLink="/search" routerLinkActive="active">
+    <li><a class="link" (click)="open.set(false)" routerLink="/search" routerLinkActive="active">
         <mat-icon class="icon">search</mat-icon> Search
       </a></li>
   </ul>
 
 
   <div class="playlist-list" *ngIf="userPlaylists | async as items">
-    <a class="link" [routerLink]="['/playlist', item.id]" class="playlist" *ngFor="let item of items">
+    <a class="link" (click)="open.set(false)" [routerLink]="['/playlist', item.id]" class="playlist"
+      *ngFor="let item of items">
       <img class="playlist-img" [src]="item.images[0].url">
       <h3 class="playlist-name">{{item.name}}</h3>
     </a>
