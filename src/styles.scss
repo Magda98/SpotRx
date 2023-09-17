@@ -50,7 +50,7 @@ body {
   }
 }
 
-@mixin btn($background-color, $border-color) {
+@mixin btn($background-color, $border-color, $hover-backgorund) {
   color: $text;
   background-color: $background-color;
   border: 2px solid $border-color;
@@ -58,7 +58,7 @@ body {
   border-radius: 10px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition: background-color 0.2s;
 
   svg {
     width: 18px;
@@ -66,8 +66,8 @@ body {
   }
 
   &:hover {
-    background-color: rgba($primary, 0.8);
-    border-color: rgba($primary, 0.8);
+    background-color: rgba($hover-backgorund, 0.3);
+    border-color: none
   }
 }
 
@@ -93,7 +93,11 @@ body {
 }
 
 .btn {
-  @include btn($primary, $primary);
+  @include btn($primary, $primary, $primary);
+}
+
+.btn-outline {
+  @include btn(transparent, transparent, #404040);
 }
 
 .mat-typography h2 {

@@ -110,4 +110,12 @@ export class TrackService extends LoaderBaseService {
       params: { q: query, type: ['track'], limit: 10 },
     });
   }
+
+  checkUserSavedTrack(trackId: string) {
+    return this.http.get<boolean[]>(`me/tracks/contains`, {
+      params: {
+        ids: trackId,
+      },
+    });
+  }
 }

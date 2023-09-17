@@ -2,13 +2,13 @@ import { AuthService } from './auth.service';
 import { User } from './../interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, tap } from 'rxjs';
+import { ReplaySubject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  userData = new Subject<User>();
+  userData = new ReplaySubject<User>();
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
