@@ -1,10 +1,13 @@
 <nav class="nav" [ngClass]="{
   'nav--open': open()
 }">
-
-  <div class="user-data" *ngIf="userData | async as user">
-    <img class="user-img" [src]="user.images[0].url">
-    <span class="user-name">{{user.display_name}}</span>
+  <div class="logo-conatiner">
+    <app-icon class="icon--large" type="logo"></app-icon>
+    <h1>SpotRx</h1>
+  </div>
+  <div class="user-data" *ngIf="userData()">
+    <img class="user-img" [src]="userData()?.images?.[0]?.url">
+    <span class="user-name">{{userData()?.display_name}}</span>
   </div>
 
   <ul class="nav-links">

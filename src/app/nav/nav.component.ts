@@ -1,3 +1,4 @@
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TrackService } from './../services/track.service';
 import { AuthService } from './../services/auth.service';
 import { UserService } from './../services/user.service';
@@ -9,12 +10,14 @@ import { Component, Input, OnInit, signal } from '@angular/core';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent {
-  userData = this.userService.getUserData();
+  userData = toSignal(this.userService.getUserData());
   userPlaylists = this.trackService.getUserPlaylists();
   @Input() open = signal(false);
 
   constructor(
     private userService: UserService,
     private trackService: TrackService
-  ) {}
+  ) {
+    this.userService.retriveUserData();
+  }
 }
