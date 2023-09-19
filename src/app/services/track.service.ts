@@ -118,4 +118,8 @@ export class TrackService extends LoaderBaseService {
       },
     });
   }
+
+  saveTrack(trackId: string) {
+    return this.http.put<void>(`me/tracks`, { ids: [trackId] });
+  }
 }

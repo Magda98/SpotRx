@@ -29,7 +29,7 @@
       </button>
     </div>
     <div class="slider-container">
-      <button class="btn-outline">
+      <button class="btn-outline" (click)="toggleSavedTrack()">
         <app-icon *ngIf="isSavedTrack === false" class="icon" type="heartOutline"></app-icon>
         <app-icon *ngIf="isSavedTrack === true" class="icon" type="heart"></app-icon>
       </button>

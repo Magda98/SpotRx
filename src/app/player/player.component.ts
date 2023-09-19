@@ -21,6 +21,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   player?: Spotify.PlaybackState;
   isSavedTrack?: boolean;
   subscription = new Subscription();
+  toggleTrackSubscription?: Subscription;
 
   constructor(
     public playerService: PlayerService,
@@ -46,6 +47,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
           this.isSavedTrack = isSavedTrack;
         })
     );
+  }
+
+  toggleSavedTrack() {
+    if (this.player?.track_window?.current_track?.id) return;
+    if (this.isSavedTrack) return;
+    if (this.toggleTrackSubscription)
+      this.toggleTrackSubscription.unsubscribe();
+    this.toggleTrackSubscription = this.trackService
+      .saveTrack(this.player?.track_window?.current_track?.id)
+      .subscribe();
   }
 
   setVolume(volumeSlider: MatSliderDragEvent) {
