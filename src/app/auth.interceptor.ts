@@ -9,12 +9,9 @@ import {
 import {
   catchError,
   EMPTY,
-  last,
   Observable,
   switchMap,
   take,
-  takeLast,
-  tap,
   throwError,
 } from 'rxjs';
 import { AuthService } from './services/auth.service';
