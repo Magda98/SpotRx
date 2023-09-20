@@ -53,11 +53,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
     // TODO: delete track from saved
     if (!this.player?.track_window?.current_track?.id) return;
     if (this.isSavedTrack) return;
-    if (this.toggleTrackSubscription)
-      this.toggleTrackSubscription.unsubscribe();
+    this.toggleTrackSubscription?.unsubscribe();
     this.toggleTrackSubscription = this.trackService
       .saveTrack(this.player.track_window.current_track.id)
-      .subscribe();
+      .subscribe(() => {
+        this.isSavedTrack = true;
+      });
   }
 
   setVolume(volumeSlider: MatSliderDragEvent) {

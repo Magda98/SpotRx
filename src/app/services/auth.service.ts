@@ -14,7 +14,7 @@ import { HEADER_CONFIG, SPORIFY_SCOPES } from '../config';
 export class AuthService {
   token = new BehaviorSubject<string | undefined>(undefined);
   tokenObj = new ReplaySubject<Token>();
-  loggedIn = new Subject<boolean>();
+  loggedIn = new ReplaySubject<boolean>();
 
   constructor(
     private http: HttpClient,
