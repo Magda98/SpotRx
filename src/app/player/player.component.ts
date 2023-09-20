@@ -50,15 +50,23 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   toggleSavedTrack() {
-    // TODO: delete track from saved
     if (!this.player?.track_window?.current_track?.id) return;
-    if (this.isSavedTrack) return;
+
+    if (this.isSavedTrack) {
+      this.toggleTrackSubscription?.unsubscribe();
+      return (this.toggleTrackSubscription = this.trackService
+        .deleteTrack(this.player.track_window.current_track.id)
+        .subscribe(() => {
+          this.isSavedTrack = false;
+        }));
+    }
+
     this.toggleTrackSubscription?.unsubscribe();
-    this.toggleTrackSubscription = this.trackService
+    return (this.toggleTrackSubscription = this.trackService
       .saveTrack(this.player.track_window.current_track.id)
       .subscribe(() => {
         this.isSavedTrack = true;
-      });
+      }));
   }
 
   setVolume(volumeSlider: MatSliderDragEvent) {

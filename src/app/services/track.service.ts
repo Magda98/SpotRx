@@ -122,4 +122,12 @@ export class TrackService extends LoaderBaseService {
   saveTrack(trackId: string) {
     return this.http.put<void>(`me/tracks`, { ids: [trackId] });
   }
+
+  deleteTrack(trackId: string) {
+    return this.http.delete<void>(`me/tracks`, {
+      body: {
+        ids: [trackId],
+      },
+    });
+  }
 }
