@@ -77,6 +77,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.playerService.setPosition(positionSlider.value);
   }
 
+  toggleShuffle() {
+    // TODO: implement shuffle https://developer.spotify.com/documentation/web-api/reference/toggle-shuffle-for-users-playback
+    if (this.player) this.player.shuffle = !this.player.shuffle;
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
