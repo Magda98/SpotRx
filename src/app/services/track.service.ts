@@ -130,4 +130,8 @@ export class TrackService extends LoaderBaseService {
       },
     });
   }
+
+  toggleShuffle(state: boolean) {
+    return this.http.put<void>(`me/player/shuffle?state=${state}`, {});
+  }
 }

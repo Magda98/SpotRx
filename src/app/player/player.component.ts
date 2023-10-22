@@ -5,6 +5,7 @@ import {
   EMPTY,
   Subscription,
   distinctUntilChanged,
+  finalize,
   map,
   switchMap,
   tap,
@@ -17,11 +18,12 @@ import { TrackService } from '../services/track.service';
   styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent implements OnInit, OnDestroy {
-  playerState = this.playerService.getPlayerState();
-  player?: Spotify.PlaybackState;
-  isSavedTrack?: boolean;
-  subscription = new Subscription();
-  toggleTrackSubscription?: Subscription;
+  public playerState = this.playerService.getPlayerState();
+  public player?: Spotify.PlaybackState;
+  public isSavedTrack?: boolean;
+  private subscription = new Subscription();
+  private toggleTrackSubscription?: Subscription;
+  private isFetching = false;
 
   constructor(
     public playerService: PlayerService,
@@ -78,11 +80,25 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   toggleShuffle() {
-    // TODO: implement shuffle https://developer.spotify.com/documentation/web-api/reference/toggle-shuffle-for-users-playback
-    if (this.player) this.player.shuffle = !this.player.shuffle;
+    if (!this.player) return;
+    if (this.isFetching) return;
+
+    this.isFetching = true;
+    this.player.shuffle = !this.player.shuffle;
+    this.subscription.add(
+      this.trackService
+        .toggleShuffle(this.player.shuffle)
+        .pipe(
+          finalize(() => {
+            this.isFetching = false;
+          })
+        )
+        .subscribe()
+    );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.toggleTrackSubscription?.unsubscribe();
   }
 }
