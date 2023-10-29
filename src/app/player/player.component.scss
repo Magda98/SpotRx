@@ -32,12 +32,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     margin-left: 0;
     padding: 0 8px;
 
     @media screen and (min-width: 980px) {
       margin-left: 25%;
+      width: 100%;
       max-width: 250px;
     }
   }

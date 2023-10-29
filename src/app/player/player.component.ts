@@ -10,6 +10,7 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TrackService } from '../services/track.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   constructor(
     public playerService: PlayerService,
-    private trackService: TrackService
+    private trackService: TrackService,
+    private snackBarService: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
         .deleteTrack(this.player.track_window.current_track.id)
         .subscribe(() => {
           this.isSavedTrack = false;
+          this.snackBarService.open('Removed form Liked Songs.');
         }));
     }
 
@@ -68,6 +71,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
       .saveTrack(this.player.track_window.current_track.id)
       .subscribe(() => {
         this.isSavedTrack = true;
+        this.snackBarService.open('Added to Liked Songs.');
       }));
   }
 

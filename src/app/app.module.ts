@@ -22,9 +22,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgOptimizedImage } from '@angular/common';
 import { IconComponent } from './icon/icon.component';
+import {
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarModule,
+} from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     HomeComponent,
     NavComponent,
@@ -34,8 +38,8 @@ import { IconComponent } from './icon/icon.component';
     PlaylistTracksComponent,
     DurationPipe,
     SearchComponent,
-      IconComponent
-   ],
+    IconComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -48,6 +52,7 @@ import { IconComponent } from './icon/icon.component';
     ReactiveFormsModule,
     NgxSkeletonLoaderModule,
     NgOptimizedImage,
+    MatSnackBarModule,
   ],
   providers: [
     {
@@ -58,6 +63,7 @@ import { IconComponent } from './icon/icon.component';
       multi: true,
       deps: [AuthService],
     },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
   ],
   bootstrap: [AppComponent],
 })
