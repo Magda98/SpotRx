@@ -1,9 +1,11 @@
-<div class="player" *ngIf="player">
+@if(player) {
+<div class="player">
   <ng-container>
-    <mat-slider *ngIf="playerService.playbackState | async as position" class="song-slider" min="1"
-      [max]="player.duration" step="10">
+    @if(playerService.playbackState | async; as position){
+    <mat-slider class="song-slider" min="1" [max]="player.duration" step="10">
       <input (dragEnd)="setPosition($event)" [value]="position" matSliderThumb>
     </mat-slider>
+    }
     <div class="song-info">
       <img class="album-image" [src]="player.track_window.current_track.album.images[0].url">
       <div class="album-artist">
@@ -12,7 +14,9 @@
           {{player.track_window.current_track.album.name}}
         </span>
         <div class="artist-container">
-          <span *ngFor="let item of player.track_window.current_track.artists" class="artist">{{item.name}}</span>
+          @for(item of player.track_window.current_track.artists; track item.name){
+          <span class="artist">{{item.name}}</span>
+          }
         </div>
       </div>
     </div>
@@ -21,8 +25,12 @@
         <mat-icon>skip_previous</mat-icon>
       </button>
       <button class="btn-outline" (click)="playerService.tooglePlay()">
-        <mat-icon *ngIf="player.paused">play_circle_outline</mat-icon>
-        <mat-icon *ngIf="!player.paused">pause_circle_outline</mat-icon>
+        @if(player.paused){
+        <mat-icon>play_circle_outline</mat-icon>
+        }
+        @else{
+        <mat-icon>pause_circle_outline</mat-icon>
+        }
       </button>
       <button class="btn-outline" (click)="playerService.skipNext();">
         <mat-icon>skip_next</mat-icon>
@@ -42,3 +50,4 @@
     </div>
   </ng-container>
 </div>
+}
