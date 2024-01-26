@@ -8,11 +8,7 @@ export class StorageService {
 
   getData(key: string) {
     const data = localStorage.getItem(key) ?? '';
-    if (localStorage.getItem(key)) {
-      return JSON.parse(data);
-    } else {
-      return '';
-    }
+    return JSON.parse(data);
   }
 
   setData(key: string, data: any): void {
