@@ -20,7 +20,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/spotrx",
+            "outputPath": {
+              "base": "dist/spotrx",
+              "browser": ""
+            },
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -43,7 +46,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "900kb",
                   "maximumError": "1mb"
                 },
                 {
@@ -110,5 +113,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
