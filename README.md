@@ -40,8 +40,6 @@ To set up SpotRx for local development, follow these steps:
 4. Start the development server: `ng serve`
 5. Open your browser and visit `http://localhost:4200` to access SpotRx locally.
 
-Feel free to contribute to the project by submitting bug reports, feature requests, or pull requests. Your contributions are greatly appreciated!
-
 ## Screenshots from app
 
 ![image](https://user-images.githubusercontent.com/33430525/198701372-233a8a56-3faf-436f-8f62-6c676d06a14d.png)
