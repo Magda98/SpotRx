@@ -25,6 +25,10 @@ import {
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
   MatSnackBarModule,
 } from '@angular/material/snack-bar';
+import {
+  QueryClient,
+  provideAngularQuery,
+} from '@tanstack/angular-query-experimental';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,7 @@ import {
     MatSnackBarModule,
   ],
   providers: [
+    provideAngularQuery(new QueryClient()),
     {
       provide: HTTP_INTERCEPTORS,
       useFactory: (authService: AuthService) => {
