@@ -5,6 +5,7 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { Component, OnInit, signal } from '@angular/core';
 import { PlayerService } from './services/player.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
     })
   );
   playerState = this.playerService.getPlayerState();
+  isProductionMode = environment.production;
 
   constructor(
     private authService: AuthService,

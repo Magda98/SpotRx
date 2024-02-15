@@ -29,11 +29,11 @@ import {
   QueryClient,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
+import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     NavComponent,
     TrackListComponent,
     PlayerComponent,
@@ -44,6 +44,7 @@ import {
     IconComponent,
   ],
   imports: [
+    HomeComponent,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -55,6 +56,7 @@ import {
     ReactiveFormsModule,
     NgOptimizedImage,
     MatSnackBarModule,
+    AngularQueryDevtools,
   ],
   providers: [
     provideAngularQuery(new QueryClient()),
