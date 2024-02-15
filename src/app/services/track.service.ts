@@ -8,6 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, tap } from 'rxjs';
 import { LoaderBaseService } from './loader-base.service';
+import { createQuery } from 'src/utils/createQuery';
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +42,10 @@ export class TrackService extends LoaderBaseService {
   }
 
   getFeaturedPlaylists() {
-    return this.featuredPlaylists.asObservable();
+    return createQuery(
+      ['featuredPlaylists'] as const,
+      this.featuredPlaylists.asObservable()
+    );
   }
 
   getPlaylistInfo() {
