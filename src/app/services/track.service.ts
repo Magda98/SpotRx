@@ -16,7 +16,6 @@ import { createQuery } from 'src/utils/createQuery';
 export class TrackService extends LoaderBaseService {
   private savedTracks = new BehaviorSubject<Item[]>([]);
   private userPlaylists = new BehaviorSubject<Playlist[]>([]);
-  private featuredPlaylists = new BehaviorSubject<Playlist[]>([]);
   private playlisInfo = new ReplaySubject<Playlist>();
   private playlistTracks = new BehaviorSubject<Item[]>([]);
   totalTracks = new BehaviorSubject<number>(0);
@@ -44,7 +43,7 @@ export class TrackService extends LoaderBaseService {
   getFeaturedPlaylists() {
     return createQuery(
       ['featuredPlaylists'] as const,
-      this.featuredPlaylists.asObservable()
+      this.retriveFeaturedPlaylists()
     );
   }
 
@@ -100,13 +99,10 @@ export class TrackService extends LoaderBaseService {
     let params = new HttpParams();
     params = params.append('limit', 12);
 
-    return this.http
-      .get<FeaturedPlaylistResponse>(`browse/featured-playlists`, { params })
-      .pipe(
-        tap((val) => {
-          this.featuredPlaylists.next(val.playlists.items);
-        })
-      );
+    return this.http.get<FeaturedPlaylistResponse>(
+      `browse/featured-playlists`,
+      { params }
+    );
   }
 
   retriveSearchResults(query: string) {
