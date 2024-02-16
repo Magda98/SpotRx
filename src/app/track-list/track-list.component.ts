@@ -1,10 +1,17 @@
-import { toSignal } from '@angular/core/rxjs-interop';
 import { TrackService } from './../services/track.service';
 import { PlayerService } from './../services/player.service';
-import { Item } from './../interfaces/track';
-import { Component, EventEmitter, Input, Output, Signal } from '@angular/core';
+import { TracksResponse } from './../interfaces/track';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
+import { CreateQueryResult } from '@tanstack/angular-query-experimental';
 
 @Component({
   selector: 'app-track-list',
@@ -12,26 +19,26 @@ import { Observable } from 'rxjs';
   styleUrls: ['./track-list.component.scss'],
 })
 export class TrackListComponent {
-  @Input() tracksList!: Signal<Item[]>;
-  @Input() isLoading!: Observable<boolean>;
-  @Input() total = 0;
+  private playerService = inject(PlayerService);
+  private trackService = inject(TrackService);
+  @Input() tracksListQuery!: CreateQueryResult<TracksResponse>;
+  total = input(0);
   @Output() getNextPage = new EventEmitter<PageEvent>();
-  currentPage = toSignal(this.trackService.currentPage);
   pageSize = this.trackService.pageSize;
   readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
-
-  constructor(
-    private playerService: PlayerService,
-    private trackService: TrackService
-  ) {}
+  currentPage = computed(() => {
+    const offset = this.tracksListQuery.data()?.offset;
+    return offset ? offset / this.pageSize : 1;
+  });
 
   play(index: number) {
-    const queue = this.tracksList()?.map((item) => item.track.uri);
+    const queue = this.tracksListQuery
+      .data()
+      ?.items.map((item) => item.track.uri);
     if (queue) this.playerService.queue.next({ queue, index });
   }
 
   handlePageEvent(page: PageEvent) {
-    this.trackService.currentPage.next(page.pageIndex);
     this.getNextPage.emit(page);
   }
 }
