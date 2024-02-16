@@ -9,7 +9,7 @@
     </a>
   </div>
   }
-  @if(featuredPlaylists.isPending()){
+  @if(featuredPlaylists.isLoading()){
   <div class="playlist-list">
     <div class="link" class="playlist" *ngFor="let item of skeletonLoadingArray">
       <ngx-skeleton-loader animation="progress-dark" count="1"

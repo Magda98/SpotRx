@@ -25,7 +25,7 @@
     }
   </ul>
   }
-  @if(searchQuery.isPending() && search() !== undefined){
+  @if(searchQuery.isLoading()){
   <ul class="track-list track-list--skeleton">
     @for(item of skeletonLoadingArray; track item){
     <li class="track">

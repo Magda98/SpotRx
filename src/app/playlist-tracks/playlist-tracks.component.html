@@ -2,7 +2,7 @@
   @if(playlistInfo.isSuccess()){
   <h1 class="title">{{playlistInfo.data().name}}</h1>
   }
-  @if(playlistInfo.isPending()){
+  @if(playlistInfo.isLoading()){
   <div class="title">
     <ngx-skeleton-loader class="artist-skeleton" animation="progress-dark" count="1"
       [theme]="{ height: '32px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
