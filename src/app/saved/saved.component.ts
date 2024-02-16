@@ -24,10 +24,6 @@ export class SavedComponent {
   savedTracksQuery = injectQuery(() =>
     this.trackService.getSavedTracks(this.offset())
   );
-  total = computed(() => {
-    const total = this.savedTracksQuery.data()?.total;
-    return total ? total : 0;
-  });
 
   getNextPage(page: PageEvent) {
     this.offset.set(page.pageSize * page.pageIndex);

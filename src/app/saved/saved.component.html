@@ -1,6 +1,6 @@
 <div class="saved">
   <h1 class="title">Saved tracks 😎</h1>
-  <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="total()"
+  <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="this.savedTracksQuery.data()?.total"
     [tracksListQuery]="savedTracksQuery">
   </app-track-list>
 </div>

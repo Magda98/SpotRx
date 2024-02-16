@@ -21,18 +21,18 @@ import { CreateQueryResult } from '@tanstack/angular-query-experimental';
 export class TrackListComponent {
   private playerService = inject(PlayerService);
   private trackService = inject(TrackService);
-  @Input() tracksListQuery!: CreateQueryResult<TracksResponse>;
-  total = input(0);
+  tracksListQuery = input.required<CreateQueryResult<TracksResponse>>();
+  total = input.required();
   @Output() getNextPage = new EventEmitter<PageEvent>();
   pageSize = this.trackService.pageSize;
   readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
   currentPage = computed(() => {
-    const offset = this.tracksListQuery.data()?.offset;
+    const offset = this.tracksListQuery()?.data()?.offset;
     return offset ? offset / this.pageSize : 1;
   });
 
   play(index: number) {
-    const queue = this.tracksListQuery
+    const queue = this.tracksListQuery()
       .data()
       ?.items.map((item) => item.track.uri);
     if (queue) this.playerService.queue.next({ queue, index });
