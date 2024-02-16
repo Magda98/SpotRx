@@ -6,13 +6,15 @@ SpotRx is a web player for Spotify created using Angular. It provides users with
 
 - **Authorization**: SpotRx uses OAuth 2 with PKCE (Proof Key for Code Exchange) for secure and seamless authorization with Spotify. Users can log in to their Spotify accounts and grant SpotRx access to their music library.
 
+- **Player** - Web Playback for Spotify, user can play songs, shuffle queue or change web player volume.
+
 - **User Profile Info**: Once authorized, SpotRx retrieves and displays user profile information, including the user's name, profile picture, and follower count.
 
 - **Saved Tracks**: Users can view and manage their saved tracks directly within the SpotRx application. This feature allows for easy access to favorite songs and personalized music collections.
 
 - **Song Search**: SpotRx provides a search functionality that allows users to search for songs within the Spotify database. Users can find their favorite tracks, albums, or artists and listen to them seamlessly.
 
-- **User Playlists**: SpotRx enables users to view and manage their playlists. Users can create new playlists, add or remove tracks, and edit playlist details, all within the application.
+- **User Playlists**: SpotRx enables users to view and manage their playlists.
 
 - **Recommended Playlists**: SpotRx leverages Spotify's recommendation algorithms to provide personalized playlist recommendations to users. These recommendations are based on the user's listening history and preferences.
 
@@ -22,13 +24,17 @@ SpotRx is deployed and accessible online. You can try it out at [https://magda98
 
 ## Technologies Used
 
-- **Angular**: SpotRx is built using the Angular framework in version 16 and use Signals, which provides a powerful and scalable platform for developing single-page applications.
+- [**Angular**](https://angular.dev/): SpotRx is built using the Angular framework in version 17 and use Signals, standalone components, new control flow etc. which provides a powerful and scalable platform for developing single-page applications.
+
+- [**Angular Query**](https://tanstack.com/query/v5/docs/framework/angular/overview) powerful asynchronous state management for TS.
+
+- [**Angualr Material**](https://material.angular.io/) - Material Design components for Angular.
 
 - **OAuth 2 with PKCE**: The application uses OAuth 2 with PKCE for secure and authorized access to the Spotify API.
 
-- **Spotify API**: SpotRx integrates with the Spotify API to fetch user data, including user profile information, saved tracks, and playlists.
+- [**Spotify API**](https://developer.spotify.com/documentation/web-api): SpotRx integrates with the Spotify API to fetch user data, including user profile information, saved tracks, and playlists.
 
-- **Deployment**: SpotRx is deployed using GitHub Pages, making it easily accessible to users on the web.
+- [**Deployment GitHubPages**](https://pages.github.com/): SpotRx is deployed using GitHub Pages, making it easily accessible to users on the web.
 
 ## Development Setup
 
