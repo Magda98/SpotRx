@@ -48,8 +48,8 @@ To set up SpotRx for local development, follow these steps:
 
 ## Screenshots from app
 
-![image](https://user-images.githubusercontent.com/33430525/198701372-233a8a56-3faf-436f-8f62-6c676d06a14d.png)
+![image](https://github.com/Magda98/SpotRx/assets/33430525/9c3aca7f-f350-4f3b-9b0a-17c43665bb84)
 
-![image](https://github.com/Magda98/SpotRx/assets/33430525/dbbab3dd-b16a-4856-8eaa-7929ad677bf1)
+![chrome_wxB6hL8eA3](https://github.com/Magda98/SpotRx/assets/33430525/c065fe81-f892-4907-b773-dab52e94b68e)
 
-![chrome_1yz0ydOGDR](https://github.com/Magda98/SpotRx/assets/33430525/f15be74d-4087-455c-8fe3-ad55cf30209f)
+
