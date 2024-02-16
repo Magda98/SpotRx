@@ -20,27 +20,19 @@ export class TrackService {
   }
 
   getSavedTracks(offset: number) {
+    const params = this.params.append('offset', offset);
     return createQuery(
       ['savedTracks', { page: offset }] as const,
-      this.retriveSavedTracks(offset)
+      this.http.get<TracksResponse>(`me/tracks`, { params })
     );
-  }
-
-  retriveSavedTracks(offset: number = 0) {
-    const params = this.params.append('offset', offset);
-    return this.http.get<TracksResponse>(`me/tracks`, { params });
   }
 
   getPlaylistTracks(id: string, offset: number) {
+    const params = this.params.append('offset', offset);
     return createQuery(
       ['playlistTracks', { id, offset }] as const,
-      this.retrivePlaylistTracks(id, offset)
+      this.http.get<TracksResponse>(`playlists/${id}/tracks`, { params })
     );
-  }
-
-  retrivePlaylistTracks(id: string, offset: number = 0) {
-    const params = this.params.append('offset', offset);
-    return this.http.get<TracksResponse>(`playlists/${id}/tracks`, { params });
   }
 
   getUserPlaylists() {
@@ -51,32 +43,20 @@ export class TrackService {
   }
 
   getFeaturedPlaylists() {
+    const params = this.params.append('limit', 12);
     return createQuery(
       ['featuredPlaylists'] as const,
-      this.retriveFeaturedPlaylists()
-    );
-  }
-
-  retriveFeaturedPlaylists() {
-    let params = new HttpParams();
-    params = params.append('limit', 12);
-
-    return this.http.get<FeaturedPlaylistResponse>(
-      `browse/featured-playlists`,
-      { params }
+      this.http.get<FeaturedPlaylistResponse>(`browse/featured-playlists`, {
+        params,
+      })
     );
   }
 
   getPlaylistInfo(id: string) {
     return createQuery(
       ['playlistInfo', { id }] as const,
-      this.retrivePlaylist(id)
+      this.http.get<Playlist>(`playlists/${id}`)
     );
-  }
-
-  retrivePlaylist(id: string, offset: number = 0) {
-    const params = this.params.append('offset', offset);
-    return this.http.get<Playlist>(`playlists/${id}`, { params });
   }
 
   getSearchResults(query: string) {
