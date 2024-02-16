@@ -30,6 +30,7 @@ import {
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimen
     NgOptimizedImage,
     MatSnackBarModule,
     AngularQueryDevtools,
+    NgxSkeletonLoaderModule,
   ],
   providers: [
     provideAngularQuery(new QueryClient()),

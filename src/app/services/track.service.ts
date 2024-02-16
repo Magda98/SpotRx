@@ -3,10 +3,10 @@ import {
   Playlist,
   PlaylistResponse,
 } from './../interfaces/playlist';
-import { Item, TracksResponse, SearchResponse } from './../interfaces/track';
+import { TracksResponse, SearchResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { LoaderBaseService } from './loader-base.service';
 import { createQuery } from 'src/utils/createQuery';
 
@@ -14,30 +14,43 @@ import { createQuery } from 'src/utils/createQuery';
   providedIn: 'root',
 })
 export class TrackService extends LoaderBaseService {
-  private savedTracks = new BehaviorSubject<Item[]>([]);
-  private userPlaylists = new BehaviorSubject<Playlist[]>([]);
-  private playlisInfo = new ReplaySubject<Playlist>();
-  private playlistTracks = new BehaviorSubject<Item[]>([]);
-  totalTracks = new BehaviorSubject<number>(0);
-  currentPage = new BehaviorSubject<number>(0);
   private params = new HttpParams();
-  pageSize = 6;
+  readonly pageSize = 6;
 
   constructor(private http: HttpClient) {
     super();
     this.params = this.params.append('limit', this.pageSize);
   }
 
-  getSavedTracks() {
-    return this.savedTracks.asObservable();
+  getSavedTracks(offset: number) {
+    return createQuery(
+      ['savedTracks', { page: offset }] as const,
+      this.retriveSavedTracks(offset)
+    );
   }
 
-  getPlaylistTracks() {
-    return this.playlistTracks.asObservable();
+  retriveSavedTracks(offset: number = 0) {
+    const params = this.params.append('offset', offset);
+    return this.http.get<TracksResponse>(`me/tracks`, { params });
+  }
+
+  getPlaylistTracks(id: string, offset: number) {
+    return createQuery(
+      ['playlistTracks', { id, offset }] as const,
+      this.retrivePlaylistTracks(id, offset)
+    );
+  }
+
+  retrivePlaylistTracks(id: string, offset: number = 0) {
+    const params = this.params.append('offset', offset);
+    return this.http.get<TracksResponse>(`playlists/${id}/tracks`, { params });
   }
 
   getUserPlaylists() {
-    return this.userPlaylists.asObservable();
+    return createQuery(
+      ['userPlaylists'],
+      this.http.get<PlaylistResponse>(`me/playlists`)
+    );
   }
 
   getFeaturedPlaylists() {
@@ -45,54 +58,6 @@ export class TrackService extends LoaderBaseService {
       ['featuredPlaylists'] as const,
       this.retriveFeaturedPlaylists()
     );
-  }
-
-  getPlaylistInfo() {
-    return this.playlisInfo.asObservable();
-  }
-
-  retriveSavedTracks(offset: number = 0) {
-    const params = this.params.append('offset', offset);
-    const getData$ = this.http
-      .get<TracksResponse>(`me/tracks`, { params })
-      .pipe(
-        tap((val) => {
-          this.savedTracks.next(val.items);
-          this.totalTracks.next(val.total);
-        })
-      );
-    return this.getDataWithLoader(getData$);
-  }
-
-  retriveUserPlaylists() {
-    return this.http.get<PlaylistResponse>(`me/playlists`).pipe(
-      tap((val) => {
-        this.userPlaylists.next(val.items);
-      })
-    );
-  }
-
-  retrivePlaylist(id: string, offset: number = 0) {
-    const params = this.params.append('offset', offset);
-
-    return this.http.get<Playlist>(`playlists/${id}`, { params }).pipe(
-      tap((val) => {
-        this.playlisInfo.next(val);
-      })
-    );
-  }
-
-  retrivePlaylistTracks(id: string, offset: number = 0) {
-    const params = this.params.append('offset', offset);
-    const getData$ = this.http
-      .get<TracksResponse>(`playlists/${id}/tracks`, { params })
-      .pipe(
-        tap((val) => {
-          this.playlistTracks.next(val.items);
-          this.totalTracks.next(val.total);
-        })
-      );
-    return this.getDataWithLoader(getData$);
   }
 
   retriveFeaturedPlaylists() {
@@ -103,6 +68,18 @@ export class TrackService extends LoaderBaseService {
       `browse/featured-playlists`,
       { params }
     );
+  }
+
+  getPlaylistInfo(id: string) {
+    return createQuery(
+      ['playlistInfo', { id }] as const,
+      this.retrivePlaylist(id)
+    );
+  }
+
+  retrivePlaylist(id: string, offset: number = 0) {
+    const params = this.params.append('offset', offset);
+    return this.http.get<Playlist>(`playlists/${id}`, { params });
   }
 
   retriveSearchResults(query: string) {

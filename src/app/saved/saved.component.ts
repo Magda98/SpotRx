@@ -1,30 +1,35 @@
-import { Component, OnInit, Signal } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Signal,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { Item } from '../interfaces/track';
 import { TrackService } from '../services/track.service';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
+import { injectQuery } from '@tanstack/angular-query-experimental';
 
 @Component({
   selector: 'app-saved',
   templateUrl: './saved.component.html',
   styleUrls: ['./saved.component.scss'],
 })
-export class SavedComponent implements OnInit {
-  savedTracks: Signal<Item[]> = toSignal(this.trackService.getSavedTracks(), {
-    initialValue: [],
+export class SavedComponent {
+  trackService = inject(TrackService);
+  offset = signal(0);
+  savedTracksQuery = injectQuery(() =>
+    this.trackService.getSavedTracks(this.offset())
+  );
+  total = computed(() => {
+    const total = this.savedTracksQuery.data()?.total;
+    return total ? total : 0;
   });
-  total = toSignal(this.trackService.totalTracks, { initialValue: 0 });
-
-  constructor(public trackService: TrackService) {}
-
-  ngOnInit() {
-    this.trackService.retriveSavedTracks().subscribe();
-  }
 
   getNextPage(page: PageEvent) {
-    this.trackService
-      .retriveSavedTracks(page.pageSize * page.pageIndex)
-      .subscribe();
+    this.offset.set(page.pageSize * page.pageIndex);
   }
 }
