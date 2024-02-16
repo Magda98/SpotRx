@@ -1,3 +1,4 @@
+import { injectQuery } from '@tanstack/angular-query-experimental';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TrackService } from './../services/track.service';
 import { AuthService } from './../services/auth.service';
@@ -11,7 +12,7 @@ import { Component, Input, OnInit, signal } from '@angular/core';
 })
 export class NavComponent {
   userData = toSignal(this.userService.getUserData());
-  userPlaylists = this.trackService.getUserPlaylists();
+  userPlaylists = injectQuery(() => this.trackService.getUserPlaylists());
   @Input() open = signal(false);
 
   constructor(
