@@ -6,19 +6,16 @@ import {
 import { TracksResponse, SearchResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
-import { LoaderBaseService } from './loader-base.service';
 import { createQuery } from 'src/utils/createQuery';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TrackService extends LoaderBaseService {
+export class TrackService {
   private params = new HttpParams();
   readonly pageSize = 6;
 
   constructor(private http: HttpClient) {
-    super();
     this.params = this.params.append('limit', this.pageSize);
   }
 
