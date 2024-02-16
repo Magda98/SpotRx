@@ -17,6 +17,7 @@ export class UserService {
   }
 
   retriveUserData() {
+    // TODO: use createQuery
     return this.http.get<User>(`me`).pipe(
       tap((val) => {
         this.userData.next(val);

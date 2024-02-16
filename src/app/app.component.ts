@@ -27,6 +27,14 @@ import { CommonModule } from '@angular/common';
   providers: [AuthService, UserService, PlayerService],
 })
 export class AppComponent implements OnInit {
+  /**
+   * TODO:
+   * - use inject function to inject services
+   * - use signal inputs and outputs
+   * - add unit test
+   *
+   * * feature: rewrite paginated list to infinine scroll
+   */
   loggedIn = toSignal(this.authService.loggedIn);
   menuOpen = signal(false);
 

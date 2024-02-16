@@ -70,6 +70,7 @@ export class TrackService {
   }
 
   checkUserSavedTrack(trackId: string) {
+    // TODO: use createQuery
     return this.http.get<boolean[]>(`me/tracks/contains`, {
       params: {
         ids: trackId,
@@ -78,10 +79,12 @@ export class TrackService {
   }
 
   saveTrack(trackId: string) {
+    // TODO: use queryMutation
     return this.http.put<void>(`me/tracks`, { ids: [trackId] });
   }
 
   deleteTrack(trackId: string) {
+    // TODO: use queryMutation
     return this.http.delete<void>(`me/tracks`, {
       body: {
         ids: [trackId],
@@ -90,6 +93,7 @@ export class TrackService {
   }
 
   toggleShuffle(state: boolean) {
+    // TODO: use queryMutation
     return this.http.put<void>(`me/player/shuffle?state=${state}`, {});
   }
 }
