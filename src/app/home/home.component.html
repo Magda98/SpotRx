@@ -9,15 +9,14 @@
     </a>
   </div>
   }
-</div>
-
-<ng-template #skeletonLoading>
+  @if(featuredPlaylists.isPending()){
   <div class="playlist-list">
     <div class="link" class="playlist" *ngFor="let item of skeletonLoadingArray">
-      <!-- <ngx-skeleton-loader animation="progress-dark" count="1"
+      <ngx-skeleton-loader animation="progress-dark" count="1"
         [theme]="{ height: '200px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
       <ngx-skeleton-loader class="artist-skeleton" animation="progress-dark" count="1"
-        [theme]="{ height: '24px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader> -->
+        [theme]="{ height: '24px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
     </div>
   </div>
-</ng-template>
+  }
+</div>
