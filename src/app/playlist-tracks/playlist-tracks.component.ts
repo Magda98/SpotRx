@@ -5,11 +5,15 @@ import { map } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { injectQuery } from '@tanstack/angular-query-experimental';
+import { TrackListComponent } from '../track-list/track-list.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
   selector: 'app-playlist-tracks',
   templateUrl: './playlist-tracks.component.html',
   styleUrls: ['./playlist-tracks.component.scss'],
+  standalone: true,
+  imports: [TrackListComponent, NgxSkeletonLoaderModule],
 })
 export class PlaylistTracksComponent {
   offset = signal(0);

@@ -1,5 +1,5 @@
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Icons, icons } from './../icons';
+import { Icons, icons } from '../utils/icons';
 import {
   Component,
   Input,
@@ -14,6 +14,7 @@ import {
   styleUrls: ['./icon.component.scss'],
   host: { class: 'app-icon' },
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
 })
 export class IconComponent implements OnChanges {
   @Input() type!: Icons;

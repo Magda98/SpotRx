@@ -1,6 +1,6 @@
 import { PlayerService } from './../services/player.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSliderDragEvent } from '@angular/material/slider';
+import { MatSliderDragEvent, MatSliderModule } from '@angular/material/slider';
 import {
   EMPTY,
   Subscription,
@@ -12,11 +12,23 @@ import {
 } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TrackService } from '../services/track.service';
+import { MatIcon } from '@angular/material/icon';
+import { IconComponent } from '../icon/icon.component';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss'],
+  standalone: true,
+  imports: [
+    MatSliderModule,
+    MatIcon,
+    IconComponent,
+    CommonModule,
+    HttpClientModule,
+  ],
 })
 export class PlayerComponent implements OnInit, OnDestroy {
   public playerState = this.playerService.getPlayerState();

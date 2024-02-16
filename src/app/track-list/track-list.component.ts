@@ -10,13 +10,23 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { CreateQueryResult } from '@tanstack/angular-query-experimental';
+import { NgOptimizedImage } from '@angular/common';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { DurationPipe } from './duration.pipe';
 
 @Component({
   selector: 'app-track-list',
   templateUrl: './track-list.component.html',
   styleUrls: ['./track-list.component.scss'],
+  standalone: true,
+  imports: [
+    MatPaginatorModule,
+    NgOptimizedImage,
+    NgxSkeletonLoaderModule,
+    DurationPipe,
+  ],
 })
 export class TrackListComponent {
   private playerService = inject(PlayerService);
@@ -28,7 +38,7 @@ export class TrackListComponent {
   readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
   currentPage = computed(() => {
     const offset = this.tracksListQuery()?.data()?.offset;
-    return offset ? offset / this.pageSize : 1;
+    return offset ? offset / this.pageSize : 0;
   });
 
   play(index: number) {

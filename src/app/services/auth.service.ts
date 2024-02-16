@@ -2,11 +2,11 @@ import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, Subject, switchMap, tap } from 'rxjs';
-import { base64url, generateCodeChallenge, randomBytes } from 'src/utils';
+import { base64url, generateCodeChallenge, randomBytes } from 'src/app/utils';
 import { Token } from '../interfaces/token';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { HEADER_CONFIG, SPORIFY_SCOPES } from '../config';
+import { HEADER_CONFIG, SPORIFY_SCOPES } from '../utils/config';
 
 @Injectable({
   providedIn: 'root',

@@ -15,7 +15,9 @@
             {{item.album.name}}
           </span>
           <div class="time">
-            <span *ngFor="let artist of item.artists" class="artist">{{artist.name}}</span>
+            @for(artist of item.artists; track artist.id){
+            <span class="artist">{{artist.name}}</span>
+            }
           </div>
         </div>
       </div>
@@ -26,7 +28,8 @@
   }
   @if(searchQuery.isPending() && search() !== undefined){
   <ul class="track-list track-list--skeleton">
-    <li class="track" *ngFor="let item of skeletonLoadingArray; let i = index">
+    @for(item of skeletonLoadingArray; track item){
+    <li class="track">
       <div class="song-info">
         <ngx-skeleton-loader animation="progress-dark" count="1"
           [theme]="{ height: '90px', width: '90px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
@@ -42,6 +45,7 @@
           [theme]="{ height: '16px', width: '40px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
       </span>
     </li>
+    }
   </ul>
   }
 </div>

@@ -14,7 +14,9 @@
             {{item.track.album.name}}
           </span>
           <div class="track-artist">
-            <span *ngFor="let artist of item.track.artists" class="artist">{{artist.name}}</span>
+            @for(artist of item.track.artists; track artist.id){
+            <span class="artist">{{artist.name}}</span>
+            }
           </div>
         </div>
       </div>
