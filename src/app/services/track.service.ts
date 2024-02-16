@@ -79,10 +79,13 @@ export class TrackService {
     return this.http.get<Playlist>(`playlists/${id}`, { params });
   }
 
-  retriveSearchResults(query: string) {
-    return this.http.get<SearchResponse>(`search`, {
-      params: { q: query, type: ['track'], limit: 10 },
-    });
+  getSearchResults(query: string) {
+    return createQuery(
+      ['searchResults', { query }] as const,
+      this.http.get<SearchResponse>(`search`, {
+        params: { q: query, type: ['track'], limit: 10 },
+      })
+    );
   }
 
   checkUserSavedTrack(trackId: string) {
