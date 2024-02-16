@@ -1,7 +1,7 @@
-import { TrackService } from './../services/track.service';
+import { TrackService } from '../services/track.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, computed, signal } from '@angular/core';
-import { map } from 'rxjs';
+import { distinctUntilChanged, map, tap } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { injectQuery } from '@tanstack/angular-query-experimental';
@@ -9,16 +9,22 @@ import { TrackListComponent } from '../track-list/track-list.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
-  selector: 'app-playlist-tracks',
-  templateUrl: './playlist-tracks.component.html',
-  styleUrls: ['./playlist-tracks.component.scss'],
+  selector: 'app-playlist',
+  templateUrl: './playlist.component.html',
+  styleUrls: ['./playlist.component.scss'],
   standalone: true,
   imports: [TrackListComponent, NgxSkeletonLoaderModule],
 })
-export class PlaylistTracksComponent {
+export class PlaylistComponent {
   offset = signal(0);
   playlistId = toSignal(
-    this.route.paramMap.pipe(map((paramMap) => paramMap.get('id')))
+    this.route.paramMap.pipe(
+      map((paramMap) => paramMap.get('id')),
+      distinctUntilChanged(),
+      tap(() => {
+        this.offset.set(0);
+      })
+    )
   );
   tracksQuery = injectQuery(() =>
     this.trackService.getPlaylistTracks(this.playlistId() ?? '', this.offset())
@@ -26,10 +32,6 @@ export class PlaylistTracksComponent {
   playlistInfo = injectQuery(() =>
     this.trackService.getPlaylistInfo(this.playlistId() ?? '')
   );
-  total = computed(() => {
-    const total = this.tracksQuery.data()?.total;
-    return total ? total : 0;
-  });
 
   constructor(
     private route: ActivatedRoute,

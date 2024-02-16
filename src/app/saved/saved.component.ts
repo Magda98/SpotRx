@@ -12,6 +12,8 @@ import { PageEvent } from '@angular/material/paginator';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { TrackListComponent } from '../track-list/track-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-saved',
@@ -26,7 +28,6 @@ export class SavedComponent {
   savedTracksQuery = injectQuery(() =>
     this.trackService.getSavedTracks(this.offset())
   );
-
   getNextPage(page: PageEvent) {
     this.offset.set(page.pageSize * page.pageIndex);
   }
