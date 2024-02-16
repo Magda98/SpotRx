@@ -1,19 +1,12 @@
-import {
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  switchMap,
-  EMPTY,
-  tap,
-} from 'rxjs';
-import { Component, OnInit, signal } from '@angular/core';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
+import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 import { PlayerService } from '../services/player.service';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { Track } from '../interfaces/track';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { NgOptimizedImage } from '@angular/common';
 import { DurationPipe } from '../track-list/duration.pipe';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -25,6 +18,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
   standalone: true,
   imports: [
     MatFormFieldModule,
+    MatInputModule,
     NgOptimizedImage,
     DurationPipe,
     NgxSkeletonLoaderModule,
