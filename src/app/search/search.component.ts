@@ -21,7 +21,7 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 })
 export class SearchComponent {
   public searchFromControl = new FormControl('');
-  private search = toSignal(
+  search = toSignal(
     this.searchFromControl.valueChanges.pipe(
       debounceTime(300),
       filter((searchValue) => !!searchValue?.length),

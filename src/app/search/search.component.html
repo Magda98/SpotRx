@@ -24,7 +24,7 @@
     }
   </ul>
   }
-  @if(searchQuery.isPending()){
+  @if(searchQuery.isPending() && search() !== undefined){
   <ul class="track-list track-list--skeleton">
     <li class="track" *ngFor="let item of skeletonLoadingArray; let i = index">
       <div class="song-info">

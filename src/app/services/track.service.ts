@@ -64,7 +64,8 @@ export class TrackService {
       ['searchResults', { query }] as const,
       this.http.get<SearchResponse>(`search`, {
         params: { q: query, type: ['track'], limit: 10 },
-      })
+      }),
+      !!query
     );
   }
 
