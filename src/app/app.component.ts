@@ -1,5 +1,5 @@
 import { toSignal } from '@angular/core/rxjs-interop';
-import { EMPTY, switchMap, zip } from 'rxjs';
+import { EMPTY, switchMap } from 'rxjs';
 import { TrackService } from './services/track.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 export class AppComponent implements OnInit {
   loggedIn = toSignal(this.authService.loggedIn);
   menuOpen = signal(false);
+
   private auth = this.authService.retriveToken().pipe(
     switchMap((token) => {
       if (!token) {
@@ -21,11 +22,7 @@ export class AppComponent implements OnInit {
         return EMPTY;
       }
       this.initSpotifyScript(token);
-      return zip(
-        this.userService.retriveUserData(),
-        this.trackService.retriveUserPlaylists(),
-        this.trackService.retriveFeaturedPlaylists()
-      );
+      return this.userService.retriveUserData();
     })
   );
   playerState = this.playerService.getPlayerState();
@@ -34,8 +31,7 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private playerService: PlayerService,
-    private trackService: TrackService
+    private playerService: PlayerService
   ) {}
 
   toggleMenu() {

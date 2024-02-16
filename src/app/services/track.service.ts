@@ -43,7 +43,7 @@ export class TrackService {
   }
 
   getFeaturedPlaylists() {
-    const params = this.params.append('limit', 12);
+    const params = this.params.set('limit', 12);
     return createQuery(
       ['featuredPlaylists'] as const,
       this.http.get<FeaturedPlaylistResponse>(`browse/featured-playlists`, {
