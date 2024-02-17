@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { BASE_URL } from '../utils/config';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -17,30 +18,33 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return this.authService.retriveToken().pipe(
-      take(1),
-      switchMap((token) => {
-        if (token) {
-          let modifiedReq = req;
+    const token = this.authService.token;
+    if (token) {
+      let modifiedReq = req;
+      if (!req.url.includes('/token')) {
+        // add authorization header to request if we not requesting /token path
+        modifiedReq = req.clone({
+          headers: req.headers.set('Authorization', `Bearer ${token}`),
+          url: `${BASE_URL}${req.url}`,
+        });
+      }
 
-          if (!req.url.includes('/token')) {
-            modifiedReq = req.clone({
-              headers: req.headers.set('Authorization', `Bearer ${token}`),
-              url: `https://api.spotify.com/v1/${req.url}`,
-            });
-          }
+      return next.handle(modifiedReq).pipe(
+        catchError((error: HttpErrorResponse) => {
+          // refresh token if 401 error
+          if (error.status === 401)
+            return this.handle401Error(modifiedReq, next)(error);
 
-          return next.handle(modifiedReq).pipe(
-            catchError((error: HttpErrorResponse) => {
-              if (error.status === 401)
-                return this.handle401Error(modifiedReq, next)(error);
+          // if other error logout user
+          this.authService.logout();
+          return throwError(() => error);
+        })
+      );
+    }
 
-              return throwError(() => error);
-            })
-          );
-        }
-
-        return next.handle(req);
+    return next.handle(req).pipe(
+      catchError((err) => {
+        return throwError(() => err);
       })
     );
   }
@@ -48,27 +52,23 @@ export class AuthInterceptor implements HttpInterceptor {
   handle401Error(req: HttpRequest<unknown>, next: HttpHandler) {
     return (error: any) => {
       if (req.url.includes('/token')) {
-        this.authService.loggedIn.next(false);
+        this.authService.logout();
         return throwError(() => error);
       }
 
       return this.authService.getRefreshToken().pipe(
-        switchMap((token) => {
-          this.authService.token.next(token.access_token);
-          this.authService.tokenObj.next(token);
-          this.authService.loggedIn.next(true);
-
+        switchMap((authData) => {
           const modifiedReq = req.clone({
             headers: req.headers.set(
               'Authorization',
-              `Bearer ${token.access_token}`
+              `Bearer ${authData.access_token}`
             ),
-            url: `https://api.spotify.com/v1/${req.url}`,
+            url: req.url,
           });
           return next.handle(modifiedReq);
         }),
         catchError((error) => {
-          this.authService.loggedIn.next(false);
+          this.authService.logout();
           return throwError(() => error);
         })
       );

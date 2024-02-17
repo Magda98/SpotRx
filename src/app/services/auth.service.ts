@@ -1,19 +1,22 @@
+import { AuthData } from './../interfaces/authData';
 import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, Subject, switchMap, tap } from 'rxjs';
 import { base64url, generateCodeChallenge, randomBytes } from 'src/app/utils';
-import { Token } from '../interfaces/token';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { HEADER_CONFIG, SPORIFY_SCOPES } from '../utils/config';
+import { CLIENT_ID, HEADER_CONFIG, SPORIFY_SCOPES } from '../utils/config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  token = new BehaviorSubject<string | undefined>(undefined);
-  tokenObj = new ReplaySubject<Token>();
+  private readonly authUrl = 'https://accounts.spotify.com/api/token';
+  private readonly authDataSotrageKey = 'authData';
+  token: string | undefined;
+  authData = new BehaviorSubject<AuthData | undefined>(undefined);
+  refreshToken = new BehaviorSubject<string | undefined>(undefined);
   loggedIn = new ReplaySubject<boolean>();
 
   constructor(
@@ -21,34 +24,44 @@ export class AuthService {
     private router: Router,
     private storage: StorageService
   ) {
-    const data = this.storage.getData('token');
-
+    const data: AuthData | null = this.storage.getData(this.authDataSotrageKey);
     if (data) {
-      this.token.next(data?.access_token);
-      this.tokenObj.next(data);
+      this.token = data.access_token;
+      this.authData.next(data ?? undefined);
+      this.refreshToken.next(data.refresh_token);
     }
+    if (!data) this.loggedIn.next(false);
 
-    this.tokenObj.asObservable().subscribe((token) => {
-      if (token) {
-        this.storage.setData('token', token);
-      }
-    });
+    this.syncAuthDataInStorage().subscribe();
   }
 
-  retriveToken() {
-    return this.token.asObservable();
+  /**
+   * Auth data should be synced with local storage
+   * over the life of the app
+   * @returns Observable<AuthData | undefined>
+   */
+  syncAuthDataInStorage() {
+    return this.authData.pipe(
+      tap((authData) => {
+        if (authData) this.storage.setData(this.authDataSotrageKey, authData);
+      })
+    );
+  }
+
+  logout() {
+    this.storage.removeData(this.authDataSotrageKey);
+    window.location.reload();
   }
 
   async login() {
     const code_verifier = base64url(randomBytes(96));
     const code = await generateCodeChallenge(code_verifier);
-    const baseUrl = 'https://accounts.spotify.com/authorize';
-    const clientId = '57a795ef5d9a4ccca747877d47fbc61d';
+    const baseUrl = ' https://accounts.spotify.com/authorize';
     const scope = SPORIFY_SCOPES.join('%20');
     const responseType = 'code';
 
     window.sessionStorage.setItem('code_verifier', code_verifier);
-    window.location.href = `${baseUrl}?client_id=${clientId}&scope=${scope}&redirect_uri=${environment.redirectUri}&response_type=${responseType}&code_challenge_method=S256&code_challenge=${code}`;
+    window.location.href = `${baseUrl}?client_id=${CLIENT_ID}&scope=${scope}&redirect_uri=${environment.redirectUri}&response_type=${responseType}&code_challenge_method=S256&code_challenge=${code}`;
   }
 
   getToken() {
@@ -60,19 +73,15 @@ export class AuthService {
     urlParams.append('grant_type', 'authorization_code');
     urlParams.append('code', code);
     urlParams.append('redirect_uri', environment.redirectUri);
-    urlParams.append('client_id', '57a795ef5d9a4ccca747877d47fbc61d');
+    urlParams.append('client_id', CLIENT_ID);
     urlParams.append('code_verifier', code_verifier);
 
     return this.http
-      .post<Token>(
-        'https://accounts.spotify.com/api/token',
-        urlParams,
-        HEADER_CONFIG
-      )
+      .post<AuthData>(this.authUrl, urlParams, HEADER_CONFIG)
       .pipe(
-        tap((token) => {
-          this.token.next(token.access_token);
-          this.tokenObj.next(token);
+        tap((authData) => {
+          this.token = authData.access_token;
+          this.authData.next(authData);
           this.loggedIn.next(true);
           this.router.navigate(['']);
         })
@@ -80,20 +89,22 @@ export class AuthService {
   }
 
   getRefreshToken() {
-    return this.tokenObj.pipe(
-      switchMap((token) => {
-        const refreshToken = token?.refresh_token ?? '';
-        const urlParams = new URLSearchParams();
+    return this.refreshToken.pipe(
+      switchMap((refreshToken) => {
+        const urlParams = new URLSearchParams({
+          grant_type: 'refresh_token',
+          refresh_token: refreshToken ?? '',
+          client_id: CLIENT_ID,
+        });
 
-        urlParams.append('grant_type', 'refresh_token');
-        urlParams.append('refresh_token', refreshToken);
-        urlParams.append('client_id', '57a795ef5d9a4ccca747877d47fbc61d');
-
-        return this.http.post<Token>(
-          'https://accounts.spotify.com/api/token',
-          urlParams,
-          HEADER_CONFIG
-        );
+        return this.http.post<AuthData>(this.authUrl, urlParams, HEADER_CONFIG);
+      }),
+      tap((authData) => {
+        this.token = authData.access_token;
+        this.authData.next(authData);
+        this.loggedIn.next(true);
+        // reload to properly initialize Spotify WebPlayer SDK
+        window.location.reload();
       })
     );
   }

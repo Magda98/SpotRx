@@ -1,8 +1,8 @@
-import { toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { EMPTY, switchMap } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, Pipe } from '@angular/core';
 import { PlayerService } from './services/player.service';
 import { environment } from 'src/environments/environment';
 import { RouterModule } from '@angular/router';
@@ -38,15 +38,13 @@ export class AppComponent implements OnInit {
   loggedIn = toSignal(this.authService.loggedIn);
   menuOpen = signal(false);
 
-  private auth = this.authService.retriveToken().pipe(
-    switchMap((token) => {
-      if (!token) {
-        this.authService.loggedIn.next(false);
-        return EMPTY;
-      }
-      this.initSpotifyScript(token);
+  private auth = this.authService.authData.pipe(
+    switchMap((authData) => {
+      if (!authData) return EMPTY;
+      this.initSpotifyScript(authData.access_token);
       return this.userService.retriveUserData();
-    })
+    }),
+    takeUntilDestroyed()
   );
   playerState = this.playerService.getPlayerState();
   isProductionMode = environment.production;
@@ -63,7 +61,6 @@ export class AppComponent implements OnInit {
 
   initSpotifyScript(token: string) {
     this.playerService.initializePlayer(token);
-
     const script = document.createElement('script');
     script.src = 'https://sdk.scdn.co/spotify-player.js';
     script.type = 'text/javascript';
@@ -72,7 +69,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (location.search) {
-      this.authService.getToken().subscribe();
+      this.authService
+        .getToken()
+        .subscribe(() => setTimeout(() => window.location.reload(), 0));
     }
     this.auth.subscribe();
   }
