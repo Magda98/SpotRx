@@ -103,6 +103,7 @@ export class AuthService {
         this.token = authData.access_token;
         this.authData.next(authData);
         this.loggedIn.next(true);
+        // TODO: initialize script after making sure that token is valid
         // reload to properly initialize Spotify WebPlayer SDK
         window.location.reload();
       })

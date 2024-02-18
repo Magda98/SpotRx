@@ -10,9 +10,7 @@ import {
   fromEvent,
 } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class PlayerService {
   player?: Spotify.Player;
   playerState = new Subject<Spotify.PlaybackState>();
