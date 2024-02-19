@@ -78,12 +78,10 @@ export class TrackService {
   }
 
   saveTrack(trackId: string) {
-    // TODO: use queryMutation
     return this.http.put<void>(`me/tracks`, { ids: [trackId] });
   }
 
   deleteTrack(trackId: string) {
-    // TODO: use queryMutation
     return this.http.delete<void>(`me/tracks`, {
       body: {
         ids: [trackId],
