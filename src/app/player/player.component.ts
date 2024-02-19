@@ -34,7 +34,7 @@ import { injectMutation, injectQuery } from '@tanstack/angular-query-experimenta
   ],
 })
 export class PlayerComponent implements OnInit, OnDestroy {
-  private playerService = inject(PlayerService)
+  public playerService = inject(PlayerService)
   private trackService = inject(TrackService)
   private snackBarService = inject(MatSnackBar)
   public playerState$ = this.playerService.getPlayerState();
