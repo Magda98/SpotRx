@@ -4,7 +4,7 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { PlayerService } from './services/player.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { IconComponent } from './icon/icon.component';

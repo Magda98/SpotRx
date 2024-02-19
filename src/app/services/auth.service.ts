@@ -3,9 +3,9 @@ import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, switchMap, tap } from 'rxjs';
-import { base64url, generateCodeChallenge, randomBytes } from 'src/app/utils';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { base64url, generateCodeChallenge, randomBytes } from '../utils/utils';
 import { CLIENT_ID, HEADER_CONFIG, SPORIFY_SCOPES } from '../utils/config';
 
 @Injectable({
