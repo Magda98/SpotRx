@@ -2,7 +2,7 @@ import { AuthData } from './../interfaces/authData';
 import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, Subject, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, switchMap, tap } from 'rxjs';
 import { base64url, generateCodeChallenge, randomBytes } from 'src/app/utils';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
@@ -12,7 +12,8 @@ import { CLIENT_ID, HEADER_CONFIG, SPORIFY_SCOPES } from '../utils/config';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly authUrl = 'https://accounts.spotify.com/api/token';
+  private readonly authTokenUrl = 'https://accounts.spotify.com/api/token';
+  private readonly authUrl = 'https://accounts.spotify.com/authorize';
   private readonly authDataSotrageKey = 'authData';
   token: string | undefined;
   authData = new BehaviorSubject<AuthData | undefined>(undefined);
@@ -56,12 +57,11 @@ export class AuthService {
   async login() {
     const code_verifier = base64url(randomBytes(96));
     const code = await generateCodeChallenge(code_verifier);
-    const authUrl = ' https://accounts.spotify.com/authorize';
     const scope = SPORIFY_SCOPES.join('%20');
     const responseType = 'code';
 
     window.sessionStorage.setItem('code_verifier', code_verifier);
-    window.location.href = `${authUrl}?client_id=${CLIENT_ID}&scope=${scope}&redirect_uri=${environment.redirectUri}&response_type=${responseType}&code_challenge_method=S256&code_challenge=${code}`;
+    window.location.href = `${this.authUrl}?client_id=${CLIENT_ID}&scope=${scope}&redirect_uri=${environment.redirectUri}&response_type=${responseType}&code_challenge_method=S256&code_challenge=${code}`;
   }
 
   getToken() {
@@ -77,7 +77,7 @@ export class AuthService {
     urlParams.append('code_verifier', code_verifier);
 
     return this.http
-      .post<AuthData>(this.authUrl, urlParams, HEADER_CONFIG)
+      .post<AuthData>(this.authTokenUrl, urlParams, HEADER_CONFIG)
       .pipe(
         tap((authData) => {
           this.token = authData.access_token;
@@ -97,7 +97,11 @@ export class AuthService {
           client_id: CLIENT_ID,
         });
 
-        return this.http.post<AuthData>(this.authUrl, urlParams, HEADER_CONFIG);
+        return this.http.post<AuthData>(
+          this.authTokenUrl,
+          urlParams,
+          HEADER_CONFIG
+        );
       }),
       tap((authData) => {
         this.token = authData.access_token;

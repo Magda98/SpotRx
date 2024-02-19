@@ -1,6 +1,6 @@
 import { TrackService } from '../services/track.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, computed, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { distinctUntilChanged, map, tap } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -16,6 +16,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
   imports: [TrackListComponent, NgxSkeletonLoaderModule],
 })
 export class PlaylistComponent {
+  private route = inject(ActivatedRoute);
+  private trackService = inject(TrackService);
   offset = signal(0);
   playlistId = toSignal(
     this.route.paramMap.pipe(
@@ -32,11 +34,6 @@ export class PlaylistComponent {
   playlistInfo = injectQuery(() =>
     this.trackService.getPlaylistInfo(this.playlistId() ?? '')
   );
-
-  constructor(
-    private route: ActivatedRoute,
-    public trackService: TrackService
-  ) {}
 
   getNextPage(page: PageEvent) {
     this.offset.set(page.pageSize * page.pageIndex);

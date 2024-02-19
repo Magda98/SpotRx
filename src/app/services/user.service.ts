@@ -1,7 +1,7 @@
 import { AuthService } from './auth.service';
 import { User } from './../interfaces/user';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { createQuery } from '../utils/createQuery';
 import { tap } from 'rxjs';
 
@@ -9,13 +9,17 @@ import { tap } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  private http = inject(HttpClient);
+  private authService = inject(AuthService);
 
   getUserData() {
-    return createQuery(['userData'] as const ,this.http.get<User>(`me`).pipe(
-      tap(() => {
-        this.authService.loggedIn.next(true);
-      })
-    ));
+    return createQuery(
+      ['userData'] as const,
+      this.http.get<User>(`me`).pipe(
+        tap(() => {
+          this.authService.loggedIn.next(true);
+        })
+      )
+    );
   }
 }

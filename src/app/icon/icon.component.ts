@@ -2,10 +2,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Icons, icons } from '../utils/icons';
 import {
   Component,
-  Input,
   OnChanges,
-  OnInit,
   ViewEncapsulation,
+  inject,
   input,
 } from '@angular/core';
 
@@ -18,9 +17,9 @@ import {
   standalone: true,
 })
 export class IconComponent implements OnChanges {
+  private sanitizer = inject(DomSanitizer);
   type = input.required<Icons>();
   icon!: SafeHtml;
-  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnChanges(): void {
     this.icon = this.sanitizer.bypassSecurityTrustHtml(icons[this.type()]);
