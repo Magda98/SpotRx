@@ -69,13 +69,12 @@ export class TrackService {
     );
   }
 
-  checkUserSavedTrack(trackId: string) {
-    // TODO: use createQuery
-    return this.http.get<boolean[]>(`me/tracks/contains`, {
+  checkUserSavedTracks(trackIds: string[]) {
+    return createQuery(['isSavedTrack', {trackIds}] as const, this.http.get<boolean[]>(`me/tracks/contains`, {
       params: {
-        ids: trackId,
+        ids: trackIds,
       },
-    });
+    }), !!trackIds.length);
   }
 
   saveTrack(trackId: string) {
