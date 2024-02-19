@@ -1,13 +1,11 @@
 import { PlayerService } from './../services/player.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, computed, signal } from '@angular/core';
 import { MatSliderDragEvent, MatSliderModule } from '@angular/material/slider';
 import {
   EMPTY,
   Subscription,
   distinctUntilChanged,
-  finalize,
   map,
-  switchMap,
   tap,
 } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,6 +14,7 @@ import { MatIcon } from '@angular/material/icon';
 import { IconComponent } from '../icon/icon.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { injectQuery } from '@tanstack/angular-query-experimental';
 
 @Component({
   selector: 'app-player',
@@ -31,12 +30,16 @@ import { HttpClientModule } from '@angular/common/http';
   ],
 })
 export class PlayerComponent implements OnInit, OnDestroy {
-  public playerState = this.playerService.getPlayerState();
+  public playerState$ = this.playerService.getPlayerState();
   public player?: Spotify.PlaybackState;
-  public isSavedTrack?: boolean;
   private subscription = new Subscription();
   private toggleTrackSubscription?: Subscription;
-  private isFetching = false;
+  private trackId = signal<string | null>(null)
+  private isSavedTrackQuery = injectQuery(() => {
+    const trackId = this.trackId()
+    return this.trackService.checkUserSavedTracks(trackId ? [trackId] : [])
+  })
+  public isSavedTrack = computed(()=> this.isSavedTrackQuery.data()?.[0])
 
   constructor(
     public playerService: PlayerService,
@@ -46,34 +49,32 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(
-      this.playerState
-        .pipe(
-          tap((player) => {
-            this.player = player;
-          }),
-          map((player) => player.track_window.current_track.id),
-          distinctUntilChanged(),
-          switchMap((id) => {
-            if (id) return this.trackService.checkUserSavedTrack(id);
-            return EMPTY;
-          })
-        )
-        .subscribe((data) => {
-          const [isSavedTrack] = data;
-          this.isSavedTrack = isSavedTrack;
-        })
+      this.palyerStateChange$().subscribe()
     );
+  }
+
+  private palyerStateChange$(){
+    return this.playerState$.pipe(
+      tap((player) => {
+        this.player = player;
+      }),
+      map((player) => player.track_window.current_track.id),
+      distinctUntilChanged(),
+      tap((id) => {
+        if (id) this.trackId.set(id);
+      })
+    )
   }
 
   toggleSavedTrack() {
     if (!this.player?.track_window?.current_track?.id) return;
 
-    if (this.isSavedTrack) {
+    if (this.isSavedTrack()) {
       this.toggleTrackSubscription?.unsubscribe();
       return (this.toggleTrackSubscription = this.trackService
         .deleteTrack(this.player.track_window.current_track.id)
         .subscribe(() => {
-          this.isSavedTrack = false;
+          this.isSavedTrackQuery.refetch();
           this.snackBarService.open('Removed form Liked Songs.');
         }));
     }
@@ -82,7 +83,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     return (this.toggleTrackSubscription = this.trackService
       .saveTrack(this.player.track_window.current_track.id)
       .subscribe(() => {
-        this.isSavedTrack = true;
+        this.isSavedTrackQuery.refetch();
         this.snackBarService.open('Added to Liked Songs.');
       }));
   }
@@ -97,19 +98,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   toggleShuffle() {
     if (!this.player) return;
-    if (this.isFetching) return;
 
-    this.isFetching = true;
     this.player.shuffle = !this.player.shuffle;
     this.subscription.add(
       this.trackService
-        .toggleShuffle(this.player.shuffle)
-        .pipe(
-          finalize(() => {
-            this.isFetching = false;
-          })
-        )
-        .subscribe()
+        .toggleShuffle(this.player.shuffle).subscribe()
     );
   }
 
