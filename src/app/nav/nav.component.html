@@ -5,26 +5,28 @@
     <app-icon class="icon--large" type="logo"></app-icon>
     <h1>SpotRx</h1>
   </div>
-  <div class="user-data" *ngIf="userData()">
-    <img class="user-img" [src]="userData()?.images?.[0]?.url">
-    <span class="user-name">{{userData()?.display_name}}</span>
+  @if(userData().isSuccess()){
+  <div class="user-data">
+    <img class="user-img" [src]="userData().data()?.images?.[0]?.url">
+    <span class="user-name">{{userData().data()?.display_name}}</span>
   </div>
+  }
 
   <ul class="nav-links">
-    <li><a class="link" (click)="open.set(false)" routerLink="/" routerLinkActive="active">
+    <li><a class="link" (click)="closeMenu()" routerLink="/" routerLinkActive="active">
         <mat-icon class="icon">home</mat-icon> Home
       </a></li>
-    <li><a class="link" (click)="open.set(false)" routerLink="/saved" routerLinkActive="active">
+    <li><a class="link" (click)="closeMenu()" routerLink="/saved" routerLinkActive="active">
         <mat-icon class="icon">favorite</mat-icon> Saved
       </a></li>
-    <li><a class="link" (click)="open.set(false)" routerLink="/search" routerLinkActive="active">
+    <li><a class="link" (click)="closeMenu()" routerLink="/search" routerLinkActive="active">
         <mat-icon class="icon">search</mat-icon> Search
       </a></li>
   </ul>
 
   @if(userPlaylists.isSuccess()){
   <div class="playlist-list" *ngIf="userPlaylists.data().items as items">
-    <a class="link" (click)="open.set(false)" [routerLink]="['/playlist', item.id]" class="playlist"
+    <a class="link" (click)="closeMenu()" [routerLink]="['/playlist', item.id]" class="playlist"
       *ngFor="let item of items">
       <img class="playlist-img" [src]="item.images[0].url">
       <h3 class="playlist-name">{{item.name}}</h3>

@@ -1,5 +1,5 @@
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { EMPTY, switchMap } from 'rxjs';
+import {  tap } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { Component, OnInit, signal, Pipe } from '@angular/core';
@@ -11,6 +11,7 @@ import { IconComponent } from './icon/icon.component';
 import { PlayerComponent } from './player/player.component';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 import { CommonModule } from '@angular/common';
+import { injectQuery } from '@tanstack/angular-query-experimental';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,19 +31,19 @@ export class AppComponent implements OnInit {
   /**
    * TODO:
    * - use inject function to inject services
-   * - use signal inputs and outputs
+   * - use signal inputs
    * - add unit test
    *
    * * feature: rewrite paginated list to infinine scroll
    */
   loggedIn = toSignal(this.authService.loggedIn);
   menuOpen = signal(false);
+  userData = injectQuery(() => this.userService.getUserData());
 
   private auth = this.authService.authData.pipe(
-    switchMap((authData) => {
-      if (!authData) return EMPTY;
+    tap((authData) => {
+      if (!authData) return;
       this.initSpotifyScript(authData.access_token);
-      return this.userService.retriveUserData();
     }),
     takeUntilDestroyed()
   );
