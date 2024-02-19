@@ -1,12 +1,12 @@
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { injectQuery } from '@tanstack/angular-query-experimental';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { CreateQueryResult, injectQuery } from '@tanstack/angular-query-experimental';
 import { TrackService } from './../services/track.service';
 import { UserService } from './../services/user.service';
-import { Component, Input, signal } from '@angular/core';
+import { Component, inject, input, EventEmitter, Output } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
 import { CommonModule } from '@angular/common';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-nav',
@@ -16,14 +16,14 @@ import { CommonModule } from '@angular/common';
   imports: [IconComponent, RouterModule, MatIconModule, CommonModule],
 })
 export class NavComponent {
-  userData = toSignal(this.userService.getUserData());
+  userService = inject(UserService)
+  trackService = inject(TrackService)
+  userData = input.required<CreateQueryResult<User>>()
   userPlaylists = injectQuery(() => this.trackService.getUserPlaylists());
-  @Input() open = signal(false);
+  open = input(false);
+  @Output() toggleMenu: EventEmitter<boolean> = new EventEmitter<boolean>()
 
-  constructor(
-    private userService: UserService,
-    private trackService: TrackService
-  ) {
-    this.userService.retriveUserData();
+  closeMenu(){
+    this.toggleMenu.emit(false)
   }
 }

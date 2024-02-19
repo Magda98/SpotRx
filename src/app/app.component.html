@@ -11,7 +11,7 @@
   </ng-container>
 
   <ng-container *ngIf="loggedIn() === true">
-    <app-nav [open]="menuOpen"></app-nav>
+    <app-nav [userData]="userData" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-nav>
     <button class="app-menu-button btn" type="button" (click)="toggleMenu()">
       <app-icon class="icon" type="menu"></app-icon>
     </button>
