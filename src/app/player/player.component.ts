@@ -5,6 +5,7 @@ import {
   EMPTY,
   Subscription,
   distinctUntilChanged,
+
   firstValueFrom,
   map,
   tap,
@@ -52,6 +53,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
       this.snackBarService.open('Removed form Liked Songs.');
       client.invalidateQueries({ queryKey: ['isSavedTrack'] })}
   }))
+  private shuffle = injectMutation(()=> ({
+    mutationFn: (state: boolean) => firstValueFrom(this.trackService.toggleShuffle(state))
+  }))
 
   constructor(
     public playerService: PlayerService,
@@ -95,12 +99,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   toggleShuffle() {
     if (!this.player) return;
-
     this.player.shuffle = !this.player.shuffle;
-    this.subscription.add(
-      this.trackService
-        .toggleShuffle(this.player.shuffle).subscribe()
-    );
+    this.shuffle.mutate(this.player.shuffle)
   }
 
   ngOnDestroy(): void {
