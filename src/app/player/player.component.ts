@@ -1,10 +1,12 @@
 import { PlayerService } from './../services/player.service';
-import { Component, OnDestroy, OnInit, computed, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, computed, inject, signal } from '@angular/core';
 import { MatSliderDragEvent, MatSliderModule } from '@angular/material/slider';
 import {
   EMPTY,
   Subscription,
   distinctUntilChanged,
+
+  filter,
 
   firstValueFrom,
   map,
@@ -32,6 +34,9 @@ import { injectMutation, injectQuery } from '@tanstack/angular-query-experimenta
   ],
 })
 export class PlayerComponent implements OnInit, OnDestroy {
+  private playerService = inject(PlayerService)
+  private trackService = inject(TrackService)
+  private snackBarService = inject(MatSnackBar)
   public playerState$ = this.playerService.getPlayerState();
   public player?: Spotify.PlaybackState;
   private subscription = new Subscription();
@@ -57,12 +62,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
     mutationFn: (state: boolean) => firstValueFrom(this.trackService.toggleShuffle(state))
   }))
 
-  constructor(
-    public playerService: PlayerService,
-    private trackService: TrackService,
-    private snackBarService: MatSnackBar
-  ) {}
-
   ngOnInit(): void {
     this.subscription.add(
       this.palyerStateChange$().subscribe()
@@ -76,8 +75,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
       }),
       map((player) => player.track_window.current_track.id),
       distinctUntilChanged(),
+      filter((id) => !!id),
       tap((id) => {
-        if (id) this.trackId.set(id);
+       this.trackId.set(id);
       })
     )
   }
