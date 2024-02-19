@@ -5,6 +5,7 @@ import {
   EMPTY,
   Subscription,
   distinctUntilChanged,
+  firstValueFrom,
   map,
   tap,
 } from 'rxjs';
@@ -14,7 +15,7 @@ import { MatIcon } from '@angular/material/icon';
 import { IconComponent } from '../icon/icon.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { injectQuery } from '@tanstack/angular-query-experimental';
+import { injectMutation, injectQuery } from '@tanstack/angular-query-experimental';
 
 @Component({
   selector: 'app-player',
@@ -33,13 +34,24 @@ export class PlayerComponent implements OnInit, OnDestroy {
   public playerState$ = this.playerService.getPlayerState();
   public player?: Spotify.PlaybackState;
   private subscription = new Subscription();
-  private toggleTrackSubscription?: Subscription;
   private trackId = signal<string | null>(null)
   private isSavedTrackQuery = injectQuery(() => {
     const trackId = this.trackId()
     return this.trackService.checkUserSavedTracks(trackId ? [trackId] : [])
   })
   public isSavedTrack = computed(()=> this.isSavedTrackQuery.data()?.[0])
+  private addToFav = injectMutation((client)=> ({
+    mutationFn: (trackId: string) => firstValueFrom(this.trackService.saveTrack(trackId)),
+    onSuccess: ()=> {
+      this.snackBarService.open('Added to Liked Songs.');
+      client.invalidateQueries({ queryKey: ['isSavedTrack'] })}
+  }))
+  private deleteFromFav = injectMutation((client)=> ({
+    mutationFn: (trackId: string) => firstValueFrom(this.trackService.deleteTrack(trackId)),
+    onSuccess: ()=> {
+      this.snackBarService.open('Removed form Liked Songs.');
+      client.invalidateQueries({ queryKey: ['isSavedTrack'] })}
+  }))
 
   constructor(
     public playerService: PlayerService,
@@ -67,25 +79,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   toggleSavedTrack() {
-    if (!this.player?.track_window?.current_track?.id) return;
-
-    if (this.isSavedTrack()) {
-      this.toggleTrackSubscription?.unsubscribe();
-      return (this.toggleTrackSubscription = this.trackService
-        .deleteTrack(this.player.track_window.current_track.id)
-        .subscribe(() => {
-          this.isSavedTrackQuery.refetch();
-          this.snackBarService.open('Removed form Liked Songs.');
-        }));
-    }
-
-    this.toggleTrackSubscription?.unsubscribe();
-    return (this.toggleTrackSubscription = this.trackService
-      .saveTrack(this.player.track_window.current_track.id)
-      .subscribe(() => {
-        this.isSavedTrackQuery.refetch();
-        this.snackBarService.open('Added to Liked Songs.');
-      }));
+    const trackId = this.trackId()
+    if (!trackId) return;
+    if (this.isSavedTrack()) return this.deleteFromFav.mutate(trackId)
+    return this.addToFav.mutate(trackId)
   }
 
   setVolume(volumeSlider: MatSliderDragEvent) {
@@ -108,6 +105,5 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    this.toggleTrackSubscription?.unsubscribe();
   }
 }
