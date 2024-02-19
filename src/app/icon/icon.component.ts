@@ -6,6 +6,7 @@ import {
   OnChanges,
   OnInit,
   ViewEncapsulation,
+  input,
 } from '@angular/core';
 
 @Component({
@@ -17,11 +18,11 @@ import {
   standalone: true,
 })
 export class IconComponent implements OnChanges {
-  @Input() type!: Icons;
+  type = input.required<Icons>();
   icon!: SafeHtml;
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnChanges(): void {
-    this.icon = this.sanitizer.bypassSecurityTrustHtml(icons[this.type]);
+    this.icon = this.sanitizer.bypassSecurityTrustHtml(icons[this.type()]);
   }
 }
