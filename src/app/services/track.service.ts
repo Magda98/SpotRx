@@ -1,3 +1,4 @@
+import { createQuery } from '../utils/createQuery';
 import {
   FeaturedPlaylistResponse,
   Playlist,
@@ -6,7 +7,6 @@ import {
 import { TracksResponse, SearchResponse } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { createQuery } from 'src/app/utils/createQuery';
 
 @Injectable({
   providedIn: 'root',
