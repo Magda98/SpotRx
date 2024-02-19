@@ -56,12 +56,12 @@ export class AuthService {
   async login() {
     const code_verifier = base64url(randomBytes(96));
     const code = await generateCodeChallenge(code_verifier);
-    const baseUrl = ' https://accounts.spotify.com/authorize';
+    const authUrl = ' https://accounts.spotify.com/authorize';
     const scope = SPORIFY_SCOPES.join('%20');
     const responseType = 'code';
 
     window.sessionStorage.setItem('code_verifier', code_verifier);
-    window.location.href = `${baseUrl}?client_id=${CLIENT_ID}&scope=${scope}&redirect_uri=${environment.redirectUri}&response_type=${responseType}&code_challenge_method=S256&code_challenge=${code}`;
+    window.location.href = `${authUrl}?client_id=${CLIENT_ID}&scope=${scope}&redirect_uri=${environment.redirectUri}&response_type=${responseType}&code_challenge_method=S256&code_challenge=${code}`;
   }
 
   getToken() {
