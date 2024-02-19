@@ -90,7 +90,6 @@ export class TrackService {
   }
 
   toggleShuffle(state: boolean) {
-    // TODO: use queryMutation
     return this.http.put<void>(`me/player/shuffle?state=${state}`, {});
   }
 }
