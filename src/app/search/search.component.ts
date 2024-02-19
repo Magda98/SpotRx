@@ -1,5 +1,5 @@
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 import { PlayerService } from '../services/player.service';
@@ -26,6 +26,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
   ],
 })
 export class SearchComponent {
+  public trackService = inject(TrackService);
+  private playerService = inject(PlayerService);
   public searchFromControl = new FormControl('');
   search = toSignal(
     this.searchFromControl.valueChanges.pipe(
@@ -39,11 +41,6 @@ export class SearchComponent {
     this.trackService.getSearchResults(this.search() ?? '')
   );
   readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
-
-  constructor(
-    public trackService: TrackService,
-    private playerService: PlayerService
-  ) {}
 
   play(uri: string) {
     this.playerService.playSong([uri], 0);

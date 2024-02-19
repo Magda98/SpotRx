@@ -19,13 +19,13 @@ export const appConfig: ApplicationConfig = {
     provideAngularQuery(new QueryClient()),
     {
       provide: HTTP_INTERCEPTORS,
-      useFactory: (authService: AuthService) => {
-        return new AuthInterceptor(authService);
+      useFactory: () => {
+        return new AuthInterceptor();
       },
       multi: true,
       deps: [AuthService],
     },
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
-    PlayerService
+    PlayerService,
   ],
 };

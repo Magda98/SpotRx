@@ -1,8 +1,8 @@
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import {  tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { Component, OnInit, signal, Pipe } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { PlayerService } from './services/player.service';
 import { environment } from 'src/environments/environment';
 import { RouterModule } from '@angular/router';
@@ -30,12 +30,12 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 export class AppComponent implements OnInit {
   /**
    * TODO:
-   * - use inject function to inject services
-   * - use signal inputs
    * - add unit test
-   *
    * * feature: rewrite paginated list to infinine scroll
    */
+  private authService = inject(AuthService);
+  private userService = inject(UserService);
+  private playerService = inject(PlayerService);
   loggedIn = toSignal(this.authService.loggedIn);
   menuOpen = signal(false);
   userData = injectQuery(() => this.userService.getUserData());
@@ -49,12 +49,6 @@ export class AppComponent implements OnInit {
   );
   playerState = this.playerService.getPlayerState();
   isProductionMode = environment.production;
-
-  constructor(
-    private authService: AuthService,
-    private userService: UserService,
-    private playerService: PlayerService
-  ) {}
 
   toggleMenu() {
     this.menuOpen.set(!this.menuOpen());
