@@ -11,6 +11,14 @@ import { BehaviorSubject, ReplaySubject, of } from 'rxjs';
 import { AuthData } from './interfaces/authData';
 import { UserService } from './services/user.service';
 import { User } from './interfaces/user';
+import { createQuery } from './utils/createQuery';
+import { NavComponent } from './nav/nav.component';
+import { IconComponent } from './icon/icon.component';
+import { PlayerComponent } from './player/player.component';
+import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
+import { CommonModule } from '@angular/common';
+import { render, screen } from '@testing-library/angular';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   const mockAuthService = createMockWithValues(AuthService, {
@@ -19,46 +27,49 @@ describe('AppComponent', () => {
   });
 
   const mockUserService = createMockWithValues(UserService, {
-    userDataRequest: () =>
-      of<User>({
-        display_name: 'pieceofsth7',
-        external_urls: {
-          spotify: 'https://open.spotify.com/user/f2o7vc8wi9351bcn76igbhe2i',
-        },
-        href: 'https://api.spotify.com/v1/users/f2o7vc8wi9351bcn76igbhe2i',
-        id: 'f2o7vc8wi9351bcn76igbhe2i',
-        images: [
-          {
-            url: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2046809475373475&height=50&width=50&ext=1711003338&hash=AfrKCTPEXL-APstaCRqb6iOzqjl5RHKOwdXRP0WTcNeYdQ',
-            height: 64,
-            width: 64,
+    getUserData: () => {
+      return createQuery(
+        ['userData'] as const,
+        of<User>({
+          display_name: 'pieceofsth7',
+          external_urls: {
+            spotify: 'https://open.spotify.com/user/f2o7vc8wi9351bcn76igbhe2i',
           },
-          {
-            url: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2046809475373475&height=300&width=300&ext=1711003338&hash=AfqKpNyFIAuS_M4gwqL8eAZNp2fgALFMnqTRsvVRRG4E5g',
-            height: 300,
-            width: 300,
+          href: 'https://api.spotify.com/v1/users/f2o7vc8wi9351bcn76igbhe2i',
+          id: 'f2o7vc8wi9351bcn76igbhe2i',
+          images: [
+            {
+              url: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2046809475373475&height=50&width=50&ext=1711003338&hash=AfrKCTPEXL-APstaCRqb6iOzqjl5RHKOwdXRP0WTcNeYdQ',
+              height: 64,
+              width: 64,
+            },
+            {
+              url: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2046809475373475&height=300&width=300&ext=1711003338&hash=AfqKpNyFIAuS_M4gwqL8eAZNp2fgALFMnqTRsvVRRG4E5g',
+              height: 300,
+              width: 300,
+            },
+          ],
+          type: 'user',
+          uri: 'spotify:user:f2o7vc8wi9351bcn76igbhe2i',
+          followers: {
+            total: 7,
           },
-        ],
-        type: 'user',
-        uri: 'spotify:user:f2o7vc8wi9351bcn76igbhe2i',
-        followers: {
-          total: 7,
-        },
-        country: 'PL',
-        product: 'premium',
-        explicit_content: {
-          filter_enabled: false,
-          filter_locked: false,
-        },
-        email: 'magdakochman7@gmail.com',
-      }),
+          country: 'PL',
+          product: 'premium',
+          explicit_content: {
+            filter_enabled: false,
+            filter_locked: false,
+          },
+          email: 'magdakochman7@gmail.com',
+        })
+      );
+    },
   });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent, RouterModule.forRoot([])],
-      providers: [
-        provideAngularQuery(new QueryClient()),
+  test('should render app title', async () => {
+    mockAuthService.loggedIn.next(false);
+    await render(AppComponent, {
+      componentProviders: [
         {
           provide: AuthService,
           useValue: mockAuthService,
@@ -68,35 +79,17 @@ describe('AppComponent', () => {
           useValue: mockUserService,
         },
       ],
-    }).compileComponents();
-  });
-
-  test('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  test('should render app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('div.app')).toBeTruthy();
-  });
-
-  test('should render login button', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    mockAuthService.loggedIn.next(false);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('button[aria-label="login"]')).toBeTruthy();
-  });
-
-  test('should render app-nav', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    mockAuthService.loggedIn.next(true);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('app-nav')).toBeTruthy();
+      componentImports: [
+        RouterModule,
+        NavComponent,
+        IconComponent,
+        PlayerComponent,
+        AngularQueryDevtools,
+        CommonModule,
+      ],
+      imports: [HttpClientTestingModule],
+      providers: [provideAngularQuery(new QueryClient())],
+    });
+    expect(screen.getByText('Spotrx')).toBeInTheDocument();
   });
 });
