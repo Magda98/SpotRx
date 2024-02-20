@@ -11,14 +11,15 @@ import { tap } from 'rxjs';
 export class UserService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
-  userDataRequest = () =>
-    this.http.get<User>(`me`).pipe(
-      tap(() => {
-        this.authService.loggedIn.next(true);
-      })
-    );
 
   getUserData() {
-    return createQuery(['userData'] as const, this.userDataRequest());
+    return createQuery(
+      ['userData'] as const,
+      this.http.get<User>(`me`).pipe(
+        tap(() => {
+          this.authService.loggedIn.next(true);
+        })
+      )
+    );
   }
 }

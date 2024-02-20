@@ -1,17 +1,17 @@
 <div class="app">
-  <ng-container *ngIf="loggedIn() === false">
+  @if(loggedIn() === false){
     <div class="app-login">
       <div class="app-login__title-wrapper">
         <app-icon class="icon--large" type="logo"></app-icon>
         <h1 class="app-login__title">Spotrx</h1>
       </div>
       <p class="app-login__text">To use app you must log in</p>
-      <button aria-label="login" type="button" class="app-login__button btn" (click)="login()">login</button>
+      <button type="button" class="app-login__button btn" (click)="login()">login</button>
     </div>
-  </ng-container>
+  }
 
-  <ng-container *ngIf="loggedIn() === true">
-    <app-nav [userData]="userData" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-nav>
+  @if(userData.isSuccess()){
+    <app-nav [userData]="userData.data()" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-nav>
     <button aria-label="menu" class="app-menu-button btn" type="button" (click)="toggleMenu()">
       <app-icon class="icon" type="menu"></app-icon>
     </button>
@@ -20,6 +20,8 @@
       <router-outlet></router-outlet>
     </div>
     <app-player></app-player>
-  </ng-container>
-  <angular-query-devtools *ngIf="!isProductionMode" initialIsOpen />
+  }
+  @if(!isProductionMode){
+    <angular-query-devtools initialIsOpen />
+  }
 </div>

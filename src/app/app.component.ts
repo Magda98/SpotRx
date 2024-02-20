@@ -12,6 +12,7 @@ import { PlayerComponent } from './player/player.component';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 import { CommonModule } from '@angular/common';
 import { injectQuery } from '@tanstack/angular-query-experimental';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
