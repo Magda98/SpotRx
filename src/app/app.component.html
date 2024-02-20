@@ -6,13 +6,13 @@
         <h1 class="app-login__title">Spotrx</h1>
       </div>
       <p class="app-login__text">To use app you must log in</p>
-      <button class="app-login__button btn" (click)="login()">login</button>
+      <button aria-label="login" type="button" class="app-login__button btn" (click)="login()">login</button>
     </div>
   </ng-container>
 
   <ng-container *ngIf="loggedIn() === true">
     <app-nav [userData]="userData" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-nav>
-    <button class="app-menu-button btn" type="button" (click)="toggleMenu()">
+    <button aria-label="menu" class="app-menu-button btn" type="button" (click)="toggleMenu()">
       <app-icon class="icon" type="menu"></app-icon>
     </button>
     <div class="main" [ngClass]="{

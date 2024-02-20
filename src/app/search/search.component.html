@@ -1,6 +1,6 @@
 <div class="search">
   <mat-form-field class="search-input-field" appearance="fill">
-    <input type="text" matInput [formControl]="searchFromControl" placeholder="Search for specific song...">
+    <input aria-label="search" type="text" matInput [formControl]="searchFromControl" placeholder="Search for specific song...">
   </mat-form-field>
   @if(searchQuery.isSuccess()){
   <ul class="track-list">

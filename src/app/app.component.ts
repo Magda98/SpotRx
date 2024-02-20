@@ -25,7 +25,7 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
     AngularQueryDevtools,
     CommonModule,
   ],
-  providers: [AuthService, UserService, PlayerService],
+  providers: [PlayerService],
 })
 export class AppComponent implements OnInit {
   /**

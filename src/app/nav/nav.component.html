@@ -2,7 +2,7 @@
   'nav--open': open()
 }">
   <div class="logo-conatiner">
-    <app-icon class="icon--large" type="logo"></app-icon>
+    <app-icon  aria-label="logo" class="icon--large" type="logo"></app-icon>
     <h1>SpotRx</h1>
   </div>
   @if(userData().isSuccess()){
@@ -28,7 +28,7 @@
   <div class="playlist-list" *ngIf="userPlaylists.data().items as items">
     <a class="link" (click)="closeMenu()" [routerLink]="['/playlist', item.id]" class="playlist"
       *ngFor="let item of items">
-      <img class="playlist-img" [src]="item.images[0].url">
+      <img  aria-label="playlist image" [alt]="item.name" class="playlist-img" [src]="item.images[0].url">
       <h3 class="playlist-name">{{item.name}}</h3>
     </a>
   </div>
