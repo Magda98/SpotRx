@@ -7,7 +7,7 @@
   </div>
   @if(userData()){
   <div class="user-data">
-    <img class="user-img" [src]="userData().images[0].url">
+    <img alt="user avatar" class="user-img" [src]="userData().images[0].url">
     <span class="user-name">{{userData().display_name}}</span>
   </div>
   }

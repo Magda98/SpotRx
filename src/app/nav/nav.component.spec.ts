@@ -60,4 +60,20 @@ describe('AppComponent', () => {
 
     expect(screen.getByText(userData.display_name)).toBeInTheDocument();
   });
+
+  test('should display user avatar', async () => {
+    await render(NavComponent, {
+      componentInputs: { userData: userData },
+      componentImports: [
+        IconComponent,
+        RouterModule,
+        MatIconModule,
+        CommonModule,
+      ],
+      imports: [HttpClientTestingModule],
+      providers: [provideAngularQuery(new QueryClient())],
+    });
+
+    expect(screen.getByAltText('user avatar')).toBeInTheDocument();
+  });
 });
