@@ -10,6 +10,8 @@ import { render, screen } from '@testing-library/angular';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MockBackendInterceptor } from '../interceptors/mock-backend.interceptor';
 
 describe('AppComponent', () => {
   const userData: User = {
@@ -75,5 +77,28 @@ describe('AppComponent', () => {
     });
 
     expect(screen.getByAltText('user avatar')).toBeInTheDocument();
+  });
+
+  test('should display user playlist', async () => {
+    const component = await render(NavComponent, {
+      componentInputs: { userData: userData },
+      componentImports: [
+        IconComponent,
+        RouterModule,
+        MatIconModule,
+        CommonModule,
+      ],
+      imports: [HttpClientTestingModule],
+      providers: [
+        provideAngularQuery(new QueryClient()),
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: MockBackendInterceptor,
+          multi: true,
+        },
+      ],
+    });
+    component.detectChanges();
+    expect(screen.getByAltText('święta swięta 🎄')).toBeInTheDocument();
   });
 });
