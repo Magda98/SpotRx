@@ -11,6 +11,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { PlaylistResponse } from '../interfaces/playlist';
 
 @Injectable()
 export class MockBackendInterceptor implements HttpInterceptor {
@@ -60,6 +61,70 @@ export class MockBackendInterceptor implements HttpInterceptor {
                 filter_locked: false,
               },
               email: 'magdakochman7@gmail.com',
+            },
+            status: 200,
+          })
+        );
+        observer.complete();
+      });
+    }
+
+    if (req.url.endsWith('playlists') && req.method == 'GET') {
+      return new Observable((observer) => {
+        observer.next(
+          new HttpResponse<PlaylistResponse>({
+            body: {
+              total: 2,
+              items: [
+                {
+                  href: 'https://api.spotify.com/v1/playlists/50Gsv3p7qLLPVzfPBu8UcO',
+                  id: '50Gsv3p7qLLPVzfPBu8UcO',
+                  images: [
+                    {
+                      height: 640,
+                      url: 'https://mosaic.scdn.co/640/ab67616d0000b273372cd9cefda2a6d3d11428fcab67616d0000b2734246e3158421f5abb75abc4fab67616d0000b2735ebcbbc6940d285ccd96e963ab67616d0000b273d1410c1372fab1e516328fa8',
+                      width: 640,
+                    },
+                    {
+                      height: 300,
+                      url: 'https://mosaic.scdn.co/300/ab67616d0000b273372cd9cefda2a6d3d11428fcab67616d0000b2734246e3158421f5abb75abc4fab67616d0000b2735ebcbbc6940d285ccd96e963ab67616d0000b273d1410c1372fab1e516328fa8',
+                      width: 300,
+                    },
+                    {
+                      height: 60,
+                      url: 'https://mosaic.scdn.co/60/ab67616d0000b273372cd9cefda2a6d3d11428fcab67616d0000b2734246e3158421f5abb75abc4fab67616d0000b2735ebcbbc6940d285ccd96e963ab67616d0000b273d1410c1372fab1e516328fa8',
+                      width: 60,
+                    },
+                  ],
+                  name: 'święta swięta 🎄',
+                  type: 'playlist',
+                  uri: 'spotify:playlist:50Gsv3p7qLLPVzfPBu8UcO',
+                },
+                {
+                  href: 'https://api.spotify.com/v1/playlists/3nl9GNcLS5xW883RgPypFL',
+                  id: '3nl9GNcLS5xW883RgPypFL',
+                  images: [
+                    {
+                      height: 640,
+                      url: 'https://mosaic.scdn.co/640/ab67616d0000b2732172b607853fa89cefa2beb4ab67616d0000b2734bc66095f8a70bc4e6593f4fab67616d0000b273838698485511bd9108fadadcab67616d0000b273ccdddb2e5349ea0608c3e016',
+                      width: 640,
+                    },
+                    {
+                      height: 300,
+                      url: 'https://mosaic.scdn.co/300/ab67616d0000b2732172b607853fa89cefa2beb4ab67616d0000b2734bc66095f8a70bc4e6593f4fab67616d0000b273838698485511bd9108fadadcab67616d0000b273ccdddb2e5349ea0608c3e016',
+                      width: 300,
+                    },
+                    {
+                      height: 60,
+                      url: 'https://mosaic.scdn.co/60/ab67616d0000b2732172b607853fa89cefa2beb4ab67616d0000b2734bc66095f8a70bc4e6593f4fab67616d0000b273838698485511bd9108fadadcab67616d0000b273ccdddb2e5349ea0608c3e016',
+                      width: 60,
+                    },
+                  ],
+                  name: 'Dua Lipa 🍑💫🔥',
+                  type: 'playlist',
+                  uri: 'spotify:playlist:3nl9GNcLS5xW883RgPypFL',
+                },
+              ],
             },
             status: 200,
           })

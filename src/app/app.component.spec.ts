@@ -67,7 +67,6 @@ describe('AppComponent', () => {
       imports: [HttpClientTestingModule],
       providers: [
         provideAngularQuery(new QueryClient()),
-
         {
           provide: HTTP_INTERCEPTORS,
           useClass: MockBackendInterceptor,
