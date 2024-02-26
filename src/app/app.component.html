@@ -15,10 +15,10 @@
     <button aria-label="menu" class="app-menu-button btn" type="button" (click)="toggleMenu()">
       <app-icon class="icon" type="menu"></app-icon>
     </button>
-    <div class="main" [ngClass]="{
+    <main class="main" [ngClass]="{
   'main--player': playerState | async }">
       <router-outlet></router-outlet>
-    </div>
+    </main>
     <app-player></app-player>
   }
   @if(!isProductionMode){

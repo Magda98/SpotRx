@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { createMockWithValues } from '@testing-library/angular/jest-utils';
@@ -9,9 +8,6 @@ import {
 import { RouterModule } from '@angular/router';
 import { BehaviorSubject, ReplaySubject, of } from 'rxjs';
 import { AuthData } from './interfaces/authData';
-import { UserService } from './services/user.service';
-import { User } from './interfaces/user';
-import { createQuery } from './utils/createQuery';
 import { NavComponent } from './nav/nav.component';
 import { IconComponent } from './icon/icon.component';
 import { PlayerComponent } from './player/player.component';
@@ -19,6 +15,8 @@ import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimen
 import { CommonModule } from '@angular/common';
 import { render, screen } from '@testing-library/angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MockBackendInterceptor } from './interceptors/mock-backend.interceptor';
 
 describe('AppComponent', () => {
   const mockAuthService = createMockWithValues(AuthService, {
@@ -26,57 +24,13 @@ describe('AppComponent', () => {
     authData: new BehaviorSubject<AuthData | undefined>(undefined),
   });
 
-  const mockUserService = createMockWithValues(UserService, {
-    getUserData: () => {
-      return createQuery(
-        ['userData'] as const,
-        of<User>({
-          display_name: 'pieceofsth7',
-          external_urls: {
-            spotify: 'https://open.spotify.com/user/f2o7vc8wi9351bcn76igbhe2i',
-          },
-          href: 'https://api.spotify.com/v1/users/f2o7vc8wi9351bcn76igbhe2i',
-          id: 'f2o7vc8wi9351bcn76igbhe2i',
-          images: [
-            {
-              url: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2046809475373475&height=50&width=50&ext=1711003338&hash=AfrKCTPEXL-APstaCRqb6iOzqjl5RHKOwdXRP0WTcNeYdQ',
-              height: 64,
-              width: 64,
-            },
-            {
-              url: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2046809475373475&height=300&width=300&ext=1711003338&hash=AfqKpNyFIAuS_M4gwqL8eAZNp2fgALFMnqTRsvVRRG4E5g',
-              height: 300,
-              width: 300,
-            },
-          ],
-          type: 'user',
-          uri: 'spotify:user:f2o7vc8wi9351bcn76igbhe2i',
-          followers: {
-            total: 7,
-          },
-          country: 'PL',
-          product: 'premium',
-          explicit_content: {
-            filter_enabled: false,
-            filter_locked: false,
-          },
-          email: 'magdakochman7@gmail.com',
-        })
-      );
-    },
-  });
-
-  test('should render app title', async () => {
+  test('should render loggin screen', async () => {
     mockAuthService.loggedIn.next(false);
     await render(AppComponent, {
       componentProviders: [
         {
           provide: AuthService,
           useValue: mockAuthService,
-        },
-        {
-          provide: UserService,
-          useValue: mockUserService,
         },
       ],
       componentImports: [
@@ -91,5 +45,37 @@ describe('AppComponent', () => {
       providers: [provideAngularQuery(new QueryClient())],
     });
     expect(screen.getByText('Spotrx')).toBeInTheDocument();
+  });
+
+  test('should render main app container', async () => {
+    mockAuthService.loggedIn.next(false);
+    const component = await render(AppComponent, {
+      componentProviders: [
+        {
+          provide: AuthService,
+          useValue: mockAuthService,
+        },
+      ],
+      componentImports: [
+        RouterModule,
+        NavComponent,
+        IconComponent,
+        PlayerComponent,
+        AngularQueryDevtools,
+        CommonModule,
+      ],
+      imports: [HttpClientTestingModule],
+      providers: [
+        provideAngularQuery(new QueryClient()),
+
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: MockBackendInterceptor,
+          multi: true,
+        },
+      ],
+    });
+    component.detectChanges();
+    expect(screen.getByRole('main')).toBeInTheDocument();
   });
 });
