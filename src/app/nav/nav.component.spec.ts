@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav.component';
 import { User } from '../interfaces/user';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { render, screen } from '@testing-library/angular';
+import { fireEvent, render, screen } from '@testing-library/angular';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
