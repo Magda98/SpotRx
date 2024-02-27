@@ -6,14 +6,14 @@ import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav.component';
 import { User } from '../interfaces/user';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { fireEvent, render, screen } from '@testing-library/angular';
+import { render, screen } from '@testing-library/angular';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from '../interceptors/mock-backend.interceptor';
 
-describe('AppComponent', () => {
+describe('NavComponent', () => {
   const userData: User = {
     display_name: 'pieceofsth7',
     external_urls: {
