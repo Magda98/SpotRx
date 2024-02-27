@@ -47,6 +47,29 @@ describe('NavComponent', () => {
     email: 'magdakochman7@gmail.com',
   };
 
+  test('should render', async () => {
+    const component = await render(NavComponent, {
+      componentInputs: { userData: userData },
+      componentImports: [
+        IconComponent,
+        RouterModule,
+        MatIconModule,
+        CommonModule,
+      ],
+      imports: [HttpClientTestingModule],
+      providers: [
+        provideAngularQuery(new QueryClient()),
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: MockBackendInterceptor,
+          multi: true,
+        },
+      ],
+    });
+    component.detectChanges();
+    expect(component.container).toMatchSnapshot();
+  });
+
   test('should contain user-name', async () => {
     await render(NavComponent, {
       componentInputs: { userData: userData },

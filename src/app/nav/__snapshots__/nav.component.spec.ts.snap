@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavComponent should render 1`] = `
+<div
+  id="root0"
+>
+  <nav
+    class="nav"
+  >
+    <div
+      class="logo-conatiner"
+    >
+      <app-icon
+        class="app-icon icon--large"
+        type="logo"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 66 66"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M33 0C14.775 0 0 14.775 0 33c0 18.226 14.775 33 33 33 18.227 0 33-14.774 33-33C66 14.776 51.227.002 33 .002V0Zm15.133 47.596a2.056 2.056 0 0 1-2.83.682c-7.747-4.733-17.5-5.805-28.988-3.18a2.058 2.058 0 0 1-.915-4.012c12.57-2.873 23.353-1.636 32.052 3.68.969.595 1.276 1.86.681 2.83Zm4.04-8.987a2.572 2.572 0 0 1-3.54.85c-8.87-5.454-22.39-7.033-32.883-3.849a2.576 2.576 0 0 1-3.21-1.714 2.577 2.577 0 0 1 1.715-3.209c11.985-3.636 26.884-1.875 37.07 4.385a2.572 2.572 0 0 1 .847 3.537Zm.346-9.357c-10.636-6.317-28.183-6.898-38.338-3.816a3.086 3.086 0 1 1-1.791-5.907c11.656-3.539 31.034-2.855 43.28 4.414a3.083 3.083 0 0 1 1.079 4.23 3.084 3.084 0 0 1-4.228 1.08h-.002Z"
+            fill="#fff"
+          />
+        </svg>
+      </app-icon>
+      <h1>
+        SpotRx
+      </h1>
+    </div>
+    <div
+      class="user-data"
+    >
+      <img
+        alt="user avatar"
+        class="user-img"
+        src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2046809475373475&height=50&width=50&ext=1711003338&hash=AfrKCTPEXL-APstaCRqb6iOzqjl5RHKOwdXRP0WTcNeYdQ"
+      />
+      <span
+        class="user-name"
+      >
+        pieceofsth7
+      </span>
+    </div>
+    
+    <ul
+      class="nav-links"
+    >
+      <li>
+        <a
+          class="link active"
+          href="/"
+          routerlink="/"
+          routerlinkactive="active"
+        >
+          <mat-icon
+            aria-hidden="true"
+            class="mat-icon notranslate icon material-icons mat-ligature-font mat-icon-no-color"
+            data-mat-icon-type="font"
+            role="img"
+          >
+            home
+          </mat-icon>
+           Home 
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          href="/saved"
+          routerlink="/saved"
+          routerlinkactive="active"
+        >
+          <mat-icon
+            aria-hidden="true"
+            class="mat-icon notranslate icon material-icons mat-ligature-font mat-icon-no-color"
+            data-mat-icon-type="font"
+            role="img"
+          >
+            favorite
+          </mat-icon>
+           Saved 
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          href="/search"
+          routerlink="/search"
+          routerlinkactive="active"
+        >
+          <mat-icon
+            aria-hidden="true"
+            class="mat-icon notranslate icon material-icons mat-ligature-font mat-icon-no-color"
+            data-mat-icon-type="font"
+            role="img"
+          >
+            search
+          </mat-icon>
+           Search 
+        </a>
+      </li>
+    </ul>
+    <div
+      class="playlist-list"
+    >
+      <a
+        class="playlist"
+        href="/playlist/50Gsv3p7qLLPVzfPBu8UcO"
+      >
+        <img
+          alt="święta swięta 🎄"
+          class="playlist-img"
+          src="https://mosaic.scdn.co/640/ab67616d0000b273372cd9cefda2a6d3d11428fcab67616d0000b2734246e3158421f5abb75abc4fab67616d0000b2735ebcbbc6940d285ccd96e963ab67616d0000b273d1410c1372fab1e516328fa8"
+        />
+        <h3
+          class="playlist-name"
+        >
+          święta swięta 🎄
+        </h3>
+      </a>
+      <a
+        class="playlist"
+        href="/playlist/3nl9GNcLS5xW883RgPypFL"
+      >
+        <img
+          alt="Dua Lipa 🍑💫🔥"
+          class="playlist-img"
+          src="https://mosaic.scdn.co/640/ab67616d0000b2732172b607853fa89cefa2beb4ab67616d0000b2734bc66095f8a70bc4e6593f4fab67616d0000b273838698485511bd9108fadadcab67616d0000b273ccdddb2e5349ea0608c3e016"
+        />
+        <h3
+          class="playlist-name"
+        >
+          Dua Lipa 🍑💫🔥
+        </h3>
+      </a>
+      
+    </div>
+    
+    
+  </nav>
+</div>
+`;
