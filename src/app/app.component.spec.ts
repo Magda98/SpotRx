@@ -111,24 +111,24 @@ describe('AppComponent', () => {
     component.detectChanges();
     expect(screen.queryByText(/Saved tracks/i)).not.toBeInTheDocument();
 
-    await fireEvent.click(screen.getByRole('link', { name: /Saved/i }));
+    fireEvent.click(screen.getByRole('link', { name: /Saved/i }));
     expect(
       await screen.findByRole('heading', { name: /Saved tracks/i })
     ).toBeInTheDocument();
 
-    await fireEvent.click(screen.getByRole('link', { name: /Home/i }));
+    fireEvent.click(screen.getByRole('link', { name: /Home/i }));
     expect(
       await screen.findByRole('heading', { name: /Home/i })
     ).toBeInTheDocument();
 
-    await fireEvent.click(screen.getByRole('link', { name: /Home/i }));
+    fireEvent.click(screen.getByRole('link', { name: /Home/i }));
     expect(
       await screen.findByRole('heading', { name: /Home/i })
     ).toBeInTheDocument();
 
     jest.advanceTimersByTime(300);
     component.detectChanges();
-    await fireEvent.click(screen.getByRole('link', { name: /Dua Lipa/i }));
+    fireEvent.click(screen.getByRole('link', { name: /Dua Lipa/i }));
     expect(
       await screen.findByRole('heading', { name: /Dua Lipa/i })
     ).toBeInTheDocument();
