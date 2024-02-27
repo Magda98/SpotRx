@@ -5,19 +5,14 @@ import {
   QueryClient,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
-import { RouterModule, provideRouter } from '@angular/router';
-import { BehaviorSubject, ReplaySubject, of } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { AuthData } from './interfaces/authData';
-import { NavComponent } from './nav/nav.component';
-import { IconComponent } from './icon/icon.component';
-import { PlayerComponent } from './player/player.component';
-import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
-import { CommonModule } from '@angular/common';
 import { fireEvent, render, screen } from '@testing-library/angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from './interceptors/mock-backend.interceptor';
 import { routes } from './app-routes';
+import { provideRouter } from '@angular/router';
 
 describe('AppComponent', () => {
   const mockAuthService = createMockWithValues(AuthService, {
@@ -34,14 +29,6 @@ describe('AppComponent', () => {
           useValue: mockAuthService,
         },
       ],
-      componentImports: [
-        RouterModule,
-        NavComponent,
-        IconComponent,
-        PlayerComponent,
-        AngularQueryDevtools,
-        CommonModule,
-      ],
       imports: [HttpClientTestingModule],
       providers: [provideAngularQuery(new QueryClient())],
     });
@@ -56,14 +43,6 @@ describe('AppComponent', () => {
           provide: AuthService,
           useValue: mockAuthService,
         },
-      ],
-      componentImports: [
-        RouterModule,
-        NavComponent,
-        IconComponent,
-        PlayerComponent,
-        AngularQueryDevtools,
-        CommonModule,
       ],
       imports: [HttpClientTestingModule],
       providers: [
@@ -88,15 +67,7 @@ describe('AppComponent', () => {
           useValue: mockAuthService,
         },
       ],
-      componentImports: [
-        RouterModule,
-        NavComponent,
-        IconComponent,
-        PlayerComponent,
-        AngularQueryDevtools,
-        CommonModule,
-      ],
-      imports: [HttpClientTestingModule, RouterModule],
+      imports: [HttpClientTestingModule],
       providers: [
         provideRouter(routes),
         provideAngularQuery(new QueryClient()),
@@ -107,7 +78,6 @@ describe('AppComponent', () => {
         },
       ],
     });
-    jest.useFakeTimers();
     component.detectChanges();
     expect(screen.queryByText(/Saved tracks/i)).not.toBeInTheDocument();
 
@@ -126,9 +96,8 @@ describe('AppComponent', () => {
       await screen.findByRole('heading', { name: /Home/i })
     ).toBeInTheDocument();
 
-    jest.advanceTimersByTime(300);
+    fireEvent.click(await screen.findByRole('link', { name: /Dua Lipa/i }));
     component.detectChanges();
-    fireEvent.click(screen.getByRole('link', { name: /Dua Lipa/i }));
     expect(
       await screen.findByRole('heading', { name: /Dua Lipa/i })
     ).toBeInTheDocument();
