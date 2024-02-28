@@ -10,7 +10,7 @@ import { AuthData } from './interfaces/authData';
 import { fireEvent, render, screen } from '@testing-library/angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MockBackendInterceptor } from './interceptors/mock-backend.interceptor';
+import { MockBackendInterceptor } from '../tests/mock-backend.interceptor';
 import { routes } from './app-routes';
 import { provideRouter } from '@angular/router';
 
@@ -19,48 +19,8 @@ describe('AppComponent', () => {
     loggedIn: new ReplaySubject<boolean>(),
     authData: new BehaviorSubject<AuthData | undefined>(undefined),
   });
-
-  test('should render loggin screen', async () => {
-    mockAuthService.loggedIn.next(false);
-    await render(AppComponent, {
-      componentProviders: [
-        {
-          provide: AuthService,
-          useValue: mockAuthService,
-        },
-      ],
-      imports: [HttpClientTestingModule],
-      providers: [provideAngularQuery(new QueryClient())],
-    });
-    expect(screen.getByText('Spotrx')).toBeInTheDocument();
-  });
-
-  test('should render main app container', async () => {
-    mockAuthService.loggedIn.next(false);
-    const component = await render(AppComponent, {
-      componentProviders: [
-        {
-          provide: AuthService,
-          useValue: mockAuthService,
-        },
-      ],
-      imports: [HttpClientTestingModule],
-      providers: [
-        provideAngularQuery(new QueryClient()),
-        {
-          provide: HTTP_INTERCEPTORS,
-          useClass: MockBackendInterceptor,
-          multi: true,
-        },
-      ],
-    });
-    component.detectChanges();
-    expect(screen.getByRole('main')).toBeInTheDocument();
-  });
-
-  test('should navigate', async () => {
-    mockAuthService.loggedIn.next(true);
-    const component = await render(AppComponent, {
+  const renderComponent = () =>
+    render(AppComponent, {
       componentProviders: [
         {
           provide: AuthService,
@@ -78,6 +38,30 @@ describe('AppComponent', () => {
         },
       ],
     });
+
+  test('should render', async () => {
+    const component = await renderComponent();
+    component.detectChanges();
+    expect(component.container).toMatchSnapshot();
+  });
+
+  test('should render loggin screen', async () => {
+    const component = await renderComponent();
+    mockAuthService.loggedIn.next(false);
+    component.detectChanges();
+    expect(screen.getByText('Spotrx')).toBeInTheDocument();
+  });
+
+  test('should render main app container', async () => {
+    mockAuthService.loggedIn.next(false);
+    const component = await renderComponent();
+    component.detectChanges();
+    expect(screen.getByRole('main')).toBeInTheDocument();
+  });
+
+  test('should navigate', async () => {
+    mockAuthService.loggedIn.next(true);
+    const component = await renderComponent();
     component.detectChanges();
     expect(screen.queryByText(/Saved tracks/i)).not.toBeInTheDocument();
 

@@ -9,10 +9,12 @@ import {
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
 import { screen } from '@testing-library/angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
 
 describe('HomeComponent', () => {
-  test('should render title', async () => {
-    await render(HomeComponent, {
+  const renderComponent = () =>
+    render(HomeComponent, {
       componentImports: [
         RouterModule,
         CommonModule,
@@ -20,9 +22,23 @@ describe('HomeComponent', () => {
         NgxSkeletonLoaderModule,
       ],
       imports: [HttpClientTestingModule],
-      providers: [provideAngularQuery(new QueryClient())],
+      providers: [
+        provideAngularQuery(new QueryClient()),
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: MockBackendInterceptor,
+          multi: true,
+        },
+      ],
     });
 
+  test('should render', async () => {
+    const component = await renderComponent();
+    expect(component.container).toMatchSnapshot();
+  });
+
+  test('should render title', async () => {
+    await renderComponent();
     expect(
       await screen.findByRole('heading', { name: /Home/i })
     ).toBeInTheDocument();
