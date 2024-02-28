@@ -16,7 +16,14 @@ import {
   Playlist,
   PlaylistResponse,
 } from '../app/interfaces/playlist';
-import { featuredPlaylists, playlist, playlistsResponse, user } from './mocks';
+import {
+  featuredPlaylists,
+  playlist,
+  playlistsResponse,
+  savedTracks,
+  user,
+} from './mocks';
+import { TracksResponse } from 'src/app/interfaces/track';
 
 @Injectable()
 export class MockBackendInterceptor implements HttpInterceptor {
@@ -74,6 +81,18 @@ export class MockBackendInterceptor implements HttpInterceptor {
         observer.next(
           new HttpResponse<FeaturedPlaylistResponse>({
             body: featuredPlaylists,
+            status: 200,
+          })
+        );
+        observer.complete();
+      });
+    }
+
+    if (req.url.endsWith('me/tracks') && req.method == 'GET') {
+      return new Observable((observer) => {
+        observer.next(
+          new HttpResponse<TracksResponse>({
+            body: savedTracks,
             status: 200,
           })
         );
