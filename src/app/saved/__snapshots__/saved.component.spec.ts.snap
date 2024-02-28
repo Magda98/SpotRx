@@ -1,0 +1,428 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SavedComponent should render 1`] = `
+<div
+  id="root0"
+>
+  <div
+    class="saved"
+  >
+    <h1
+      class="title"
+    >
+      Saved tracks 😎
+    </h1>
+    <app-track-list
+      class="track-list"
+    >
+      <div
+        class="track-list-container"
+      >
+        <mat-paginator
+          aria-label="Select page"
+          class="mat-mdc-paginator paginator"
+          role="group"
+        >
+          <div
+            class="mat-mdc-paginator-outer-container"
+          >
+            <div
+              class="mat-mdc-paginator-container"
+            >
+              <div
+                class="mat-mdc-paginator-page-size"
+              >
+                <div
+                  class="mat-mdc-paginator-page-size-label"
+                >
+                   Items per page: 
+                </div>
+                
+                <div
+                  class="mat-mdc-paginator-page-size-value"
+                >
+                  6
+                </div>
+                
+              </div>
+              
+              <div
+                class="mat-mdc-paginator-range-actions"
+              >
+                <div
+                  aria-live="polite"
+                  class="mat-mdc-paginator-range-label"
+                >
+                   1 – 6 of 373 
+                </div>
+                
+                <button
+                  aria-label="Previous page"
+                  class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-previous mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled _mat-animation-noopable mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled"
+                  disabled="true"
+                  mat-icon-button=""
+                  mat-ripple-loader-centered=""
+                  mat-ripple-loader-class-name="mat-mdc-button-ripple"
+                  mat-ripple-loader-disabled=""
+                  mat-ripple-loader-uninitialized=""
+                  type="button"
+                >
+                  <span
+                    class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="mat-mdc-paginator-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                    />
+                  </svg>
+                  <span
+                    class="mat-mdc-focus-indicator"
+                  />
+                  <span
+                    class="mat-mdc-button-touch-target"
+                  />
+                </button>
+                
+                <button
+                  aria-label="Next page"
+                  class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-next mdc-icon-button mat-mdc-icon-button _mat-animation-noopable mat-unthemed mat-mdc-button-base"
+                  mat-icon-button=""
+                  mat-ripple-loader-centered=""
+                  mat-ripple-loader-class-name="mat-mdc-button-ripple"
+                  mat-ripple-loader-uninitialized=""
+                  type="button"
+                >
+                  <span
+                    class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="mat-mdc-paginator-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                    />
+                  </svg>
+                  <span
+                    class="mat-mdc-focus-indicator"
+                  />
+                  <span
+                    class="mat-mdc-button-touch-target"
+                  />
+                </button>
+                
+                
+              </div>
+            </div>
+          </div>
+        </mat-paginator>
+        <ul
+          class="track-list"
+        >
+          <li
+            class="track"
+          >
+            <div
+              class="song-info"
+            >
+              <img
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e02d70916ee9e40c90380ba5f07"
+                width="90"
+              />
+              <div
+                class="album-artist"
+              >
+                <h2
+                  class="name"
+                >
+                  Saturn
+                </h2>
+                <span
+                  class="album-name"
+                >
+                   Saturn 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
+                  >
+                    SZA
+                  </span>
+                  
+                </div>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              3:06 
+            </span>
+          </li>
+          <li
+            class="track"
+          >
+            <div
+              class="song-info"
+            >
+              <img
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e028cae5034066af45cdfbc4266"
+                width="90"
+              />
+              <div
+                class="album-artist"
+              >
+                <h2
+                  class="name"
+                >
+                  River
+                </h2>
+                <span
+                  class="album-name"
+                >
+                   Church Of Scars 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
+                  >
+                    Bishop Briggs
+                  </span>
+                  
+                </div>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              3:36 
+            </span>
+          </li>
+          <li
+            class="track"
+          >
+            <div
+              class="song-info"
+            >
+              <img
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e0210311a15fdac768608fe224d"
+                width="90"
+              />
+              <div
+                class="album-artist"
+              >
+                <h2
+                  class="name"
+                >
+                  Daggers
+                </h2>
+                <span
+                  class="album-name"
+                >
+                   Daggers 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
+                  >
+                    Croosh
+                  </span>
+                  
+                </div>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              2:19 
+            </span>
+          </li>
+          <li
+            class="track"
+          >
+            <div
+              class="song-info"
+            >
+              <img
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e027dfba3f3ae607f250cdd969c"
+                width="90"
+              />
+              <div
+                class="album-artist"
+              >
+                <h2
+                  class="name"
+                >
+                  Bécane - A COLORS SHOW
+                </h2>
+                <span
+                  class="album-name"
+                >
+                   Bécane - A COLORS SHOW 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
+                  >
+                    Yamê
+                  </span>
+                  
+                </div>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              3:02 
+            </span>
+          </li>
+          <li
+            class="track"
+          >
+            <div
+              class="song-info"
+            >
+              <img
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e0260e18fbad67fc3c48608d03a"
+                width="90"
+              />
+              <div
+                class="album-artist"
+              >
+                <h2
+                  class="name"
+                >
+                  Supergirl - Radio Edit
+                </h2>
+                <span
+                  class="album-name"
+                >
+                   Supergirl (Radio Edit) 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
+                  >
+                    Anna Naklab
+                  </span>
+                  <span
+                    class="artist"
+                  >
+                    Alle Farben
+                  </span>
+                  <span
+                    class="artist"
+                  >
+                    YouNotUs
+                  </span>
+                  
+                </div>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              3:32 
+            </span>
+          </li>
+          <li
+            class="track"
+          >
+            <div
+              class="song-info"
+            >
+              <img
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e021fa667a7a53c7072fed91a17"
+                width="90"
+              />
+              <div
+                class="album-artist"
+              >
+                <h2
+                  class="name"
+                >
+                  Santa, Can’t You Hear Me
+                </h2>
+                <span
+                  class="album-name"
+                >
+                   When Christmas Comes Around... 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
+                  >
+                    Kelly Clarkson
+                  </span>
+                  <span
+                    class="artist"
+                  >
+                    Ariana Grande
+                  </span>
+                  
+                </div>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              4:02 
+            </span>
+          </li>
+          
+        </ul>
+        
+        
+      </div>
+    </app-track-list>
+  </div>
+</div>
+`;

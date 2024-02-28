@@ -3,6 +3,7 @@ import {
   Playlist,
   PlaylistResponse,
 } from 'src/app/interfaces/playlist';
+import { TracksResponse } from 'src/app/interfaces/track';
 import { User } from 'src/app/interfaces/user';
 
 export const user: User = {
@@ -122,6 +123,7 @@ export const playlist: Playlist = {
         added_at: '2021-11-25T07:44:16Z',
         track: {
           album: {
+            id: '01sfgrNbnnPUEyz6GZYlt9',
             images: [
               {
                 url: 'https://i.scdn.co/image/ab67616d0000b273d1410c1372fab1e516328fa8',
@@ -240,4 +242,358 @@ export const featuredPlaylists: FeaturedPlaylistResponse = {
     offset: 0,
     total: 100,
   },
+};
+
+export const savedTracks: TracksResponse = {
+  href: 'https://api.spotify.com/v1/me/tracks?offset=0&limit=6&locale=en-US,en;q=0.9,pl-PL;q=0.8,pl;q=0.7',
+  items: [
+    {
+      added_at: '2024-02-24T11:26:25Z',
+      track: {
+        album: {
+          artists: [
+            {
+              href: 'https://api.spotify.com/v1/artists/7tYKF4w9nC0nq9CsPZTHyP',
+              id: '7tYKF4w9nC0nq9CsPZTHyP',
+              name: 'SZA',
+              type: 'artist',
+              uri: 'spotify:artist:7tYKF4w9nC0nq9CsPZTHyP',
+            },
+          ],
+          id: '1fmBMCSSkSlvxyoy1vut2k',
+          images: [
+            {
+              height: 640,
+              url: 'https://i.scdn.co/image/ab67616d0000b273d70916ee9e40c90380ba5f07',
+              width: 640,
+            },
+            {
+              height: 300,
+              url: 'https://i.scdn.co/image/ab67616d00001e02d70916ee9e40c90380ba5f07',
+              width: 300,
+            },
+            {
+              height: 64,
+              url: 'https://i.scdn.co/image/ab67616d00004851d70916ee9e40c90380ba5f07',
+              width: 64,
+            },
+          ],
+          name: 'Saturn',
+          release_date: '2024-02-22',
+          release_date_precision: 'day',
+          total_tracks: 5,
+          type: 'album',
+          uri: 'spotify:album:1fmBMCSSkSlvxyoy1vut2k',
+        },
+        artists: [
+          {
+            id: '7tYKF4w9nC0nq9CsPZTHyP',
+            name: 'SZA',
+            uri: 'spotify:artist:7tYKF4w9nC0nq9CsPZTHyP',
+          },
+        ],
+
+        duration_ms: 186191,
+        id: '1bjeWoagtHmUKputLVyDxQ',
+        name: 'Saturn',
+        uri: 'spotify:track:1bjeWoagtHmUKputLVyDxQ',
+      },
+    },
+    {
+      added_at: '2024-02-19T10:16:10Z',
+      track: {
+        album: {
+          artists: [
+            {
+              href: 'https://api.spotify.com/v1/artists/0yb46jwm7gqbZXVXZQ8Z1e',
+              id: '0yb46jwm7gqbZXVXZQ8Z1e',
+              name: 'Bishop Briggs',
+              type: 'artist',
+              uri: 'spotify:artist:0yb46jwm7gqbZXVXZQ8Z1e',
+            },
+          ],
+          id: '1TTxcgs3zEngN0EB56yXzY',
+          images: [
+            {
+              height: 640,
+              url: 'https://i.scdn.co/image/ab67616d0000b2738cae5034066af45cdfbc4266',
+              width: 640,
+            },
+            {
+              height: 300,
+              url: 'https://i.scdn.co/image/ab67616d00001e028cae5034066af45cdfbc4266',
+              width: 300,
+            },
+            {
+              height: 64,
+              url: 'https://i.scdn.co/image/ab67616d000048518cae5034066af45cdfbc4266',
+              width: 64,
+            },
+          ],
+          name: 'Church Of Scars',
+          release_date: '2018-04-20',
+          release_date_precision: 'day',
+          total_tracks: 10,
+          type: 'album',
+          uri: 'spotify:album:1TTxcgs3zEngN0EB56yXzY',
+        },
+        artists: [
+          {
+            href: 'https://api.spotify.com/v1/artists/0yb46jwm7gqbZXVXZQ8Z1e',
+            id: '0yb46jwm7gqbZXVXZQ8Z1e',
+            name: 'Bishop Briggs',
+            type: 'artist',
+            uri: 'spotify:artist:0yb46jwm7gqbZXVXZQ8Z1e',
+          },
+        ],
+        duration_ms: 216133,
+        id: '3mRLHiSHYtC8Hk7bzZdUs1',
+        name: 'River',
+        uri: 'spotify:track:3mRLHiSHYtC8Hk7bzZdUs1',
+      },
+    },
+    {
+      added_at: '2024-02-19T10:02:31Z',
+      track: {
+        album: {
+          artists: [
+            {
+              href: 'https://api.spotify.com/v1/artists/0khqcsFxd6ans7Zh1JqraT',
+              id: '0khqcsFxd6ans7Zh1JqraT',
+              name: 'Croosh',
+              type: 'artist',
+              uri: 'spotify:artist:0khqcsFxd6ans7Zh1JqraT',
+            },
+          ],
+          id: '1aweukI723QfBLT8sImfHK',
+          images: [
+            {
+              height: 640,
+              url: 'https://i.scdn.co/image/ab67616d0000b27310311a15fdac768608fe224d',
+              width: 640,
+            },
+            {
+              height: 300,
+              url: 'https://i.scdn.co/image/ab67616d00001e0210311a15fdac768608fe224d',
+              width: 300,
+            },
+            {
+              height: 64,
+              url: 'https://i.scdn.co/image/ab67616d0000485110311a15fdac768608fe224d',
+              width: 64,
+            },
+          ],
+          name: 'Daggers',
+          release_date: '2023-11-15',
+          release_date_precision: 'day',
+          total_tracks: 1,
+          type: 'album',
+          uri: 'spotify:album:1aweukI723QfBLT8sImfHK',
+        },
+        artists: [
+          {
+            href: 'https://api.spotify.com/v1/artists/0khqcsFxd6ans7Zh1JqraT',
+            id: '0khqcsFxd6ans7Zh1JqraT',
+            name: 'Croosh',
+            type: 'artist',
+            uri: 'spotify:artist:0khqcsFxd6ans7Zh1JqraT',
+          },
+        ],
+        duration_ms: 139320,
+        id: '0fu2fafqUSNk0PKgOEvTgt',
+        name: 'Daggers',
+        uri: 'spotify:track:0fu2fafqUSNk0PKgOEvTgt',
+      },
+    },
+    {
+      added_at: '2024-02-19T09:34:30Z',
+      track: {
+        album: {
+          artists: [
+            {
+              href: 'https://api.spotify.com/v1/artists/0wiCfDEHaEcPkKZOi7Nivl',
+              id: '0wiCfDEHaEcPkKZOi7Nivl',
+              name: 'Yamê',
+              type: 'artist',
+              uri: 'spotify:artist:0wiCfDEHaEcPkKZOi7Nivl',
+            },
+          ],
+          id: '7oBuvko8hsXKXHEUHvDXnB',
+          images: [
+            {
+              height: 640,
+              url: 'https://i.scdn.co/image/ab67616d0000b2737dfba3f3ae607f250cdd969c',
+              width: 640,
+            },
+            {
+              height: 300,
+              url: 'https://i.scdn.co/image/ab67616d00001e027dfba3f3ae607f250cdd969c',
+              width: 300,
+            },
+            {
+              height: 64,
+              url: 'https://i.scdn.co/image/ab67616d000048517dfba3f3ae607f250cdd969c',
+              width: 64,
+            },
+          ],
+          name: 'Bécane - A COLORS SHOW',
+          release_date: '2023-06-01',
+          release_date_precision: 'day',
+          total_tracks: 1,
+          type: 'album',
+          uri: 'spotify:album:7oBuvko8hsXKXHEUHvDXnB',
+        },
+        artists: [
+          {
+            href: 'https://api.spotify.com/v1/artists/0wiCfDEHaEcPkKZOi7Nivl',
+            id: '0wiCfDEHaEcPkKZOi7Nivl',
+            name: 'Yamê',
+            type: 'artist',
+            uri: 'spotify:artist:0wiCfDEHaEcPkKZOi7Nivl',
+          },
+        ],
+
+        duration_ms: 182440,
+        id: '3oUEzTAoOxqZHN4xiqTGqJ',
+        name: 'Bécane - A COLORS SHOW',
+        uri: 'spotify:track:3oUEzTAoOxqZHN4xiqTGqJ',
+      },
+    },
+    {
+      added_at: '2024-01-26T22:39:23Z',
+      track: {
+        album: {
+          artists: [
+            {
+              href: 'https://api.spotify.com/v1/artists/6vNe5MINTo5QZyR08sBOBA',
+              id: '6vNe5MINTo5QZyR08sBOBA',
+              name: 'Anna Naklab',
+              type: 'artist',
+              uri: 'spotify:artist:6vNe5MINTo5QZyR08sBOBA',
+            },
+            {
+              href: 'https://api.spotify.com/v1/artists/61ipISvUVa5LkJlKZnm3Oo',
+              id: '61ipISvUVa5LkJlKZnm3Oo',
+              name: 'Alle Farben',
+              type: 'artist',
+              uri: 'spotify:artist:61ipISvUVa5LkJlKZnm3Oo',
+            },
+            {
+              href: 'https://api.spotify.com/v1/artists/67ghKnycRX6VM1xfqJSMlH',
+              id: '67ghKnycRX6VM1xfqJSMlH',
+              name: 'YouNotUs',
+              type: 'artist',
+              uri: 'spotify:artist:67ghKnycRX6VM1xfqJSMlH',
+            },
+          ],
+          id: '1anF1BUZXIUqdHz0hR7rqK',
+          images: [
+            {
+              height: 640,
+              url: 'https://i.scdn.co/image/ab67616d0000b27360e18fbad67fc3c48608d03a',
+              width: 640,
+            },
+            {
+              height: 300,
+              url: 'https://i.scdn.co/image/ab67616d00001e0260e18fbad67fc3c48608d03a',
+              width: 300,
+            },
+            {
+              height: 64,
+              url: 'https://i.scdn.co/image/ab67616d0000485160e18fbad67fc3c48608d03a',
+              width: 64,
+            },
+          ],
+          name: 'Supergirl (Radio Edit)',
+          release_date: '2015-03-25',
+          release_date_precision: 'day',
+          total_tracks: 1,
+          type: 'album',
+          uri: 'spotify:album:1anF1BUZXIUqdHz0hR7rqK',
+        },
+        artists: [
+          {
+            id: '6vNe5MINTo5QZyR08sBOBA',
+            name: 'Anna Naklab',
+            uri: 'spotify:artist:6vNe5MINTo5QZyR08sBOBA',
+          },
+          {
+            id: '61ipISvUVa5LkJlKZnm3Oo',
+            name: 'Alle Farben',
+            uri: 'spotify:artist:61ipISvUVa5LkJlKZnm3Oo',
+          },
+          {
+            id: '67ghKnycRX6VM1xfqJSMlH',
+            name: 'YouNotUs',
+            uri: 'spotify:artist:67ghKnycRX6VM1xfqJSMlH',
+          },
+        ],
+
+        duration_ms: 212826,
+        id: '5wK2U8OltPg94tShNIzUZQ',
+        name: 'Supergirl - Radio Edit',
+        uri: 'spotify:track:5wK2U8OltPg94tShNIzUZQ',
+      },
+    },
+    {
+      added_at: '2023-12-30T14:52:15Z',
+      track: {
+        album: {
+          artists: [
+            {
+              id: '3BmGtnKgCSGYIUhmivXKWX',
+              name: 'Kelly Clarkson',
+              uri: 'spotify:artist:3BmGtnKgCSGYIUhmivXKWX',
+            },
+          ],
+          id: '5sVFXIMrFRKBtDOexVlBBU',
+          images: [
+            {
+              height: 640,
+              url: 'https://i.scdn.co/image/ab67616d0000b2731fa667a7a53c7072fed91a17',
+              width: 640,
+            },
+            {
+              height: 300,
+              url: 'https://i.scdn.co/image/ab67616d00001e021fa667a7a53c7072fed91a17',
+              width: 300,
+            },
+            {
+              height: 64,
+              url: 'https://i.scdn.co/image/ab67616d000048511fa667a7a53c7072fed91a17',
+              width: 64,
+            },
+          ],
+          name: 'When Christmas Comes Around...',
+          release_date: '2021-10-15',
+          release_date_precision: 'day',
+          total_tracks: 15,
+          type: 'album',
+          uri: 'spotify:album:5sVFXIMrFRKBtDOexVlBBU',
+        },
+        artists: [
+          {
+            id: '3BmGtnKgCSGYIUhmivXKWX',
+            name: 'Kelly Clarkson',
+            uri: 'spotify:artist:3BmGtnKgCSGYIUhmivXKWX',
+          },
+          {
+            id: '66CXWjxzNUsdJxJ2JdwvnR',
+            name: 'Ariana Grande',
+            uri: 'spotify:artist:66CXWjxzNUsdJxJ2JdwvnR',
+          },
+        ],
+
+        duration_ms: 242644,
+        id: '2O3MQ6H3gjrIWDcpeTrikT',
+        name: 'Santa, Can’t You Hear Me',
+        uri: 'spotify:track:2O3MQ6H3gjrIWDcpeTrikT',
+      },
+    },
+  ],
+  limit: 6,
+  next: 'https://api.spotify.com/v1/me/tracks?offset=6&limit=6&locale=en-US,en;q=0.9,pl-PL;q=0.8,pl;q=0.7',
+  offset: 0,
+  previous: null,
+  total: 373,
 };
