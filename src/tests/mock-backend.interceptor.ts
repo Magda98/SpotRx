@@ -9,7 +9,7 @@ import {
   HttpUserEvent,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, delay } from 'rxjs';
 import { User } from '../app/interfaces/user';
 import {
   FeaturedPlaylistResponse,
@@ -102,7 +102,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
     }
 
     if (req.url.endsWith('search') && req.method == 'GET') {
-      return new Observable((observer) => {
+      return new Observable<HttpResponse<SearchResponse>>((observer) => {
         observer.next(
           new HttpResponse<SearchResponse>({
             body: searchResponse,
@@ -110,7 +110,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           })
         );
         observer.complete();
-      });
+      }).pipe(delay(300));
     }
     // pass through other requests.
     return next.handle(req);

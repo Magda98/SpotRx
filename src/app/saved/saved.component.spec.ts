@@ -27,5 +27,7 @@ describe('SavedComponent', () => {
     jest.advanceTimersByTime(300);
     component.detectChanges();
     expect(component.container).toMatchSnapshot();
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
   });
 });

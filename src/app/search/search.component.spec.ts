@@ -3,7 +3,11 @@ import {
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { render, screen } from '@testing-library/angular';
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
 import { SearchComponent } from './search.component';
@@ -26,17 +30,13 @@ describe('SearchComponent', () => {
     });
 
   test('should render', async () => {
-    jest.useFakeTimers();
     const component = await renderComponent();
-    const user = userEvent.setup({
-      delay: 0,
-      advanceTimers: jest.advanceTimersByTime,
-    });
+    const user = userEvent.setup();
     const searchControl = await screen.findByRole('textbox', {
       name: /search/i,
     });
     await user.type(searchControl, 'Maryla');
-    jest.advanceTimersByTime(600);
+    await waitForElementToBeRemoved(await screen.findAllByRole('progressbar'));
     component.detectChanges();
     expect(component.container).toMatchSnapshot();
   });
