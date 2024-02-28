@@ -1,19 +1,9 @@
-import {
-  Component,
-  OnInit,
-  Signal,
-  computed,
-  inject,
-  signal,
-} from '@angular/core';
-import { Item } from '../interfaces/track';
+import { Component, inject, signal } from '@angular/core';
 import { TrackService } from '../services/track.service';
 import { PageEvent } from '@angular/material/paginator';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { TrackListComponent } from '../track-list/track-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-saved',
