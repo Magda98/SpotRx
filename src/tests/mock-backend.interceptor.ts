@@ -21,9 +21,10 @@ import {
   playlist,
   playlistsResponse,
   savedTracks,
+  searchResponse,
   user,
 } from './mocks';
-import { TracksResponse } from 'src/app/interfaces/track';
+import { SearchResponse, TracksResponse } from 'src/app/interfaces/track';
 
 @Injectable()
 export class MockBackendInterceptor implements HttpInterceptor {
@@ -93,6 +94,18 @@ export class MockBackendInterceptor implements HttpInterceptor {
         observer.next(
           new HttpResponse<TracksResponse>({
             body: savedTracks,
+            status: 200,
+          })
+        );
+        observer.complete();
+      });
+    }
+
+    if (req.url.endsWith('search') && req.method == 'GET') {
+      return new Observable((observer) => {
+        observer.next(
+          new HttpResponse<SearchResponse>({
+            body: searchResponse,
             status: 200,
           })
         );

@@ -11,6 +11,7 @@ import { PlayerService } from '../services/player.service';
 
 describe('SavedComponent', () => {
   test('should render', async () => {
+    jest.useFakeTimers();
     const component = await render(SavedComponent, {
       imports: [HttpClientTestingModule],
       providers: [
@@ -23,7 +24,6 @@ describe('SavedComponent', () => {
         },
       ],
     });
-    jest.useFakeTimers();
     jest.advanceTimersByTime(300);
     component.detectChanges();
     expect(component.container).toMatchSnapshot();

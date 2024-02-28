@@ -3,7 +3,7 @@ import {
   Playlist,
   PlaylistResponse,
 } from 'src/app/interfaces/playlist';
-import { TracksResponse } from 'src/app/interfaces/track';
+import { SearchResponse, TracksResponse } from 'src/app/interfaces/track';
 import { User } from 'src/app/interfaces/user';
 
 export const user: User = {
@@ -596,4 +596,61 @@ export const savedTracks: TracksResponse = {
   offset: 0,
   previous: null,
   total: 373,
+};
+
+export const searchResponse: SearchResponse = {
+  tracks: {
+    items: [
+      {
+        album: {
+          artists: [
+            {
+              href: 'https://api.spotify.com/v1/artists/0LyfQWJT6nXafLPZqxe9Of',
+              id: '0LyfQWJT6nXafLPZqxe9Of',
+              name: 'Various Artists',
+              type: 'artist',
+              uri: 'spotify:artist:0LyfQWJT6nXafLPZqxe9Of',
+            },
+          ],
+          id: '4qO2T8ZnNedvby1faWQE5p',
+          images: [
+            {
+              height: 640,
+              url: 'https://i.scdn.co/image/ab67616d0000b273510b37e772bdf2e8204beb0a',
+              width: 640,
+            },
+            {
+              height: 300,
+              url: 'https://i.scdn.co/image/ab67616d00001e02510b37e772bdf2e8204beb0a',
+              width: 300,
+            },
+            {
+              height: 64,
+              url: 'https://i.scdn.co/image/ab67616d00004851510b37e772bdf2e8204beb0a',
+              width: 64,
+            },
+          ],
+          name: 'Sześć Oceanów (Piosenki 1962-2013)',
+          release_date: '2014-11-03',
+          release_date_precision: 'day',
+          total_tracks: 90,
+          type: 'album',
+          uri: 'spotify:album:4qO2T8ZnNedvby1faWQE5p',
+        },
+        artists: [
+          {
+            href: 'https://api.spotify.com/v1/artists/1IYFJPQcbXYjgkyebYs1w6',
+            id: '1IYFJPQcbXYjgkyebYs1w6',
+            name: 'Maryla Rodowicz',
+            type: 'artist',
+            uri: 'spotify:artist:1IYFJPQcbXYjgkyebYs1w6',
+          },
+        ],
+        duration_ms: 265293,
+        id: '406CXfShfgeftnNLmJl49t',
+        name: 'Małgośka',
+        uri: 'spotify:track:406CXfShfgeftnNLmJl49t',
+      },
+    ],
+  },
 };
