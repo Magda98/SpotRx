@@ -11,8 +11,12 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../app/interfaces/user';
-import { Playlist, PlaylistResponse } from '../app/interfaces/playlist';
-import { playlist, playlistsResponse, user } from './mocks';
+import {
+  FeaturedPlaylistResponse,
+  Playlist,
+  PlaylistResponse,
+} from '../app/interfaces/playlist';
+import { featuredPlaylists, playlist, playlistsResponse, user } from './mocks';
 
 @Injectable()
 export class MockBackendInterceptor implements HttpInterceptor {
@@ -64,8 +68,17 @@ export class MockBackendInterceptor implements HttpInterceptor {
         observer.complete();
       });
     }
-    // browse/featured-playlists
+
     if (req.url.endsWith('browse/featured-playlists') && req.method == 'GET') {
+      return new Observable((observer) => {
+        observer.next(
+          new HttpResponse<FeaturedPlaylistResponse>({
+            body: featuredPlaylists,
+            status: 200,
+          })
+        );
+        observer.complete();
+      });
     }
     // pass through other requests.
     return next.handle(req);

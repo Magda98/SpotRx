@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
-import { user } from 'src/tests/mocks';
+import { user } from '../../tests/mocks';
 
 describe('NavComponent', () => {
   const userData: User = user;

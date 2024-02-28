@@ -1,4 +1,8 @@
-import { Playlist, PlaylistResponse } from 'src/app/interfaces/playlist';
+import {
+  FeaturedPlaylistResponse,
+  Playlist,
+  PlaylistResponse,
+} from 'src/app/interfaces/playlist';
 import { User } from 'src/app/interfaces/user';
 
 export const user: User = {
@@ -36,6 +40,8 @@ export const user: User = {
 
 export const playlistsResponse: PlaylistResponse = {
   total: 2,
+  limit: 12,
+  offset: 0,
   items: [
     {
       href: 'https://api.spotify.com/v1/playlists/50Gsv3p7qLLPVzfPBu8UcO',
@@ -158,4 +164,80 @@ export const playlist: Playlist = {
   },
   type: 'playlist',
   uri: 'spotify:playlist:50Gsv3p7qLLPVzfPBu8UcO',
+};
+
+export const featuredPlaylists: FeaturedPlaylistResponse = {
+  message: 'Popular Playlists',
+  playlists: {
+    items: [
+      {
+        description:
+          'Największe rapowe kawałki w tej chwili. Cover: Otsochodzi',
+        href: 'https://api.spotify.com/v1/playlists/37i9dQZF1DWXJnyndhASBe',
+        id: '37i9dQZF1DWXJnyndhASBe',
+        images: [
+          {
+            height: null,
+            url: 'https://i.scdn.co/image/ab67706f000000022853dbf3a386ff35d0e95867',
+            width: null,
+          },
+        ],
+        name: 'RAP GENERACJA',
+        primary_color: '#ffffff',
+        type: 'playlist',
+        uri: 'spotify:playlist:37i9dQZF1DWXJnyndhASBe',
+      },
+      {
+        description: '50 najgorętszych hitów w Polsce. Cover: Kizo, Bletka',
+        href: 'https://api.spotify.com/v1/playlists/37i9dQZF1DX49bSMRljsho',
+        id: '37i9dQZF1DX49bSMRljsho',
+        images: [
+          {
+            height: null,
+            url: 'https://i.scdn.co/image/ab67706f00000002419aba98b988e66b49397503',
+            width: null,
+          },
+        ],
+        name: 'Hot Hits Polska',
+        primary_color: '#ffffff',
+        type: 'playlist',
+        uri: 'spotify:playlist:37i9dQZF1DX49bSMRljsho',
+      },
+      {
+        description: '🤰🏻🤰🏻🤰🏻🤰🏻🤰🏻 cover: Fagata',
+        href: 'https://api.spotify.com/v1/playlists/37i9dQZF1DX35mEXECRn6o',
+        id: '37i9dQZF1DX35mEXECRn6o',
+        images: [
+          {
+            height: null,
+            url: 'https://i.scdn.co/image/ab67706f0000000256022bab9d8032623325602c',
+            width: null,
+          },
+        ],
+        name: 'viral rap',
+        primary_color: '#3ffc04',
+        type: 'playlist',
+        uri: 'spotify:playlist:37i9dQZF1DX35mEXECRn6o',
+      },
+      {
+        description: 'Playlista pełna radiowych przebojów ostatnich miesięcy.',
+        href: 'https://api.spotify.com/v1/playlists/37i9dQZF1DX99QlO9EobD7',
+        id: '37i9dQZF1DX99QlO9EobD7',
+        images: [
+          {
+            height: null,
+            url: 'https://i.scdn.co/image/ab67706f000000028b3b83b2962b242445ad0ea0',
+            width: null,
+          },
+        ],
+        name: 'Hity z radia 2024',
+        primary_color: '#ffffff',
+        type: 'playlist',
+        uri: 'spotify:playlist:37i9dQZF1DX99QlO9EobD7',
+      },
+    ],
+    limit: 12,
+    offset: 0,
+    total: 100,
+  },
 };
