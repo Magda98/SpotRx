@@ -54,7 +54,7 @@ exports[`AppComponent should render 1`] = `
         >
           <li>
             <a
-              class="link"
+              class="link active"
               href="/"
               routerlink="/"
               routerlinkactive="active"

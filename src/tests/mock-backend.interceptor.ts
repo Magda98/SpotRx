@@ -39,7 +39,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
     | HttpUserEvent<any>
   > {
     if (req.url.endsWith('me') && req.method == 'GET') {
-      return new Observable((observer) => {
+      return new Observable<HttpResponse<User>>((observer) => {
         observer.next(
           new HttpResponse<User>({
             body: user,
@@ -47,11 +47,11 @@ export class MockBackendInterceptor implements HttpInterceptor {
           })
         );
         observer.complete();
-      });
+      }).pipe(delay(200));
     }
 
     if (req.url.endsWith('playlists') && req.method == 'GET') {
-      return new Observable((observer) => {
+      return new Observable<HttpResponse<PlaylistResponse>>((observer) => {
         observer.next(
           new HttpResponse<PlaylistResponse>({
             body: playlistsResponse,
@@ -59,14 +59,14 @@ export class MockBackendInterceptor implements HttpInterceptor {
           })
         );
         observer.complete();
-      });
+      }).pipe(delay(200));
     }
 
     if (
       req.url.endsWith('playlists/50Gsv3p7qLLPVzfPBu8UcO') &&
       req.method == 'GET'
     ) {
-      return new Observable((observer) => {
+      return new Observable<HttpResponse<Playlist>>((observer) => {
         observer.next(
           new HttpResponse<Playlist>({
             body: playlist,
@@ -74,19 +74,21 @@ export class MockBackendInterceptor implements HttpInterceptor {
           })
         );
         observer.complete();
-      });
+      }).pipe(delay(200));
     }
 
     if (req.url.endsWith('browse/featured-playlists') && req.method == 'GET') {
-      return new Observable((observer) => {
-        observer.next(
-          new HttpResponse<FeaturedPlaylistResponse>({
-            body: featuredPlaylists,
-            status: 200,
-          })
-        );
-        observer.complete();
-      });
+      return new Observable<HttpResponse<FeaturedPlaylistResponse>>(
+        (observer) => {
+          observer.next(
+            new HttpResponse<FeaturedPlaylistResponse>({
+              body: featuredPlaylists,
+              status: 200,
+            })
+          );
+          observer.complete();
+        }
+      ).pipe(delay(200));
     }
 
     if (req.url.endsWith('me/tracks') && req.method == 'GET') {
@@ -110,7 +112,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           })
         );
         observer.complete();
-      }).pipe(delay(300));
+      }).pipe(delay(200));
     }
     // pass through other requests.
     return next.handle(req);

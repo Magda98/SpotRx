@@ -39,6 +39,7 @@ describe('NavComponent', () => {
   test('should render', async () => {
     const component = await renderComponent();
     component.detectChanges();
+    await screen.findByAltText('święta swięta 🎄')
     expect(component.container).toMatchSnapshot();
   });
 
@@ -66,6 +67,6 @@ describe('NavComponent', () => {
   test('should display user playlist', async () => {
     const component = await renderComponent();
     component.detectChanges();
-    expect(screen.getByAltText('święta swięta 🎄')).toBeInTheDocument();
+    expect(await screen.findByAltText('święta swięta 🎄')).toBeInTheDocument();
   });
 });

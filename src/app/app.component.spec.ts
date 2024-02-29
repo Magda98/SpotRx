@@ -5,7 +5,7 @@ import {
   QueryClient,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, find } from 'rxjs';
 import { AuthData } from './interfaces/authData';
 import { fireEvent, render, screen } from '@testing-library/angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -42,6 +42,7 @@ describe('AppComponent', () => {
   test('should render', async () => {
     const component = await renderComponent();
     component.detectChanges();
+    await screen.findByRole('main');
     expect(component.container).toMatchSnapshot();
   });
 
@@ -56,7 +57,7 @@ describe('AppComponent', () => {
     mockAuthService.loggedIn.next(false);
     const component = await renderComponent();
     component.detectChanges();
-    expect(screen.getByRole('main')).toBeInTheDocument();
+    expect(await screen.findByRole('main')).toBeInTheDocument();
   });
 
   test('should navigate', async () => {
@@ -65,17 +66,17 @@ describe('AppComponent', () => {
     component.detectChanges();
     expect(screen.queryByText(/Saved tracks/i)).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole('link', { name: /Saved/i }));
+    fireEvent.click(await screen.findByRole('link', { name: /Saved/i }));
     expect(
       await screen.findByRole('heading', { name: /Saved tracks/i })
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole('link', { name: /Home/i }));
+    fireEvent.click(await screen.findByRole('link', { name: /Home/i }));
     expect(
       await screen.findByRole('heading', { name: /Home/i })
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole('link', { name: /Home/i }));
+    fireEvent.click(await screen.findByRole('link', { name: /Home/i }));
     expect(
       await screen.findByRole('heading', { name: /Home/i })
     ).toBeInTheDocument();
