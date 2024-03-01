@@ -19,6 +19,7 @@ import {
 import {
   featuredPlaylists,
   playlist,
+  playlistTracks,
   playlistsResponse,
   savedTracks,
   searchResponse,
@@ -108,6 +109,18 @@ export class MockBackendInterceptor implements HttpInterceptor {
         observer.next(
           new HttpResponse<SearchResponse>({
             body: searchResponse,
+            status: 200,
+          })
+        );
+        observer.complete();
+      }).pipe(delay(200));
+    }
+
+    if (req.url.match(/playlists\/.*\/tracks/)) {
+      return new Observable<HttpResponse<TracksResponse>>((observer) => {
+        observer.next(
+          new HttpResponse<TracksResponse>({
+            body: playlistTracks,
             status: 200,
           })
         );

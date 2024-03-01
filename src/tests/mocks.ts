@@ -598,6 +598,16 @@ export const savedTracks: TracksResponse = {
   total: 373,
 };
 
+export const playlistTracks: TracksResponse = {
+  href: 'https://api.spotify.com/v1/playlists/3nl9GNcLS5xW883RgPypFL/tracks?offset=0&limit=6&locale=en-US%2Cen%3Bq%3D0.9%2Cpl%3Bq%3D0.8%2Cen-GB%3Bq%3D0.7%2Cde%3Bq%3D0.6',
+  items: playlist.tracks?.items ?? [],
+  limit: 6,
+  next: 'https://api.spotify.com/v1/playlists/3nl9GNcLS5xW883RgPypFL/tracks?offset=0&limit=6&locale=en-US%2Cen%3Bq%3D0.9%2Cpl%3Bq%3D0.8%2Cen-GB%3Bq%3D0.7%2Cde%3Bq%3D0.6',
+  offset: 0,
+  previous: null,
+  total: 16,
+};
+
 export const searchResponse: SearchResponse = {
   tracks: {
     items: [
