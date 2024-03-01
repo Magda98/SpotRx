@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaylistComponent should render 1`] = `
+<div
+  id="root0"
+>
+  <div
+    class="playlist"
+  >
+    <h1
+      class="title"
+    >
+      Dua Lipa 🍑💫🔥
+    </h1>
+    
+    
+    <app-track-list
+      class="track-list"
+    >
+      <div
+        class="track-list-container"
+      >
+        <mat-paginator
+          aria-label="Select page"
+          class="mat-mdc-paginator paginator"
+          role="group"
+        >
+          <div
+            class="mat-mdc-paginator-outer-container"
+          >
+            <div
+              class="mat-mdc-paginator-container"
+            >
+              <div
+                class="mat-mdc-paginator-page-size"
+              >
+                <div
+                  class="mat-mdc-paginator-page-size-label"
+                >
+                   Items per page: 
+                </div>
+                
+                <div
+                  class="mat-mdc-paginator-page-size-value"
+                >
+                  6
+                </div>
+                
+              </div>
+              
+              <div
+                class="mat-mdc-paginator-range-actions"
+              >
+                <div
+                  aria-live="polite"
+                  class="mat-mdc-paginator-range-label"
+                >
+                   1 – 1 of 1 
+                </div>
+                
+                <button
+                  aria-label="Previous page"
+                  class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-previous mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled _mat-animation-noopable mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled"
+                  disabled="true"
+                  mat-icon-button=""
+                  mat-ripple-loader-centered=""
+                  mat-ripple-loader-class-name="mat-mdc-button-ripple"
+                  mat-ripple-loader-disabled=""
+                  mat-ripple-loader-uninitialized=""
+                  type="button"
+                >
+                  <span
+                    class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="mat-mdc-paginator-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                    />
+                  </svg>
+                  <span
+                    class="mat-mdc-focus-indicator"
+                  />
+                  <span
+                    class="mat-mdc-button-touch-target"
+                  />
+                </button>
+                
+                <button
+                  aria-label="Next page"
+                  class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-next mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled _mat-animation-noopable mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled"
+                  disabled="true"
+                  mat-icon-button=""
+                  mat-ripple-loader-centered=""
+                  mat-ripple-loader-class-name="mat-mdc-button-ripple"
+                  mat-ripple-loader-disabled=""
+                  mat-ripple-loader-uninitialized=""
+                  type="button"
+                >
+                  <span
+                    class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="mat-mdc-paginator-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                    />
+                  </svg>
+                  <span
+                    class="mat-mdc-focus-indicator"
+                  />
+                  <span
+                    class="mat-mdc-button-touch-target"
+                  />
+                </button>
+                
+                
+              </div>
+            </div>
+          </div>
+        </mat-paginator>
+        <ul
+          class="track-list"
+        >
+          <li
+            class="track"
+          >
+            <div
+              class="song-info"
+            >
+              <img
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e02d1410c1372fab1e516328fa8"
+                width="90"
+              />
+              <div
+                class="album-artist"
+              >
+                <h2
+                  class="name"
+                >
+                  Santa's Coming for Us
+                </h2>
+                <span
+                  class="album-name"
+                >
+                   Everyday Is Christmas (Deluxe Edition) 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
+                  >
+                    Sia
+                  </span>
+                  
+                </div>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              3:26 
+            </span>
+          </li>
+          
+        </ul>
+        
+        
+      </div>
+    </app-track-list>
+  </div>
+</div>
+`;
