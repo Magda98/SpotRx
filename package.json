@@ -33,6 +33,7 @@
     "@angular/cli": "^17.1.1",
     "@angular/compiler-cli": "^17.1.1",
     "@briebug/jest-schematic": "^6.0.0",
+    "@playwright/test": "^1.42.1",
     "@tanstack/angular-query-devtools-experimental": "^5.20.5",
     "@testing-library/angular": "^15.2.0",
     "@testing-library/jest-dom": "^6.4.2",
