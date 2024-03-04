@@ -31,7 +31,7 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 export class AppComponent implements OnInit {
   /**
    * TODO:
-   * - add unit test
+   * * add e2e playwright tests
    * * feature: rewrite paginated list to infinine scroll
    */
   private authService = inject(AuthService);
