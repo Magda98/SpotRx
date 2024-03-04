@@ -9,6 +9,6 @@
   </div>
   }
   <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="playlistInfo.data()?.tracks?.total"
-    [tracksListQuery]="tracksQuery">
+    [tracksList]="tracksQuery.data()" [isLoading]="tracksQuery.isLoading()" >
   </app-track-list>
 </div>

@@ -137,6 +137,7 @@ exports[`PlaylistComponent should render 1`] = `
               class="song-info"
             >
               <img
+                alt="Santa's Coming for Us"
                 class="track-img"
                 fetchpriority="auto"
                 height="90"

@@ -133,6 +133,7 @@ exports[`SavedComponent should render 1`] = `
               class="song-info"
             >
               <img
+                alt="Saturn"
                 class="track-img"
                 fetchpriority="auto"
                 height="90"
@@ -179,6 +180,7 @@ exports[`SavedComponent should render 1`] = `
               class="song-info"
             >
               <img
+                alt="River"
                 class="track-img"
                 fetchpriority="auto"
                 height="90"
@@ -225,6 +227,7 @@ exports[`SavedComponent should render 1`] = `
               class="song-info"
             >
               <img
+                alt="Daggers"
                 class="track-img"
                 fetchpriority="auto"
                 height="90"
@@ -271,6 +274,7 @@ exports[`SavedComponent should render 1`] = `
               class="song-info"
             >
               <img
+                alt="Bécane - A COLORS SHOW"
                 class="track-img"
                 fetchpriority="auto"
                 height="90"
@@ -317,6 +321,7 @@ exports[`SavedComponent should render 1`] = `
               class="song-info"
             >
               <img
+                alt="Supergirl - Radio Edit"
                 class="track-img"
                 fetchpriority="auto"
                 height="90"
@@ -373,6 +378,7 @@ exports[`SavedComponent should render 1`] = `
               class="song-info"
             >
               <img
+                alt="Santa, Can’t You Hear Me"
                 class="track-img"
                 fetchpriority="auto"
                 height="90"
