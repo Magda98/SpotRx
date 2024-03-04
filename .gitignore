@@ -37,6 +37,13 @@ yarn-error.log
 testem.log
 /typings
 
+# file with auth data for e2e tests
+e2e/authData.ts
+
 # System files
 .DS_Store
 Thumbs.db
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
