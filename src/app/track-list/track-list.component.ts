@@ -31,20 +31,19 @@ import { DurationPipe } from './duration.pipe';
 export class TrackListComponent {
   private playerService = inject(PlayerService);
   private trackService = inject(TrackService);
-  tracksListQuery = input.required<CreateQueryResult<TracksResponse>>();
+  tracksList = input.required<TracksResponse | undefined>();
+  isLoading = input.required<boolean>();
   total = input.required();
   @Output() getNextPage = new EventEmitter<PageEvent>();
   pageSize = this.trackService.pageSize;
   readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
   currentPage = computed(() => {
-    const offset = this.tracksListQuery()?.data()?.offset;
+    const offset = this.tracksList()?.offset;
     return offset ? offset / this.pageSize : 0;
   });
 
   play(index: number) {
-    const queue = this.tracksListQuery()
-      .data()
-      ?.items.map((item) => item.track.uri);
+    const queue = this.tracksList()?.items.map((item) => item.track.uri);
     if (queue) this.playerService.queue.next({ queue, index });
   }
 
