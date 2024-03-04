@@ -27,6 +27,8 @@ SpotRx is deployed and accessible online. You can try it out at [https://magda98
 - [**Angular**](https://angular.dev/): SpotRx is built using the Angular framework in version 17 and use Signals, standalone components, new control flow etc. which provides a powerful and scalable platform for developing single-page applications.
 
 - [**Angular Query**](https://tanstack.com/query/v5/docs/framework/angular/overview) powerful asynchronous state management for TS.
+  
+- [**Angular Testing Library**](https://testing-library.com/docs/angular-testing-library/intro) library used for unit testing.
 
 - [**Angualr Material**](https://material.angular.io/) - Material Design components for Angular.
 
