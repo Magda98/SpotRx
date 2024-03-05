@@ -21,10 +21,10 @@
       </div>
     </div>
     <div class="action-buttons">
-      <button class="btn-outline" (click)="playerService.skipPrev()">
+      <button aria-label="previous" class="btn-outline" (click)="playerService.skipPrev()">
         <mat-icon>skip_previous</mat-icon>
       </button>
-      <button class="btn-outline" (click)="playerService.tooglePlay()">
+      <button aria-label="play" class="btn-outline" (click)="playerService.tooglePlay()">
         @if(player.paused){
         <mat-icon>play_circle_outline</mat-icon>
         }
@@ -32,7 +32,7 @@
         <mat-icon>pause_circle_outline</mat-icon>
         }
       </button>
-      <button class="btn-outline" (click)="playerService.skipNext();">
+      <button aria-label="next" class="btn-outline" (click)="playerService.skipNext();">
         <mat-icon>skip_next</mat-icon>
       </button>
     </div>
