@@ -7,5 +7,4 @@ test('brwose saved tracks', async ({ basePage }) => {
   basePage.waitToBeLoaded();
   await basePage.page.getByLabel('Next page').click();
   basePage.waitToBeLoaded();
-  await basePage.page.screenshot({ path: 'screenshot.png' });
 });
