@@ -29,6 +29,9 @@
     border-radius: 10px;
     cursor: pointer;
     gap: 8px;
+    background-color: transparent;
+    border: none;
+    color: #f2f4f5;
     transition: background-color 0.3s;
 
     &:hover {
@@ -41,6 +44,10 @@
       object-fit: cover;
       margin-right: 10px;
       border-radius: 5px;
+    }
+
+    .album-artist {
+      text-align: left;
     }
   }
 
