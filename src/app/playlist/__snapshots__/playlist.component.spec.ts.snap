@@ -127,11 +127,12 @@ exports[`PlaylistComponent should render 1`] = `
             </div>
           </div>
         </mat-paginator>
-        <ul
+        <div
           class="track-list"
         >
-          <li
+          <button
             class="track"
+            type="button"
           >
             <div
               class="song-info"
@@ -176,9 +177,9 @@ exports[`PlaylistComponent should render 1`] = `
             >
               3:26 
             </span>
-          </li>
+          </button>
           
-        </ul>
+        </div>
         
         
       </div>

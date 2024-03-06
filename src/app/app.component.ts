@@ -6,8 +6,8 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { PlayerService } from './services/player.service';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
-import { NavComponent } from './nav/nav.component';
-import { IconComponent } from './icon/icon.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { IconComponent } from './shared/icon/icon.component';
 import { PlayerComponent } from './player/player.component';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -20,7 +20,7 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
   standalone: true,
   imports: [
     RouterModule,
-    NavComponent,
+    NavbarComponent,
     IconComponent,
     PlayerComponent,
     AngularQueryDevtools,

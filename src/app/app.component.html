@@ -11,7 +11,7 @@
   }
 
   @if(userData.isSuccess()){
-    <app-nav [userData]="userData.data()" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-nav>
+    <app-navbar [userData]="userData.data()" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-navbar>
     <button aria-label="menu" class="app-menu-button btn" type="button" (click)="toggleMenu()">
       <app-icon class="icon" type="menu"></app-icon>
     </button>

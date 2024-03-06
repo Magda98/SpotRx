@@ -1,21 +1,21 @@
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { TrackService } from './../services/track.service';
-import { UserService } from './../services/user.service';
+import { TrackService } from '../services/track.service';
+import { UserService } from '../services/user.service';
 import { Component, inject, input, EventEmitter, Output } from '@angular/core';
-import { IconComponent } from '../icon/icon.component';
+import { IconComponent } from '../shared/icon/icon.component';
 import { CommonModule } from '@angular/common';
 import { User } from '../interfaces/user';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss'],
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
   standalone: true,
   imports: [IconComponent, RouterModule, MatIconModule, CommonModule],
 })
-export class NavComponent {
+export class NavbarComponent {
   userService = inject(UserService);
   trackService = inject(TrackService);
   userData = input.required<User>();

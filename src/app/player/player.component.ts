@@ -19,7 +19,7 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TrackService } from '../services/track.service';
 import { MatIcon } from '@angular/material/icon';
-import { IconComponent } from '../icon/icon.component';
+import { IconComponent } from '../shared/icon/icon.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {
