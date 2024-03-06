@@ -4,14 +4,12 @@ import { TracksResponse } from './../interfaces/track';
 import {
   Component,
   EventEmitter,
-  Input,
   Output,
   computed,
   inject,
   input,
 } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { CreateQueryResult } from '@tanstack/angular-query-experimental';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { DurationPipe } from './duration.pipe';
