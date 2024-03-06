@@ -10,7 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { IconComponent } from './icon/icon.component';
 import { PlayerComponent } from './player/player.component';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 
 @Component({
@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
    * TODO:
    * * feature: rewrite paginated list to infinine scroll
    */
+  private document = inject(DOCUMENT);
   private authService = inject(AuthService);
   private userService = inject(UserService);
   private playerService = inject(PlayerService);
@@ -54,12 +55,12 @@ export class AppComponent implements OnInit {
     this.menuOpen.set(!this.menuOpen());
   }
 
-  initSpotifyScript(token: string) {
+  private initSpotifyScript(token: string) {
     this.playerService.initializePlayer(token);
-    const script = document.createElement('script');
+    const script = this.document.createElement('script');
     script.src = 'https://sdk.scdn.co/spotify-player.js';
     script.type = 'text/javascript';
-    document.head.appendChild(script);
+    this.document.head.appendChild(script);
   }
 
   ngOnInit() {
