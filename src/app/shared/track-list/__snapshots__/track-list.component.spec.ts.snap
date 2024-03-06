@@ -112,11 +112,12 @@ exports[`TrackListComponent should render 1`] = `
         </div>
       </div>
     </mat-paginator>
-    <ul
+    <div
       class="track-list"
     >
-      <li
+      <button
         class="track"
+        type="button"
       >
         <div
           class="song-info"
@@ -161,9 +162,10 @@ exports[`TrackListComponent should render 1`] = `
         >
           3:06 
         </span>
-      </li>
-      <li
+      </button>
+      <button
         class="track"
+        type="button"
       >
         <div
           class="song-info"
@@ -208,9 +210,10 @@ exports[`TrackListComponent should render 1`] = `
         >
           3:36 
         </span>
-      </li>
-      <li
+      </button>
+      <button
         class="track"
+        type="button"
       >
         <div
           class="song-info"
@@ -255,9 +258,10 @@ exports[`TrackListComponent should render 1`] = `
         >
           2:19 
         </span>
-      </li>
-      <li
+      </button>
+      <button
         class="track"
+        type="button"
       >
         <div
           class="song-info"
@@ -302,9 +306,10 @@ exports[`TrackListComponent should render 1`] = `
         >
           3:02 
         </span>
-      </li>
-      <li
+      </button>
+      <button
         class="track"
+        type="button"
       >
         <div
           class="song-info"
@@ -359,9 +364,10 @@ exports[`TrackListComponent should render 1`] = `
         >
           3:32 
         </span>
-      </li>
-      <li
+      </button>
+      <button
         class="track"
+        type="button"
       >
         <div
           class="song-info"
@@ -411,9 +417,9 @@ exports[`TrackListComponent should render 1`] = `
         >
           4:02 
         </span>
-      </li>
+      </button>
       
-    </ul>
+    </div>
     
     
   </div>

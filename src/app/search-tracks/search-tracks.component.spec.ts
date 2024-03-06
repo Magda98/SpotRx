@@ -10,13 +10,13 @@ import {
 } from '@testing-library/angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
-import { SearchComponent } from './search.component';
+import { SearchTracksComponent } from './search-tracks.component';
 import { PlayerService } from '../services/player.service';
 import userEvent from '@testing-library/user-event';
 
 describe('SearchComponent', () => {
   const renderComponent = () =>
-    render(SearchComponent, {
+    render(SearchTracksComponent, {
       imports: [HttpClientTestingModule],
       providers: [
         provideAngularQuery(new QueryClient()),

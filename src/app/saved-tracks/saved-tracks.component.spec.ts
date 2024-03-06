@@ -1,5 +1,5 @@
 import { render } from '@testing-library/angular';
-import { SavedComponent } from './saved.component';
+import { SavedTracksComponent } from './saved-tracks.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {
   QueryClient,
@@ -12,7 +12,7 @@ import { PlayerService } from '../services/player.service';
 describe('SavedComponent', () => {
   test('should render', async () => {
     jest.useFakeTimers();
-    const component = await render(SavedComponent, {
+    const component = await render(SavedTracksComponent, {
       imports: [HttpClientTestingModule],
       providers: [
         provideAngularQuery(new QueryClient()),

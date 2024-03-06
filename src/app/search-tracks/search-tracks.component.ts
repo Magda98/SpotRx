@@ -8,13 +8,13 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgOptimizedImage } from '@angular/common';
-import { DurationPipe } from '../track-list/duration.pipe';
+import { DurationPipe } from '../shared/track-list/duration.pipe';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
+  selector: 'app-search-tracks',
+  templateUrl: './search-tracks.component.html',
+  styleUrls: ['./search-tracks.component.scss'],
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -25,7 +25,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     ReactiveFormsModule,
   ],
 })
-export class SearchComponent {
+export class SearchTracksComponent {
   public trackService = inject(TrackService);
   private playerService = inject(PlayerService);
   public searchFromControl = new FormControl('');
