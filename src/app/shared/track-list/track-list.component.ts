@@ -13,6 +13,8 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { DurationPipe } from './duration.pipe';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { distinctUntilChanged, filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-track-list',
@@ -32,12 +34,22 @@ export class TrackListComponent {
   tracksList = input.required<TracksResponse | undefined>();
   isLoading = input.required<boolean>();
   total = input.required();
+  totalTracks = toSignal(
+    toObservable(this.total).pipe(filter(Boolean), distinctUntilChanged())
+  );
   @Output() getNextPage = new EventEmitter<PageEvent>();
   pageSize = this.trackService.pageSize;
   readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
+  private offset = toSignal(
+    toObservable(this.tracksList).pipe(
+      map((data) => data?.offset),
+      filter(Boolean)
+    )
+  );
   currentPage = computed(() => {
-    const offset = this.tracksList()?.offset;
-    return offset ? offset / this.pageSize : 0;
+    const offset = this.offset();
+    if (!offset) return;
+    return offset / this.pageSize;
   });
 
   play(index: number) {
