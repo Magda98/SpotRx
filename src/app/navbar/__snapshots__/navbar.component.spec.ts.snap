@@ -86,6 +86,24 @@ exports[`NavComponent should render 1`] = `
       <li>
         <a
           class="link"
+          href="/top-tracks"
+          routerlink="/top-tracks"
+          routerlinkactive="active"
+        >
+          <mat-icon
+            aria-hidden="true"
+            class="mat-icon notranslate icon material-icons mat-ligature-font mat-icon-no-color"
+            data-mat-icon-type="font"
+            role="img"
+          >
+            format_list_numbered
+          </mat-icon>
+           Top tracks 
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
           href="/search"
           routerlink="/search"
           routerlinkactive="active"
