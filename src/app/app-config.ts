@@ -5,6 +5,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import {
   QueryClient,
+  keepPreviousData,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
@@ -16,7 +17,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom([HttpClientModule, BrowserAnimationsModule]),
     provideRouter(routes),
-    provideAngularQuery(new QueryClient()),
+    provideAngularQuery(
+      new QueryClient({
+        defaultOptions: { queries: { placeholderData: keepPreviousData } },
+      })
+    ),
     {
       provide: HTTP_INTERCEPTORS,
       useFactory: () => {

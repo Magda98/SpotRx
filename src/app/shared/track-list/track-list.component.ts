@@ -34,20 +34,11 @@ export class TrackListComponent {
   tracksList = input.required<TracksResponse | undefined>();
   isLoading = input.required<boolean>();
   total = input.required();
-  totalTracks = toSignal(
-    toObservable(this.total).pipe(filter(Boolean), distinctUntilChanged())
-  );
   @Output() getNextPage = new EventEmitter<PageEvent>();
   pageSize = this.trackService.pageSize;
   readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
-  private offset = toSignal(
-    toObservable(this.tracksList).pipe(
-      map((data) => data?.offset),
-      filter(Boolean)
-    )
-  );
   currentPage = computed(() => {
-    const offset = this.offset();
+    const offset = this.tracksList()?.offset;
     if (!offset) return;
     return offset / this.pageSize;
   });
