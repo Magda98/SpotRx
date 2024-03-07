@@ -1,0 +1,38 @@
+import { Component, computed, inject, signal } from '@angular/core';
+import { TrackListComponent } from '../shared/track-list/track-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { injectQuery } from '@tanstack/angular-query-experimental';
+import { TrackService } from '../services/track.service';
+import { PageEvent } from '@angular/material/paginator';
+import { Item, Track, TracksResponse } from '../interfaces/track';
+
+@Component({
+  selector: 'app-top-tracks',
+  templateUrl: './top-tracks.component.html',
+  styleUrls: ['./top-tracks.component.scss'],
+  standalone: true,
+  imports: [TrackListComponent, HttpClientModule],
+})
+export class TopTracksComponent {
+  trackService = inject(TrackService);
+  offset = signal(0);
+  topTracksQuery = injectQuery(() =>
+    this.trackService.getTopTracks(this.offset())
+  );
+  topTracks = computed(() => {
+    const topTracksResponse = this.topTracksQuery.data();
+    if (!topTracksResponse) return;
+    const mappedTracks: Item[] =
+      topTracksResponse?.items.map((item) => ({
+        track: item,
+      })) ?? [];
+    const mappedResponse: TracksResponse = {
+      ...topTracksResponse,
+      items: mappedTracks,
+    };
+    return mappedResponse;
+  });
+  getNextPage(page: PageEvent) {
+    this.offset.set(page.pageSize * page.pageIndex);
+  }
+}

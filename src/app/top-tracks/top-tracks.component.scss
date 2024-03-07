@@ -1,0 +1,10 @@
+.top-tracks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    .title {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+  }

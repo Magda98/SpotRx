@@ -1,0 +1,781 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopTracksComponent should render 1`] = `
+<div
+  id="root0"
+>
+  <div
+    class="top-tracks"
+  >
+    <h1
+      class="title"
+    >
+      Top tracks 😎
+    </h1>
+    <app-track-list
+      class="track-list"
+    >
+      <div
+        class="track-list-container"
+      >
+        <mat-paginator
+          aria-label="Select page"
+          class="mat-mdc-paginator paginator"
+          role="group"
+        >
+          <div
+            class="mat-mdc-paginator-outer-container"
+          >
+            <div
+              class="mat-mdc-paginator-container"
+            >
+              <div
+                class="mat-mdc-paginator-page-size"
+              >
+                <div
+                  class="mat-mdc-paginator-page-size-label"
+                >
+                   Items per page: 
+                </div>
+                
+                <div
+                  class="mat-mdc-paginator-page-size-value"
+                >
+                  6
+                </div>
+                
+              </div>
+              
+              <div
+                class="mat-mdc-paginator-range-actions"
+              >
+                <div
+                  aria-live="polite"
+                  class="mat-mdc-paginator-range-label"
+                >
+                   0 of 0 
+                </div>
+                
+                <button
+                  aria-label="Previous page"
+                  class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-previous mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled _mat-animation-noopable mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled"
+                  disabled="true"
+                  mat-icon-button=""
+                  mat-ripple-loader-centered=""
+                  mat-ripple-loader-class-name="mat-mdc-button-ripple"
+                  mat-ripple-loader-disabled=""
+                  mat-ripple-loader-uninitialized=""
+                  type="button"
+                >
+                  <span
+                    class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="mat-mdc-paginator-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                    />
+                  </svg>
+                  <span
+                    class="mat-mdc-focus-indicator"
+                  />
+                  <span
+                    class="mat-mdc-button-touch-target"
+                  />
+                </button>
+                
+                <button
+                  aria-label="Next page"
+                  class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-next mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled _mat-animation-noopable mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled"
+                  disabled="true"
+                  mat-icon-button=""
+                  mat-ripple-loader-centered=""
+                  mat-ripple-loader-class-name="mat-mdc-button-ripple"
+                  mat-ripple-loader-disabled=""
+                  mat-ripple-loader-uninitialized=""
+                  type="button"
+                >
+                  <span
+                    class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="mat-mdc-paginator-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                    />
+                  </svg>
+                  <span
+                    class="mat-mdc-focus-indicator"
+                  />
+                  <span
+                    class="mat-mdc-button-touch-target"
+                  />
+                </button>
+                
+                
+              </div>
+            </div>
+          </div>
+        </mat-paginator>
+        
+        <div
+          class="track-list track-list--skeleton"
+        >
+          <button
+            class="track"
+            type="button"
+          >
+            <div
+              class="song-info"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+              <div
+                class="album-artist"
+              >
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  count="1"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  class="artist-skeleton"
+                  count="2"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+            </span>
+          </button>
+          <button
+            class="track"
+            type="button"
+          >
+            <div
+              class="song-info"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+              <div
+                class="album-artist"
+              >
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  count="1"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  class="artist-skeleton"
+                  count="2"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+            </span>
+          </button>
+          <button
+            class="track"
+            type="button"
+          >
+            <div
+              class="song-info"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+              <div
+                class="album-artist"
+              >
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  count="1"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  class="artist-skeleton"
+                  count="2"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+            </span>
+          </button>
+          <button
+            class="track"
+            type="button"
+          >
+            <div
+              class="song-info"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+              <div
+                class="album-artist"
+              >
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  count="1"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  class="artist-skeleton"
+                  count="2"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+            </span>
+          </button>
+          <button
+            class="track"
+            type="button"
+          >
+            <div
+              class="song-info"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+              <div
+                class="album-artist"
+              >
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  count="1"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  class="artist-skeleton"
+                  count="2"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+            </span>
+          </button>
+          <button
+            class="track"
+            type="button"
+          >
+            <div
+              class="song-info"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+              <div
+                class="album-artist"
+              >
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  count="1"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+                <ngx-skeleton-loader
+                  animation="progress-dark"
+                  class="artist-skeleton"
+                  count="2"
+                >
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuetext="Loading..."
+                    class="skeleton-loader progress-dark"
+                    role="progressbar"
+                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
+                    tabindex="-1"
+                  >
+                    
+                  </div>
+                  
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <span
+              class="time"
+            >
+              <ngx-skeleton-loader
+                animation="progress-dark"
+                count="1"
+              >
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuetext="Loading..."
+                  class="skeleton-loader progress-dark"
+                  role="progressbar"
+                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
+                  tabindex="-1"
+                >
+                  
+                </div>
+                
+              </ngx-skeleton-loader>
+            </span>
+          </button>
+          
+        </div>
+        
+      </div>
+    </app-track-list>
+  </div>
+</div>
+`;
