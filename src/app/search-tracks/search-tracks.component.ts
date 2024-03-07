@@ -1,8 +1,8 @@
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { TrackService } from '../services/track.service';
-import { PlayerService } from '../services/player.service';
+import { TrackService } from '../shared/services/track.service';
+import { PlayerService } from '../shared/services/player.service';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { MatFormFieldModule } from '@angular/material/form-field';

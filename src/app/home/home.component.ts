@@ -1,4 +1,4 @@
-import { TrackService } from './../services/track.service';
+import { TrackService } from '../shared/services/track.service';
 import { Component, inject } from '@angular/core';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { CommonModule, NgOptimizedImage } from '@angular/common';

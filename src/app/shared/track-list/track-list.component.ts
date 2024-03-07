@@ -1,6 +1,6 @@
-import { TrackService } from '../../services/track.service';
-import { PlayerService } from '../../services/player.service';
-import { TracksResponse } from '../../interfaces/track';
+import { TrackService } from '../services/track.service';
+import { PlayerService } from '../services/player.service';
+import { TracksResponse } from '../interfaces/track';
 import {
   Component,
   EventEmitter,

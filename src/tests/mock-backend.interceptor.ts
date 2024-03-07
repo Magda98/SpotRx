@@ -10,12 +10,12 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, delay } from 'rxjs';
-import { User } from '../app/interfaces/user';
+import { User } from '../app/shared/interfaces/user';
 import {
   FeaturedPlaylistResponse,
   Playlist,
   PlaylistResponse,
-} from '../app/interfaces/playlist';
+} from '../app/shared/interfaces/playlist';
 import {
   featuredPlaylists,
   playlist,
@@ -29,7 +29,7 @@ import {
   SearchResponse,
   Track,
   TracksResponse,
-} from 'src/app/interfaces/track';
+} from 'src/app/shared/interfaces/track';
 
 @Injectable()
 export class MockBackendInterceptor implements HttpInterceptor {

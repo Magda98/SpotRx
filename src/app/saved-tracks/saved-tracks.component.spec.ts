@@ -7,7 +7,7 @@ import {
 } from '@tanstack/angular-query-experimental';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
-import { PlayerService } from '../services/player.service';
+import { PlayerService } from '../shared/services/player.service';
 
 describe('SavedComponent', () => {
   test('should render', async () => {

@@ -4,7 +4,7 @@ import {
 } from '@tanstack/angular-query-experimental';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
-import { User } from '../interfaces/user';
+import { User } from '../shared/interfaces/user';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { render, screen } from '@testing-library/angular';
 import { MatIconModule } from '@angular/material/icon';

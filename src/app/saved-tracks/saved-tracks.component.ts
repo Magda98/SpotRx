@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { TrackService } from '../services/track.service';
+import { TrackService } from '../shared/services/track.service';
 import { PageEvent } from '@angular/material/paginator';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { TrackListComponent } from '../shared/track-list/track-list.component';

@@ -1,4 +1,4 @@
-import { TrackService } from '../services/track.service';
+import { TrackService } from '../shared/services/track.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, inject, signal } from '@angular/core';
 import { distinctUntilChanged, map, tap } from 'rxjs';

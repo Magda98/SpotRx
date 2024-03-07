@@ -13,7 +13,7 @@ import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { PlayerService } from '../services/player.service';
+import { PlayerService } from '../shared/services/player.service';
 
 describe('PlaylistComponent', () => {
   test('should render', async () => {

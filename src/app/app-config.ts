@@ -1,6 +1,6 @@
 import { routes } from './app-routes';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { AuthService } from './shared/services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import {
@@ -10,7 +10,7 @@ import {
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PlayerService } from './services/player.service';
+import { PlayerService } from './shared/services/player.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [

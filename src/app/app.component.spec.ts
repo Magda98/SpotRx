@@ -1,12 +1,12 @@
 import { AppComponent } from './app.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './shared/services/auth.service';
 import { createMockWithValues } from '@testing-library/angular/jest-utils';
 import {
   QueryClient,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
 import { BehaviorSubject, ReplaySubject, find } from 'rxjs';
-import { AuthData } from './interfaces/authData';
+import { AuthData } from './shared/interfaces/authData';
 import { fireEvent, render, screen } from '@testing-library/angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';

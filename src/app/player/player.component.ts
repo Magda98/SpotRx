@@ -1,4 +1,4 @@
-import { PlayerService } from './../services/player.service';
+import { PlayerService } from '../shared/services/player.service';
 import {
   Component,
   OnDestroy,
@@ -17,7 +17,7 @@ import {
   tap,
 } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TrackService } from '../services/track.service';
+import { TrackService } from '../shared/services/track.service';
 import { MatIcon } from '@angular/material/icon';
 import { IconComponent } from '../shared/icon/icon.component';
 import { CommonModule } from '@angular/common';
