@@ -53,7 +53,7 @@ exports[`TopTracksComponent should render 1`] = `
                   aria-live="polite"
                   class="mat-mdc-paginator-range-label"
                 >
-                   0 of 0 
+                   1 – 6 of 373 
                 </div>
                 
                 <button
@@ -90,12 +90,10 @@ exports[`TopTracksComponent should render 1`] = `
                 
                 <button
                   aria-label="Next page"
-                  class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-next mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled _mat-animation-noopable mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled"
-                  disabled="true"
+                  class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-next mdc-icon-button mat-mdc-icon-button _mat-animation-noopable mat-unthemed mat-mdc-button-base"
                   mat-icon-button=""
                   mat-ripple-loader-centered=""
                   mat-ripple-loader-class-name="mat-mdc-button-ripple"
-                  mat-ripple-loader-disabled=""
                   mat-ripple-loader-uninitialized=""
                   type="button"
                 >
@@ -125,9 +123,8 @@ exports[`TopTracksComponent should render 1`] = `
             </div>
           </div>
         </mat-paginator>
-        
         <div
-          class="track-list track-list--skeleton"
+          class="track-list"
         >
           <button
             class="track"
@@ -136,104 +133,45 @@ exports[`TopTracksComponent should render 1`] = `
             <div
               class="song-info"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              <img
+                alt="Saturn"
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e02d70916ee9e40c90380ba5f07"
+                width="90"
+              />
               <div
                 class="album-artist"
               >
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  count="1"
+                <h2
+                  class="name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
-                  
-                </ngx-skeleton-loader>
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  class="artist-skeleton"
-                  count="2"
+                  Saturn
+                </h2>
+                <span
+                  class="album-name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
+                   Saturn 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
                   >
-                    
-                  </div>
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
+                    SZA
+                  </span>
                   
-                </ngx-skeleton-loader>
+                </div>
               </div>
             </div>
             <span
               class="time"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              3:06 
             </span>
           </button>
           <button
@@ -243,104 +181,45 @@ exports[`TopTracksComponent should render 1`] = `
             <div
               class="song-info"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              <img
+                alt="River"
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e028cae5034066af45cdfbc4266"
+                width="90"
+              />
               <div
                 class="album-artist"
               >
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  count="1"
+                <h2
+                  class="name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
-                  
-                </ngx-skeleton-loader>
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  class="artist-skeleton"
-                  count="2"
+                  River
+                </h2>
+                <span
+                  class="album-name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
+                   Church Of Scars 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
                   >
-                    
-                  </div>
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
+                    Bishop Briggs
+                  </span>
                   
-                </ngx-skeleton-loader>
+                </div>
               </div>
             </div>
             <span
               class="time"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              3:36 
             </span>
           </button>
           <button
@@ -350,104 +229,45 @@ exports[`TopTracksComponent should render 1`] = `
             <div
               class="song-info"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              <img
+                alt="Daggers"
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e0210311a15fdac768608fe224d"
+                width="90"
+              />
               <div
                 class="album-artist"
               >
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  count="1"
+                <h2
+                  class="name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
-                  
-                </ngx-skeleton-loader>
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  class="artist-skeleton"
-                  count="2"
+                  Daggers
+                </h2>
+                <span
+                  class="album-name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
+                   Daggers 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
                   >
-                    
-                  </div>
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
+                    Croosh
+                  </span>
                   
-                </ngx-skeleton-loader>
+                </div>
               </div>
             </div>
             <span
               class="time"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              2:19 
             </span>
           </button>
           <button
@@ -457,104 +277,45 @@ exports[`TopTracksComponent should render 1`] = `
             <div
               class="song-info"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              <img
+                alt="Bécane - A COLORS SHOW"
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e027dfba3f3ae607f250cdd969c"
+                width="90"
+              />
               <div
                 class="album-artist"
               >
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  count="1"
+                <h2
+                  class="name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
-                  
-                </ngx-skeleton-loader>
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  class="artist-skeleton"
-                  count="2"
+                  Bécane - A COLORS SHOW
+                </h2>
+                <span
+                  class="album-name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
+                   Bécane - A COLORS SHOW 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
                   >
-                    
-                  </div>
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
+                    Yamê
+                  </span>
                   
-                </ngx-skeleton-loader>
+                </div>
               </div>
             </div>
             <span
               class="time"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              3:02 
             </span>
           </button>
           <button
@@ -564,104 +325,55 @@ exports[`TopTracksComponent should render 1`] = `
             <div
               class="song-info"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              <img
+                alt="Supergirl - Radio Edit"
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e0260e18fbad67fc3c48608d03a"
+                width="90"
+              />
               <div
                 class="album-artist"
               >
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  count="1"
+                <h2
+                  class="name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
-                  
-                </ngx-skeleton-loader>
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  class="artist-skeleton"
-                  count="2"
+                  Supergirl - Radio Edit
+                </h2>
+                <span
+                  class="album-name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
+                   Supergirl (Radio Edit) 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
                   >
-                    
-                  </div>
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
+                    Anna Naklab
+                  </span>
+                  <span
+                    class="artist"
                   >
-                    
-                  </div>
+                    Alle Farben
+                  </span>
+                  <span
+                    class="artist"
+                  >
+                    YouNotUs
+                  </span>
                   
-                </ngx-skeleton-loader>
+                </div>
               </div>
             </div>
             <span
               class="time"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              3:32 
             </span>
           </button>
           <button
@@ -671,108 +383,55 @@ exports[`TopTracksComponent should render 1`] = `
             <div
               class="song-info"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 90px; width: 90px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              <img
+                alt="Santa, Can’t You Hear Me"
+                class="track-img"
+                fetchpriority="auto"
+                height="90"
+                loading="lazy"
+                ng-img="true"
+                src="https://i.scdn.co/image/ab67616d00001e021fa667a7a53c7072fed91a17"
+                width="90"
+              />
               <div
                 class="album-artist"
               >
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  count="1"
+                <h2
+                  class="name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 32px; width: 160px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
-                  >
-                    
-                  </div>
-                  
-                </ngx-skeleton-loader>
-                <ngx-skeleton-loader
-                  animation="progress-dark"
-                  class="artist-skeleton"
-                  count="2"
+                  Santa, Can’t You Hear Me
+                </h2>
+                <span
+                  class="album-name"
                 >
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
+                   When Christmas Comes Around... 
+                </span>
+                <div
+                  class="track-artist"
+                >
+                  <span
+                    class="artist"
                   >
-                    
-                  </div>
-                  <div
-                    aria-busy="true"
-                    aria-label="loading"
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuetext="Loading..."
-                    class="skeleton-loader progress-dark"
-                    role="progressbar"
-                    style="height: 16px; width: 150px; background-color: rgb(44, 47, 49);"
-                    tabindex="-1"
+                    Kelly Clarkson
+                  </span>
+                  <span
+                    class="artist"
                   >
-                    
-                  </div>
+                    Ariana Grande
+                  </span>
                   
-                </ngx-skeleton-loader>
+                </div>
               </div>
             </div>
             <span
               class="time"
             >
-              <ngx-skeleton-loader
-                animation="progress-dark"
-                count="1"
-              >
-                <div
-                  aria-busy="true"
-                  aria-label="loading"
-                  aria-valuemax="100"
-                  aria-valuemin="0"
-                  aria-valuetext="Loading..."
-                  class="skeleton-loader progress-dark"
-                  role="progressbar"
-                  style="height: 16px; width: 30px; background-color: rgb(44, 47, 49);"
-                  tabindex="-1"
-                >
-                  
-                </div>
-                
-              </ngx-skeleton-loader>
+              4:02 
             </span>
           </button>
           
         </div>
+        
         
       </div>
     </app-track-list>
