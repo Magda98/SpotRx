@@ -28,13 +28,13 @@ export interface Artist {
 }
 
 export interface Item {
-  added_at: string;
+  added_at?: string;
   track: Track;
 }
 
-export interface TracksResponse {
+export interface TracksResponse<T = Item> {
   href: string;
-  items: Item[];
+  items: T[];
   limit: number;
   next: string | null;
   offset: number;

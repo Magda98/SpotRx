@@ -4,7 +4,7 @@ import {
   Playlist,
   PlaylistResponse,
 } from './../interfaces/playlist';
-import { TracksResponse, SearchResponse } from './../interfaces/track';
+import { TracksResponse, SearchResponse, Track } from './../interfaces/track';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -32,6 +32,14 @@ export class TrackService {
     return createQuery(
       ['playlistTracks', { id, offset }] as const,
       this.http.get<TracksResponse>(`playlists/${id}/tracks`, { params })
+    );
+  }
+
+  getTopTracks(offset: number) {
+    const params = this.params.append('offset', offset);
+    return createQuery(
+      ['topTracks', { offset }] as const,
+      this.http.get<TracksResponse<Track>>(`me/top/tracks`, { params })
     );
   }
 
