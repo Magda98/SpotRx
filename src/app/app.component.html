@@ -1,27 +1,27 @@
 <div class="app">
   @if(loggedIn() === false){
-    <div class="app-login">
-      <div class="app-login__title-wrapper">
-        <app-icon class="icon--large" type="logo"></app-icon>
-        <h1 class="app-login__title">Spotrx</h1>
-      </div>
-      <p class="app-login__text">To use app you must log in</p>
-      <button type="button" class="app-login__button btn" (click)="login()">login</button>
+  <div class="app-login">
+    <div class="app-login__title-wrapper">
+      <app-icon class="icon--large" type="logo"></app-icon>
+      <h1 class="app-login__title">Spotrx</h1>
     </div>
+    <p class="app-login__text">To use app you must log in</p>
+    <app-button class="app-login__button" (click)="login()">login</app-button>
+  </div>
   }
 
   @if(userData.isSuccess()){
-    <app-navbar [userData]="userData.data()" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-navbar>
-    <button aria-label="menu" class="app-menu-button btn" type="button" (click)="toggleMenu()">
-      <app-icon class="icon" type="menu"></app-icon>
-    </button>
-    <main class="main" [ngClass]="{
+  <app-navbar [userData]="userData.data()" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-navbar>
+  <app-button aria-label="menu" [mode]="'opacity'" class="app-menu-button" (click)="toggleMenu()">
+    <app-icon class="icon" type="menu"></app-icon>
+  </app-button>
+  <main class="main" [ngClass]="{
   'main--player': playerState | async }">
-      <router-outlet></router-outlet>
-    </main>
-    <app-player></app-player>
+    <router-outlet></router-outlet>
+  </main>
+  <app-player></app-player>
   }
   @if(!isProductionMode){
-    <angular-query-devtools />
+  <angular-query-devtools />
   }
 </div>

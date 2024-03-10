@@ -21,29 +21,29 @@
       </div>
     </div>
     <div class="action-buttons">
-      <button aria-label="previous" class="btn-outline" (click)="playerService.skipPrev()">
+      <app-button aria-label="previous" [mode]="'outline'" (click)="playerService.skipPrev()">
         <mat-icon>skip_previous</mat-icon>
-      </button>
-      <button aria-label="play" class="btn-outline" (click)="playerService.tooglePlay()">
+      </app-button>
+      <app-button aria-label="play" [mode]="'outline'" (click)="playerService.tooglePlay()">
         @if(player.paused){
         <mat-icon>play_circle_outline</mat-icon>
         }
         @else{
         <mat-icon>pause_circle_outline</mat-icon>
         }
-      </button>
-      <button aria-label="next" class="btn-outline" (click)="playerService.skipNext();">
+      </app-button>
+      <app-button aria-label="next" [mode]="'outline'" (click)="playerService.skipNext();">
         <mat-icon>skip_next</mat-icon>
-      </button>
+      </app-button>
     </div>
     <div class="slider-container">
-      <button class="btn-outline">
+      <app-button [mode]="'outline'">
         <app-icon [ngClass]="{'primary': player.shuffle }" (click)="toggleShuffle()" class="icon"
           type="shuffle"></app-icon>
-      </button>
-      <button class="btn-outline" (click)="toggleSavedTrack()">
+      </app-button>
+      <app-button [mode]="'outline'" (click)="toggleSavedTrack()">
         <app-icon [ngClass]="{'primary': isSavedTrack() === true }" class="icon" type="heart"></app-icon>
-      </button>
+      </app-button>
       <mat-slider class="volume-slider" min="0" max="1" step="0.1">
         <input (dragEnd)="setVolume($event)" value="0.5" matSliderThumb>
       </mat-slider>
