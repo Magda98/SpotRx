@@ -1,10 +1,6 @@
 @import "@angular/material/prebuilt-themes/purple-green.css";
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
-
-$primary: #1ecd5d;
-$text: #f2f4f5;
-$text-dark: #363636;
-$bg-elevation: #363636;
+@import "colors.scss";
 
 
 html,
@@ -51,27 +47,6 @@ body {
   }
 }
 
-@mixin btn($background-color, $border-color, $hover-backgorund) {
-  color: $text;
-  background-color: $background-color;
-  border: 2px solid $border-color;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  transition: background-color 0.2s;
-
-  svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  &:hover {
-    background-color: rgba($hover-backgorund, 0.3);
-    border-color: none
-  }
-}
-
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
@@ -93,14 +68,6 @@ body {
   border: 3px solid $text-dark;
 }
 
-.btn {
-  @include btn($primary, $primary, $primary);
-}
-
-.btn-outline {
-  @include btn(transparent, transparent, #404040);
-}
-
 .mat-typography h2 {
   font-size: 16px;
   font-weight: 500;
@@ -113,7 +80,6 @@ body {
   }
 }
 
-
-ngx-skeleton-loader .progress-dark.skeleton-loader{
+ngx-skeleton-loader .progress-dark.skeleton-loader {
   margin-bottom: 0;
 }

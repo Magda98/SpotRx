@@ -1,0 +1,37 @@
+@import "../../../colors.scss";
+
+@mixin btn($background-color, $border-color, $hover-backgorund) {
+  color: $text;
+  background-color: $background-color;
+  border: 2px solid $border-color;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  transition: background-color 0.2s;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background-color: rgba($hover-backgorund, 0.3);
+    border-color: none
+  }
+}
+
+.btn {
+  @include btn($primary, $primary, $primary);
+}
+
+.btn-outline {
+  @include btn(transparent, transparent, #404040);
+}
+
+.btn-opacity {
+  background-color: rgba($primary, 0.5);
+  border-radius: 4px;
+  padding: 5px 10px;
+  border: none;
+}
