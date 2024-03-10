@@ -26,7 +26,7 @@ import {
   injectMutation,
   injectQuery,
 } from '@tanstack/angular-query-experimental';
-import { ButtonComponent } from '../shared/button/button.component';
+import { ButtonDirective } from '../shared/button/button.directive';
 
 @Component({
   selector: 'app-player',
@@ -39,7 +39,7 @@ import { ButtonComponent } from '../shared/button/button.component';
     IconComponent,
     CommonModule,
     HttpClientModule,
-    ButtonComponent,
+    ButtonDirective,
   ],
 })
 export class PlayerComponent implements OnInit, OnDestroy {
