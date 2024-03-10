@@ -129,8 +129,9 @@ exports[`AppComponent should render 1`] = `
       </nav>
     </app-navbar>
     <button
+      appbutton=""
       aria-label="menu"
-      class="app-menu-button btn"
+      class="app-menu-button btn btn-opacity"
       type="button"
     >
       <app-icon
