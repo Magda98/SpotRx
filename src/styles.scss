@@ -100,7 +100,8 @@ ngx-skeleton-loader .progress-dark.skeleton-loader {
   .ripple {
     position: absolute;
     border-radius: 50%;
-    inset: 0;
+    top: 0;
+    left: 0;
     transform: scale(0);
     background-color: rgba(255, 255, 255, 0.7);
   }
@@ -111,7 +112,7 @@ ngx-skeleton-loader .progress-dark.skeleton-loader {
   }
 
   &:hover {
-    background-color: rgba($hover-backgorund, 0.3);
+    background-color: rgba($hover-backgorund, 0.9);
     border-color: none
   }
 }
