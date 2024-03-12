@@ -1,7 +1,6 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ButtonDirective } from 'src/app/shared/button/button.directive';
 import { CommonModule } from '@angular/common';
-import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { IconComponent } from 'src/app/shared/icon/icon.component';
 
 const meta: Meta<ButtonDirective> = {
@@ -9,8 +8,9 @@ const meta: Meta<ButtonDirective> = {
   tags: ['autodocs'],
   argTypes: {
     mode: {
-      defaultValue: undefined,
       description: 'Mode of button',
+      options: ['opacity', 'text'],
+      control: { type: 'select' },
     },
   },
   decorators: [
@@ -48,9 +48,13 @@ export const Text: Story = {
 };
 
 export const Icon: Story = {
-  render: () => {
+  args: {
+    mode: 'text'
+  },
+  render: ({mode}) => {
+    console.log("🚀 ~ mode:", mode)
     return {
-      template: `<button type="button" [mode]="'text'" appButton> <app-icon class="icon" type="menu"></app-icon></button>`,
+      template: `<button type="button" mode="${mode}" appButton> <app-icon class="icon" type="menu"></app-icon></button>`,
     };
   },
 };

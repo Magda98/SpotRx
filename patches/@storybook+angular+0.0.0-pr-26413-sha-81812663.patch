@@ -1,0 +1,13 @@
+diff --git a/node_modules/@storybook/angular/dist/client/public-types.d.ts b/node_modules/@storybook/angular/dist/client/public-types.d.ts
+index 7c20bf1..aac3eae 100644
+--- a/node_modules/@storybook/angular/dist/client/public-types.d.ts
++++ b/node_modules/@storybook/angular/dist/client/public-types.d.ts
+@@ -31,7 +31,7 @@ export type Preview = ProjectAnnotations<AngularRenderer>;
+  */
+ type TransformComponentType<T> = TransformInputSignalType<TransformEventType<T>>;
+ type TransformInputSignalType<T> = {
+-    [K in keyof T]: T[K] extends AngularCore.InputSignal<infer E> ? E : T[K] extends AngularCore.InputSignalWithTransform<any, infer U> ? U : T[K];
++    [K in keyof T]: T[K] extends AngularCore.InputSignal<infer E> ? E : T[K] extends AngularCore.InputOptionsWithTransform<any, infer U> ? U : T[K];
+ };
+ type TransformEventType<T> = {
+     [K in keyof T]: T[K] extends AngularCore.EventEmitter<infer E> ? (e: E) => void : T[K];
