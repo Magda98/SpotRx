@@ -121,7 +121,7 @@ ngx-skeleton-loader .progress-dark.skeleton-loader {
   @include btn($primary, $primary, $primary);
 }
 
-.btn-outline {
+.btn-text {
   @include btn(transparent, transparent, #404040);
 }
 

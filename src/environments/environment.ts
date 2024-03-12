@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  redirectUri: 'http://localhost:4200/'
+  redirectUri: 'https://cautious-tribble-54gwjqgpg94c9rr-4200.app.github.dev/',
 };
 
 /*

@@ -1,52 +1,46 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
+import { ButtonDirective } from 'src/app/shared/button/button.directive';
+import { CommonModule } from '@angular/common';
 
-import { ButtonComponent } from './button.component';
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta: Meta<ButtonComponent> = {
+const meta: Meta<ButtonDirective> = {
   title: 'Example/Button',
-  component: ButtonComponent,
   tags: ['autodocs'],
-  render: (args: ButtonComponent) => ({
-    props: {
-      backgroundColor: null,
-      ...args,
-    },
-  }),
   argTypes: {
-    backgroundColor: {
-      control: 'color',
+    mode: {
+      defaultValue: undefined,
+      description: 'Mode of button',
     },
   },
+  decorators: [
+    moduleMetadata({
+      imports: [CommonModule, ButtonDirective],
+    }),
+  ],
 };
 
 export default meta;
-type Story = StoryObj<ButtonComponent>;
+type Story = StoryObj<ButtonDirective>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
-  args: {
-    primary: true,
-    label: 'Button',
+  render: () => {
+    return {
+      template: `<button type="button" appButton>button</button>`,
+    };
   },
 };
 
-export const Secondary: Story = {
-  args: {
-    label: 'Button',
+export const Opacity: Story = {
+  render: () => {
+    return {
+      template: `<button type="button" [mode]="'opacity'" appButton>button</button>`,
+    };
   },
 };
 
-export const Large: Story = {
-  args: {
-    size: 'large',
-    label: 'Button',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: 'small',
-    label: 'Button',
+export const Text: Story = {
+  render: () => {
+    return {
+      template: `<button type="button" [mode]="'text'" appButton>button</button>`,
+    };
   },
 };
