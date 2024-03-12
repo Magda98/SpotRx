@@ -100,7 +100,7 @@
           "options": {
             "configDir": ".storybook",
             "browserTarget": "spotrx:build",
-            "styles": ["src/styles.scss"],
+            "styles": ["src/styles.scss", "src/styles/theme.scss"],
             "compodoc": false,
             "port": 6006
           }
@@ -110,6 +110,7 @@
           "options": {
             "configDir": ".storybook",
             "browserTarget": "spotrx:build",
+            "styles": ["src/styles.scss", "src/styles/theme.scss"],
             "compodoc": false,
             "outputDir": "storybook-static"
           }

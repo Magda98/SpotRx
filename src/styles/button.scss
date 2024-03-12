@@ -12,6 +12,7 @@
     overflow: hidden;
     position: relative;
     display: block;
+    cursor: pointer;
   
     .ripple {
       position: absolute;
@@ -47,4 +48,5 @@
     padding: 5px 10px;
     border: none;
     position: relative;
+    cursor: pointer;
   }

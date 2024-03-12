@@ -1,6 +1,8 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ButtonDirective } from 'src/app/shared/button/button.directive';
 import { CommonModule } from '@angular/common';
+import { MatIcon, MatIconRegistry } from '@angular/material/icon';
+import { IconComponent } from 'src/app/shared/icon/icon.component';
 
 const meta: Meta<ButtonDirective> = {
   title: 'Example/Button',
@@ -13,7 +15,7 @@ const meta: Meta<ButtonDirective> = {
   },
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, ButtonDirective],
+      imports: [CommonModule, ButtonDirective, IconComponent],
     }),
   ],
 };
@@ -41,6 +43,14 @@ export const Text: Story = {
   render: () => {
     return {
       template: `<button type="button" [mode]="'text'" appButton>button</button>`,
+    };
+  },
+};
+
+export const Icon: Story = {
+  render: () => {
+    return {
+      template: `<button type="button" [mode]="'text'" appButton> <app-icon class="icon" type="menu"></app-icon></button>`,
     };
   },
 };
