@@ -8,7 +8,7 @@ import {
   input,
 } from '@angular/core';
 
-export type ButtonMode = 'outline' | 'opacity';
+export type ButtonMode = 'text' | 'opacity';
 
 @Directive({
   selector: '[appButton]',
