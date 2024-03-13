@@ -132,7 +132,8 @@ exports[`PlaylistComponent should render 1`] = `
         >
           <app-track>
             <div
-              class="track"
+              appbutton=""
+              class="track btn"
             >
               <div
                 class="song-info"
@@ -153,7 +154,7 @@ exports[`PlaylistComponent should render 1`] = `
                   <h2
                     class="name"
                   >
-                    inputValueFn
+                    Santa's Coming for Us
                   </h2>
                   <span
                     class="album-name"
@@ -179,6 +180,9 @@ exports[`PlaylistComponent should render 1`] = `
               </span>
               
               
+              <span
+                class="ripple"
+              />
             </div>
           </app-track>
           

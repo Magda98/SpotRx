@@ -128,7 +128,8 @@ exports[`TopTracksComponent should render 1`] = `
         >
           <app-track>
             <div
-              class="track"
+              appbutton=""
+              class="track btn"
             >
               <div
                 class="song-info"
@@ -149,7 +150,7 @@ exports[`TopTracksComponent should render 1`] = `
                   <h2
                     class="name"
                   >
-                    inputValueFn
+                    Saturn
                   </h2>
                   <span
                     class="album-name"
@@ -175,11 +176,15 @@ exports[`TopTracksComponent should render 1`] = `
               </span>
               
               
+              <span
+                class="ripple"
+              />
             </div>
           </app-track>
           <app-track>
             <div
-              class="track"
+              appbutton=""
+              class="track btn"
             >
               <div
                 class="song-info"
@@ -200,7 +205,7 @@ exports[`TopTracksComponent should render 1`] = `
                   <h2
                     class="name"
                   >
-                    inputValueFn
+                    River
                   </h2>
                   <span
                     class="album-name"
@@ -226,11 +231,15 @@ exports[`TopTracksComponent should render 1`] = `
               </span>
               
               
+              <span
+                class="ripple"
+              />
             </div>
           </app-track>
           <app-track>
             <div
-              class="track"
+              appbutton=""
+              class="track btn"
             >
               <div
                 class="song-info"
@@ -251,7 +260,7 @@ exports[`TopTracksComponent should render 1`] = `
                   <h2
                     class="name"
                   >
-                    inputValueFn
+                    Daggers
                   </h2>
                   <span
                     class="album-name"
@@ -277,11 +286,15 @@ exports[`TopTracksComponent should render 1`] = `
               </span>
               
               
+              <span
+                class="ripple"
+              />
             </div>
           </app-track>
           <app-track>
             <div
-              class="track"
+              appbutton=""
+              class="track btn"
             >
               <div
                 class="song-info"
@@ -302,7 +315,7 @@ exports[`TopTracksComponent should render 1`] = `
                   <h2
                     class="name"
                   >
-                    inputValueFn
+                    Bécane - A COLORS SHOW
                   </h2>
                   <span
                     class="album-name"
@@ -328,11 +341,15 @@ exports[`TopTracksComponent should render 1`] = `
               </span>
               
               
+              <span
+                class="ripple"
+              />
             </div>
           </app-track>
           <app-track>
             <div
-              class="track"
+              appbutton=""
+              class="track btn"
             >
               <div
                 class="song-info"
@@ -353,7 +370,7 @@ exports[`TopTracksComponent should render 1`] = `
                   <h2
                     class="name"
                   >
-                    inputValueFn
+                    Supergirl - Radio Edit
                   </h2>
                   <span
                     class="album-name"
@@ -389,11 +406,15 @@ exports[`TopTracksComponent should render 1`] = `
               </span>
               
               
+              <span
+                class="ripple"
+              />
             </div>
           </app-track>
           <app-track>
             <div
-              class="track"
+              appbutton=""
+              class="track btn"
             >
               <div
                 class="song-info"
@@ -414,7 +435,7 @@ exports[`TopTracksComponent should render 1`] = `
                   <h2
                     class="name"
                   >
-                    inputValueFn
+                    Santa, Can’t You Hear Me
                   </h2>
                   <span
                     class="album-name"
@@ -445,6 +466,9 @@ exports[`TopTracksComponent should render 1`] = `
               </span>
               
               
+              <span
+                class="ripple"
+              />
             </div>
           </app-track>
           
