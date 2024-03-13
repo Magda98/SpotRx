@@ -12,9 +12,8 @@ import {
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { DurationPipe } from './duration.pipe';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { distinctUntilChanged, filter, map } from 'rxjs';
+import { DurationPipe } from '../duration/duration.pipe';
+import { TrackComponent } from '../track/track.component';
 
 @Component({
   selector: 'app-track-list',
@@ -26,6 +25,7 @@ import { distinctUntilChanged, filter, map } from 'rxjs';
     NgOptimizedImage,
     NgxSkeletonLoaderModule,
     DurationPipe,
+    TrackComponent,
   ],
 })
 export class TrackListComponent {

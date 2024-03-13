@@ -8,8 +8,9 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgOptimizedImage } from '@angular/common';
-import { DurationPipe } from '../shared/track-list/duration.pipe';
+import { DurationPipe } from '../shared/duration/duration.pipe';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TrackComponent } from '../shared/track/track.component';
 
 @Component({
   selector: 'app-search-tracks',
@@ -23,6 +24,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     DurationPipe,
     NgxSkeletonLoaderModule,
     ReactiveFormsModule,
+    TrackComponent,
   ],
 })
 export class SearchTracksComponent {
@@ -34,11 +36,11 @@ export class SearchTracksComponent {
       debounceTime(300),
       filter((searchValue) => !!searchValue?.length),
       distinctUntilChanged(),
-      takeUntilDestroyed()
-    )
+      takeUntilDestroyed(),
+    ),
   );
   searchQuery = injectQuery(() =>
-    this.trackService.getSearchResults(this.search() ?? '')
+    this.trackService.getSearchResults(this.search() ?? ''),
   );
   readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
 

@@ -3,48 +3,17 @@
     <input aria-label="search" type="text" matInput [formControl]="searchFromControl" placeholder="Search for specific song...">
   </mat-form-field>
   @if(searchQuery.isSuccess()){
-  <ul class="track-list">
+  <div class="track-list">
     @for(item of searchQuery.data().tracks.items; track item.id;){
-    <li (click)="play(item.uri)" class="track">
-      <div class="song-info">
-        <img class="track-img" width="90" height="90" [ngSrc]="item.album.images[1].url">
-        <div class="album-artist">
-          <h2 class="name">{{item.name}}</h2>
-          <span class="album-name">
-            {{item.album.name}}
-          </span>
-          <div class="time">
-            @for(artist of item.artists; track artist.id){
-            <span class="artist">{{artist.name}}</span>
-            }
-          </div>
-        </div>
-      </div>
-      <span class="track-artist">{{item.duration_ms | duration}}</span>
-    </li>
+   <app-track [track]="item" (click)="play(item.uri)"></app-track>
     }
-  </ul>
+  </div>
   }
   @if(searchQuery.isLoading()){
-  <ul class="track-list track-list--skeleton">
+  <div class="track-list track-list--skeleton">
     @for(item of skeletonLoadingArray; track item){
-    <li class="track">
-      <div class="song-info">
-        <ngx-skeleton-loader animation="progress-dark" count="1"
-          [theme]="{ height: '90px', width: '90px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
-        <div class="album-artist">
-          <ngx-skeleton-loader animation="progress-dark" count="1"
-            [theme]="{ height: '32px', width: '160px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
-          <ngx-skeleton-loader class="artist-skeleton" animation="progress-dark" count="2"
-            [theme]="{ height: '16px', width: '150px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
-        </div>
-      </div>
-      <span class="time">
-        <ngx-skeleton-loader animation="progress-dark" count="1"
-          [theme]="{ height: '16px', width: '40px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
-      </span>
-    </li>
+      <app-track [isLoading]="true"></app-track>
     }
-  </ul>
+  </div>
   }
 </div>
