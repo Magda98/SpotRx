@@ -115,309 +115,327 @@ exports[`TrackListComponent should render 1`] = `
     <div
       class="track-list"
     >
-      <button
-        class="track"
-        type="button"
-      >
+      <app-track>
         <div
-          class="song-info"
+          class="track"
         >
-          <img
-            alt="Saturn"
-            class="track-img"
-            fetchpriority="auto"
-            height="90"
-            loading="lazy"
-            ng-img="true"
-            src="https://i.scdn.co/image/ab67616d00001e02d70916ee9e40c90380ba5f07"
-            width="90"
-          />
           <div
-            class="album-artist"
+            class="song-info"
           >
-            <h2
-              class="name"
-            >
-              Saturn
-            </h2>
-            <span
-              class="album-name"
-            >
-               Saturn 
-            </span>
+            <img
+              alt="Saturn"
+              class="track-img"
+              fetchpriority="auto"
+              height="90"
+              loading="lazy"
+              ng-img="true"
+              src="https://i.scdn.co/image/ab67616d00001e02d70916ee9e40c90380ba5f07"
+              width="90"
+            />
             <div
-              class="track-artist"
+              class="album-artist"
             >
-              <span
-                class="artist"
+              <h2
+                class="name"
               >
-                SZA
+                inputValueFn
+              </h2>
+              <span
+                class="album-name"
+              >
+                 Saturn 
               </span>
-              
+              <div
+                class="track-artist"
+              >
+                <span
+                  class="artist"
+                >
+                  SZA
+                </span>
+                
+              </div>
             </div>
           </div>
-        </div>
-        <span
-          class="time"
-        >
-          3:06 
-        </span>
-      </button>
-      <button
-        class="track"
-        type="button"
-      >
-        <div
-          class="song-info"
-        >
-          <img
-            alt="River"
-            class="track-img"
-            fetchpriority="auto"
-            height="90"
-            loading="lazy"
-            ng-img="true"
-            src="https://i.scdn.co/image/ab67616d00001e028cae5034066af45cdfbc4266"
-            width="90"
-          />
-          <div
-            class="album-artist"
+          <span
+            class="time"
           >
-            <h2
-              class="name"
-            >
-              River
-            </h2>
-            <span
-              class="album-name"
-            >
-               Church Of Scars 
-            </span>
+            3:06 
+          </span>
+          
+          
+        </div>
+      </app-track>
+      <app-track>
+        <div
+          class="track"
+        >
+          <div
+            class="song-info"
+          >
+            <img
+              alt="River"
+              class="track-img"
+              fetchpriority="auto"
+              height="90"
+              loading="lazy"
+              ng-img="true"
+              src="https://i.scdn.co/image/ab67616d00001e028cae5034066af45cdfbc4266"
+              width="90"
+            />
             <div
-              class="track-artist"
+              class="album-artist"
             >
-              <span
-                class="artist"
+              <h2
+                class="name"
               >
-                Bishop Briggs
+                inputValueFn
+              </h2>
+              <span
+                class="album-name"
+              >
+                 Church Of Scars 
               </span>
-              
+              <div
+                class="track-artist"
+              >
+                <span
+                  class="artist"
+                >
+                  Bishop Briggs
+                </span>
+                
+              </div>
             </div>
           </div>
-        </div>
-        <span
-          class="time"
-        >
-          3:36 
-        </span>
-      </button>
-      <button
-        class="track"
-        type="button"
-      >
-        <div
-          class="song-info"
-        >
-          <img
-            alt="Daggers"
-            class="track-img"
-            fetchpriority="auto"
-            height="90"
-            loading="lazy"
-            ng-img="true"
-            src="https://i.scdn.co/image/ab67616d00001e0210311a15fdac768608fe224d"
-            width="90"
-          />
-          <div
-            class="album-artist"
+          <span
+            class="time"
           >
-            <h2
-              class="name"
-            >
-              Daggers
-            </h2>
-            <span
-              class="album-name"
-            >
-               Daggers 
-            </span>
+            3:36 
+          </span>
+          
+          
+        </div>
+      </app-track>
+      <app-track>
+        <div
+          class="track"
+        >
+          <div
+            class="song-info"
+          >
+            <img
+              alt="Daggers"
+              class="track-img"
+              fetchpriority="auto"
+              height="90"
+              loading="lazy"
+              ng-img="true"
+              src="https://i.scdn.co/image/ab67616d00001e0210311a15fdac768608fe224d"
+              width="90"
+            />
             <div
-              class="track-artist"
+              class="album-artist"
             >
-              <span
-                class="artist"
+              <h2
+                class="name"
               >
-                Croosh
+                inputValueFn
+              </h2>
+              <span
+                class="album-name"
+              >
+                 Daggers 
               </span>
-              
+              <div
+                class="track-artist"
+              >
+                <span
+                  class="artist"
+                >
+                  Croosh
+                </span>
+                
+              </div>
             </div>
           </div>
-        </div>
-        <span
-          class="time"
-        >
-          2:19 
-        </span>
-      </button>
-      <button
-        class="track"
-        type="button"
-      >
-        <div
-          class="song-info"
-        >
-          <img
-            alt="Bécane - A COLORS SHOW"
-            class="track-img"
-            fetchpriority="auto"
-            height="90"
-            loading="lazy"
-            ng-img="true"
-            src="https://i.scdn.co/image/ab67616d00001e027dfba3f3ae607f250cdd969c"
-            width="90"
-          />
-          <div
-            class="album-artist"
+          <span
+            class="time"
           >
-            <h2
-              class="name"
-            >
-              Bécane - A COLORS SHOW
-            </h2>
-            <span
-              class="album-name"
-            >
-               Bécane - A COLORS SHOW 
-            </span>
+            2:19 
+          </span>
+          
+          
+        </div>
+      </app-track>
+      <app-track>
+        <div
+          class="track"
+        >
+          <div
+            class="song-info"
+          >
+            <img
+              alt="Bécane - A COLORS SHOW"
+              class="track-img"
+              fetchpriority="auto"
+              height="90"
+              loading="lazy"
+              ng-img="true"
+              src="https://i.scdn.co/image/ab67616d00001e027dfba3f3ae607f250cdd969c"
+              width="90"
+            />
             <div
-              class="track-artist"
+              class="album-artist"
             >
-              <span
-                class="artist"
+              <h2
+                class="name"
               >
-                Yamê
+                inputValueFn
+              </h2>
+              <span
+                class="album-name"
+              >
+                 Bécane - A COLORS SHOW 
               </span>
-              
+              <div
+                class="track-artist"
+              >
+                <span
+                  class="artist"
+                >
+                  Yamê
+                </span>
+                
+              </div>
             </div>
           </div>
-        </div>
-        <span
-          class="time"
-        >
-          3:02 
-        </span>
-      </button>
-      <button
-        class="track"
-        type="button"
-      >
-        <div
-          class="song-info"
-        >
-          <img
-            alt="Supergirl - Radio Edit"
-            class="track-img"
-            fetchpriority="auto"
-            height="90"
-            loading="lazy"
-            ng-img="true"
-            src="https://i.scdn.co/image/ab67616d00001e0260e18fbad67fc3c48608d03a"
-            width="90"
-          />
-          <div
-            class="album-artist"
+          <span
+            class="time"
           >
-            <h2
-              class="name"
-            >
-              Supergirl - Radio Edit
-            </h2>
-            <span
-              class="album-name"
-            >
-               Supergirl (Radio Edit) 
-            </span>
+            3:02 
+          </span>
+          
+          
+        </div>
+      </app-track>
+      <app-track>
+        <div
+          class="track"
+        >
+          <div
+            class="song-info"
+          >
+            <img
+              alt="Supergirl - Radio Edit"
+              class="track-img"
+              fetchpriority="auto"
+              height="90"
+              loading="lazy"
+              ng-img="true"
+              src="https://i.scdn.co/image/ab67616d00001e0260e18fbad67fc3c48608d03a"
+              width="90"
+            />
             <div
-              class="track-artist"
+              class="album-artist"
             >
-              <span
-                class="artist"
+              <h2
+                class="name"
               >
-                Anna Naklab
-              </span>
+                inputValueFn
+              </h2>
               <span
-                class="artist"
+                class="album-name"
               >
-                Alle Farben
+                 Supergirl (Radio Edit) 
               </span>
-              <span
-                class="artist"
+              <div
+                class="track-artist"
               >
-                YouNotUs
-              </span>
-              
+                <span
+                  class="artist"
+                >
+                  Anna Naklab
+                </span>
+                <span
+                  class="artist"
+                >
+                  Alle Farben
+                </span>
+                <span
+                  class="artist"
+                >
+                  YouNotUs
+                </span>
+                
+              </div>
             </div>
           </div>
-        </div>
-        <span
-          class="time"
-        >
-          3:32 
-        </span>
-      </button>
-      <button
-        class="track"
-        type="button"
-      >
-        <div
-          class="song-info"
-        >
-          <img
-            alt="Santa, Can’t You Hear Me"
-            class="track-img"
-            fetchpriority="auto"
-            height="90"
-            loading="lazy"
-            ng-img="true"
-            src="https://i.scdn.co/image/ab67616d00001e021fa667a7a53c7072fed91a17"
-            width="90"
-          />
-          <div
-            class="album-artist"
+          <span
+            class="time"
           >
-            <h2
-              class="name"
-            >
-              Santa, Can’t You Hear Me
-            </h2>
-            <span
-              class="album-name"
-            >
-               When Christmas Comes Around... 
-            </span>
+            3:32 
+          </span>
+          
+          
+        </div>
+      </app-track>
+      <app-track>
+        <div
+          class="track"
+        >
+          <div
+            class="song-info"
+          >
+            <img
+              alt="Santa, Can’t You Hear Me"
+              class="track-img"
+              fetchpriority="auto"
+              height="90"
+              loading="lazy"
+              ng-img="true"
+              src="https://i.scdn.co/image/ab67616d00001e021fa667a7a53c7072fed91a17"
+              width="90"
+            />
             <div
-              class="track-artist"
+              class="album-artist"
             >
-              <span
-                class="artist"
+              <h2
+                class="name"
               >
-                Kelly Clarkson
-              </span>
+                inputValueFn
+              </h2>
               <span
-                class="artist"
+                class="album-name"
               >
-                Ariana Grande
+                 When Christmas Comes Around... 
               </span>
-              
+              <div
+                class="track-artist"
+              >
+                <span
+                  class="artist"
+                >
+                  Kelly Clarkson
+                </span>
+                <span
+                  class="artist"
+                >
+                  Ariana Grande
+                </span>
+                
+              </div>
             </div>
           </div>
+          <span
+            class="time"
+          >
+            4:02 
+          </span>
+          
+          
         </div>
-        <span
-          class="time"
-        >
-          4:02 
-        </span>
-      </button>
+      </app-track>
       
     </div>
     
