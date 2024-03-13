@@ -153,6 +153,9 @@ exports[`AppComponent should render 1`] = `
           />
         </svg>
       </app-icon>
+      <span
+        class="ripple"
+      />
     </button>
     <main
       class="main"

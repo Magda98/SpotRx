@@ -130,54 +130,57 @@ exports[`PlaylistComponent should render 1`] = `
         <div
           class="track-list"
         >
-          <button
-            class="track"
-            type="button"
-          >
+          <app-track>
             <div
-              class="song-info"
+              class="track"
             >
-              <img
-                alt="Santa's Coming for Us"
-                class="track-img"
-                fetchpriority="auto"
-                height="90"
-                loading="lazy"
-                ng-img="true"
-                src="https://i.scdn.co/image/ab67616d00001e02d1410c1372fab1e516328fa8"
-                width="90"
-              />
               <div
-                class="album-artist"
+                class="song-info"
               >
-                <h2
-                  class="name"
-                >
-                  Santa's Coming for Us
-                </h2>
-                <span
-                  class="album-name"
-                >
-                   Everyday Is Christmas (Deluxe Edition) 
-                </span>
+                <img
+                  alt="Santa's Coming for Us"
+                  class="track-img"
+                  fetchpriority="auto"
+                  height="90"
+                  loading="lazy"
+                  ng-img="true"
+                  src="https://i.scdn.co/image/ab67616d00001e02d1410c1372fab1e516328fa8"
+                  width="90"
+                />
                 <div
-                  class="track-artist"
+                  class="album-artist"
                 >
-                  <span
-                    class="artist"
+                  <h2
+                    class="name"
                   >
-                    Sia
+                    inputValueFn
+                  </h2>
+                  <span
+                    class="album-name"
+                  >
+                     Everyday Is Christmas (Deluxe Edition) 
                   </span>
-                  
+                  <div
+                    class="track-artist"
+                  >
+                    <span
+                      class="artist"
+                    >
+                      Sia
+                    </span>
+                    
+                  </div>
                 </div>
               </div>
+              <span
+                class="time"
+              >
+                3:26 
+              </span>
+              
+              
             </div>
-            <span
-              class="time"
-            >
-              3:26 
-            </span>
-          </button>
+          </app-track>
           
         </div>
         

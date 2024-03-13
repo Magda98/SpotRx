@@ -66,57 +66,62 @@ exports[`SearchComponent should render 1`] = `
         
       </div>
     </mat-form-field>
-    <ul
+    <div
       class="track-list"
     >
-      <li
-        class="track"
-      >
+      <app-track>
         <div
-          class="song-info"
+          class="track"
         >
-          <img
-            class="track-img"
-            fetchpriority="auto"
-            height="90"
-            loading="lazy"
-            ng-img="true"
-            src="https://i.scdn.co/image/ab67616d00001e02510b37e772bdf2e8204beb0a"
-            width="90"
-          />
           <div
-            class="album-artist"
+            class="song-info"
           >
-            <h2
-              class="name"
-            >
-              Małgośka
-            </h2>
-            <span
-              class="album-name"
-            >
-               Sześć Oceanów (Piosenki 1962-2013) 
-            </span>
+            <img
+              alt="Małgośka"
+              class="track-img"
+              fetchpriority="auto"
+              height="90"
+              loading="lazy"
+              ng-img="true"
+              src="https://i.scdn.co/image/ab67616d00001e02510b37e772bdf2e8204beb0a"
+              width="90"
+            />
             <div
-              class="time"
+              class="album-artist"
             >
-              <span
-                class="artist"
+              <h2
+                class="name"
               >
-                Maryla Rodowicz
+                inputValueFn
+              </h2>
+              <span
+                class="album-name"
+              >
+                 Sześć Oceanów (Piosenki 1962-2013) 
               </span>
-              
+              <div
+                class="track-artist"
+              >
+                <span
+                  class="artist"
+                >
+                  Maryla Rodowicz
+                </span>
+                
+              </div>
             </div>
           </div>
+          <span
+            class="time"
+          >
+            4:25 
+          </span>
+          
+          
         </div>
-        <span
-          class="track-artist"
-        >
-          4:25
-        </span>
-      </li>
+      </app-track>
       
-    </ul>
+    </div>
     
     
   </div>
