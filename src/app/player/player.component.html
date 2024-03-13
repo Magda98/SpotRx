@@ -20,6 +20,7 @@
         </div>
       </div>
     </div>
+    <div class="action-buttons-container">
     <div class="action-buttons">
       <button appButton type="button" aria-label="previous" [mode]="'text'" (click)="playerService.skipPrev()">
         <mat-icon>skip_previous</mat-icon>
@@ -36,6 +37,7 @@
         <mat-icon>skip_next</mat-icon>
       </button>
     </div>
+  </div>
     <div class="slider-container">
       <button appButton type="button" [mode]="'text'">
         <app-icon [ngClass]="{'primary': player.shuffle }" (click)="toggleShuffle()" class="icon"
