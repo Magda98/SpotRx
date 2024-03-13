@@ -101,7 +101,13 @@
             "configDir": ".storybook",
             "browserTarget": "spotrx:build",
             "styles": ["src/styles.scss", "src/styles/theme.scss"],
-            "compodoc": false,
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "."
+            ],
             "port": 6006
           }
         },
@@ -111,7 +117,13 @@
             "configDir": ".storybook",
             "browserTarget": "spotrx:build",
             "styles": ["src/styles.scss", "src/styles/theme.scss"],
-            "compodoc": false,
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "."
+            ],
             "outputDir": "storybook-static"
           }
         }
