@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { DurationPipe } from './duration.pipe';
+import { DurationPipe } from '../duration/duration.pipe';
 
 describe('DurationPipe', () => {
   test('should render', () => {
