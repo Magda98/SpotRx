@@ -1,6 +1,6 @@
 @import './colors.scss';
 
-@mixin btn($background-color, $border-color, $hover-backgorund) {
+@mixin btn($background-color, $border-color, $hover-backgorund, $hover-backgorund-opacity: 0.9) {
     color: $text;
     background-color: $background-color;
     border: 2px solid $border-color;
@@ -29,7 +29,7 @@
     }
   
     &:hover {
-      background-color: rgba($hover-backgorund, 0.9);
+      background-color: rgba($hover-backgorund, $hover-backgorund-opacity);
       border-color: none
     }
   }
@@ -39,7 +39,7 @@
   }
   
   .btn-text {
-    @include btn(transparent, transparent, #404040);
+    @include btn(transparent, transparent, rgba(0, 0, 0), 0.2);
   }
   
   .btn-opacity {
