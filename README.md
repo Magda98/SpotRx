@@ -32,7 +32,7 @@ SpotRx is deployed and accessible online. You can try it out at [https://magda98
   
 - [**Playwright**](https://playwright.dev/) library used for end2end testing.
   
-- [**Storybokk**]([https://playwright.dev/](https://storybook.js.org/)) workshop for building UI components.
+- [**Storybook**](https://storybook.js.org/) workshop for building UI components.
 
 - [**Angualr Material**](https://material.angular.io/) - Material Design components for Angular.
 
