@@ -101,7 +101,7 @@
             "configDir": ".storybook",
             "browserTarget": "spotrx:build",
             "styles": ["src/styles.scss", "src/styles/theme.scss"],
-            "compodoc": true,
+            "compodoc": false,
             "compodocArgs": [
               "-e",
               "json",
@@ -117,7 +117,7 @@
             "configDir": ".storybook",
             "browserTarget": "spotrx:build",
             "styles": ["src/styles.scss", "src/styles/theme.scss"],
-            "compodoc": true,
+            "compodoc": false,
             "compodocArgs": [
               "-e",
               "json",
