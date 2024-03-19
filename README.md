@@ -31,6 +31,8 @@ SpotRx is deployed and accessible online. You can try it out at [https://magda98
 - [**Angular Testing Library**](https://testing-library.com/docs/angular-testing-library/intro) library used for unit testing.
   
 - [**Playwright**](https://playwright.dev/) library used for end2end testing.
+  
+- [**Storybokk**]([https://playwright.dev/](https://storybook.js.org/)) workshop for building UI components.
 
 - [**Angualr Material**](https://material.angular.io/) - Material Design components for Angular.
 
