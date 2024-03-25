@@ -13,7 +13,8 @@
   }
 
   <ul class="nav-links">
-    <li><a class="link" (click)="closeMenu()" routerLink="/" routerLinkActive="active">
+    <li><a class="link" (click)="closeMenu()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+      true}">
         <mat-icon class="icon">home</mat-icon> Home
       </a></li>
     <li><a class="link" (click)="closeMenu()" routerLink="/saved" routerLinkActive="active">
@@ -30,7 +31,7 @@
   @if(userPlaylists.isSuccess()){
   <div class="playlist-list" *ngIf="userPlaylists.data().items as items">
     <a class="link" (click)="closeMenu()" [routerLink]="['/playlist', item.id]" class="playlist"
-      *ngFor="let item of items">
+      *ngFor="let item of items" routerLinkActive="active">
       <img [alt]="item.name" class="playlist-img" [src]="item.images[0].url">
       <h3 class="playlist-name">{{item.name}}</h3>
     </a>

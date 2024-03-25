@@ -57,7 +57,7 @@
       margin-bottom: 10px;
       transition: background-color 0.3s;
 
-      &:hover {
+      &:hover, &.active {
         background-color: rgba(#fff, 0.05);
       }
     }
@@ -85,7 +85,7 @@
     color: #fff;
     text-decoration: none;
 
-    &:hover {
+    &:hover, &.active {
       background-color: rgba(#fff, 0.05);
     }
   }
