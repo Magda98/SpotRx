@@ -24,6 +24,7 @@ exports[`NavComponent should render 1`] = `
             fill="#fff"
           />
         </svg>
+        
       </app-icon>
       <h1>
         SpotRx
@@ -126,6 +127,7 @@ exports[`NavComponent should render 1`] = `
       <a
         class="playlist"
         href="/playlist/50Gsv3p7qLLPVzfPBu8UcO"
+        routerlinkactive="active"
       >
         <img
           alt="święta swięta 🎄"
@@ -141,6 +143,7 @@ exports[`NavComponent should render 1`] = `
       <a
         class="playlist"
         href="/playlist/3nl9GNcLS5xW883RgPypFL"
+        routerlinkactive="active"
       >
         <img
           alt="Dua Lipa 🍑💫🔥"
