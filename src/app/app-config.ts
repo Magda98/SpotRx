@@ -1,7 +1,11 @@
 import { routes } from './app-routes';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AuthService } from './shared/services/auth.service';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import {
   QueryClient,
@@ -15,12 +19,13 @@ import { PlayerService } from './shared/services/player.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    importProvidersFrom([HttpClientModule, BrowserAnimationsModule]),
+    provideHttpClient(withInterceptorsFromDi()),
+    importProvidersFrom([BrowserAnimationsModule]),
     provideRouter(routes),
     provideAngularQuery(
       new QueryClient({
         defaultOptions: { queries: { placeholderData: keepPreviousData } },
-      })
+      }),
     ),
     {
       provide: HTTP_INTERCEPTORS,

@@ -5,7 +5,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
 import { User } from '../shared/interfaces/user';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {} from '@angular/common/http/testing';
 import { render, screen } from '@testing-library/angular';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';

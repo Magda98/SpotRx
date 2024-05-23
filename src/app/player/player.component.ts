@@ -21,7 +21,6 @@ import { TrackService } from '../shared/services/track.service';
 import { MatIcon } from '@angular/material/icon';
 import { IconComponent } from '../shared/icon/icon.component';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import {
   injectMutation,
   injectQuery,
@@ -38,7 +37,6 @@ import { ButtonDirective } from '../shared/button/button.directive';
     MatIcon,
     IconComponent,
     CommonModule,
-    HttpClientModule,
     ButtonDirective,
   ],
 })
@@ -90,7 +88,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
       filter((id) => !!id),
       tap((id) => {
         this.trackId.set(id);
-      })
+      }),
     );
   }
 

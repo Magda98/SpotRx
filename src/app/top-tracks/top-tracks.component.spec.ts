@@ -11,7 +11,7 @@ import {
 import { PlayerService } from '../shared/services/player.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {} from '@angular/common/http/testing';
 
 describe('TopTracksComponent', () => {
   test('should render', async () => {

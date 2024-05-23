@@ -8,7 +8,7 @@ import {
 import { BehaviorSubject, ReplaySubject, find } from 'rxjs';
 import { AuthData } from './shared/interfaces/authData';
 import { fireEvent, render, screen } from '@testing-library/angular';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {} from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from '../tests/mock-backend.interceptor';
 import { routes } from './app-routes';
