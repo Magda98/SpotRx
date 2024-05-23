@@ -86,12 +86,6 @@
             "buildTarget": "spotrx:build"
           }
         },
-        "test": {
-          "builder": "@angular-builders/jest:run",
-          "options": {
-            "tsConfig": "tsconfig.spec.json"
-          }
-        },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy"
         },
@@ -100,7 +94,10 @@
           "options": {
             "configDir": ".storybook",
             "browserTarget": "spotrx:build",
-            "styles": ["src/styles.scss", "src/styles/theme.scss"],
+            "styles": [
+              "src/styles.scss",
+              "src/styles/theme.scss"
+            ],
             "compodoc": false,
             "compodocArgs": [
               "-e",
@@ -116,7 +113,10 @@
           "options": {
             "configDir": ".storybook",
             "browserTarget": "spotrx:build",
-            "styles": ["src/styles.scss", "src/styles/theme.scss"],
+            "styles": [
+              "src/styles.scss",
+              "src/styles/theme.scss"
+            ],
             "compodoc": false,
             "compodocArgs": [
               "-e",
