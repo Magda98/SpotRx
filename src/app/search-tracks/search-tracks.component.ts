@@ -42,7 +42,10 @@ export class SearchTracksComponent {
   searchQuery = injectQuery(() =>
     this.trackService.getSearchResults(this.search() ?? ''),
   );
-  readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
+  readonly skeletonLoadingArray = Array.from(
+    { length: 6 },
+    (_, index) => index,
+  );
 
   play(uri: string) {
     this.playerService.playSong([uri], 0);

@@ -3,13 +3,17 @@ import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import {} from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import {
   QueryClient,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
 import { screen } from '@testing-library/angular';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
 
 describe('HomeComponent', () => {
@@ -21,8 +25,9 @@ describe('HomeComponent', () => {
         NgOptimizedImage,
         NgxSkeletonLoaderModule,
       ],
-      imports: [HttpClientTestingModule],
       providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         provideAngularQuery(new QueryClient()),
         {
           provide: HTTP_INTERCEPTORS,
@@ -40,7 +45,7 @@ describe('HomeComponent', () => {
   test('should render title', async () => {
     await renderComponent();
     expect(
-      await screen.findByRole('heading', { name: /Home/i })
+      await screen.findByRole('heading', { name: /Home/i }),
     ).toBeInTheDocument();
   });
 });

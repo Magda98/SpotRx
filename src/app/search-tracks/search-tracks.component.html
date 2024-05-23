@@ -1,18 +1,19 @@
 <div class="search">
   <mat-form-field class="search-input-field" appearance="fill">
-    <input aria-label="search" type="text" matInput [formControl]="searchFromControl" placeholder="Search for specific song...">
+    <input aria-label="search" type="text" matInput [formControl]="searchFromControl"
+      placeholder="Search for specific song...">
   </mat-form-field>
   @if(searchQuery.isSuccess()){
   <div class="track-list">
-    @for(item of searchQuery.data().tracks.items; track item.id;){
-   <app-track [track]="item" (click)="play(item.uri)"></app-track>
+    @for(item of searchQuery.data().tracks.items; track item.uri;){
+    <app-track [track]="item" (click)="play(item.uri)"></app-track>
     }
   </div>
   }
   @if(searchQuery.isLoading()){
   <div class="track-list track-list--skeleton">
     @for(item of skeletonLoadingArray; track item){
-      <app-track [isLoading]="true"></app-track>
+    <app-track [isLoading]="true"></app-track>
     }
   </div>
   }

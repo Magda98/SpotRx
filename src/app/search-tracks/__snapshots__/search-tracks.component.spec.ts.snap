@@ -53,6 +53,7 @@ exports[`SearchComponent should render 1`] = `
       <div
         class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align"
       >
+        
         <div
           class="mat-mdc-form-field-hint-wrapper ng-trigger ng-trigger-transitionMessages"
           style="opacity: 1; transform: translateY(0%);"
@@ -62,7 +63,6 @@ exports[`SearchComponent should render 1`] = `
             class="mat-mdc-form-field-hint-spacer"
           />
         </div>
-        
         
       </div>
     </mat-form-field>

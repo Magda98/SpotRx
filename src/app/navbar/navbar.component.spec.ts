@@ -5,14 +5,20 @@ import {
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
 import { User } from '../shared/interfaces/user';
-import {} from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { render, screen } from '@testing-library/angular';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../shared/icon/icon.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
 import { user } from '../../tests/mocks';
+import { createMock } from '@testing-library/angular/jest-utils';
+import { UserService } from '../shared/services/user.service';
 
 describe('NavComponent', () => {
   const userData: User = user;
@@ -25,8 +31,9 @@ describe('NavComponent', () => {
         MatIconModule,
         CommonModule,
       ],
-      imports: [HttpClientTestingModule],
       providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         provideAngularQuery(new QueryClient()),
         {
           provide: HTTP_INTERCEPTORS,
@@ -52,8 +59,16 @@ describe('NavComponent', () => {
         MatIconModule,
         CommonModule,
       ],
-      imports: [HttpClientTestingModule],
-      providers: [provideAngularQuery(new QueryClient())],
+      providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+        provideAngularQuery(new QueryClient()),
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: MockBackendInterceptor,
+          multi: true,
+        },
+      ],
     });
 
     expect(screen.getByText(userData.display_name)).toBeInTheDocument();

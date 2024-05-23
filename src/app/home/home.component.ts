@@ -4,6 +4,10 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +24,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 export class HomeComponent {
   private trackService = inject(TrackService);
   public featuredPlaylists = injectQuery(() =>
-    this.trackService.getFeaturedPlaylists()
+    this.trackService.getFeaturedPlaylists(),
   );
   readonly skeletonLoadingArray = Array.from({ length: 12 }, () => null);
 }

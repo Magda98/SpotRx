@@ -36,7 +36,10 @@ export class TrackListComponent {
   total = input.required();
   @Output() getNextPage = new EventEmitter<PageEvent>();
   pageSize = this.trackService.pageSize;
-  readonly skeletonLoadingArray = Array.from({ length: 6 }, () => null);
+  readonly skeletonLoadingArray = Array.from(
+    { length: 6 },
+    (_, index) => index,
+  );
   currentPage = computed(() => {
     const offset = this.tracksList()?.offset;
     if (!offset) return;
