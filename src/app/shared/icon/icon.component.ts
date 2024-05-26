@@ -1,6 +1,7 @@
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Icons, icons } from '../../utils/icons';
 import {
+  ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
   effect,
@@ -17,6 +18,7 @@ import {
   host: { class: 'app-icon' },
   encapsulation: ViewEncapsulation.None,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent {
   private sanitizer = inject(DomSanitizer);

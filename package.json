@@ -26,7 +26,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
-    "@tanstack/angular-query-experimental": "^5.20.5",
+    "@tanstack/angular-query-experimental": "^5.38.0",
     "ngx-skeleton-loader": "^9.0.0",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0",

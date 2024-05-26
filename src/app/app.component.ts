@@ -2,7 +2,13 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { AuthService } from './shared/services/auth.service';
 import { UserService } from './shared/services/user.service';
-import { Component, OnInit, signal, inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  signal,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { PlayerService } from './shared/services/player.service';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
@@ -29,6 +35,7 @@ import { ButtonDirective } from './shared/button/button.directive';
     ButtonDirective,
   ],
   providers: [PlayerService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   /**
@@ -48,7 +55,7 @@ export class AppComponent implements OnInit {
       if (!authData) return;
       this.initSpotifyScript(authData.access_token);
     }),
-    takeUntilDestroyed()
+    takeUntilDestroyed(),
   );
   playerState = this.playerService.getPlayerState();
   isProductionMode = environment.production;

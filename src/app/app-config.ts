@@ -12,7 +12,11 @@ import {
   keepPreviousData,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideExperimentalZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayerService } from './shared/services/player.service';
@@ -20,6 +24,7 @@ import { UserService } from './shared/services/user.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideExperimentalZonelessChangeDetection(),
     provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom([BrowserAnimationsModule]),
     provideRouter(routes),
