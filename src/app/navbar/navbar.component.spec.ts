@@ -17,8 +17,6 @@ import {
 } from '@angular/common/http';
 import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
 import { user } from '../../tests/mocks';
-import { createMock } from '@testing-library/angular/jest-utils';
-import { UserService } from '../shared/services/user.service';
 
 describe('NavComponent', () => {
   const userData: User = user;
