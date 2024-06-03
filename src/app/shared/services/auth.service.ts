@@ -57,6 +57,7 @@ export class AuthService {
 
   logout() {
     this.storage.removeData(this.authDataSotrageKey);
+    this.state.token.set('')
     window.location.reload();
   }
 
