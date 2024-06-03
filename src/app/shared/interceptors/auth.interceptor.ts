@@ -3,16 +3,19 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { BASE_URL } from '../../utils/config';
+import { injectStore } from '@ceski23/stan-js-angular';
+import { authStore } from '../store/store';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private authService = inject(AuthService);
+  state = injectStore(authStore)
 
   intercept(
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const token = this.authService.token;
+    const token = this.state.token();
     if (token) {
       let modifiedReq = req;
       if (!req.url.includes('/token')) {
