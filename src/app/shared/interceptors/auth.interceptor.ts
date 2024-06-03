@@ -16,7 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const token = this.state.token();
-    if (token) {
+    if (token.length) {
       let modifiedReq = req;
       if (!req.url.includes('/token')) {
         // add authorization header to request if we not requesting /token path
