@@ -1,6 +1,6 @@
 {
   "name": "spotrx",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,6 +26,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "@ceski23/stan-js-angular": "^1.0.0",
     "@tanstack/angular-query-experimental": "^5.38.0",
     "ngx-skeleton-loader": "^9.0.0",
     "rxjs": "~7.8.1",
@@ -33,6 +34,7 @@
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^18.0.1",
     "@angular/build": "^18.0.1",
     "@angular/cli": "^18.0.1",
     "@angular/compiler-cli": "^18.0.0",
