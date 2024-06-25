@@ -12,7 +12,7 @@ import {
 @Component({
   selector: 'app-icon',
   template: `@if (icon) {
-    <span class="icon" [outerHTML]="icon"></span>
+    <span class="icon" [innerHTML]="icon"></span>
   }`,
   styleUrls: ['./icon.component.scss'],
   host: { class: 'app-icon' },

@@ -26,6 +26,6 @@ type Story = StoryObj<IconComponent>;
 
 export const Icon: Story = {
   args: {
-    type: 'heart',
+    type: 'menu',
   },
 };

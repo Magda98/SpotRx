@@ -12,6 +12,15 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+     backgrounds: {
+      default: 'spotrx',
+      values: [
+        {
+          name: 'spotrx',
+          value: '#35393c',
+        },
+      ],
+    },
   },
 };
 
