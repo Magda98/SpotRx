@@ -2,6 +2,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Icons, icons } from '../../utils/icons';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ViewEncapsulation,
   effect,
@@ -22,6 +23,7 @@ import {
 })
 export class IconComponent {
   private sanitizer = inject(DomSanitizer);
+  cdRef = inject(ChangeDetectorRef);
   type = input.required<Icons>();
   icon?: SafeHtml;
 
@@ -29,6 +31,7 @@ export class IconComponent {
     effect(() => {
       const type = this.type();
       if (type) this.icon = this.sanitizer.bypassSecurityTrustHtml(icons[type]);
+      this.cdRef.markForCheck();
     });
   }
 }
