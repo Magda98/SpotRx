@@ -21,6 +21,7 @@ import { provideRouter } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayerService } from './shared/services/player.service';
 import { UserService } from './shared/services/user.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,6 +34,7 @@ export const appConfig: ApplicationConfig = {
         defaultOptions: { queries: { placeholderData: keepPreviousData } },
       }),
     ),
+    provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,
       useFactory: () => {

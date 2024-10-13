@@ -8,6 +8,7 @@ import {
   signal,
   inject,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { PlayerService } from './shared/services/player.service';
 import { environment } from '../environments/environment';
@@ -19,6 +20,7 @@ import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimen
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { ButtonDirective } from './shared/button/button.directive';
+import { appFade } from './shared/animations/fade.animation';
 
 @Component({
   selector: 'app-root',
@@ -35,13 +37,11 @@ import { ButtonDirective } from './shared/button/button.directive';
     ButtonDirective,
   ],
   providers: [PlayerService],
+  animations: [appFade],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  /**
-   * TODO:
-   * * feature: rewrite paginated list to infinine scroll
-   */
   private document = inject(DOCUMENT);
   private authService = inject(AuthService);
   private userService = inject(UserService);
@@ -85,3 +85,4 @@ export class AppComponent implements OnInit {
     this.authService.login();
   }
 }
+

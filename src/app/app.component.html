@@ -11,6 +11,9 @@
   }
 
   @if(userData.isSuccess()){
+  @if(menuOpen()){
+  <div @appFade class="app-menu-backdrop"></div>
+  }
   <app-navbar [userData]="userData.data()" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-navbar>
   <button type="button" appButton aria-label="menu" [mode]="'opacity'" class="app-menu-button" (click)="toggleMenu()">
     <app-icon class="icon" type="menu"></app-icon>
