@@ -2,8 +2,8 @@ import { Component, signal } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { appFade } from 'src/app/shared/animations/fade.animation';
-import { ButtonDirective } from 'src/app/shared/button/button.directive';
-import { TrackComponent } from 'src/app/shared/track/track.component';
+import { ButtonDirective } from 'src/app/shared/directives/button/button.directive';
+import { TrackComponent } from 'src/app/shared/components/track/track.component';
 import { savedTracks } from 'src/tests/mocks';
 
 @Component({

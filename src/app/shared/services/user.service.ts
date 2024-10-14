@@ -2,7 +2,7 @@ import { AuthService } from './auth.service';
 import { User } from './../interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { createQuery } from '../../utils/createQuery';
+import { createQuery } from '../utils/createQuery';
 import { tap } from 'rxjs';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { argsToTemplate, type Meta, type StoryObj } from '@storybook/angular';
-import { TrackComponent } from 'src/app/shared/track/track.component';
+import { TrackComponent } from 'src/app/shared/components/track/track.component';
 import { savedTracks } from 'src/tests/mocks';
 
 const meta: Meta<TrackComponent> = {

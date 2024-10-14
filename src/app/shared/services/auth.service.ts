@@ -9,8 +9,8 @@ import {
   base64url,
   generateCodeChallenge,
   randomBytes,
-} from '../../utils/utils';
-import { CLIENT_ID, HEADER_CONFIG, SPORIFY_SCOPES } from '../../utils/config';
+} from '../utils/utils';
+import { CLIENT_ID, HEADER_CONFIG, SPORIFY_SCOPES } from '../utils/config';
 import { injectStore } from '@ceski23/stan-js-angular';
 import { authStore } from '../store/store';
 

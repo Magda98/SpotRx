@@ -1,6 +1,6 @@
-import { TrackService } from '../services/track.service';
-import { PlayerService } from '../services/player.service';
-import { TracksResponse } from '../interfaces/track';
+import { TrackService } from '../../services/track.service';
+import { PlayerService } from '../../services/player.service';
+import { TracksResponse } from '../../interfaces/track';
 import {
   Component,
   EventEmitter,
@@ -12,8 +12,8 @@ import {
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { DurationPipe } from '../duration/duration.pipe';
 import { TrackComponent } from '../track/track.component';
+import { DurationPipe } from '../../pipes/duration/duration.pipe';
 
 @Component({
   selector: 'app-track-list',

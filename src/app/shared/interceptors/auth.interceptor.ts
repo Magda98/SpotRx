@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { BASE_URL } from '../../utils/config';
+import { BASE_URL } from '../utils/config';
 import { injectStore } from '@ceski23/stan-js-angular';
 import { authStore } from '../store/store';
 

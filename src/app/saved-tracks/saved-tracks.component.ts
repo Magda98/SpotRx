@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { TrackService } from '../shared/services/track.service';
 import { PageEvent } from '@angular/material/paginator';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { TrackListComponent } from '../shared/track-list/track-list.component';
+import { TrackListComponent } from '../shared/components/track-list/track-list.component';
 
 @Component({
   selector: 'app-saved-tracks',

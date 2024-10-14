@@ -1,4 +1,4 @@
-import { createQuery } from '../../utils/createQuery';
+import { createQuery } from '../utils/createQuery';
 import {
   FeaturedPlaylistResponse,
   Playlist,

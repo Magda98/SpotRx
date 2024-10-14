@@ -1,4 +1,4 @@
-import { PlayerService } from '../shared/services/player.service';
+import { PlayerService } from '../../services/player.service';
 import {
   Component,
   OnDestroy,
@@ -17,15 +17,15 @@ import {
   tap,
 } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TrackService } from '../shared/services/track.service';
+import { TrackService } from '../../services/track.service';
 import { MatIcon } from '@angular/material/icon';
-import { IconComponent } from '../shared/icon/icon.component';
+import { IconComponent } from '../icon/icon.component';
 import { CommonModule } from '@angular/common';
 import {
   injectMutation,
   injectQuery,
 } from '@tanstack/angular-query-experimental';
-import { ButtonDirective } from '../shared/button/button.directive';
+import { ButtonDirective } from '../../directives/button/button.directive';
 
 @Component({
   selector: 'app-player',

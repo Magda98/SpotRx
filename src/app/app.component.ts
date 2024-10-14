@@ -13,13 +13,13 @@ import {
 import { PlayerService } from './shared/services/player.service';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { IconComponent } from './shared/icon/icon.component';
-import { PlayerComponent } from './player/player.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { IconComponent } from './shared/components/icon/icon.component';
+import { PlayerComponent } from './shared/components/player/player.component';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { ButtonDirective } from './shared/button/button.directive';
+import { ButtonDirective } from './shared/directives/button/button.directive';
 import { appFade } from './shared/animations/fade.animation';
 
 @Component({

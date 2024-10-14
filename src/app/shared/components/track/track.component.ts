@@ -1,9 +1,9 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, input } from '@angular/core';
-import { Track } from '../interfaces/track';
-import { DurationPipe } from '../duration/duration.pipe';
+import { Track } from '../../interfaces/track';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { ButtonDirective } from '../button/button.directive';
+import { ButtonDirective } from '../../directives/button/button.directive';
+import { DurationPipe } from '../../pipes/duration/duration.pipe';
 
 @Component({
   selector: 'app-track',

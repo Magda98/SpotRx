@@ -5,7 +5,7 @@ import { distinctUntilChanged, map, tap } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { TrackListComponent } from '../shared/track-list/track-list.component';
+import { TrackListComponent } from '../shared/components/track-list/track-list.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({

@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { ButtonDirective } from 'src/app/shared/button/button.directive';
+import { ButtonDirective } from 'src/app/shared/directives/button/button.directive';
 import { CommonModule } from '@angular/common';
-import { IconComponent } from 'src/app/shared/icon/icon.component';
+import { IconComponent } from 'src/app/shared/components/icon/icon.component';
 
 const meta: Meta<ButtonDirective> = {
   title: 'Components/Button',

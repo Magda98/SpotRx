@@ -8,9 +8,9 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgOptimizedImage } from '@angular/common';
-import { DurationPipe } from '../shared/duration/duration.pipe';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { TrackComponent } from '../shared/track/track.component';
+import { TrackComponent } from '../shared/components/track/track.component';
+import { DurationPipe } from '../shared/pipes/duration/duration.pipe';
 
 @Component({
   selector: 'app-search-tracks',

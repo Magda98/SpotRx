@@ -1,11 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { TrackComponent } from 'src/app/shared/track/track.component';
+import { TrackComponent } from 'src/app/shared/components/track/track.component';
 import { savedTracks } from 'src/tests/mocks';
 
 import { Component, inject } from "@angular/core";
-import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
-import { DIALOG_CONTEXT, DialogService, RETURN_DATA } from 'src/app/shared/dialog/dialog.service';
-import { ButtonDirective } from 'src/app/shared/button/button.directive';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { DIALOG_CONTEXT, DialogService, RETURN_DATA } from 'src/app/shared/components/dialog/dialog.service';
+import { ButtonDirective } from 'src/app/shared/directives/button/button.directive';
 import { Subject } from 'rxjs';
 
 @Component({

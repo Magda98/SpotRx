@@ -4,19 +4,19 @@ import {
 } from '@tanstack/angular-query-experimental';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
-import { User } from '../shared/interfaces/user';
+import { User } from '../../interfaces/user';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { render, screen } from '@testing-library/angular';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { IconComponent } from '../shared/icon/icon.component';
+import { IconComponent } from '../icon/icon.component';
 import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
-import { user } from '../../tests/mocks';
+import { MockBackendInterceptor } from '../../../../tests/mock-backend.interceptor';
+import { user } from '../../../../tests/mocks';
 
 describe('NavComponent', () => {
   const userData: User = user;
