@@ -3,7 +3,7 @@ import { IconComponent } from 'src/app/shared/icon/icon.component';
 import { Icons } from 'src/app/utils/icons';
 
 const meta: Meta<IconComponent> = {
-  title: 'Example/Icon',
+  title: 'Components/Icon',
   component: IconComponent,
   tags: ['autodocs'],
   argTypes: {

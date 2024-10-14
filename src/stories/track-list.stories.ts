@@ -6,7 +6,7 @@ import { TrackListComponent } from 'src/app/shared/track-list/track-list.compone
 import { savedTracks } from 'src/tests/mocks';
 
 const meta: Meta<TrackListComponent> = {
-  title: 'Example/Track List',
+  title: 'Components/Track List',
   component: TrackListComponent,
   tags: ['autodocs'],
   argTypes: {},

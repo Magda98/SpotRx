@@ -47,7 +47,7 @@ import { Subject } from 'rxjs';
 }
 
 const meta: Meta<ExampleViewComponent> = {
-  title: 'Example/Dialog',
+  title: 'Components/Dialog',
   component: ExampleViewComponent,
   tags: ['autodocs'],
   argTypes: {},
@@ -64,7 +64,7 @@ const meta: Meta<ExampleViewComponent> = {
 export default meta;
 type Story = StoryObj<TrackComponent>;
 
-export const Track: Story = {
+export const Dialog: Story = {
   args: {
     track: savedTracks.items[0].track,
   },

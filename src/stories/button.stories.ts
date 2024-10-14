@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { IconComponent } from 'src/app/shared/icon/icon.component';
 
 const meta: Meta<ButtonDirective> = {
-  title: 'Example/Button',
+  title: 'Components/Button',
   tags: ['autodocs'],
   argTypes: {
     mode: {

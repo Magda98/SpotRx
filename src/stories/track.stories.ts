@@ -3,7 +3,7 @@ import { TrackComponent } from 'src/app/shared/track/track.component';
 import { savedTracks } from 'src/tests/mocks';
 
 const meta: Meta<TrackComponent> = {
-  title: 'Example/Track',
+  title: 'Components/Track',
   component: TrackComponent,
   tags: ['autodocs'],
   argTypes: {},
