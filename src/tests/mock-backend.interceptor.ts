@@ -1,4 +1,13 @@
-import { HttpHandler, HttpHeaderResponse, HttpInterceptor, HttpProgressEvent, HttpRequest, HttpResponse, HttpSentEvent, HttpUserEvent } from '@angular/common/http';
+import {
+  HttpHandler,
+  HttpHeaderResponse,
+  HttpInterceptor,
+  HttpProgressEvent,
+  HttpRequest,
+  HttpResponse,
+  HttpSentEvent,
+  HttpUserEvent,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, delay } from 'rxjs';
 import { User } from '../app/shared/interfaces/user';
@@ -20,13 +29,13 @@ import {
   SearchResponse,
   Track,
   TracksResponse,
-} from 'src/app/shared/interfaces/track';
+} from '@app/shared/interfaces/track';
 
 @Injectable()
 export class MockBackendInterceptor implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<
     | HttpSentEvent
     | HttpHeaderResponse
@@ -40,7 +49,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<User>({
             body: user,
             status: 200,
-          })
+          }),
         );
         observer.complete();
       }).pipe(delay(200));
@@ -52,7 +61,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<PlaylistResponse>({
             body: playlistsResponse,
             status: 200,
-          })
+          }),
         );
         observer.complete();
       }).pipe(delay(200));
@@ -67,7 +76,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<Playlist>({
             body: playlist,
             status: 200,
-          })
+          }),
         );
         observer.complete();
       }).pipe(delay(200));
@@ -80,10 +89,10 @@ export class MockBackendInterceptor implements HttpInterceptor {
             new HttpResponse<FeaturedPlaylistResponse>({
               body: featuredPlaylists,
               status: 200,
-            })
+            }),
           );
           observer.complete();
-        }
+        },
       ).pipe(delay(200));
     }
 
@@ -93,7 +102,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<TracksResponse>({
             body: savedTracks,
             status: 200,
-          })
+          }),
         );
         observer.complete();
       });
@@ -105,7 +114,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<SearchResponse>({
             body: searchResponse,
             status: 200,
-          })
+          }),
         );
         observer.complete();
       }).pipe(delay(200));
@@ -117,7 +126,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<TracksResponse>({
             body: playlistTracks,
             status: 200,
-          })
+          }),
         );
         observer.complete();
       }).pipe(delay(200));
@@ -129,12 +138,14 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<TracksResponse<Track>>({
             body: {
               ...savedTracks,
-              items: savedTracks.items.map((item) => ({
-                ...item.track,
-              })),
+              items: savedTracks.items.map(
+                (item: TracksResponse['items'][number]) => ({
+                  ...item.track,
+                }),
+              ),
             },
             status: 200,
-          })
+          }),
         );
         observer.complete();
       }).pipe(delay(200));

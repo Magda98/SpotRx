@@ -14,7 +14,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
+import { MockBackendInterceptor } from '@tests/mock-backend.interceptor';
 
 describe('HomeComponent', () => {
   const renderComponent = () =>

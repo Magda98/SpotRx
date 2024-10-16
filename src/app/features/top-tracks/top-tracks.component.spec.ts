@@ -14,8 +14,8 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { MockBackendInterceptor } from '../../../tests/mock-backend.interceptor';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { MockBackendInterceptor } from '@tests/mock-backend.interceptor';
 
 describe('TopTracksComponent', () => {
   test('should render', async () => {

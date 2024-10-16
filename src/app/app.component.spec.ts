@@ -14,9 +14,9 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { MockBackendInterceptor } from '../tests/mock-backend.interceptor';
 import { routes } from './app-routes';
 import { provideRouter } from '@angular/router';
+import { MockBackendInterceptor } from '@tests/mock-backend.interceptor';
 
 describe('AppComponent', () => {
   const mockAuthService = createMockWithValues(AuthService, {

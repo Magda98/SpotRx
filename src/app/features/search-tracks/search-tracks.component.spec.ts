@@ -13,10 +13,10 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
 import { SearchTracksComponent } from './search-tracks.component';
-import { PlayerService } from '../shared/services/player.service';
 import userEvent from '@testing-library/user-event';
+import { PlayerService } from '@app/shared/services/player.service';
+import { MockBackendInterceptor } from '@tests/mock-backend.interceptor';
 
 describe('SearchComponent', () => {
   const renderComponent = () =>
