@@ -8,13 +8,13 @@ import {
   QueryClient,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
-import { PlayerService } from '../shared/services/player.service';
+import { PlayerService } from '../../shared/services/player.service';
 import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
+import { MockBackendInterceptor } from '../../../tests/mock-backend.interceptor';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('TopTracksComponent', () => {

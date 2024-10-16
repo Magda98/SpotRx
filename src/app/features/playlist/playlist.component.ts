@@ -1,12 +1,12 @@
-import { TrackService } from '../shared/services/track.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, inject, signal } from '@angular/core';
 import { distinctUntilChanged, map, tap } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { TrackListComponent } from '../shared/components/track-list/track-list.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TrackListComponent } from 'src/app/shared/components/track-list/track-list.component';
+import { TrackService } from 'src/app/shared/services/track.service';
 
 @Component({
   selector: 'app-playlist',
@@ -25,14 +25,14 @@ export class PlaylistComponent {
       distinctUntilChanged(),
       tap(() => {
         this.offset.set(0);
-      })
-    )
+      }),
+    ),
   );
   tracksQuery = injectQuery(() =>
-    this.trackService.getPlaylistTracks(this.playlistId() ?? '', this.offset())
+    this.trackService.getPlaylistTracks(this.playlistId() ?? '', this.offset()),
   );
   playlistInfo = injectQuery(() =>
-    this.trackService.getPlaylistInfo(this.playlistId() ?? '')
+    this.trackService.getPlaylistInfo(this.playlistId() ?? ''),
   );
 
   getNextPage(page: PageEvent) {

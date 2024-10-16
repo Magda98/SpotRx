@@ -13,14 +13,14 @@ import {
 import { PlayerService } from './shared/services/player.service';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { IconComponent } from './shared/components/icon/icon.component';
-import { PlayerComponent } from './shared/components/player/player.component';
+import { PlayerComponent } from './core/layout/player/player.component';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { ButtonDirective } from './shared/directives/button/button.directive';
 import { appFade } from './shared/animations/fade.animation';
+import { NavbarComponent } from './core/layout/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -39,7 +39,7 @@ import { appFade } from './shared/animations/fade.animation';
   providers: [PlayerService],
   animations: [appFade],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
   private document = inject(DOCUMENT);
@@ -85,4 +85,3 @@ export class AppComponent implements OnInit {
     this.authService.login();
   }
 }
-

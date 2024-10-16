@@ -1,5 +1,5 @@
 import { routes } from './app-routes';
-import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthService } from './shared/services/auth.service';
 import {
   HTTP_INTERCEPTORS,

@@ -1,9 +1,9 @@
-import { SearchTracksComponent } from './search-tracks/search-tracks.component';
-import { PlaylistComponent } from './playlist/playlist.component';
-import { SavedTracksComponent } from './saved-tracks/saved-tracks.component';
-import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
-import { TopTracksComponent } from './top-tracks/top-tracks.component';
+import { TopTracksComponent } from './features/top-tracks/top-tracks.component';
+import { HomeComponent } from './features/home/home.component';
+import { SavedTracksComponent } from './features/saved-tracks/saved-tracks.component';
+import { SearchTracksComponent } from './features/search-tracks/search-tracks.component';
+import { PlaylistComponent } from './features/playlist/playlist.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },

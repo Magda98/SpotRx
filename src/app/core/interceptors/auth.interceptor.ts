@@ -1,19 +1,25 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { BASE_URL } from '../utils/config';
+import { AuthService } from '../../shared/services/auth.service';
+import { BASE_URL } from '../../shared/utils/config';
 import { injectStore } from '@ceski23/stan-js-angular';
-import { authStore } from '../store/store';
+import { authStore } from '../../shared/store/store';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private authService = inject(AuthService);
-  state = injectStore(authStore)
+  state = injectStore(authStore);
 
   intercept(
     req: HttpRequest<unknown>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
     const token = this.state.token();
     if (token.length) {
@@ -35,14 +41,14 @@ export class AuthInterceptor implements HttpInterceptor {
           // if other error logout user
           this.authService.logout();
           return throwError(() => error);
-        })
+        }),
       );
     }
 
     return next.handle(req).pipe(
       catchError((err) => {
         return throwError(() => err);
-      })
+      }),
     );
   }
 
@@ -58,7 +64,7 @@ export class AuthInterceptor implements HttpInterceptor {
           const modifiedReq = req.clone({
             headers: req.headers.set(
               'Authorization',
-              `Bearer ${authData.access_token}`
+              `Bearer ${authData.access_token}`,
             ),
             url: req.url,
           });
@@ -67,7 +73,7 @@ export class AuthInterceptor implements HttpInterceptor {
         catchError((error) => {
           this.authService.logout();
           return throwError(() => error);
-        })
+        }),
       );
     };
   }

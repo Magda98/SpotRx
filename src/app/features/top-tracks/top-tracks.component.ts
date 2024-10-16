@@ -1,9 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { TrackListComponent } from '../shared/components/track-list/track-list.component';
+import { TrackListComponent } from '../../shared/components/track-list/track-list.component';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { TrackService } from '../shared/services/track.service';
+import { TrackService } from '../../shared/services/track.service';
 import { PageEvent } from '@angular/material/paginator';
-import { Item, TracksResponse } from '../shared/interfaces/track';
+import { Item, TracksResponse } from '../../shared/interfaces/track';
 
 @Component({
   selector: 'app-top-tracks',

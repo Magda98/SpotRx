@@ -1,13 +1,9 @@
-import { TrackService } from '../shared/services/track.service';
 import { Component, inject } from '@angular/core';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
+import { TrackService } from 'src/app/shared/services/track.service';
 
 @Component({
   selector: 'app-home',

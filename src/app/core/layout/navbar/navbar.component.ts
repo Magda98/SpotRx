@@ -1,12 +1,12 @@
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { TrackService } from '../../services/track.service';
-import { UserService } from '../../services/user.service';
 import { Component, inject, input, EventEmitter, Output } from '@angular/core';
-import { IconComponent } from '../icon/icon.component';
 import { CommonModule } from '@angular/common';
-import { User } from '../../interfaces/user';
+import { IconComponent } from 'src/app/shared/components/icon/icon.component';
+import { UserService } from 'src/app/shared/services/user.service';
+import { TrackService } from 'src/app/shared/services/track.service';
+import { User } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'app-navbar',
