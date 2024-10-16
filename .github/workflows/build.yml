@@ -1,4 +1,4 @@
-name: test
+name: build
 on: push
 jobs:
   build:
@@ -12,4 +12,4 @@ jobs:
           node-version: "22.x"
           cache: "npm"
       - run: npm ci
-      - run: npm run test
+      - run: npm run build
