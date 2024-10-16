@@ -2,12 +2,9 @@ import {
   FeaturedPlaylistResponse,
   Playlist,
   PlaylistResponse,
-} from 'src/app/shared/interfaces/playlist';
-import {
-  SearchResponse,
-  TracksResponse,
-} from 'src/app/shared/interfaces/track';
-import { User } from 'src/app/shared/interfaces/user';
+} from '@app/shared/interfaces/playlist';
+import { SearchResponse, TracksResponse } from '@app/shared/interfaces/track';
+import { User } from '@app/shared/interfaces/user';
 
 export const user: User = {
   display_name: 'pieceofsth7',

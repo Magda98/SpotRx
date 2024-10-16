@@ -3,7 +3,7 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { TrackService } from 'src/app/shared/services/track.service';
+import { TrackService } from '@app/shared/services/track.service';
 
 @Component({
   selector: 'app-home',

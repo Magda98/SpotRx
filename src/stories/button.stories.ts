@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { ButtonDirective } from 'src/app/shared/directives/button/button.directive';
 import { CommonModule } from '@angular/common';
-import { IconComponent } from 'src/app/shared/components/icon/icon.component';
+import { IconComponent } from '@app/shared/components/icon/icon.component';
+import { ButtonDirective } from '@app/shared/directives/button/button.directive';
 
 const meta: Meta<ButtonDirective> = {
   title: 'Components/Button',
@@ -49,10 +49,10 @@ export const Text: Story = {
 
 export const Icon: Story = {
   args: {
-    mode: 'text'
+    mode: 'text',
   },
-  render: ({mode}) => {
-    console.log("🚀 ~ mode:", mode)
+  render: ({ mode }) => {
+    console.log('🚀 ~ mode:', mode);
     return {
       template: `<button type="button" mode="${mode}" appButton> <app-icon class="icon" type="menu"></app-icon></button>`,
     };

@@ -10,8 +10,8 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { MockBackendInterceptor } from '../../tests/mock-backend.interceptor';
-import { PlayerService } from '../shared/services/player.service';
+import { PlayerService } from '@app/shared/services/player.service';
+import { MockBackendInterceptor } from '@tests/mock-backend.interceptor';
 
 describe('SavedComponent', () => {
   test('should render', async () => {

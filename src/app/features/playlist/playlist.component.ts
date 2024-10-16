@@ -5,8 +5,8 @@ import { PageEvent } from '@angular/material/paginator';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { TrackListComponent } from 'src/app/shared/components/track-list/track-list.component';
-import { TrackService } from 'src/app/shared/services/track.service';
+import { TrackListComponent } from '@app/shared/components/track-list/track-list.component';
+import { TrackService } from '@app/shared/services/track.service';
 
 @Component({
   selector: 'app-playlist',

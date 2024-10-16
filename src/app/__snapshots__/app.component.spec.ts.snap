@@ -8,6 +8,7 @@ exports[`AppComponent should render 1`] = `
     class="app"
   >
     
+    
     <app-navbar>
       <nav
         class="nav"

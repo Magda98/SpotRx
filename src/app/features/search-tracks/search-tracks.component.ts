@@ -7,10 +7,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { DurationPipe } from 'src/app/shared/pipes/duration/duration.pipe';
-import { TrackComponent } from 'src/app/shared/components/track/track.component';
-import { TrackService } from 'src/app/shared/services/track.service';
-import { PlayerService } from 'src/app/shared/services/player.service';
+import { DurationPipe } from '@app/shared/pipes/duration/duration.pipe';
+import { TrackComponent } from '@app/shared/components/track/track.component';
+import { TrackService } from '@app/shared/services/track.service';
+import { PlayerService } from '@app/shared/services/player.service';
 
 @Component({
   selector: 'app-search-tracks',

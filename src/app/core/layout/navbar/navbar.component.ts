@@ -3,10 +3,10 @@ import { RouterModule } from '@angular/router';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { Component, inject, input, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconComponent } from 'src/app/shared/components/icon/icon.component';
-import { UserService } from 'src/app/shared/services/user.service';
-import { TrackService } from 'src/app/shared/services/track.service';
-import { User } from 'src/app/shared/interfaces/user';
+import { IconComponent } from '@app/shared/components/icon/icon.component';
+import { UserService } from '@app/shared/services/user.service';
+import { TrackService } from '@app/shared/services/track.service';
+import { User } from '@app/shared/interfaces/user';
 
 @Component({
   selector: 'app-navbar',
