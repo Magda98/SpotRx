@@ -20,19 +20,17 @@ SpotRx is a web player for Spotify created using Angular. It provides users with
 
 ## Deployment
 
-SpotRx is deployed and accessible online. You can try it out at [https://magda98.github.io/SpotRx/](https://magda98.github.io/SpotRx/).
+SpotRx is deployed and accessible online. You can try it out at [https://magda98.github.io/SpotRx/](https://magda98.github.io/SpotRx/). Please note that this application is currently using the **Spotify API in development mode**. As a result, it can only be accessed by a limited number of users and testers designated by the owner.
 
 ## Technologies Used
 
 - [**Angular**](https://angular.dev/): SpotRx is built using the Angular framework in version 17 and use Signals, standalone components, new control flow etc. which provides a powerful and scalable platform for developing single-page applications.
 
 - [**Angular Query**](https://tanstack.com/query/v5/docs/framework/angular/overview) powerful asynchronous state management for TS.
-  
 - [**Angular Testing Library**](https://testing-library.com/docs/angular-testing-library/intro) library used for unit testing.
-  
 - [**Playwright**](https://playwright.dev/) library used for end2end testing.
-  
 - [**Storybook**](https://storybook.js.org/) workshop for building UI components.
+- **CI/CD**: SpotRx utilizes GitHub Actions workflows to run unit tests, build the application, and deploy it from a specific branch to GitHub Pages.
 
 - [**Angualr Material**](https://material.angular.io/) - Material Design components for Angular.
 
@@ -40,7 +38,7 @@ SpotRx is deployed and accessible online. You can try it out at [https://magda98
 
 - [**Spotify API**](https://developer.spotify.com/documentation/web-api): SpotRx integrates with the Spotify API to fetch user data, including user profile information, saved tracks, and playlists.
 
-- [**Deployment GitHubPages**](https://pages.github.com/): SpotRx is deployed using GitHub Pages, making it easily accessible to users on the web.
+- [**Deployment GitHub Pages**](https://pages.github.com/): SpotRx is deployed using GitHub Pages, making it easily accessible to users on the web.
 
 ## Development Setup
 
@@ -57,5 +55,3 @@ To set up SpotRx for local development, follow these steps:
 ![image](https://github.com/Magda98/SpotRx/assets/33430525/9c3aca7f-f350-4f3b-9b0a-17c43665bb84)
 
 ![chrome_wxB6hL8eA3](https://github.com/Magda98/SpotRx/assets/33430525/c065fe81-f892-4907-b773-dab52e94b68e)
-
-
