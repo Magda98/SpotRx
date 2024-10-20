@@ -34,7 +34,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'ng serve',
+    command: 'npm start',
     url: 'http://localhost:4200',
   },
 });

@@ -124,6 +124,7 @@ exports[`AppComponent should render 1`] = `
       appbutton=""
       aria-label="menu"
       class="app-menu-button btn btn-opacity"
+      role="button"
       type="button"
     >
       <app-icon

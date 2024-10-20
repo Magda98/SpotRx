@@ -17,6 +17,6 @@ test('play playlist track', async ({ basePage }) => {
 
   const track = basePage.page
     .getByRole('main')
-    .getByRole('button', { name: 'HERO HERO HERO KizoBletka 2:' });
+    .getByRole('button', { name: 'CZEMU NIE ŚPISZ?' });
   await track.click();
 });
