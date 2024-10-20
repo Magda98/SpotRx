@@ -70,9 +70,10 @@ exports[`SearchComponent should render 1`] = `
       class="track-list"
     >
       <app-track>
-        <div
+        <button
           appbutton=""
           class="track btn"
+          role="button"
         >
           <div
             class="song-info"
@@ -122,7 +123,7 @@ exports[`SearchComponent should render 1`] = `
           <span
             class="ripple"
           />
-        </div>
+        </button>
       </app-track>
       
     </div>

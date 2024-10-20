@@ -13,6 +13,9 @@ export type ButtonMode = 'text' | 'opacity';
 @Directive({
   selector: '[appButton]',
   standalone: true,
+  host: {
+    role: 'button',
+  },
 })
 export class ButtonDirective implements OnInit {
   mode = input<ButtonMode>();

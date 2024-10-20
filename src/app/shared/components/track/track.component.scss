@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 8px;
   border-radius: 10px;
   cursor: pointer;
@@ -16,7 +17,7 @@
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: rgba(0,0,0,0.2)
+    background-color: rgba(0, 0, 0, 0.2)
   }
 
   .track-img {
@@ -36,12 +37,12 @@
     gap: 16px;
   }
 
-  .album-artist{
+  .album-artist {
     display: flex;
     flex-direction: column;
   }
 
-  .artist-skeleton{
+  .artist-skeleton {
     display: flex;
     flex-direction: column;
     gap: 8px;
