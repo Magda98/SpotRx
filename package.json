@@ -57,7 +57,7 @@
 		"@types/jest": "^29.5.12",
 		"@types/node": "^20.10.0",
 		"@types/spotify-web-playback-sdk": "^0.1.12",
-		"angular-cli-ghpages": "^2.0.1",
+		"angular-cli-ghpages": "^2.0.3",
 		"angular-eslint": "18.4.0",
 		"eslint": "^9.13.0",
 		"eslint-config-prettier": "^9.1.0",
