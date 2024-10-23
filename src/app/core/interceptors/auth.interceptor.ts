@@ -63,7 +63,7 @@ export class AuthInterceptor implements HttpInterceptor {
 					});
 					return next.handle(modifiedReq);
 				}),
-				catchError((error) => {
+				catchError((error: unknown) => {
 					this.authService.logout();
 					return throwError(() => error);
 				}),
