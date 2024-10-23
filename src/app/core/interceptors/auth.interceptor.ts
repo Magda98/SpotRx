@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
+import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
 import { BASE_URL } from '../../shared/utils/config';
 import { injectState } from '@ceski23/stan-js-angular';
@@ -53,7 +53,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   handle401Error(req: HttpRequest<unknown>, next: HttpHandler) {
-    return (error: any) => {
+    return (error: unknown) => {
       if (req.url.includes('/token')) {
         this.authService.logout();
         return throwError(() => error);

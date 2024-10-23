@@ -7,7 +7,7 @@ import { Observable, firstValueFrom, fromEvent, takeUntil } from 'rxjs';
 export function createQuery<TData, TQueryKey extends QueryKey>(
   queryKey: TQueryKey,
   query: Observable<TData>,
-  queryEnabled: boolean = true
+  queryEnabled = true
 ) {
   return {
     queryKey,

@@ -34,14 +34,14 @@ import {
 @Injectable()
 export class MockBackendInterceptor implements HttpInterceptor {
   intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler,
+    req: HttpRequest<unknown>,
+    next: HttpHandler
   ): Observable<
     | HttpSentEvent
     | HttpHeaderResponse
     | HttpProgressEvent
-    | HttpResponse<any>
-    | HttpUserEvent<any>
+    | HttpResponse<unknown>
+    | HttpUserEvent<unknown>
   > {
     if (req.url.endsWith('me') && req.method == 'GET') {
       return new Observable<HttpResponse<User>>((observer) => {
@@ -49,7 +49,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<User>({
             body: user,
             status: 200,
-          }),
+          })
         );
         observer.complete();
       }).pipe(delay(200));
@@ -61,7 +61,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<PlaylistResponse>({
             body: playlistsResponse,
             status: 200,
-          }),
+          })
         );
         observer.complete();
       }).pipe(delay(200));
@@ -76,7 +76,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<Playlist>({
             body: playlist,
             status: 200,
-          }),
+          })
         );
         observer.complete();
       }).pipe(delay(200));
@@ -89,10 +89,10 @@ export class MockBackendInterceptor implements HttpInterceptor {
             new HttpResponse<FeaturedPlaylistResponse>({
               body: featuredPlaylists,
               status: 200,
-            }),
+            })
           );
           observer.complete();
-        },
+        }
       ).pipe(delay(200));
     }
 
@@ -102,7 +102,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<TracksResponse>({
             body: savedTracks,
             status: 200,
-          }),
+          })
         );
         observer.complete();
       });
@@ -114,7 +114,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<SearchResponse>({
             body: searchResponse,
             status: 200,
-          }),
+          })
         );
         observer.complete();
       }).pipe(delay(200));
@@ -126,7 +126,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
           new HttpResponse<TracksResponse>({
             body: playlistTracks,
             status: 200,
-          }),
+          })
         );
         observer.complete();
       }).pipe(delay(200));
@@ -141,11 +141,11 @@ export class MockBackendInterceptor implements HttpInterceptor {
               items: savedTracks.items.map(
                 (item: TracksResponse['items'][number]) => ({
                   ...item.track,
-                }),
+                })
               ),
             },
             status: 200,
-          }),
+          })
         );
         observer.complete();
       }).pipe(delay(200));

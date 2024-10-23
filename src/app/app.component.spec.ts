@@ -5,7 +5,7 @@ import {
   QueryClient,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
-import { BehaviorSubject, ReplaySubject, find } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { AuthData } from './shared/interfaces/authData';
 import { fireEvent, render, screen } from '@testing-library/angular';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
@@ -73,23 +73,23 @@ describe('AppComponent', () => {
 
     fireEvent.click(await screen.findByRole('link', { name: /Saved/i }));
     expect(
-      await screen.findByRole('heading', { name: /Saved tracks/i }),
+      await screen.findByRole('heading', { name: /Saved tracks/i })
     ).toBeInTheDocument();
 
     fireEvent.click(await screen.findByRole('link', { name: /Home/i }));
     expect(
-      await screen.findByRole('heading', { name: /Home/i }),
+      await screen.findByRole('heading', { name: /Home/i })
     ).toBeInTheDocument();
 
     fireEvent.click(await screen.findByRole('link', { name: /Home/i }));
     expect(
-      await screen.findByRole('heading', { name: /Home/i }),
+      await screen.findByRole('heading', { name: /Home/i })
     ).toBeInTheDocument();
 
     fireEvent.click(await screen.findByRole('link', { name: /Dua Lipa/i }));
     component.detectChanges();
     expect(
-      await screen.findByRole('heading', { name: /Dua Lipa/i }),
+      await screen.findByRole('heading', { name: /Dua Lipa/i })
     ).toBeInTheDocument();
   });
 });

@@ -7,7 +7,8 @@
     </mat-slider>
     }
     <div class="song-info">
-      <img class="album-image" [src]="player.track_window.current_track.album.images[0].url">
+      <img [alt]="player.track_window.current_track.album.name" class="album-image"
+        [src]="player.track_window.current_track.album.images[0].url">
       <div class="album-artist">
         <h2 class="name">{{player.track_window.current_track.name}}</h2>
         <span class="album-name">
@@ -21,23 +22,23 @@
       </div>
     </div>
     <div class="action-buttons-container">
-    <div class="action-buttons">
-      <button appButton type="button" aria-label="previous" [mode]="'text'" (click)="playerService.skipPrev()">
-        <mat-icon>skip_previous</mat-icon>
-      </button>
-      <button appButton type="button" aria-label="play" [mode]="'text'" (click)="playerService.tooglePlay()">
-        @if(player.paused){
-        <mat-icon>play_circle_outline</mat-icon>
-        }
-        @else{
-        <mat-icon>pause_circle_outline</mat-icon>
-        }
-      </button>
-      <button appButton type="button" aria-label="next" [mode]="'text'" (click)="playerService.skipNext();">
-        <mat-icon>skip_next</mat-icon>
-      </button>
+      <div class="action-buttons">
+        <button appButton type="button" aria-label="previous" [mode]="'text'" (click)="playerService.skipPrev()">
+          <mat-icon>skip_previous</mat-icon>
+        </button>
+        <button appButton type="button" aria-label="play" [mode]="'text'" (click)="playerService.tooglePlay()">
+          @if(player.paused){
+          <mat-icon>play_circle_outline</mat-icon>
+          }
+          @else{
+          <mat-icon>pause_circle_outline</mat-icon>
+          }
+        </button>
+        <button appButton type="button" aria-label="next" [mode]="'text'" (click)="playerService.skipNext();">
+          <mat-icon>skip_next</mat-icon>
+        </button>
+      </div>
     </div>
-  </div>
     <div class="slider-container">
       <button appButton type="button" [mode]="'text'">
         <app-icon [ngClass]="{'primary': player.shuffle }" (click)="toggleShuffle()" class="icon"

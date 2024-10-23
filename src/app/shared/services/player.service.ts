@@ -30,7 +30,7 @@ export class PlayerService {
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
         name: 'Web Playback SDK Quick Start Player',
-        getOAuthToken: (cb: Function) => {
+        getOAuthToken: (cb) => {
           cb(token);
         },
         volume: 0.5,
@@ -43,7 +43,6 @@ export class PlayerService {
       player.addListener('authentication_error', ({ message }) => {
         console.error(message);
       });
-      player.addListener('account_error', ({ message }) => {});
       player.addListener('playback_error', ({ message }) => {
         console.error(message);
       });
@@ -126,7 +125,7 @@ export class PlayerService {
   }
 
   tooglePlay() {
-    this.player?.togglePlay().then(() => {});
+    this.player?.togglePlay();
   }
 
   skipNext() {
@@ -146,10 +145,10 @@ export class PlayerService {
   }
 
   setVolume(volume: number) {
-    this.player?.setVolume(volume).then(() => {});
+    this.player?.setVolume(volume);
   }
 
   setPosition(position: number) {
-    this.player?.seek(position).then(() => {});
+    this.player?.seek(position);
   }
 }

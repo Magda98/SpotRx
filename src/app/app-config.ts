@@ -32,7 +32,7 @@ export const appConfig: ApplicationConfig = {
     provideAngularQuery(
       new QueryClient({
         defaultOptions: { queries: { placeholderData: keepPreviousData } },
-      }),
+      })
     ),
     provideAnimationsAsync(),
     {

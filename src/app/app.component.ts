@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
       if (!authData) return;
       this.initSpotifyScript(authData.access_token);
     }),
-    takeUntilDestroyed(),
+    takeUntilDestroyed()
   );
   playerState = this.playerService.getPlayerState();
   isProductionMode = environment.production;

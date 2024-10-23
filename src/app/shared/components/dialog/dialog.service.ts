@@ -18,9 +18,9 @@ export const RETURN_DATA = new InjectionToken<Subject<unknown>>('ReturnData');
 @Injectable({ providedIn: 'root' })
 export class DialogService {
   dialog?: ComponentRef<unknown>;
-  private appRef = inject(ApplicationRef)
-  private injector = inject(EnvironmentInjector)
-  private document = inject(DOCUMENT)
+  private appRef = inject(ApplicationRef);
+  private injector = inject(EnvironmentInjector);
+  private document = inject(DOCUMENT);
 
 
   open<T, C, D>(component: Type<T>, context?: C) {

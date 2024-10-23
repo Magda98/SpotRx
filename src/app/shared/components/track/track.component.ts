@@ -20,5 +20,5 @@ import { DurationPipe } from '../../pipes/duration/duration.pipe';
 })
 export class TrackComponent {
   track = input<Track>();
-  isLoading = input<Boolean>(false);
+  isLoading = input<boolean>(false);
 }
