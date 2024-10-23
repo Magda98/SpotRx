@@ -5,13 +5,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import {
-  base64url,
-  generateCodeChallenge,
-  randomBytes,
-} from '../utils/utils';
+import { base64url, generateCodeChallenge, randomBytes } from '../utils/utils';
 import { CLIENT_ID, HEADER_CONFIG, SPORIFY_SCOPES } from '../utils/config';
-import { injectStore } from '@ceski23/stan-js-angular';
+import { injectState } from '@ceski23/stan-js-angular';
 import { authStore } from '../store/store';
 
 @Injectable({
@@ -24,7 +20,7 @@ export class AuthService {
   authData = new BehaviorSubject<AuthData | undefined>(undefined);
   refreshToken = new BehaviorSubject<string | undefined>(undefined);
   loggedIn = new ReplaySubject<boolean>();
-  state = injectStore(authStore)
+  state = injectState(authStore);
 
   constructor(
     private http: HttpClient,
@@ -33,7 +29,7 @@ export class AuthService {
   ) {
     const data: AuthData | null = this.storage.getData(this.authDataSotrageKey);
     if (data) {
-      this.state.token.set(data.access_token)
+      this.state.token.set(data.access_token);
       this.authData.next(data ?? undefined);
       this.refreshToken.next(data.refresh_token);
     }
@@ -57,7 +53,7 @@ export class AuthService {
 
   logout() {
     this.storage.removeData(this.authDataSotrageKey);
-    this.state.token.set('')
+    this.state.token.set('');
     window.location.reload();
   }
 
@@ -87,7 +83,7 @@ export class AuthService {
       .post<AuthData>(this.authTokenUrl, urlParams, HEADER_CONFIG)
       .pipe(
         tap((authData) => {
-          this.state.token.set(authData.access_token)
+          this.state.token.set(authData.access_token);
           this.authData.next(authData);
           this.loggedIn.next(true);
           this.router.navigate(['']);
@@ -111,7 +107,7 @@ export class AuthService {
         );
       }),
       tap((authData) => {
-        this.state.token.set(authData.access_token)
+        this.state.token.set(authData.access_token);
         this.authData.next(authData);
         this.loggedIn.next(true);
         // TODO: initialize script after making sure that token is valid
