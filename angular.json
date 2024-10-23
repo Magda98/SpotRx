@@ -25,9 +25,14 @@
 						"browser": "src/main.ts",
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
-						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.scss", "src/styles/m3-theme.scss"],
-						"scripts": []
+						"assets": [
+							"src/favicon.ico",
+							"src/assets"
+						],
+						"styles": [
+							"src/styles.scss",
+							"src/styles/m3-theme.scss"
+						]
 					},
 					"configurations": {
 						"production": {
@@ -85,9 +90,17 @@
 					"options": {
 						"configDir": ".storybook",
 						"browserTarget": "spotrx:build",
-						"styles": ["src/styles.scss", "src/styles/m3-theme.scss"],
+						"styles": [
+							"src/styles.scss",
+							"src/styles/m3-theme.scss"
+						],
 						"compodoc": false,
-						"compodocArgs": ["-e", "json", "-d", "."],
+						"compodocArgs": [
+							"-e",
+							"json",
+							"-d",
+							"."
+						],
 						"port": 6006
 					}
 				},
@@ -96,16 +109,27 @@
 					"options": {
 						"configDir": ".storybook",
 						"browserTarget": "spotrx:build",
-						"styles": ["src/styles.scss", "src/styles/m3-theme.scss"],
+						"styles": [
+							"src/styles.scss",
+							"src/styles/m3-theme.scss"
+						],
 						"compodoc": false,
-						"compodocArgs": ["-e", "json", "-d", "."],
+						"compodocArgs": [
+							"-e",
+							"json",
+							"-d",
+							"."
+						],
 						"outputDir": "storybook-static"
 					}
 				},
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
-						"lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+						"lintFilePatterns": [
+							"src/**/*.ts",
+							"src/**/*.html"
+						]
 					}
 				}
 			}
@@ -113,6 +137,8 @@
 	},
 	"cli": {
 		"analytics": false,
-		"schematicCollections": ["@angular-eslint/schematics"]
+		"schematicCollections": [
+			"@angular-eslint/schematics"
+		]
 	}
 }
