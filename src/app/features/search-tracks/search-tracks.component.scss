@@ -1,22 +1,22 @@
 .search {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-    .track-list {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 24px;
-        margin: auto;
-        width: 80%; 
-    }
+	.track-list {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		gap: 24px;
+		margin: auto;
+		width: 80%;
+	}
 }
 
 .search-input-field {
-    & input {
-        color: #fff;
-    }
+	& input {
+		color: #fff;
+	}
 }

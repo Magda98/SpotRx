@@ -5,19 +5,17 @@ import { TrackService } from '@app/shared/services/track.service';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 
 @Component({
-  selector: 'app-saved-tracks',
-  templateUrl: './saved-tracks.component.html',
-  styleUrls: ['./saved-tracks.component.scss'],
-  standalone: true,
-  imports: [TrackListComponent],
+	selector: 'app-saved-tracks',
+	templateUrl: './saved-tracks.component.html',
+	styleUrls: ['./saved-tracks.component.scss'],
+	standalone: true,
+	imports: [TrackListComponent],
 })
 export class SavedTracksComponent {
-  trackService = inject(TrackService);
-  offset = signal(0);
-  savedTracksQuery = injectQuery(() =>
-    this.trackService.getSavedTracks(this.offset()),
-  );
-  getNextPage(page: PageEvent) {
-    this.offset.set(page.pageSize * page.pageIndex);
-  }
+	trackService = inject(TrackService);
+	offset = signal(0);
+	savedTracksQuery = injectQuery(() => this.trackService.getSavedTracks(this.offset()));
+	getNextPage(page: PageEvent) {
+		this.offset.set(page.pageSize * page.pageIndex);
+	}
 }

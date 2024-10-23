@@ -1,56 +1,78 @@
-@if(player) {
-<div class="player">
-  <ng-container>
-    @if(playerService.playbackState | async; as position){
-    <mat-slider class="song-slider" min="1" [max]="player.duration" step="10">
-      <input (dragEnd)="setPosition($event)" [value]="position" matSliderThumb>
-    </mat-slider>
-    }
-    <div class="song-info">
-      <img [alt]="player.track_window.current_track.album.name" class="album-image"
-        [src]="player.track_window.current_track.album.images[0].url">
-      <div class="album-artist">
-        <h2 class="name">{{player.track_window.current_track.name}}</h2>
-        <span class="album-name">
-          {{player.track_window.current_track.album.name}}
-        </span>
-        <div class="artist-container">
-          @for(item of player.track_window.current_track.artists; track item.name){
-          <span class="artist">{{item.name}}</span>
-          }
-        </div>
-      </div>
-    </div>
-    <div class="action-buttons-container">
-      <div class="action-buttons">
-        <button appButton type="button" aria-label="previous" [mode]="'text'" (click)="playerService.skipPrev()">
-          <mat-icon>skip_previous</mat-icon>
-        </button>
-        <button appButton type="button" aria-label="play" [mode]="'text'" (click)="playerService.tooglePlay()">
-          @if(player.paused){
-          <mat-icon>play_circle_outline</mat-icon>
-          }
-          @else{
-          <mat-icon>pause_circle_outline</mat-icon>
-          }
-        </button>
-        <button appButton type="button" aria-label="next" [mode]="'text'" (click)="playerService.skipNext();">
-          <mat-icon>skip_next</mat-icon>
-        </button>
-      </div>
-    </div>
-    <div class="slider-container">
-      <button appButton type="button" [mode]="'text'">
-        <app-icon [ngClass]="{'primary': player.shuffle }" (click)="toggleShuffle()" class="icon"
-          type="shuffle"></app-icon>
-      </button>
-      <button appButton type="button" [mode]="'text'" (click)="toggleSavedTrack()">
-        <app-icon [ngClass]="{'primary': isSavedTrack() === true }" class="icon" type="heart"></app-icon>
-      </button>
-      <mat-slider class="volume-slider" min="0" max="1" step="0.1">
-        <input (dragEnd)="setVolume($event)" value="0.5" matSliderThumb>
-      </mat-slider>
-    </div>
-  </ng-container>
-</div>
+@if (player) {
+	<div class="player">
+		<ng-container>
+			@if (playerService.playbackState | async; as position) {
+				<mat-slider class="song-slider" min="1" [max]="player.duration" step="10">
+					<input (dragEnd)="setPosition($event)" [value]="position" matSliderThumb />
+				</mat-slider>
+			}
+			<div class="song-info">
+				<img
+					[alt]="player.track_window.current_track.album.name"
+					class="album-image"
+					[src]="player.track_window.current_track.album.images[0].url" />
+				<div class="album-artist">
+					<h2 class="name">{{ player.track_window.current_track.name }}</h2>
+					<span class="album-name">
+						{{ player.track_window.current_track.album.name }}
+					</span>
+					<div class="artist-container">
+						@for (item of player.track_window.current_track.artists; track item.name) {
+							<span class="artist">{{ item.name }}</span>
+						}
+					</div>
+				</div>
+			</div>
+			<div class="action-buttons-container">
+				<div class="action-buttons">
+					<button
+						appButton
+						type="button"
+						aria-label="previous"
+						[mode]="'text'"
+						(click)="playerService.skipPrev()">
+						<mat-icon>skip_previous</mat-icon>
+					</button>
+					<button
+						appButton
+						type="button"
+						aria-label="play"
+						[mode]="'text'"
+						(click)="playerService.tooglePlay()">
+						@if (player.paused) {
+							<mat-icon>play_circle_outline</mat-icon>
+						} @else {
+							<mat-icon>pause_circle_outline</mat-icon>
+						}
+					</button>
+					<button
+						appButton
+						type="button"
+						aria-label="next"
+						[mode]="'text'"
+						(click)="playerService.skipNext()">
+						<mat-icon>skip_next</mat-icon>
+					</button>
+				</div>
+			</div>
+			<div class="slider-container">
+				<button appButton type="button" [mode]="'text'">
+					<app-icon
+						[ngClass]="{ primary: player.shuffle }"
+						(click)="toggleShuffle()"
+						class="icon"
+						type="shuffle"></app-icon>
+				</button>
+				<button appButton type="button" [mode]="'text'" (click)="toggleSavedTrack()">
+					<app-icon
+						[ngClass]="{ primary: isSavedTrack() === true }"
+						class="icon"
+						type="heart"></app-icon>
+				</button>
+				<mat-slider class="volume-slider" min="0" max="1" step="0.1">
+					<input (dragEnd)="setVolume($event)" value="0.5" matSliderThumb />
+				</mat-slider>
+			</div>
+		</ng-container>
+	</div>
 }

@@ -6,20 +6,20 @@ import { createQuery } from '../utils/createQuery';
 import { tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class UserService {
-  private http = inject(HttpClient);
-  private authService = inject(AuthService);
+	private http = inject(HttpClient);
+	private authService = inject(AuthService);
 
-  getUserData() {
-    return createQuery(
-      ['userData'] as const,
-      this.http.get<User>(`me`).pipe(
-        tap(() => {
-          this.authService.loggedIn.next(true);
-        })
-      )
-    );
-  }
+	getUserData() {
+		return createQuery(
+			['userData'] as const,
+			this.http.get<User>(`me`).pipe(
+				tap(() => {
+					this.authService.loggedIn.next(true);
+				}),
+			),
+		);
+	}
 }

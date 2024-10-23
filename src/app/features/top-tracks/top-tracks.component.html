@@ -1,6 +1,10 @@
 <div class="top-tracks">
-    <h1 class="title">Top tracks 😎</h1>
-    <app-track-list class="track-list" (getNextPage)="getNextPage($event)" [total]="this.topTracksQuery.data()?.total"
-      [tracksList]="topTracks()" [isLoading]="topTracksQuery.isLoading()">
-    </app-track-list>
-  </div>
+	<h1 class="title">Top tracks 😎</h1>
+	<app-track-list
+		class="track-list"
+		(getNextPage)="getNextPage($event)"
+		[total]="this.topTracksQuery.data()?.total"
+		[tracksList]="topTracks()"
+		[isLoading]="topTracksQuery.isLoading()">
+	</app-track-list>
+</div>

@@ -1,12 +1,11 @@
 .playlist {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-height: 80vh;
 
-
-  .title {
-    margin-bottom: 32px;
-    text-align: center;
-  }
+	.title {
+		margin-bottom: 32px;
+		text-align: center;
+	}
 }

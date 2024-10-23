@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  redirectUri: 'http://localhost:4200/',
+	production: false,
+	redirectUri: 'http://localhost:4200/',
 };
 
 /*

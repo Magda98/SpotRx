@@ -1,85 +1,83 @@
-@import "@angular/material/prebuilt-themes/purple-green.css";
+@import '@angular/material/prebuilt-themes/purple-green.css';
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
-@import "./styles/button.scss";
-
+@import './styles/button.scss';
 
 html,
 body {
-  height: 100%;
-  font-size: 10px;
+	height: 100%;
+	font-size: 10px;
 }
 
 body {
-  margin: 0;
-  font-family: 'Fredoka', sans-serif;
-  color: $text;
-  background-color: #35393c;
+	margin: 0;
+	font-family: 'Fredoka', sans-serif;
+	color: $text;
+	background-color: #35393c;
 
-  .app {
+	.app {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		a,
+		p,
+		span,
+		div {
+			font-family: 'Fredoka', sans-serif;
+		}
+	}
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    a,
-    p,
-    span,
-    div {
-      font-family: 'Fredoka', sans-serif;
-    }
-  }
+	p,
+	div,
+	a,
+	span {
+		font-size: 1.2rem;
 
-  p,
-  div,
-  a,
-  span {
-    font-size: 1.2rem;
+		@media screen and (min-width: 980px) {
+			font-size: 1.4rem;
+		}
+	}
 
-    @media screen and (min-width: 980px) {
-      font-size: 1.4rem;
-    }
-  }
-
-  img {
-    filter: brightness(0.8) contrast(1.2);
-  }
+	img {
+		filter: brightness(0.8) contrast(1.2);
+	}
 }
 
 /* Works on Firefox */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: $primary $bg-elevation;
+	scrollbar-width: thin;
+	scrollbar-color: $primary $bg-elevation;
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 12px;
+	width: 12px;
 }
 
 *::-webkit-scrollbar-track {
-  background: $text-dark;
+	background: $text-dark;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: $primary;
-  border-radius: 20px;
-  border: 3px solid $text-dark;
+	background-color: $primary;
+	border-radius: 20px;
+	border: 3px solid $text-dark;
 }
 
 .mat-typography h2 {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: .0125em;
-  margin: 0 0 8px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 0.0125em;
+	margin: 0 0 8px;
 
-  @media screen and (min-width: 980px) {
-    font-size: 18px;
-  }
+	@media screen and (min-width: 980px) {
+		font-size: 18px;
+	}
 }
 
 ngx-skeleton-loader .progress-dark.skeleton-loader {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }

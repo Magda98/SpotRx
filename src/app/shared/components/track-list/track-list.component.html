@@ -1,19 +1,24 @@
 <div class="track-list-container">
-  <mat-paginator class="paginator" (page)="handlePageEvent($event)" [length]="total()" [pageSize]="pageSize"
-    [pageIndex]="currentPage()" aria-label="Select page">
-  </mat-paginator>
-  @if(!isLoading() && tracksList()){
-  <div class="track-list">
-    @for(item of tracksList()?.items; track item.track.id; let i = $index){
-    <app-track [track]="item.track" (click)="play(i)"></app-track>
-    }
-  </div>
-  }
-  @if(isLoading()){
-  <div class="track-list track-list--skeleton">
-    @for(item of skeletonLoadingArray; track item; let i = $index){
-    <app-track [isLoading]="true"></app-track>
-    }
-  </div>
-  }
+	<mat-paginator
+		class="paginator"
+		(page)="handlePageEvent($event)"
+		[length]="total()"
+		[pageSize]="pageSize"
+		[pageIndex]="currentPage()"
+		aria-label="Select page">
+	</mat-paginator>
+	@if (!isLoading() && tracksList()) {
+		<div class="track-list">
+			@for (item of tracksList()?.items; track item.track.id; let i = $index) {
+				<app-track [track]="item.track" (click)="play(i)"></app-track>
+			}
+		</div>
+	}
+	@if (isLoading()) {
+		<div class="track-list track-list--skeleton">
+			@for (item of skeletonLoadingArray; track item; let i = $index) {
+				<app-track [isLoading]="true"></app-track>
+			}
+		</div>
+	}
 </div>

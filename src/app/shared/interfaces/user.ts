@@ -1,17 +1,15 @@
-import { Image } from "./image";
+import { Image } from './image';
 export interface User {
-    country: string,
-    display_name: string,
-    email: string,
-    explicit_content: Record<string, boolean>,
-    external_urls: Record<string, string>,
-    followers: Record<string, number>,
-    href: string,
-    id: string,
-    images: Image[],
-    product: string,
-    type: string,
-    uri: string
+	country: string;
+	display_name: string;
+	email: string;
+	explicit_content: Record<string, boolean>;
+	external_urls: Record<string, string>;
+	followers: Record<string, number>;
+	href: string;
+	id: string;
+	images: Image[];
+	product: string;
+	type: string;
+	uri: string;
 }
-
-

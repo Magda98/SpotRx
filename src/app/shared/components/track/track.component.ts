@@ -6,19 +6,13 @@ import { ButtonDirective } from '../../directives/button/button.directive';
 import { DurationPipe } from '../../pipes/duration/duration.pipe';
 
 @Component({
-  selector: 'app-track',
-  standalone: true,
-  imports: [
-    CommonModule,
-    DurationPipe,
-    NgOptimizedImage,
-    NgxSkeletonLoaderModule,
-    ButtonDirective,
-  ],
-  templateUrl: './track.component.html',
-  styleUrl: './track.component.scss',
+	selector: 'app-track',
+	standalone: true,
+	imports: [CommonModule, DurationPipe, NgOptimizedImage, NgxSkeletonLoaderModule, ButtonDirective],
+	templateUrl: './track.component.html',
+	styleUrl: './track.component.scss',
 })
 export class TrackComponent {
-  track = input<Track>();
-  isLoading = input<boolean>(false);
+	track = input<Track>();
+	isLoading = input<boolean>(false);
 }

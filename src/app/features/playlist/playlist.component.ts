@@ -9,33 +9,31 @@ import { TrackListComponent } from '@app/shared/components/track-list/track-list
 import { TrackService } from '@app/shared/services/track.service';
 
 @Component({
-  selector: 'app-playlist',
-  templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.scss'],
-  standalone: true,
-  imports: [TrackListComponent, NgxSkeletonLoaderModule],
+	selector: 'app-playlist',
+	templateUrl: './playlist.component.html',
+	styleUrls: ['./playlist.component.scss'],
+	standalone: true,
+	imports: [TrackListComponent, NgxSkeletonLoaderModule],
 })
 export class PlaylistComponent {
-  private route = inject(ActivatedRoute);
-  private trackService = inject(TrackService);
-  offset = signal(0);
-  playlistId = toSignal(
-    this.route.paramMap.pipe(
-      map((paramMap) => paramMap.get('id')),
-      distinctUntilChanged(),
-      tap(() => {
-        this.offset.set(0);
-      }),
-    ),
-  );
-  tracksQuery = injectQuery(() =>
-    this.trackService.getPlaylistTracks(this.playlistId() ?? '', this.offset()),
-  );
-  playlistInfo = injectQuery(() =>
-    this.trackService.getPlaylistInfo(this.playlistId() ?? ''),
-  );
+	private route = inject(ActivatedRoute);
+	private trackService = inject(TrackService);
+	offset = signal(0);
+	playlistId = toSignal(
+		this.route.paramMap.pipe(
+			map((paramMap) => paramMap.get('id')),
+			distinctUntilChanged(),
+			tap(() => {
+				this.offset.set(0);
+			}),
+		),
+	);
+	tracksQuery = injectQuery(() =>
+		this.trackService.getPlaylistTracks(this.playlistId() ?? '', this.offset()),
+	);
+	playlistInfo = injectQuery(() => this.trackService.getPlaylistInfo(this.playlistId() ?? ''));
 
-  getNextPage(page: PageEvent) {
-    this.offset.set(page.pageSize * page.pageIndex);
-  }
+	getNextPage(page: PageEvent) {
+		this.offset.set(page.pageSize * page.pageIndex);
+	}
 }

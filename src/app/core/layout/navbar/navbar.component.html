@@ -1,40 +1,59 @@
-<nav class="nav" [ngClass]="{
-  'nav--open': open()
-}">
-  <div class="logo-conatiner">
-    <app-icon class="icon--large" type="logo"></app-icon>
-    <h1>SpotRx</h1>
-  </div>
-  @if(userData()){
-  <div class="user-data">
-    <img alt="user avatar" class="user-img" [src]="userData().images[0].url">
-    <span class="user-name">{{userData().display_name}}</span>
-  </div>
-  }
+<nav
+	class="nav"
+	[ngClass]="{
+		'nav--open': open(),
+	}">
+	<div class="logo-conatiner">
+		<app-icon class="icon--large" type="logo"></app-icon>
+		<h1>SpotRx</h1>
+	</div>
+	@if (userData()) {
+		<div class="user-data">
+			<img alt="user avatar" class="user-img" [src]="userData().images[0].url" />
+			<span class="user-name">{{ userData().display_name }}</span>
+		</div>
+	}
 
-  <ul class="nav-links">
-    <li><a class="link" (click)="closeMenu()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}">
-        <mat-icon class="icon">home</mat-icon> Home
-      </a></li>
-    <li><a class="link" (click)="closeMenu()" routerLink="/saved" routerLinkActive="active">
-        <mat-icon class="icon">favorite</mat-icon> Saved
-      </a></li>
-    <li><a class="link" (click)="closeMenu()" routerLink="/top-tracks" routerLinkActive="active">
-        <mat-icon class="icon">format_list_numbered</mat-icon> Top tracks
-      </a></li>
-    <li><a class="link" (click)="closeMenu()" routerLink="/search" routerLinkActive="active">
-        <mat-icon class="icon">search</mat-icon> Search
-      </a></li>
-  </ul>
+	<ul class="nav-links">
+		<li>
+			<a
+				class="link"
+				(click)="closeMenu()"
+				routerLink="/"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: true }">
+				<mat-icon class="icon">home</mat-icon> Home
+			</a>
+		</li>
+		<li>
+			<a class="link" (click)="closeMenu()" routerLink="/saved" routerLinkActive="active">
+				<mat-icon class="icon">favorite</mat-icon> Saved
+			</a>
+		</li>
+		<li>
+			<a class="link" (click)="closeMenu()" routerLink="/top-tracks" routerLinkActive="active">
+				<mat-icon class="icon">format_list_numbered</mat-icon> Top tracks
+			</a>
+		</li>
+		<li>
+			<a class="link" (click)="closeMenu()" routerLink="/search" routerLinkActive="active">
+				<mat-icon class="icon">search</mat-icon> Search
+			</a>
+		</li>
+	</ul>
 
-  @if(userPlaylists.isSuccess()){
-  <div class="playlist-list" *ngIf="userPlaylists.data().items as items">
-    <a class="link" (click)="closeMenu()" [routerLink]="['/playlist', item.id]" class="playlist"
-      *ngFor="let item of items" routerLinkActive="active">
-      <img [alt]="item.name" class="playlist-img" [src]="item.images[0].url">
-      <h3 class="playlist-name">{{item.name}}</h3>
-    </a>
-  </div>
-  }
+	@if (userPlaylists.isSuccess()) {
+		<div class="playlist-list" *ngIf="userPlaylists.data().items as items">
+			<a
+				class="link"
+				(click)="closeMenu()"
+				[routerLink]="['/playlist', item.id]"
+				class="playlist"
+				*ngFor="let item of items"
+				routerLinkActive="active">
+				<img [alt]="item.name" class="playlist-img" [src]="item.images[0].url" />
+				<h3 class="playlist-name">{{ item.name }}</h3>
+			</a>
+		</div>
+	}
 </nav>

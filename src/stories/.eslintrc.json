@@ -1,5 +1,5 @@
 {
-  "rules": {
-    "@typescript-eslint/consistent-type-imports": ["error", { "disallowTypeAnnotations": false }]
-  }
+	"rules": {
+		"@typescript-eslint/consistent-type-imports": ["error", { "disallowTypeAnnotations": false }]
+	}
 }

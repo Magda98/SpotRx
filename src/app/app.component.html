@@ -1,30 +1,42 @@
 <div class="app">
-  @if(loggedIn() === false){
-  <div class="app-login">
-    <div class="app-login__title-wrapper">
-      <app-icon class="icon--large" type="logo"></app-icon>
-      <h1 class="app-login__title">Spotrx</h1>
-    </div>
-    <p class="app-login__text">To use app you must log in</p>
-    <button type="button" appButton class="app-login__button" (click)="login()">login</button>
-  </div>
-  }
+	@if (loggedIn() === false) {
+		<div class="app-login">
+			<div class="app-login__title-wrapper">
+				<app-icon class="icon--large" type="logo"></app-icon>
+				<h1 class="app-login__title">Spotrx</h1>
+			</div>
+			<p class="app-login__text">To use app you must log in</p>
+			<button type="button" appButton class="app-login__button" (click)="login()">login</button>
+		</div>
+	}
 
-  @if(userData.isSuccess()){
-  @if(menuOpen()){
-  <div @appFade class="app-menu-backdrop"></div>
-  }
-  <app-navbar [userData]="userData.data()" [open]="menuOpen()" (toggleMenu)="menuOpen.set($event)"></app-navbar>
-  <button type="button" appButton aria-label="menu" [mode]="'opacity'" class="app-menu-button" (click)="toggleMenu()">
-    <app-icon class="icon" type="menu"></app-icon>
-  </button>
-  <main class="main" [ngClass]="{
-  'main--player': playerState | async }">
-    <router-outlet></router-outlet>
-  </main>
-  <app-player></app-player>
-  }
-  @if(!isProductionMode){
-  <angular-query-devtools />
-  }
+	@if (userData.isSuccess()) {
+		@if (menuOpen()) {
+			<div @appFade class="app-menu-backdrop"></div>
+		}
+		<app-navbar
+			[userData]="userData.data()"
+			[open]="menuOpen()"
+			(toggleMenu)="menuOpen.set($event)"></app-navbar>
+		<button
+			type="button"
+			appButton
+			aria-label="menu"
+			[mode]="'opacity'"
+			class="app-menu-button"
+			(click)="toggleMenu()">
+			<app-icon class="icon" type="menu"></app-icon>
+		</button>
+		<main
+			class="main"
+			[ngClass]="{
+				'main--player': playerState | async,
+			}">
+			<router-outlet></router-outlet>
+		</main>
+		<app-player></app-player>
+	}
+	@if (!isProductionMode) {
+		<angular-query-devtools />
+	}
 </div>

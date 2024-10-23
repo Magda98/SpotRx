@@ -1,50 +1,50 @@
 :host {
-  display: block;
+	display: block;
 }
 
 .track {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  gap: 8px;
-  background-color: transparent;
-  border: none;
-  color: #f2f4f5;
-  transition: background-color 0.3s;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 8px;
+	border-radius: 10px;
+	cursor: pointer;
+	gap: 8px;
+	background-color: transparent;
+	border: none;
+	color: #f2f4f5;
+	transition: background-color 0.3s;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.2)
-  }
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
 
-  .track-img {
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    margin-right: 10px;
-    border-radius: 5px;
-  }
+	.track-img {
+		width: 90px;
+		height: 90px;
+		object-fit: cover;
+		margin-right: 10px;
+		border-radius: 5px;
+	}
 
-  .album-artist {
-    text-align: left;
-  }
+	.album-artist {
+		text-align: left;
+	}
 
-  .song-info {
-    display: flex;
-    gap: 16px;
-  }
+	.song-info {
+		display: flex;
+		gap: 16px;
+	}
 
-  .album-artist {
-    display: flex;
-    flex-direction: column;
-  }
+	.album-artist {
+		display: flex;
+		flex-direction: column;
+	}
 
-  .artist-skeleton {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+	.artist-skeleton {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
 }

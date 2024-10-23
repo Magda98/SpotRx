@@ -1,22 +1,45 @@
 <div class="home">
-  <h1 class="title">Home 😎</h1>
-  @if(featuredPlaylists.isSuccess()){
-  <div class="playlist-list">
-    <a class="link" [routerLink]="['/playlist', item.id]" class="playlist"
-      *ngFor="let item of featuredPlaylists.data().playlists?.items">
-      <img [alt]="item.name" priority class="playlist-img" height="200" width="200" [ngSrc]="item.images[0].url">
-      <h2 class="playlist-title">{{item.name}}</h2>
-    </a>
-  </div>
-  }
-  @if(featuredPlaylists.isLoading()){
-  <div class="playlist-list">
-    <div class="link" class="playlist" *ngFor="let item of skeletonLoadingArray">
-      <ngx-skeleton-loader class="playlist-img" animation="progress-dark" count="1"
-        [theme]="{ height: '200px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
-      <ngx-skeleton-loader class="playlist-title" animation="progress-dark" count="1"
-        [theme]="{ height: '24px', width: '200px', 'background-color': '#2c2f31' }"></ngx-skeleton-loader>
-    </div>
-  </div>
-  }
+	<h1 class="title">Home 😎</h1>
+	@if (featuredPlaylists.isSuccess()) {
+		<div class="playlist-list">
+			<a
+				class="link"
+				[routerLink]="['/playlist', item.id]"
+				class="playlist"
+				*ngFor="let item of featuredPlaylists.data().playlists?.items">
+				<img
+					[alt]="item.name"
+					priority
+					class="playlist-img"
+					height="200"
+					width="200"
+					[ngSrc]="item.images[0].url" />
+				<h2 class="playlist-title">{{ item.name }}</h2>
+			</a>
+		</div>
+	}
+	@if (featuredPlaylists.isLoading()) {
+		<div class="playlist-list">
+			<div class="link" class="playlist" *ngFor="let item of skeletonLoadingArray">
+				<ngx-skeleton-loader
+					class="playlist-img"
+					animation="progress-dark"
+					count="1"
+					[theme]="{
+						height: '200px',
+						width: '200px',
+						'background-color': '#2c2f31',
+					}"></ngx-skeleton-loader>
+				<ngx-skeleton-loader
+					class="playlist-title"
+					animation="progress-dark"
+					count="1"
+					[theme]="{
+						height: '24px',
+						width: '200px',
+						'background-color': '#2c2f31',
+					}"></ngx-skeleton-loader>
+			</div>
+		</div>
+	}
 </div>

@@ -6,9 +6,9 @@ import { SearchTracksComponent } from './features/search-tracks/search-tracks.co
 import { PlaylistComponent } from './features/playlist/playlist.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'saved', component: SavedTracksComponent },
-  { path: 'search', component: SearchTracksComponent },
-  { path: 'top-tracks', component: TopTracksComponent },
-  { path: 'playlist/:id', component: PlaylistComponent },
+	{ path: '', component: HomeComponent },
+	{ path: 'saved', component: SavedTracksComponent },
+	{ path: 'search', component: SearchTracksComponent },
+	{ path: 'top-tracks', component: TopTracksComponent },
+	{ path: 'playlist/:id', component: PlaylistComponent },
 ];
