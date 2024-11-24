@@ -36,6 +36,7 @@ exports[`SearchComponent should render 1`] = `
               aria-label="search"
               aria-required="false"
               class="mat-mdc-input-element mat-mdc-form-field-input-control mdc-text-field__input ng-untouched ng-valid cdk-text-field-autofill-monitored ng-dirty"
+              id="mat-input-a0"
               matinput=""
               placeholder="Search for specific song..."
               type="text"

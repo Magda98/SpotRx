@@ -5,9 +5,7 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { DurationPipe } from '@app/shared/pipes/duration/duration.pipe';
 import { TrackComponent } from '@app/shared/components/track/track.component';
 import { TrackService } from '@app/shared/services/track.service';
 import { PlayerService } from '@app/shared/services/player.service';
@@ -16,12 +14,9 @@ import { PlayerService } from '@app/shared/services/player.service';
 	selector: 'app-search-tracks',
 	templateUrl: './search-tracks.component.html',
 	styleUrls: ['./search-tracks.component.scss'],
-	standalone: true,
 	imports: [
 		MatFormFieldModule,
 		MatInputModule,
-		NgOptimizedImage,
-		DurationPipe,
 		NgxSkeletonLoaderModule,
 		ReactiveFormsModule,
 		TrackComponent,

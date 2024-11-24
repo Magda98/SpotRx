@@ -3,23 +3,14 @@ import { PlayerService } from '../../services/player.service';
 import { TracksResponse } from '../../interfaces/track';
 import { Component, EventEmitter, Output, computed, inject, input } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TrackComponent } from '../track/track.component';
-import { DurationPipe } from '../../pipes/duration/duration.pipe';
 
 @Component({
 	selector: 'app-track-list',
 	templateUrl: './track-list.component.html',
 	styleUrls: ['./track-list.component.scss'],
-	standalone: true,
-	imports: [
-		MatPaginatorModule,
-		NgOptimizedImage,
-		NgxSkeletonLoaderModule,
-		DurationPipe,
-		TrackComponent,
-	],
+	imports: [MatPaginatorModule, NgxSkeletonLoaderModule, TrackComponent],
 })
 export class TrackListComponent {
 	private playerService = inject(PlayerService);

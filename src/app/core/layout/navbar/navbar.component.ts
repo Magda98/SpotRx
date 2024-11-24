@@ -12,7 +12,6 @@ import { User } from '@app/shared/interfaces/user';
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
 	styleUrls: ['./navbar.component.scss'],
-	standalone: true,
 	imports: [IconComponent, RouterModule, MatIconModule, CommonModule],
 })
 export class NavbarComponent {

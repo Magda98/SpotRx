@@ -9,7 +9,6 @@ import { TrackService } from '@app/shared/services/track.service';
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss'],
-	standalone: true,
 	imports: [RouterModule, CommonModule, NgOptimizedImage, NgxSkeletonLoaderModule],
 })
 export class HomeComponent {
