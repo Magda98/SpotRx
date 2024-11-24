@@ -7,7 +7,6 @@ import { DurationPipe } from '../../pipes/duration/duration.pipe';
 
 @Component({
 	selector: 'app-track',
-	standalone: true,
 	imports: [CommonModule, DurationPipe, NgOptimizedImage, NgxSkeletonLoaderModule, ButtonDirective],
 	templateUrl: './track.component.html',
 	styleUrl: './track.component.scss',

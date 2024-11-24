@@ -9,7 +9,6 @@ import { Item, TracksResponse } from '../../shared/interfaces/track';
 	selector: 'app-top-tracks',
 	templateUrl: './top-tracks.component.html',
 	styleUrls: ['./top-tracks.component.scss'],
-	standalone: true,
 	imports: [TrackListComponent],
 })
 export class TopTracksComponent {

@@ -12,7 +12,6 @@ import { TrackService } from '@app/shared/services/track.service';
 	selector: 'app-playlist',
 	templateUrl: './playlist.component.html',
 	styleUrls: ['./playlist.component.scss'],
-	standalone: true,
 	imports: [TrackListComponent, NgxSkeletonLoaderModule],
 })
 export class PlaylistComponent {

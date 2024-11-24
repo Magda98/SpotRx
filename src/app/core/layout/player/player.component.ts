@@ -14,7 +14,6 @@ import { ButtonDirective } from '../../../shared/directives/button/button.direct
 	selector: 'app-player',
 	templateUrl: './player.component.html',
 	styleUrls: ['./player.component.scss'],
-	standalone: true,
 	imports: [MatSliderModule, MatIcon, IconComponent, CommonModule, ButtonDirective],
 })
 export class PlayerComponent implements OnInit, OnDestroy {

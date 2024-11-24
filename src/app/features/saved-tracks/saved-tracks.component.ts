@@ -8,7 +8,6 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 	selector: 'app-saved-tracks',
 	templateUrl: './saved-tracks.component.html',
 	styleUrls: ['./saved-tracks.component.scss'],
-	standalone: true,
 	imports: [TrackListComponent],
 })
 export class SavedTracksComponent {

@@ -26,7 +26,6 @@ import { NavbarComponent } from './core/layout/navbar/navbar.component';
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
-	standalone: true,
 	imports: [
 		RouterModule,
 		NavbarComponent,

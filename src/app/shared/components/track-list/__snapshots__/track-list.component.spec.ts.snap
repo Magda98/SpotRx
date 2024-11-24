@@ -23,6 +23,7 @@ exports[`TrackListComponent should render 1`] = `
           >
             <div
               class="mat-mdc-paginator-page-size-label"
+              id="mat-paginator-page-size-label-a0"
             >
                Items per page: 
             </div>
@@ -46,9 +47,10 @@ exports[`TrackListComponent should render 1`] = `
             </div>
             
             <button
+              aria-disabled="true"
               aria-label="Previous page"
-              class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-previous mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled _mat-animation-noopable mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled"
-              disabled="true"
+              class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-previous mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled mat-mdc-button-disabled-interactive _mat-animation-noopable mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled"
+              disabledinteractive=""
               mat-icon-button=""
               mat-ripple-loader-centered=""
               mat-ripple-loader-class-name="mat-mdc-button-ripple"
@@ -70,7 +72,7 @@ exports[`TrackListComponent should render 1`] = `
                 />
               </svg>
               <span
-                class="mat-mdc-focus-indicator"
+                class="mat-focus-indicator"
               />
               <span
                 class="mat-mdc-button-touch-target"
@@ -79,7 +81,8 @@ exports[`TrackListComponent should render 1`] = `
             
             <button
               aria-label="Next page"
-              class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-next mdc-icon-button mat-mdc-icon-button _mat-animation-noopable mat-unthemed mat-mdc-button-base"
+              class="mat-mdc-tooltip-trigger mat-mdc-paginator-navigation-next mdc-icon-button mat-mdc-icon-button mat-mdc-button-disabled-interactive _mat-animation-noopable mat-unthemed mat-mdc-button-base"
+              disabledinteractive=""
               mat-icon-button=""
               mat-ripple-loader-centered=""
               mat-ripple-loader-class-name="mat-mdc-button-ripple"
@@ -100,7 +103,7 @@ exports[`TrackListComponent should render 1`] = `
                 />
               </svg>
               <span
-                class="mat-mdc-focus-indicator"
+                class="mat-focus-indicator"
               />
               <span
                 class="mat-mdc-button-touch-target"
